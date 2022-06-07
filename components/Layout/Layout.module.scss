@@ -1,0 +1,25 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/mixins';
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.body {
+    flex: 1;
+    padding: 0px 30px;
+}
+
+.page-title {
+    @include media-mobile {
+        font-size: 1.5rem;
+    }
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    &-primary {
+        color: $color-primary;
+    }
+}

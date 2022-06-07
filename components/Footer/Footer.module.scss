@@ -1,0 +1,25 @@
+@import '/styles/base/variables';
+
+.container {
+  flex-shrink: 0;
+  padding: 0px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.label {
+  color: $color-secondary;
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  text-decoration: none;
+  &:hover {
+    color: $color-secondary;
+    text-decoration: none;
+  }
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
