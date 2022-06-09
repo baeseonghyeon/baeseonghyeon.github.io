@@ -2,6 +2,7 @@
     "name": "next-ts-boiler-plate",
     "version": "0.1.0",
     "private": true,
+    "author": "baesh",
     "scripts": {
         "dev": "next dev",
         "build": "next build",

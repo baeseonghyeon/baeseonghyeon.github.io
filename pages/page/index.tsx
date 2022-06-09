@@ -18,13 +18,15 @@ const Page: NextPage = () => {
     const [todoList, setTodoList] = useState<Todo[]>();
 
     useEffect(() => {
-        getTodoList().then((response: Todo[] | Error) => {
-            if (response instanceof Error) {
-                alert(response.message);
-            } else {
-                setTodoList(response);
-            }
-        });
+        return () => {
+            getTodoList().then((response: Todo[] | Error) => {
+                if (response instanceof Error) {
+                    alert(response.message);
+                } else {
+                    setTodoList(response);
+                }
+            });
+        };
     }, []);
 
     return (
@@ -33,8 +35,8 @@ const Page: NextPage = () => {
                 {todoList ? (
                     todoList.map((item, idx) => {
                         return (
-                            <li>
-                                <Link href={`/page/${idx + 1}`} key={idx}>
+                            <li key={idx}>
+                                <Link href={`/page/${idx + 1}`}>
                                     {`${item.title}`}
                                 </Link>
                             </li>

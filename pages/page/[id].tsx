@@ -11,15 +11,19 @@ const Detail: NextPage = () => {
     const [todo, setTodo] = useState<Todo>();
 
     useEffect(() => {
-        if (id) {
-            getTodo(parseInt(id.toString())).then((response: Todo | Error) => {
-                if (response instanceof Error) {
-                    alert(response.message);
-                } else {
-                    setTodo(response);
-                }
-            });
-        }
+        return () => {
+            if (id) {
+                getTodo(parseInt(id.toString())).then(
+                    (response: Todo | Error) => {
+                        if (response instanceof Error) {
+                            alert(response.message);
+                        } else {
+                            setTodo(response);
+                        }
+                    },
+                );
+            }
+        };
     }, []);
 
     if (todo)
