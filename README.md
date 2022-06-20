@@ -8,6 +8,8 @@
 -   Page Setup(Main, 404, List, Detail)
 -   Layout Components
 -   Dummy Data Api Call with axios
+-   Recoil & Sample Code
+-   Jest & Sample Test code
 
 ## Getting Started
 
