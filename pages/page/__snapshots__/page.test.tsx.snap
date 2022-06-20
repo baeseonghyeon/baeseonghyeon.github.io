@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page 스냅샷 테스트 1`] = `
+<div>
+  <div
+    class="container"
+  >
+    <div
+      class="container flex-row d-flex"
+    >
+      <a
+        class="link__label"
+        href="/"
+      >
+        MAIN
+      </a>
+      <a
+        class="link__label"
+        href="/page"
+      >
+        PAGE
+      </a>
+      <a
+        class="link__label"
+        href="/recoil"
+      >
+        RECOIL
+      </a>
+      <a
+        class="link__label"
+        href="/404"
+      >
+        404
+      </a>
+    </div>
+    <div
+      class="body"
+    >
+      <h1
+        class="page-title page-title-primary"
+      >
+        Page
+      </h1>
+      <ul
+        data-testid="list"
+      >
+        <li>
+          Loading...
+        </li>
+      </ul>
+    </div>
+    <div
+      class="container"
+    >
+      <a
+        class="label"
+        href="https://baeseonghyeon.github.io/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        © 2022 배성현(Bae Seonghyeon)
+      </a>
+    </div>
+  </div>
+</div>
+`;

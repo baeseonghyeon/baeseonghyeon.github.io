@@ -1,20 +1,29 @@
 import type { NextPage } from 'next';
+import { useRecoilState } from 'recoil';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
+import { RecoilForm } from './recoil';
+import { textState } from './recoil/todo';
 
 const Home: NextPage = () => {
+    const [text, setText] = useRecoilState(textState);
+
     return (
         <Layout title="Next.js + TypeScript Boiler Plate">
             <main className={styles.main}>
+                <RecoilForm
+                    value={text}
+                    onChange={(e) => {
+                        setText(e.target.value);
+                    }}
+                />
                 <h1 className={styles.title}>
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
-
                 <p className={styles.description}>
                     Get started by editing{' '}
                     <code className={styles.code}>pages/index.tsx</code>
                 </p>
-
                 <div className={styles.grid}>
                     <a href="https://nextjs.org/docs" className={styles.card}>
                         <h2>Documentation &rarr;</h2>

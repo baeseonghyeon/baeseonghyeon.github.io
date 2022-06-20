@@ -16,6 +16,7 @@ const Header: NextPage = () => {
     const navItems: NavItem[] = [
         { title: 'MAIN', path: '/' },
         { title: 'PAGE', path: '/page' },
+        { title: 'RECOIL', path: '/recoil' },
         { title: '404', path: '/404' },
     ];
 
@@ -28,7 +29,8 @@ const Header: NextPage = () => {
                             href={item.path}
                             className={cn(
                                 'link__label',
-                                router.pathname === item.path &&
+                                router &&
+                                    router.pathname === item.path &&
                                     'link__label-active',
                             )}
                         >

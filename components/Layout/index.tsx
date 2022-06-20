@@ -22,7 +22,7 @@ const Layout = (props: LayoutProps) => {
             <Head>
                 <title>
                     Create Next App
-                    {router.pathname === '/' ? '' : ` | ${title}`}
+                    {router && router.pathname === '/' ? '' : ` | ${title}`}
                 </title>
                 <meta
                     name="description"

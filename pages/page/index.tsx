@@ -30,8 +30,8 @@ const Page: NextPage = () => {
     }, []);
 
     return (
-        <Layout title="Page">
-            <ul>
+        <Layout title={'Page'}>
+            <ul data-testid="list">
                 {todoList ? (
                     todoList.map((item, idx) => {
                         return (
