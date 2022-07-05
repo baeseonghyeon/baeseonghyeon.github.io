@@ -1,0 +1,75 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    z-index: $z-layout;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+
+    .copy-right {
+        text-align: left;
+        padding-left: 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // font-size: $fs-s !important;
+        a {
+            text-decoration: none;
+            height: 100%;
+            width: 4px;
+        }
+        &::before {
+            content: "©";
+            float: left;
+            margin-left: -13px;
+        }
+    }
+    .toggle {
+        &__container {
+            position: relative;
+            top: 1px;
+            min-width: 118px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            :not(:last-of-type) {
+                margin-right: 5px;
+            }
+        }
+        &__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            &:hover {
+                border: 1px solid var(--on-background-color);
+                background: var(--background-color);
+                box-shadow: 0vh 0vh 0.5vh var(--on-background-color);
+            }
+        }
+        &__darkmode {
+            height: 20px;
+            svg {
+                stroke: var(--on-background-color);
+                width: $fs-s;
+            }
+        }
+        &__language {
+        }
+    }
+    @include media-mobile {
+        padding: 0.5rem 11px;
+        .copy-right {
+            padding-left: 15px;
+        }
+    }
+}

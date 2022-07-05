@@ -1,0 +1,73 @@
+@import "./base/variables";
+@import "./base/mixins";
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap");
+
+/* color */
+body {
+    @include ColorBright;
+    &.dark-theme {
+        @include ColorDark;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        @include ColorDark;
+        &.bright-theme {
+            @include ColorBright;
+        }
+    }
+}
+
+/* layout */
+html,
+body {
+    background-color: var(--background-color);
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none; /*Chrome, Safari, newer versions of Opera*/
+    -moz-text-size-adjust: none; /*Firefox*/
+    -ms-text-size-adjust: none; /*Ie*/
+    -o-text-size-adjust: none; /*old versions of Opera*/
+}
+
+span,
+div {
+    transition: all ease 0.2s 0s;
+    -moz-transition: all ease 0.2s 0s;
+    -webkit-transition: all ease 0.2s 0s;
+}
+
+/* font */
+h1,
+h2,
+h3,
+p,
+a,
+span,
+div {
+    color: var(--on-background-color);
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol", sans-serif;
+    // font-family: "Noto Sans KR", sans-serif;
+    font-size: $fs-m;
+    font-weight: $fw;
+    letter-spacing: $ls;
+}
+
+a {
+    // color: $color-primary;
+    color: var(--blue-color);
+}
+
+* {
+    box-sizing: border-box;
+}

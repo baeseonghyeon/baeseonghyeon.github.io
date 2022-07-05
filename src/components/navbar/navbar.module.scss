@@ -1,0 +1,61 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    z-index: $z-layout;
+    position: fixed;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    transition: none;
+    height: 43px;
+    width: fit-content;
+
+    @include media-mobile {
+        padding: 10px 8px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    @include media-tablet {
+        padding: 10px 8px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    :not(:last-of-type) {
+        margin-right: 1rem;
+    }
+}
+
+.link {
+    &__label {
+        min-width: fit-content;
+        transition: all ease 0.1s 0s;
+        -moz-transition: all ease 0.1s 0s;
+        -webkit-transition: all ease 0.1s 0s;
+        text-decoration: none;
+        color: var(--on-background-color);
+        a {
+            margin-top: 0.7rem;
+            display: block;
+        }
+        &-active {
+            border-bottom: $bw solid var(--on-background-color) !important;
+            font-weight: bold;
+            line-height: 1.2;
+            transition: all ease 0.1s 0s;
+            -moz-transition: all ease 0.1s 0s;
+            -webkit-transition: all ease 0.1s 0s;
+            letter-spacing: $ls-bold;
+        }
+    }
+}

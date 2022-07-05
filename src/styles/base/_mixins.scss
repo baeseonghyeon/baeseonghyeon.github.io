@@ -1,0 +1,42 @@
+@import "./variables";
+
+// Break Point
+$large: 1280px;
+$medium: 768px;
+$small: 480px;
+
+// Pc
+@mixin media-pc {
+    @media screen and (min-width: $medium) and (max-width: $large) {
+        @content;
+    }
+}
+
+// Tablet
+@mixin media-tablet {
+    @media screen and (min-width: $small) and (max-width: $medium) {
+        @content;
+    }
+}
+
+// Mobile
+@mixin media-mobile {
+    @media screen and (max-width: $small) {
+        @content;
+    }
+}
+
+// Color
+@mixin ColorBright {
+    --background-color: #fff;
+    --on-background-color: #222;
+    --blue-color: blue;
+    --shadow-color: #777777;
+}
+
+@mixin ColorDark {
+    --background-color: #272727;
+    --on-background-color: #eee;
+    --blue-color: #0078ff;
+    --shadow-color: #000;
+}
