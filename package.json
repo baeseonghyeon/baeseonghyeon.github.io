@@ -26,11 +26,13 @@
         "next": "12.1.6",
         "react": "18.1.0",
         "react-dom": "18.1.0",
+        "react-draggable": "^4.4.5",
         "react-icons": "^4.4.0",
         "react-scroll": "^1.8.7",
         "react-testing-library": "^8.0.1",
         "recoil": "^0.7.3",
-        "sass": "^1.52.2"
+        "sass": "^1.52.2",
+        "universal-cookie": "^4.0.4"
     },
     "devDependencies": {
         "@types/node": "17.0.40",

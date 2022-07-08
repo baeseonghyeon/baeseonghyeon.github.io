@@ -1,4 +1,5 @@
 @import "styles/base/variables";
+@import "styles/base/mixins";
 
 .wrapper {
     opacity: 0;
@@ -7,10 +8,7 @@
     height: 35px;
     left: 50%;
     bottom: 65px;
-    border: 1px solid var(--on-background-color);
     border-radius: 100%;
-    background: var(--background-color);
-    box-shadow: 0vh 0vh 0.5vh var(--on-background-color);
     font-size: 1.2rem;
     line-height: 1.9rem;
     text-shadow: 0 0 3px var(--shadow-color);
@@ -19,6 +17,7 @@
     z-index: $z-layout;
     cursor: pointer;
     font-family: "Noto Sans KR", sans-serif;
+    @include shadow-outline(0.5vh);
 }
 
 .visible {

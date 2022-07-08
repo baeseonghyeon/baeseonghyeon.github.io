@@ -6,17 +6,17 @@
 
 /* color */
 body {
-    @include ColorBright;
+    @include color-bright;
     &.dark-theme {
-        @include ColorDark;
+        @include color-dark;
     }
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        @include ColorDark;
+        @include color-dark;
         &.bright-theme {
-            @include ColorBright;
+            @include color-bright;
         }
     }
 }
@@ -53,14 +53,15 @@ a,
 span,
 div {
     color: var(--on-background-color);
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol", sans-serif;
-    // font-family: "Noto Sans KR", sans-serif;
+    // font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    //     Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
+    //     "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
+    //     "Segoe UI Symbol", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: $fs-m;
     font-weight: $fw;
     letter-spacing: $ls;
+    line-height: $lh-m;
 }
 
 a {

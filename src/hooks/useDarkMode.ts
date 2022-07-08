@@ -1,22 +1,24 @@
-import { useEffect } from "react";
+import { darkModeStateCookieKey, getCookie } from "libs/cookies";
+import { useEffect, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { darkModeState } from "recoil/ui";
 
 const useDarkMode = () => {
     const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+    const darkModeStateCookie = getCookie(darkModeStateCookieKey);
+    const isSystemThemeDark = useMemo(
+        () =>
+            typeof window !== "undefined" &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches,
+        [],
+    );
 
     useEffect(() => {
-        const isSystemThemeDark = window.matchMedia(
-            "(prefers-color-scheme: dark)",
-        ).matches;
-
-        return () => {
-            if (isSystemThemeDark) {
-                setDarkMode(true);
-            } else {
-                setDarkMode(false);
-            }
-        };
+        if (darkModeStateCookie === null) {
+            setDarkMode(isSystemThemeDark);
+        } else {
+            setDarkMode(darkModeStateCookie === "true" ? true : false);
+        }
     }, []);
 
     useEffect(() => {

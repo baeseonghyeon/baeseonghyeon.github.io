@@ -10,14 +10,16 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
-
     .copy-right {
         text-align: left;
         padding-left: 13px;
         display: flex;
         justify-content: center;
         align-items: center;
-        // font-size: $fs-s !important;
+        font-size: $fs-s !important;
+        span {
+            font-size: $fs-s !important;
+        }
         a {
             text-decoration: none;
             height: 100%;
@@ -51,9 +53,11 @@
             height: 25px;
             cursor: pointer;
             &:hover {
-                border: 1px solid var(--on-background-color);
-                background: var(--background-color);
-                box-shadow: 0vh 0vh 0.5vh var(--on-background-color);
+                // background: var(--lightgray-color);
+                // border: 1px solid var(--on-background-color);
+                // background: var(--background-color);
+                // box-shadow: 0vh 0vh 0.5vh var(--on-background-color);
+                @include shadow-outline(0.5vh);
             }
         }
         &__darkmode {
@@ -64,6 +68,9 @@
             }
         }
         &__language {
+            font-size: $fs-s !important;
+            padding-bottom: 1px;
+            padding-left: 1px;
         }
     }
     @include media-mobile {

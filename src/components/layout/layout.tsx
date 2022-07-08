@@ -5,21 +5,26 @@ import ScrollToTopBtn from "components/scrollToTopBtn/scrollToTopBtn";
 import useDarkMode from "hooks/useDarkMode";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { ReactNode } from "react";
+import { HtmlHTMLAttributes, ReactNode, useEffect, useState } from "react";
 
 import styles from "./layout.module.scss";
 
 const cn = cb.bind(styles);
 
-interface LayoutProps {
-    children: ReactNode;
+interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title: string;
 }
 
 const Layout = (props: LayoutProps) => {
-    const { children, title } = props;
+    const { title } = props;
     const router = useRouter();
     const isDarkMode = useDarkMode();
+
+    const [isLaod, setIsLoad] = useState(false);
+
+    useEffect(() => {
+        setIsLoad(true);
+    }, [router]);
 
     return (
         <>
@@ -39,11 +44,11 @@ const Layout = (props: LayoutProps) => {
 
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className={cn("container")}>
-                <Navbar />
-                <div className={cn("body")}>{children}</div>
-                <Footer />
+            <Navbar />
+            <div className={cn("container", isLaod && "animated")}>
+                <div className={cn("body")}>{props.children}</div>
             </div>
+            <Footer />
             <ScrollToTopBtn />
         </>
     );

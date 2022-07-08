@@ -2,24 +2,25 @@ import cb from "classnames/bind";
 import { NextPage } from "next";
 import { useRecoilState } from "recoil";
 import { darkModeState, languageState } from "recoil/ui";
-import { Language } from "interface";
 import styles from "./footer.module.scss";
 import { FiSun, FiMoon } from "react-icons/fi";
 import moment from "moment";
 import "moment/locale/ko";
+import { Language } from "interface/enums";
+import { darkModeStateCookieKey, setCookie } from "libs/cookies";
 
 const cn = cb.bind(styles);
 
 const Footer: NextPage = () => {
     const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+
+    const darkModeCookieHandler = (darkModeState: boolean) => {
+        setCookie(darkModeStateCookieKey, darkModeState, { path: "/" });
+        setDarkMode(darkModeState);
+    };
+
     const [language, setLanguage] = useRecoilState(languageState);
     const currentYear = moment().format("YYYY");
-
-    // useEffect(()=> {
-    //     return () => {
-    //         const nowYear = moment().format("YYYY");
-    //     }
-    // }, [])
 
     return (
         <div className={cn("container")}>
@@ -38,7 +39,9 @@ const Footer: NextPage = () => {
                 <span className={cn("toggle__wrapper")}>
                     <span
                         className={cn("toggle__darkmode")}
-                        onClick={() => setDarkMode(!darkMode)}
+                        onClick={() => {
+                            darkModeCookieHandler(!darkMode);
+                        }}
                     >
                         {darkMode ? <FiSun size="20" /> : <FiMoon size="20" />}
                     </span>
