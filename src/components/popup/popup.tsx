@@ -7,11 +7,12 @@ const cn = cb.bind(styles);
 
 export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     idx: number;
-    title: string;
+    title?: string;
+    isHighlight?: boolean;
 }
 
 const Popup = (props: PopupProps) => {
-    const { title, idx } = props;
+    const { title = "title", idx, isHighlight = false } = props;
     const [screenWidth] = useMediaQuery();
     const popupRef = useRef<HTMLDivElement>(null);
     const [visibility, setVisibility] = useState<boolean>(true);
@@ -39,8 +40,11 @@ const Popup = (props: PopupProps) => {
                     !visibility && "hide",
                     props.className,
                 )}
+                style={props.style}
             >
-                <div className={cn("header")}>
+                <div
+                    className={cn("header", isHighlight && "header--highlight")}
+                >
                     {title}
                     <div
                         className={cn("close__button")}

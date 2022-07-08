@@ -1,0 +1,49 @@
+@import "styles/base/variables";
+
+.container {
+    // height: calc(100% - 200px);
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    display: flex;
+    flex-flow: column;
+}
+
+// .num__label {
+//     font-weight: 900;
+//     font-size: 2.5rem;
+// }
+
+// .label {
+//     font-weight: 900;
+//     margin-bottom: 20px;
+// }
+
+// .link__label {
+//     color: $color-primary;
+//     font-weight: 700;
+//     text-decoration: none;
+//     margin-left: 5px;
+//     cursor: pointer;
+//     &:hover {
+//         color: $color-primary;
+//         text-decoration: underline;
+//     }
+// }
+
+.list--has-icon {
+    padding-left: 0 !important;
+    display: flex !important;
+    &::before {
+        content: none !important;
+    }
+    .brand-icon {
+        margin-right: 4px;
+        color: var(--blue-color) !important;
+        width: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

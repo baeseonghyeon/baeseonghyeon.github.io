@@ -19,7 +19,6 @@ const Layout = (props: LayoutProps) => {
     const { title } = props;
     const router = useRouter();
     const isDarkMode = useDarkMode();
-
     const [isLaod, setIsLoad] = useState(false);
 
     useEffect(() => {
@@ -46,7 +45,9 @@ const Layout = (props: LayoutProps) => {
             </Head>
             <Navbar />
             <div className={cn("container", isLaod && "animated")}>
-                <div className={cn("body")}>{props.children}</div>
+                <div className={cn("body", props.className)}>
+                    {props.children}
+                </div>
             </div>
             <Footer />
             <ScrollToTopBtn />

@@ -65,10 +65,29 @@ div {
 }
 
 a {
-    // color: $color-primary;
     color: var(--blue-color);
+    &:not([href]) {
+        color: var(--on-background-color);
+    }
 }
 
-* {
+a * {
     box-sizing: border-box;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+        font-size: $fs-m;
+        a {
+            letter-spacing: $ls;
+            font-weight: $fw;
+            display: inline-block;
+        }
+        p {
+            display: inline-block;
+        }
+    }
 }

@@ -2,31 +2,42 @@ import { MultilingualContent } from "interface";
 import { StackCapitalize, Stacks } from "./stack";
 
 export interface ProfileDTO {
-    data: ProfileData;
+    text: textProfileType[];
+    list: listProfileType[];
 }
 
-export interface ProfileData {
-    intro: MultilingualContent;
-    comment: MultilingualContent;
-    contact: Contact[];
-    career: Career[];
-    skill: Skill[];
-    description: MultilingualContent;
+export interface textProfileType extends MultilingualContent {
+    sort: number;
+}
+export interface listProfileType {
+    title: string;
+    sort: number;
+    listData: ListContent[];
 }
 
-export interface Contact {
-    name: string;
-    url: string;
-}
+// export interface ProfileData {
+//     bae_seonghyeon: MultilingualContent;
+//     comment: MultilingualContent;
+//     contact: ListContent[];
+//     career: ListContent[];
+//     skill: ListContent[];
+//     description: MultilingualContent;
+// }
 
-export interface Career {
+export interface ListContent {
     title: MultilingualContent;
-    date: string;
-    url: string;
+    icon?: boolean;
+    url?: string;
 }
 
-export interface Skill {
-    category: MultilingualContent;
-    // stack: StackCapitalize[];
-    stack: string[];
-}
+// export interface Career {
+//     title: MultilingualContent;
+//     date: string;
+//     url: string;
+// }
+
+// export interface Skill {
+//     category: MultilingualContent;
+//     // stack: StackCapitalize[];
+//     stack: string[];
+// }
