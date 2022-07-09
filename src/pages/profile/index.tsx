@@ -32,7 +32,8 @@ const Profile: NextPage = (props: ProfileProps) => {
                         title={item.common?.toUpperCase()}
                         isHighlight={idx === 0}
                         key={`popup--${item.sort}`}
-                        idx={item.sort}
+                        idx={Number(item.sort)}
+                        className={cn(`popup__${item.common}`)}
                         style={{ order: item.sort }}
                     >
                         {item[language]}
@@ -44,8 +45,11 @@ const Profile: NextPage = (props: ProfileProps) => {
                     <Popup
                         title={item.title.toUpperCase()}
                         key={`popup--${item.sort}`}
-                        idx={item.sort}
-                        className={cn("popup__list__container")}
+                        idx={Number(item.sort)}
+                        className={cn(
+                            "popup__list__container",
+                            `popup__${item.title}`,
+                        )}
                         style={{ order: item.sort }}
                     >
                         <ul>

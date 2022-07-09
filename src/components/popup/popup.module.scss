@@ -4,7 +4,6 @@
 .container {
     position: absolute;
     @include shadow-outline(1vh);
-
     p {
         margin: 0;
     }
@@ -63,6 +62,8 @@
         position: relative;
         width: 100%;
         margin-bottom: 5px;
+        top: initial !important;
+        left: initial !important;
         // padding: 0.5rem 11px;
         // .copy-right {
         //     padding-left: 15px;
