@@ -36,27 +36,27 @@ const Footer: NextPage = () => {
                 </span>
             </span>
             <span className={cn("toggle__container")}>
-                <span className={cn("toggle__wrapper")}>
-                    <span
-                        className={cn("toggle__darkmode")}
-                        onClick={() => {
-                            darkModeCookieHandler(!darkMode);
-                        }}
-                    >
+                <span
+                    className={cn("toggle__wrapper")}
+                    onClick={() => {
+                        darkModeCookieHandler(!darkMode);
+                    }}
+                >
+                    <span className={cn("toggle__darkmode")}>
                         {darkMode ? <FiSun size="20" /> : <FiMoon size="20" />}
                     </span>
                 </span>
-                <span className={cn("toggle__wrapper")}>
-                    <span
-                        className={cn("toggle__language")}
-                        onClick={() =>
-                            setLanguage(
-                                language === Language.ko
-                                    ? Language.en
-                                    : Language.ko,
-                            )
-                        }
-                    >
+                <span
+                    className={cn("toggle__wrapper")}
+                    onClick={() =>
+                        setLanguage(
+                            language === Language.ko
+                                ? Language.en
+                                : Language.ko,
+                        )
+                    }
+                >
+                    <span className={cn("toggle__language")}>
                         {language === Language.ko ? "EN" : "KO"}
                     </span>
                 </span>

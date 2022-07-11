@@ -1,0 +1,64 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    z-index: 9999;
+    position: absolute;
+    left: calc(50vw - 33.5px);
+    top: calc(50vh - 17.5px);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .close__button {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        cursor: pointer;
+        border: 1px solid var(--lightgray-color);
+        background-color: var(--background-color);
+        span {
+            font-weight: bold;
+            transform: initial;
+        }
+        &:hover {
+            border-color: var(--on-background-color);
+        }
+    }
+
+    .wrapper {
+        @include shadow-outline(0.5vh);
+        padding: 5px 10px;
+        border-radius: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: $fs-m;
+        color: white;
+        background-color: $color-blue;
+        text-shadow: 0 0 5px var(--shadow-color);
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.hide {
+    .wrapper {
+        opacity: 0;
+        cursor: initial;
+    }
+    .close__button {
+        span {
+            transform: rotate(45deg);
+        }
+    }
+}

@@ -1,12 +1,12 @@
 import cb from "classnames/bind";
 import { NextPage } from "next";
-import styles from "./scrollToTopBtn.module.scss";
+import styles from "./scrollToTopButton.module.scss";
 import { animateScroll as scroll } from "react-scroll";
 import React, { useEffect, useState } from "react";
 
 const cn = cb.bind(styles);
 
-const ScrollToTopBtn: NextPage = () => {
+const ScrollToTopButton: NextPage = () => {
     const [visibility, setVisibility] = useState(false);
 
     useEffect(() => {
@@ -38,4 +38,4 @@ const ScrollToTopBtn: NextPage = () => {
     );
 };
 
-export default React.memo(ScrollToTopBtn);
+export default React.memo(ScrollToTopButton);

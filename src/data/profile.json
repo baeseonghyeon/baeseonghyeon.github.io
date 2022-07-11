@@ -13,10 +13,10 @@
             "en": "I develop it from the eye of the designer and the idea of the planner. I'm interested in creating a service that is aesthetically beautiful and functionally effective. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems at Sahmyook University."
         },
         {
-            "sort": 999,
+            "sort": 99,
             "common": "description",
-            "ko": "이 웹사이트는 React.js를 통해 개발되어 Github.io에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
-            "en": "This website was developed using React.js and Deployed on Github.io \n\nWebsite developed and designed by Bae Seonghyeon"
+            "ko": "이 웹사이트는 Next.js + TypeScript로 개발되어 Github.io에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
+            "en": "This website was developed using Next.js + TypeScript and Deployed on Github.io \n\nWebsite developed and designed by Bae Seonghyeon"
         }
     ],
     "list": [

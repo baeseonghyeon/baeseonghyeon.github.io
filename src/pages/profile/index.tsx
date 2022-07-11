@@ -12,6 +12,8 @@ import { languageState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
 import Popup from "components/popup/popup";
 import ProfileListItem from "./profileListItem";
+import { useState } from "react";
+import ShuffleButton from "components/shuffleButton/shuffleButton";
 
 const cn = cb.bind(styles);
 
@@ -23,6 +25,7 @@ const Profile: NextPage = (props: ProfileProps) => {
     const profile: ProfileDTO = profileJson;
     const textProfiles: textProfileType[] = profile.text;
     const listProfiles: listProfileType[] = profile.list;
+    const [isRandomPositon, setIsRandomPositon] = useState<boolean>(true);
 
     return (
         <Layout title="Profile" className={cn("container")}>
@@ -30,7 +33,8 @@ const Profile: NextPage = (props: ProfileProps) => {
                 return (
                     <Popup
                         title={item.common?.toUpperCase()}
-                        isHighlight={idx === 0}
+                        isActive={idx === 0}
+                        isRandomPositon={isRandomPositon}
                         key={`popup--${item.sort}`}
                         idx={Number(item.sort)}
                         className={cn(`popup__${item.common}`)}
@@ -44,6 +48,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                 return (
                     <Popup
                         title={item.title.toUpperCase()}
+                        isRandomPositon={isRandomPositon}
                         key={`popup--${item.sort}`}
                         idx={Number(item.sort)}
                         className={cn(
@@ -60,6 +65,9 @@ const Profile: NextPage = (props: ProfileProps) => {
                     </Popup>
                 );
             })}
+            <ShuffleButton
+                onClick={() => setIsRandomPositon(!isRandomPositon)}
+            />
         </Layout>
     );
 };

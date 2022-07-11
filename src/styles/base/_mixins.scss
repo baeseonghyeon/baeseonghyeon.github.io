@@ -33,14 +33,16 @@ $small: 480px;
     --shadow-color: #777777;
     --blue-color: blue;
     --lightgray-color: #ddd;
+    --gray-color: #969696;
 }
 
 @mixin color-dark {
-    --background-color: #272727;
+    --background-color: #171717;
     --on-background-color: #eee;
     --blue-color: #0078ff;
     --shadow-color: #000;
     --lightgray-color: #333;
+    --gray-color: #7e7e7e;
 }
 
 @mixin shadow-outline($shadow-weight) {

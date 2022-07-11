@@ -1,7 +1,7 @@
 import cb from "classnames/bind";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar/navbar";
-import ScrollToTopBtn from "components/scrollToTopBtn/scrollToTopBtn";
+import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
 import useDarkMode from "hooks/useDarkMode";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -50,7 +50,7 @@ const Layout = (props: LayoutProps) => {
                 </div>
             </div>
             <Footer />
-            <ScrollToTopBtn />
+            <ScrollToTopButton />
         </>
     );
 };

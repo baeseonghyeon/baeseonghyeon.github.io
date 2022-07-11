@@ -26,17 +26,6 @@
         font-weight: bold;
         touch-action: auto;
         cursor: pointer;
-        &:hover {
-            border-bottom-color: var(--on-background-color);
-        }
-
-        &--highlight {
-            background-color: var(--on-background-color);
-            color: var(--background-color);
-            .close__button {
-                color: var(--background-color);
-            }
-        }
 
         .close__button {
             width: 30px;
@@ -47,6 +36,25 @@
             touch-action: auto;
             font-weight: bold;
             margin-right: 2px;
+        }
+
+        &:hover {
+            border-bottom-color: var(--on-background-color);
+        }
+
+        &--active {
+            transition: none;
+            background-color: var(--on-background-color);
+            color: var(--background-color) !important;
+            &:hover {
+                color: initial;
+                .close__button {
+                    color: var(--background-color);
+                }
+            }
+            .close__button {
+                color: var(--background-color);
+            }
         }
     }
 
@@ -64,10 +72,7 @@
         margin-bottom: 5px;
         top: initial !important;
         left: initial !important;
-        // padding: 0.5rem 11px;
-        // .copy-right {
-        //     padding-left: 15px;
-        // }
+        transform: initial !important;
     }
 
     &.hide {
