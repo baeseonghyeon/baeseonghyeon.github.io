@@ -9,18 +9,7 @@
                 "date": "2018-2019",
                 "category": ["Website"],
                 "role": ["development", "planning", "design"],
-                "stack": [
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "Ruby on Rails",
-                    "SQLite",
-                    "Git",
-                    "AWS EC2",
-                    "AWS S3",
-                    "Heroku"
-                ],
+                "stack": "HTML5, CSS3, JavaScript, jQuery, Ruby on Rails, SQLite, Git, AWS EC2, AWS S3, Heroku",
                 "team": null
             },
             "description": {
@@ -57,14 +46,7 @@
                 "date": "2019",
                 "category": ["Website"],
                 "role": ["development", "planning"],
-                "stack": [
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "PHP",
-                    "phpMyAdmin"
-                ],
+                "stack": "HTML5, CSS3, JavaScript, jQuery, PHP, phpMyAdmin",
                 "team": {
                     "ko": "오픈버스",
                     "en": "OpenBUS"
@@ -102,14 +84,7 @@
                 "date": "2018-2019",
                 "category": ["Website"],
                 "role": ["development", "planning"],
-                "stack": [
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "PHP",
-                    "phpMyAdmin"
-                ],
+                "stack": "HTML5, CSS3, JavaScript, jQuery, PHP, phpMyAdmin",
                 "team": {
                     "ko": "오픈버스",
                     "en": "OPenBUS"
@@ -151,18 +126,9 @@
             },
             "info": {
                 "date": "2019",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["development", "planning", "design"],
-                "stack": [
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "Django",
-                    "REST API",
-                    "MySQL",
-                    "Git"
-                ],
+                "stack": "HTML5, CSS3, JavaScript, jQuery, Django, REST API, MySQL, Git",
                 "team": {
                     "ko": "YAHAIT(한정우, 박순호, 김준형, 김태양)",
                     "en": "YAHAIT"
@@ -214,17 +180,7 @@
                 "date": "2019",
                 "category": ["Website"],
                 "role": ["development", "planning"],
-                "stack": [
-                    "Django",
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "Git",
-                    "AWS Elastic Beanstalk",
-                    "AWS S3",
-                    "AWS RDS"
-                ],
+                "stack": "Django, HTML5, CSS3, JavaScript, jQuery, Git, AWS Elastic Beanstalk, AWS S3, AWS RDS",
                 "team": {
                     "ko": "멋쟁이사자처럼 at 삼육대학교",
                     "en": "LIKELION at SYU"
@@ -267,17 +223,7 @@
                 "date": "2020",
                 "category": ["Website"],
                 "role": ["development", "planning", "design"],
-                "stack": [
-                    "HTML5",
-                    "CSS3",
-                    "JavaScript",
-                    "jQuery",
-                    "Django",
-                    "MySQL",
-                    "Docker",
-                    "Git",
-                    "GCP Compute Engine"
-                ],
+                "stack": "HTML5, CSS3, JavaScript, jQuery, Django, MySQL, Docker, Git, GCP Compute Engine",
                 "team": {
                     "ko": "박기홍",
                     "en": "Gihong-Park"
@@ -319,15 +265,7 @@
                 "date": "2021",
                 "category": ["Application", "Website"],
                 "role": ["development"],
-                "stack": [
-                    "React Native",
-                    "React",
-                    "TypeScript",
-                    "SCSS",
-                    "Storybook",
-                    "Git",
-                    "GraphQL"
-                ],
+                "stack": "React Native, React, TypeScript, SCSS, Storybook, Git, GraphQL",
                 "team": {
                     "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
                     "en": "oldrookie, Yumis"
@@ -380,15 +318,7 @@
                 "date": "2021",
                 "category": ["Application", "Website"],
                 "role": ["development"],
-                "stack": [
-                    "React Native",
-                    "React",
-                    "TypeScript",
-                    "SCSS",
-                    "Storybook",
-                    "Git",
-                    "GraphQL"
-                ],
+                "stack": "React Native, React, TypeScript, SCSS, Storybook, Git, GraphQL",
                 "team": {
                     "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
                     "en": "oldrookie, Yumis"
@@ -429,7 +359,7 @@
                 "date": "2021",
                 "category": ["Website"],
                 "role": ["development"],
-                "stack": ["React", "TypeScript", "SCSS", "Git", "Jenkins"],
+                "stack": "React, TypeScript, SCSS, Git, Jenkins",
                 "team": {
                     "ko": "oldrookie(유경수, 배성현, 이수연), 아이디어오븐",
                     "en": "oldrookie, IdeaOven"
@@ -482,7 +412,7 @@
                 "date": "2021",
                 "category": ["Website"],
                 "role": ["development", "planning", "design"],
-                "stack": ["Next.js", "TypeScript", "SCSS", "Git", "AWS"],
+                "stack": "Next.js, TypeScript, SCSS, Git, AWS",
                 "team": {
                     "ko": "oldrookie",
                     "en": "oldrookie"
@@ -516,7 +446,7 @@
                 "date": "2022",
                 "category": ["Application"],
                 "role": ["development", "planning", "design"],
-                "stack": ["Flutter", "Git", "AWS"],
+                "stack": "Flutter, Git, AWS",
                 "team": {
                     "ko": "oldrookie",
                     "en": "oldrookie"
@@ -568,13 +498,7 @@
                 "date": "2022",
                 "category": ["Application"],
                 "role": ["development", "planning", "design"],
-                "stack": [
-                    "Unity",
-                    "React Native",
-                    "Git",
-                    "AWS S3",
-                    "AWS Redis"
-                ],
+                "stack": "Unity, React Native, Git, AWS S3, AWS Redis",
                 "team": {
                     "ko": "Baobab Partners Inc.",
                     "en": "Baobab Partners Inc."

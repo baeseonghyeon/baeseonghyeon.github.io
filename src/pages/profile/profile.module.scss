@@ -21,12 +21,14 @@
             }
         }
     }
-    &__bae-seonghyeon {
-        top: 50px !important;
-        left: 26px !important;
-    }
-    &__contact {
-        top: 195px !important;
-        left: 50px !important;
+    @include media-not-mobile {
+        &__bae-seonghyeon {
+            top: 50px !important;
+            left: 26px !important;
+        }
+        &__contact {
+            top: 195px !important;
+            left: 50px !important;
+        }
     }
 }

@@ -25,6 +25,7 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
                 <div
                     className={cn("close__button")}
                     onClick={() => onCloseButton(buttonRef.current)}
+                    onTouchStart={() => onCloseButton(buttonRef.current)}
                 >
                     <span>×</span>
                 </div>

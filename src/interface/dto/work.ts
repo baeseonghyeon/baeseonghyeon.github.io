@@ -11,41 +11,53 @@ import {
 } from "./stack";
 
 export interface WorkDTO {
-    data: WorkData;
+    data: WorkData[];
 }
 
 export interface WorkData {
     title: MultilingualContent;
     info: WorkInfo;
     description: WorkDescription;
-    link?: WorkLink;
-    thumbUrl?: string;
-    image?: WorkImage[];
-    video?: { url: string }[];
+    link?: WorkLink[] | null;
+    thumbUrl?: string | null;
+    image?: WorkImage[] | null;
+    video?: { url: string }[] | null;
 }
 
 export interface WorkInfo {
     date: string;
-    category: WorkCategory[];
-    role: WorkRole[];
-    stack: Stacks[];
-    team?: MultilingualContent;
+    category: string[];
+    role: string[];
+    // stack: Stacks[];
+    stack: string[];
+    team?: MultilingualContent | null;
 }
 
-export type WorkCategory = "WebSite" | "Web" | "Application";
+export type WorkCategory = "Website" | "Web" | "Application";
+
+export enum WorkCategoryEnums {
+    Website = "Website",
+    Application = "Application",
+}
 
 export type WorkRole = "development" | "planning" | "design";
 
+export enum WorkRoleEnums {
+    development = "development",
+    planning = "planning",
+    design = "design",
+}
+
 export interface WorkDescription extends MultilingualContent {
-    link?: WorkDescriptionLink;
+    link?: WorkDescriptionLink[];
 }
 
 export interface WorkDescriptionLink extends MultilingualContent {
-    url: string;
+    url?: string;
 }
 
 export interface WorkLink {
-    type: WorkLinkType;
+    type: string;
     url: string;
 }
 

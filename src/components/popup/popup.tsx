@@ -1,6 +1,12 @@
 import styles from "./popup.module.scss";
 import cb from "classnames/bind";
-import { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
+import {
+    HtmlHTMLAttributes,
+    ReactNode,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import Draggable from "react-draggable";
 import useMediaQuery from "hooks/useMediaQuery";
 import { currentPopupState, popupOverlayState } from "recoil/ui";
@@ -12,6 +18,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
     isActive?: boolean;
     isRandomPositon?: boolean;
+    buttons?: ReactNode[];
 }
 
 const Popup = (props: PopupProps) => {
@@ -20,6 +27,7 @@ const Popup = (props: PopupProps) => {
         idx,
         isActive = false,
         isRandomPositon = true,
+        buttons = null,
     } = props;
 
     const [screenWidth] = useMediaQuery();
@@ -107,14 +115,20 @@ const Popup = (props: PopupProps) => {
                     )}
                 >
                     {title}
-                    <div
-                        className={cn("close__button")}
-                        onClick={() => onClosePopup(popupRef.current)}
-                        onTouchStart={() =>
-                            isPcScreenSize && onClosePopup(popupRef.current)
-                        }
-                    >
-                        ×
+                    <div className={cn("button__wrapper")}>
+                        {buttons !== null &&
+                            buttons.map((button) => {
+                                return button;
+                            })}
+                        <div
+                            className={cn("close__button")}
+                            onClick={() => onClosePopup(popupRef.current)}
+                            onTouchStart={() =>
+                                isPcScreenSize && onClosePopup(popupRef.current)
+                            }
+                        >
+                            ×
+                        </div>
                     </div>
                 </div>
                 <div className={cn("body")}>{props.children}</div>

@@ -2,12 +2,12 @@
 @import "styles/base/mixins";
 
 .container {
-    z-index: 9999;
+    z-index: 999;
     position: absolute;
     left: calc(50vw - 33.5px);
     top: calc(50vh - 17.5px);
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,11 +18,12 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: -10px;
-        right: -10px;
+        top: 00px;
+        right: 00px;
         cursor: pointer;
         border: 1px solid var(--lightgray-color);
         background-color: var(--background-color);
+
         span {
             font-weight: bold;
             transform: initial;
@@ -47,6 +48,15 @@
         text-shadow: 0 0 5px var(--shadow-color);
         &:hover {
             text-decoration: underline;
+        }
+        animation: rotate 5s linear infinite;
+        -webkit-animation: rotate 5s linear infinite;
+        -moz-animation: rotate 5s linear infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotateY(360deg);
         }
     }
 }

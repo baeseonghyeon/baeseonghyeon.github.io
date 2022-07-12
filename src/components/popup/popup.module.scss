@@ -27,6 +27,11 @@
         touch-action: auto;
         cursor: pointer;
 
+        .button__wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
         .close__button {
             width: 30px;
             height: 30px;
@@ -45,6 +50,7 @@
         &--active {
             transition: none;
             background-color: var(--on-background-color);
+            border-bottom-color: var(--on-background-color);
             color: var(--background-color) !important;
             &:hover {
                 color: initial;
@@ -54,6 +60,9 @@
             }
             .close__button {
                 color: var(--background-color);
+            }
+            svg {
+                fill: var(--background-color) !important;
             }
         }
     }

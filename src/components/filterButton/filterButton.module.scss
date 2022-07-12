@@ -1,0 +1,20 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+        position: absolute;
+    }
+}
+
+.select {
+    opacity: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
