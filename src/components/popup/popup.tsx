@@ -30,8 +30,8 @@ const Popup = (props: PopupProps) => {
         buttons = null,
     } = props;
 
-    const [screenWidth] = useMediaQuery();
-    const isPcScreenSize = screenWidth > 768;
+    const [screenSize] = useMediaQuery();
+    const isPcScreenSize = screenSize > 768;
 
     const [zIndex, setZindex] = useState<number>(100 + idx * -1);
     const [popupOverlayDepth, setPopupOverlayDepth] =
@@ -102,6 +102,8 @@ const Popup = (props: PopupProps) => {
                     props.className,
                 )}
                 style={(props.style, { zIndex: zIndex, order: idx })}
+                onMouseEnter={props.onMouseEnter}
+                onMouseLeave={props.onMouseLeave}
                 ref={popupRef}
             >
                 <div

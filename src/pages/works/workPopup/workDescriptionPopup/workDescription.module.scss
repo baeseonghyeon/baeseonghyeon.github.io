@@ -1,0 +1,18 @@
+@import "styles/base/variables";
+
+.container {
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 10px;
+    width: calc(100% - 20px) !important;
+}
+
+// .hide {
+//     opacity: 0;
+//     z-index: -1 !important;
+// }
+
+// .show {
+//     opacity: 1;
+// }

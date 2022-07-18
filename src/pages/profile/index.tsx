@@ -11,9 +11,9 @@ import profileJson from "data/profile.json";
 import { languageState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
 import Popup from "components/popup/popup";
-import ProfileListItem from "./profileListItem";
 import { useState } from "react";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
+import ProfileListItem from "./profileListItem/profileListItem";
 
 const cn = cb.bind(styles);
 
