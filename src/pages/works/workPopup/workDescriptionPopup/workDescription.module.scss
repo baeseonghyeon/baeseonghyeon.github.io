@@ -6,13 +6,18 @@
     left: 0 !important;
     margin: 10px;
     width: calc(100% - 20px) !important;
+
+    .link {
+        color: var(--blue-color);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &--block {
+            display: block;
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
-
-// .hide {
-//     opacity: 0;
-//     z-index: -1 !important;
-// }
-
-// .show {
-//     opacity: 1;
-// }

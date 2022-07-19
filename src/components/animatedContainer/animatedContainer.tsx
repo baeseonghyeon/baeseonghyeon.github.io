@@ -11,9 +11,7 @@ const AnimatedContainer = (props: AnimatedContainerProps) => {
     const [fade, setFade] = useState<Boolean>(false);
 
     useEffect(() => {
-        return () => {
-            setFade(true);
-        };
+        setFade(true);
     }, []);
 
     return (

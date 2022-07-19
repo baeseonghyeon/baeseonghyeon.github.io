@@ -35,14 +35,29 @@ const WorkDescription = (props: WorkDescriptionProps) => {
             {isOverMaxLenght && (
                 <>
                     ...
-                    <Link href={`/works/${idx}`}>read more</Link>
+                    <Link href={`/works/${idx}`}>
+                        <span className={cn("link")}>read more</span>
+                    </Link>
                 </>
             )}
 
+            {workData.link &&
+                workData.link.map((link) => {
+                    return (
+                        <Link href={link.url} target="_blank">
+                            <span className={cn("link", "link--block")}>
+                                Visit the {link.type} →
+                            </span>
+                        </Link>
+                    );
+                })}
+
             {!isOverMaxLenght && (
-                <div>
-                    <Link href={`/works/${idx}`}>Read More →</Link>
-                </div>
+                <Link href={`/works/${idx}`}>
+                    <span className={cn("link", "link--block")}>
+                        Read More →
+                    </span>
+                </Link>
             )}
         </Popup>
     );

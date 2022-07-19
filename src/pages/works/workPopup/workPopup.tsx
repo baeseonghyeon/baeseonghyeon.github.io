@@ -7,6 +7,7 @@ import Popup from "components/popup/popup";
 import { useRef, useState } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import WorkDescription from "./workDescriptionPopup/workDescription";
+import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {
@@ -42,7 +43,8 @@ const WorkPopup = (props: WorkPopupProps) => {
                 isPcScreenSize && setInnerPopupVisibility(false)
             }
             // className={cn(`popup__${idx + 1}`)}
-            // className={cn("container")}
+            className={cn("container")}
+            bodyClassName={cn("body")}
         >
             {iconVisibility && (
                 <span
@@ -54,7 +56,22 @@ const WorkPopup = (props: WorkPopupProps) => {
                 />
             )}
 
-            {workData.title[language]}
+            {workData.video ? (
+                <YoutubeVideo
+                    link={workData.video[0].url}
+                    className={cn("video__container")}
+                />
+            ) : (
+                workData.thumbUrl && (
+                    <div
+                        className={cn("image__container")}
+                        style={{ backgroundImage: `url(${workData.thumbUrl})` }}
+                    />
+                )
+            )}
+
+            {!workData.video ||
+                (!workData.thumbUrl && workData.title[language])}
 
             {innerPopupVisibility && (
                 <WorkDescription workData={workData} idx={idx} />

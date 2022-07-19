@@ -34,7 +34,7 @@ const Works: NextPage = () => {
         );
 
     return (
-        <Layout title={"Page"}>
+        <Layout title={"Works"}>
             <Popup
                 title={`${filterValue} Works`}
                 idx={0}

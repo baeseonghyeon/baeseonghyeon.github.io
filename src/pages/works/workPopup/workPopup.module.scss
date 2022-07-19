@@ -1,5 +1,36 @@
 @import "styles/base/variables";
+@import "styles/base/mixins";
 
 .container {
-    position: relative;
+    width: 500px;
+    @include media-mobile {
+        width: 100%;
+    }
+
+    .body {
+        padding: 0 !important;
+        position: relative;
+        width: 100%;
+    }
+
+    .image,
+    .video {
+        &__container {
+            height: 0;
+            padding-bottom: 56.25%;
+            iframe {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+        }
+    }
+
+    .image {
+        &__container {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
 }

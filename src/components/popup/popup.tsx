@@ -19,6 +19,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     isActive?: boolean;
     isRandomPositon?: boolean;
     buttons?: ReactNode[];
+    bodyClassName?: string;
 }
 
 const Popup = (props: PopupProps) => {
@@ -28,6 +29,7 @@ const Popup = (props: PopupProps) => {
         isActive = false,
         isRandomPositon = true,
         buttons = null,
+        bodyClassName,
     } = props;
 
     const [screenSize] = useMediaQuery();
@@ -43,10 +45,14 @@ const Popup = (props: PopupProps) => {
         useRecoilState(currentPopupState);
 
     useEffect(() => {
-        if (isRandomPositon && popupRef.current !== null) {
-            setPositionRandom(popupRef.current);
+        if (popupRef.current !== null) {
+            if (isRandomPositon) {
+                setPositionRandom(popupRef.current);
+            }
+            if (isActive) {
+                setCurrentActivePopup(popupRef.current);
+            }
         }
-        setCurrentActivePopup(null);
     }, []);
 
     useEffect(() => {
@@ -109,14 +115,12 @@ const Popup = (props: PopupProps) => {
                 <div
                     className={cn(
                         "header",
-                        isActive &&
-                            currentActivePopup === null &&
-                            "header--active",
                         currentActivePopup === popupRef.current &&
                             "header--active",
                     )}
                 >
-                    {title}
+                    <h1>{title}</h1>
+
                     <div className={cn("button__wrapper")}>
                         {buttons !== null &&
                             buttons.map((button) => {
@@ -133,7 +137,9 @@ const Popup = (props: PopupProps) => {
                         </div>
                     </div>
                 </div>
-                <div className={cn("body")}>{props.children}</div>
+                <div className={cn("body", bodyClassName)}>
+                    {props.children}
+                </div>
             </div>
         </Draggable>
     );

@@ -22,11 +22,15 @@
         align-items: center;
         justify-content: space-between;
         padding-left: 11px;
-        font-size: $fs-m;
-        font-weight: bold;
-        touch-action: auto;
-        cursor: pointer;
 
+        h1 {
+            font-size: $fs-m;
+            font-weight: bold;
+            touch-action: auto;
+            text-overflow: ellipsis;
+        }
+
+        cursor: pointer;
         .button__wrapper {
             display: flex;
             flex-direction: row;
@@ -51,7 +55,9 @@
             transition: none;
             background-color: var(--on-background-color);
             border-bottom-color: var(--on-background-color);
-            color: var(--background-color) !important;
+            h1 {
+                color: var(--background-color) !important;
+            }
             &:hover {
                 color: initial;
                 .close__button {
@@ -71,7 +77,6 @@
         padding: 12px 10px 15px;
         text-align: left;
         touch-action: auto;
-        display: inline-table;
         white-space: pre-wrap;
     }
 
