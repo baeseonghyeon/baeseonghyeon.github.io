@@ -7,20 +7,39 @@ import { FiSun, FiMoon } from "react-icons/fi";
 import moment from "moment";
 import "moment/locale/ko";
 import { Language } from "interface/enums";
-import { darkModeStateCookieKey, setCookie } from "libs/cookies";
+import {
+    darkModeStateCookieKey,
+    getCookie,
+    languageStateCookieKey,
+    setCookie,
+} from "libs/cookies";
+import { useEffect } from "react";
 
 const cn = cb.bind(styles);
 
 const Footer: NextPage = () => {
     const [darkMode, setDarkMode] = useRecoilState(darkModeState);
+    const [language, setLanguage] = useRecoilState(languageState);
+    const languageStateCookie = getCookie(languageStateCookieKey);
+    const currentYear = moment().format("YYYY");
 
     const darkModeCookieHandler = (darkModeState: boolean) => {
         setCookie(darkModeStateCookieKey, darkModeState, { path: "/" });
         setDarkMode(darkModeState);
     };
 
-    const [language, setLanguage] = useRecoilState(languageState);
-    const currentYear = moment().format("YYYY");
+    const languageCookieHandler = (languageState: Language) => {
+        setCookie(languageStateCookieKey, languageState, { path: "/" });
+        setLanguage(languageState);
+    };
+
+    useEffect(() => {
+        if (languageStateCookie !== null) {
+            setLanguage(
+                languageStateCookie === "ko" ? Language.ko : Language.en,
+            );
+        }
+    }, []);
 
     return (
         <div className={cn("container")}>
@@ -49,7 +68,7 @@ const Footer: NextPage = () => {
                 <span
                     className={cn("toggle__wrapper")}
                     onClick={() =>
-                        setLanguage(
+                        languageCookieHandler(
                             language === Language.ko
                                 ? Language.en
                                 : Language.ko,

@@ -11,3 +11,4 @@ export const getCookie = (keyName: string) => {
 };
 
 export const darkModeStateCookieKey = "darkModeStateCookie";
+export const languageStateCookieKey = "languageStateCookie";
