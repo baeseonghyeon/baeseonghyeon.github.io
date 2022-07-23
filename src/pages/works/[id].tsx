@@ -1,8 +1,8 @@
-import Layout from 'components/layout/layout';
-import { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { getTodo, Todo } from '../../api/todos';
+import Layout from "components/layout/layout";
+import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { getTodo, Todo } from "../../api/todos";
 
 const Detail: NextPage = () => {
     const router = useRouter();
@@ -29,7 +29,7 @@ const Detail: NextPage = () => {
     if (todo)
         return (
             <Layout title={todo.title}>
-                {todo.complated ? 'Not Complated' : 'Is Done'}
+                {todo.complated ? "Not Complated" : "Is Done"}
             </Layout>
         );
     else return <Layout title="Loading...">Wait for Second</Layout>;

@@ -9,7 +9,7 @@ import {
 } from "react";
 import Draggable from "react-draggable";
 import useMediaQuery from "hooks/useMediaQuery";
-import { currentPopupState, popupOverlayState } from "recoil/ui";
+import { currentActivePopupState, popupOverlayState } from "recoil/ui";
 import { useRecoilState } from "recoil";
 const cn = cb.bind(styles);
 
@@ -17,6 +17,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     idx: number;
     title?: string;
     isActive?: boolean;
+    isDraggable?: boolean;
     isRandomPositon?: boolean;
     buttons?: ReactNode[];
     bodyClassName?: string;
@@ -27,22 +28,22 @@ const Popup = (props: PopupProps) => {
         title = "title",
         idx,
         isActive = false,
+        isDraggable = true,
         isRandomPositon = true,
         buttons = null,
         bodyClassName,
     } = props;
 
-    const [screenSize] = useMediaQuery();
-    const isPcScreenSize = screenSize > 768;
-
+    const { isPcScreenSize } = useMediaQuery();
     const [zIndex, setZindex] = useState<number>(100 + idx * -1);
     const [popupOverlayDepth, setPopupOverlayDepth] =
         useRecoilState(popupOverlayState);
 
     const [visibility, setVisibility] = useState<boolean>(true);
     const popupRef = useRef<HTMLDivElement>(null);
-    const [currentActivePopup, setCurrentActivePopup] =
-        useRecoilState(currentPopupState);
+    const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
+        currentActivePopupState,
+    );
 
     useEffect(() => {
         if (popupRef.current !== null) {
@@ -54,6 +55,12 @@ const Popup = (props: PopupProps) => {
             }
         }
     }, []);
+
+    useEffect(() => {
+        if (popupRef.current === currentActivePopup) {
+            increasePopupOveray();
+        }
+    }, [currentActivePopup]);
 
     useEffect(() => {
         if (popupRef.current !== null) {
@@ -98,10 +105,11 @@ const Popup = (props: PopupProps) => {
             defaultPosition={{ x: 0, y: 0 }}
             grid={[25, 25]}
             scale={1}
-            onDrag={() => increasePopupOveray()}
-            onMouseDown={() => increasePopupOveray()}
+            onDrag={() => isDraggable && increasePopupOveray()}
+            onMouseDown={() => isDraggable && increasePopupOveray()}
         >
             <div
+                id={props.id}
                 className={cn(
                     "container",
                     !visibility && "hide",
@@ -120,7 +128,6 @@ const Popup = (props: PopupProps) => {
                     )}
                 >
                     <h1>{title}</h1>
-
                     <div className={cn("button__wrapper")}>
                         {buttons !== null &&
                             buttons.map((button) => {

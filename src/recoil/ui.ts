@@ -16,7 +16,7 @@ export const popupOverlayState = atom<number>({
     default: 999,
 });
 
-export const currentPopupState = atom<HTMLDivElement | null>({
-    key: "currentPopupState",
+export const currentActivePopupState = atom<HTMLDivElement | null>({
+    key: "currentActivePopupState",
     default: null,
 });

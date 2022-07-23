@@ -1,15 +1,4 @@
 import { MultilingualContent } from "interface";
-import {
-    AppStack,
-    DatabaseStack,
-    DevTool,
-    InfraStack,
-    LanguageStack,
-    Stacks,
-    ThreeDStack,
-    WebStack,
-} from "./stack";
-
 export interface WorkDTO {
     data: WorkData[];
 }
@@ -28,19 +17,18 @@ export interface WorkInfo {
     date: string;
     category: string[];
     role: string[];
-    // stack: Stacks[];
     stack: string[];
     team?: MultilingualContent | null;
 }
 
-export type WorkCategory = "Website" | "Web" | "Application";
+// export type WorkCategory = "Website" | "Web" | "Application";
 
 export enum WorkCategoryEnums {
     Website = "Website",
     Application = "Application",
 }
 
-export type WorkRole = "development" | "planning" | "design";
+// export type WorkRole = "development" | "planning" | "design";
 
 export enum WorkRoleEnums {
     development = "development",

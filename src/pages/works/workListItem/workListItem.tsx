@@ -1,47 +1,51 @@
 import styles from "./workListItem.module.scss";
 import cb from "classnames/bind";
-import { useRecoilValue } from "recoil";
-import { languageState } from "recoil/ui";
-import { WorkData } from "interface/dto/work";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { currentActivePopupState, languageState } from "recoil/ui";
 import Link from "next/link";
 import useMediaQuery from "hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
+import { WorkPopupProps } from "../workPopup/workPopup";
+import { useEffect } from "react";
 const cn = cb.bind(styles);
 
-export interface WorkListItemProps {
-    workData: WorkData;
-    idx: number;
-}
+export interface WorkListItemProps extends WorkPopupProps {}
 
 const WorkListItem = (props: WorkListItemProps) => {
-    const { workData, idx } = props;
+    const { workData, idx, id } = props;
     const language = useRecoilValue(languageState);
+    const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
+        currentActivePopupState,
+    );
     const router = useRouter();
-    const [screenSize] = useMediaQuery();
-    const redirectLink = `/works/${idx + 1}`;
+    const { isPcScreenSize } = useMediaQuery();
+    const redirectLink = `/works/${id}`;
 
-    const footnoteHandler = (id: number) => {
-        if (document.getElementById(`popup${id}`)) {
-            scrollToActivePopup(id);
+    useEffect(() => {
+        if (id === router.query.target) {
+            popupActivator(router.query.target as string);
+        }
+    }, [router.query.target]);
+
+    const popupActivator = (id: string) => {
+        const currentPopup = document.getElementById(id);
+        if (currentPopup) {
+            setCurrentActivePopup(currentPopup as HTMLDivElement);
+            scrollToPopup(currentPopup);
         } else {
-            router.push(`/work/${id}`);
+            router.push(redirectLink);
         }
     };
 
-    const scrollToActivePopup = (id: number) => {
-        // setActivePopup(id);
-        const targetPopup = document.getElementById(`popup${id}`);
-        const screenHeight = document.body.clientHeight;
-
+    const scrollToPopup = (targetPopup: HTMLElement | null) => {
+        const screenHeight = document.documentElement.clientHeight;
+        router.push(`?target=${id}`);
         if (targetPopup !== null) {
-            router.push(`#work${id}`);
             scroll.scrollTo(
                 targetPopup.offsetTop -
                     (screenHeight / 2 - targetPopup.offsetHeight / 2),
             );
-        } else {
-            router.push(`/work/${id}`);
         }
     };
 
@@ -49,15 +53,15 @@ const WorkListItem = (props: WorkListItemProps) => {
         <span className={cn("wrapper", "mr-2")} key={idx}>
             <span
                 className={cn("footnote")}
-                onClick={() => scrollToActivePopup(idx)}
-                onTouchStart={() => scrollToActivePopup(idx)}
+                onClick={() => popupActivator(id)}
+                onTouchStart={() => popupActivator(id)}
             >
                 [{idx}]
             </span>
             <Link
                 href={redirectLink}
                 onTouchStart={() => {
-                    screenSize > 769 && (window.location.href = redirectLink);
+                    isPcScreenSize && (window.location.href = redirectLink);
                 }}
             >
                 <span className={cn("link")}>

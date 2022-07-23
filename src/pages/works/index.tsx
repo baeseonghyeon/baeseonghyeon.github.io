@@ -12,6 +12,7 @@ import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
 import WorkListItem from "./workListItem/workListItem";
 import WorkPopup from "./workPopup/workPopup";
+import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
 
 const cn = cb.bind(styles);
 
@@ -30,13 +31,19 @@ const Works: NextPage = () => {
         .filter((item) =>
             filterValue === "All"
                 ? item
-                : item.info.category.includes(filterValue),
+                : filterValue === "Website" || filterValue === "Application"
+                ? item.info.category.includes(filterValue)
+                : item.info.role.includes(filterValue),
         );
+
+    const getWorkPopupId = (title: string | undefined, category: string) => {
+        return `${lowerCaseParser(title)}-${lowerCaseParser(category)}`;
+    };
 
     return (
         <Layout title={"Works"}>
             <Popup
-                title={`${filterValue} Works`}
+                title={`${firsttLetterCapitalizer(filterValue)} Works`}
                 idx={0}
                 isActive={true}
                 isRandomPositon={false}
@@ -50,8 +57,13 @@ const Works: NextPage = () => {
                 {filteredWorkData.map((item, idx) => {
                     return (
                         <WorkListItem
+                            id={getWorkPopupId(
+                                item.title.en,
+                                item.info.category[0],
+                            )}
                             workData={item}
                             idx={filteredWorkData.length - idx}
+                            key={filteredWorkData.length - idx}
                         />
                     );
                 })}
@@ -60,9 +72,14 @@ const Works: NextPage = () => {
             {filteredWorkData.map((item, idx) => {
                 return (
                     <WorkPopup
+                        id={getWorkPopupId(
+                            item.title.en,
+                            item.info.category[0],
+                        )}
                         workData={item}
                         isRandomPositon={isRandomPositon}
                         idx={idx}
+                        key={idx}
                     />
                 );
             })}
