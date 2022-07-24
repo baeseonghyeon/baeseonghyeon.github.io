@@ -12,7 +12,7 @@ import styles from "./layout.module.scss";
 const cn = cb.bind(styles);
 
 interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
-    title: string;
+    title?: string;
     description?: string;
 }
 

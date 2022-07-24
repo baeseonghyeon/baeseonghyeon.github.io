@@ -3,5 +3,10 @@ export const firsttLetterCapitalizer = (text: string) => {
 };
 
 export const lowerCaseParser = (text: string | undefined) => {
-    if (text) return text.toLowerCase().replaceAll(" ", "-");
+    let reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+
+    if (text) {
+        text = text.replaceAll(reg, "");
+        return text.toLowerCase().replaceAll(" ", "-");
+    }
 };

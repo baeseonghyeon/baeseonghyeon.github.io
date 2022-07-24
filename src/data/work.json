@@ -8,7 +8,7 @@
             "info": {
                 "date": "2018-2019",
                 "category": ["Website"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "HTML5",
                     "CSS3",
@@ -25,7 +25,7 @@
             },
             "description": {
                 "ko": "멋쟁이 사자처럼 at 삼육대학교 웹사이트입니다. 멋쟁이 사자처럼 활동 중 멤버관리, 공지사항게시, 과제게시, 수업자료게시, 활동홍보를 목적으로 제작하였습니다. 웹사이트의 기획과 설계, 디자인, 기능개발, 서버 배포를 담당했습니다.",
-                "en": "It is a website of Likelion at Sahmyook University. It is produced for the purpose of managing members, posting notices, posting assignments, posting class materials, and promoting activities during activities Likelion. I was in charge of planning, design, function development, and server deploy of the website."
+                "en": "It is a website of Likelion at Sahmyook University. It is produced for the purpose of managing members, posting notices, posting assignments, posting class materials, and promoting activities during activities Likelion. I was in charge of Planning, Design, function Development, and server deploy of the website."
             },
             "link": [
                 {
@@ -56,7 +56,7 @@
             "info": {
                 "date": "2019",
                 "category": ["Website"],
-                "role": ["development", "planning"],
+                "role": ["Development", "Planning"],
                 "stack": [
                     "HTML5",
                     "CSS3",
@@ -101,7 +101,7 @@
             "info": {
                 "date": "2018-2019",
                 "category": ["Website"],
-                "role": ["development", "planning"],
+                "role": ["Development", "Planning"],
                 "stack": [
                     "HTML5",
                     "CSS3",
@@ -117,7 +117,7 @@
             },
             "description": {
                 "ko": "컨테이너 도시 농장 팜클라우드의 유저 웹 인터페이스 입니다. 웹 기반 인터페이스를 통해 무인 스마트팜의 재배 환경을 모니터링하고 제어할 수 있습니다. 사업초기 웹 모듈 프로토타입의 기획과 화면설계, 프론트 엔드 개발을 담당했습니다.",
-                "en": "It is User Web interface for the farm cloud(Contianer City Farm). The Web-based interface allow to monitor and control the growing environment of unattended smart farms. I was responsible for planning, screen design, and front-end development of early web module prototypes."
+                "en": "It is User Web interface for the farm cloud(Contianer City Farm). The Web-based interface allow to monitor and control the growing environment of unattended smart farms. I was responsible for Planning, screen Design, and front-end Development of early web module prototypes."
             },
             "link": [
                 {
@@ -152,7 +152,7 @@
             "info": {
                 "date": "2019",
                 "category": ["Website"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "HTML5",
                     "CSS3",
@@ -213,7 +213,7 @@
             "info": {
                 "date": "2019",
                 "category": ["Website"],
-                "role": ["development", "planning"],
+                "role": ["Development", "Planning"],
                 "stack": [
                     "Django",
                     "HTML5",
@@ -232,7 +232,7 @@
             },
             "description": {
                 "ko": "삼육대학교 천보축전 & 체육대회 웹사이트입니다. 삼육대학교 축제(천보축전)와 체육대회의 홍보, 정보게시, 이벤트 진행을 목적으로 개발되었습니다. 메인페이지를 통해 각각 다른 컨셉과 디자인의 축제 웹사이트와 체육대회 웹사이트를 이용할 수 있습니다. 삼육대학교 총학생회와 멋쟁이사자처럼 at 삼육대학교가 협업하여 제작하였습니다. 프로젝트와 웹사이트의 기획과 프론트엔드 개발을 총괄하였습니다. 한 주간 페이뷰 수 37,473을 기록했습니다.",
-                "en": "This is the website of the Cheonbo Festival & Athletic Competition of Sahmyook University. It was developed for the purpose of promoting Sahmyook University Festival (Cheonbo Festival) and Athletic Competition, posting information, and support events. Through the one main page, you can experience two website with a different design and concept. Like the student council of Sahmyook University and Likelion at Sahmyook University teamated and produced it. I taken the lead of planning the project and front-end developing the front-end."
+                "en": "This is the website of the Cheonbo Festival & Athletic Competition of Sahmyook University. It was developed for the purpose of promoting Sahmyook University Festival (Cheonbo Festival) and Athletic Competition, posting information, and support events. Through the one main page, you can experience two website with a different Design and concept. Like the student council of Sahmyook University and Likelion at Sahmyook University teamated and produced it. I taken the lead of Planning the project and front-end developing the front-end."
             },
             "link": [
                 {
@@ -266,7 +266,7 @@
             "info": {
                 "date": "2020",
                 "category": ["Website"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "HTML5",
                     "CSS3",
@@ -285,7 +285,7 @@
             },
             "description": {
                 "ko": "Developer Student Clubs 삼육대학교 에서 진행한 Github 정원사들('두유 Know 잔디?)이벤트 출석부 웹사이트입니다. GDG 판교의 정원사들 시즌5 출석부의 코드 및 디자인 리팩토링을 통해 개발하였습니다. 두 달간 이벤트 진행을 위해 사용하였습니다.",
-                "en": "This is the Github gardener ('Do you Know Grass?') event attendance website held by the Developer Student Clubs Sahmyook University. This website was developed through code and design refactoring of Gardeners season5 of GDG Pangyo.",
+                "en": "This is the Github gardener ('Do you Know Grass?') event attendance website held by the Developer Student Clubs Sahmyook University. This website was developed through code and Design refactoring of Gardeners season5 of GDG Pangyo.",
                 "link": [
                     {
                         "ko": "junho85 Github Link",
@@ -318,7 +318,7 @@
             "info": {
                 "date": "2021",
                 "category": ["Application", "Website"],
-                "role": ["development"],
+                "role": ["Development"],
                 "stack": [
                     "React Native",
                     "React",
@@ -379,7 +379,7 @@
             "info": {
                 "date": "2021",
                 "category": ["Application", "Website"],
-                "role": ["development"],
+                "role": ["Development"],
                 "stack": [
                     "React Native",
                     "React",
@@ -428,7 +428,7 @@
             "info": {
                 "date": "2021",
                 "category": ["Website"],
-                "role": ["development"],
+                "role": ["Development"],
                 "stack": ["React", "TypeScript", "SCSS", "Git", "Jenkins"],
                 "team": {
                     "ko": "oldrookie(유경수, 배성현, 이수연), 아이디어오븐",
@@ -481,7 +481,7 @@
             "info": {
                 "date": "2021",
                 "category": ["Website"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": ["Next.js", "TypeScript", "SCSS", "Git", "AWS"],
                 "team": {
                     "ko": "oldrookie",
@@ -515,7 +515,7 @@
             "info": {
                 "date": "2022",
                 "category": ["Application"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": ["Flutter", "Git", "AWS"],
                 "team": {
                     "ko": "oldrookie",
@@ -567,7 +567,7 @@
             "info": {
                 "date": "2022",
                 "category": ["Application"],
-                "role": ["development", "planning", "design"],
+                "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "Unity",
                     "React Native",
