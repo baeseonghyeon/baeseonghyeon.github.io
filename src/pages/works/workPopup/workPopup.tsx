@@ -6,8 +6,8 @@ import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
 import { useEffect, useState } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
-import WorkDescription from "./workDescriptionPopup/workDescription";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
+import WorkDescriptionPopup from "./workDescriptionPopup/workDescriptionPopup";
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {
@@ -65,7 +65,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                 (!workData.thumbUrl && workData.title[language])}
 
             {innerPopupVisibility && (
-                <WorkDescription workData={workData} idx={idx} id={id} />
+                <WorkDescriptionPopup workData={workData} idx={idx} id={id} />
             )}
         </Popup>
     );

@@ -4,21 +4,22 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
-import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
+import { lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
-import Popup from "components/popup/popup";
-import styles from "./works.module.scss";
+import styles from "./workDetail.module.scss";
 import cb from "classnames/bind";
+import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
+import WorkDetailDescriptionPopup from "./workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
+import WorkDetailInfoPopup from "./workPopup/workDetailInfoPopup/workDetailInfoPopup";
 const cn = cb.bind(styles);
 
-const Detail: NextPage = () => {
+const WorkDetail: NextPage = () => {
     const router = useRouter();
     const language = useRecoilValue(languageState);
     const works: WorkDTO = workJson;
     const [workId, setWorkId] = useState<string>();
     const [workData, setWorkData] = useState<WorkData>();
-    const [workInfo, setWorkInfo] = useState<[string, any][]>();
 
     useEffect(() => {
         if (router.isReady) {
@@ -43,60 +44,64 @@ const Detail: NextPage = () => {
         }
     }, [workId]);
 
-    useEffect(() => {
-        if (workData) {
-            setWorkInfo(Object.entries(workData.info));
-        }
-    }, [workData]);
-
     if (workData)
         return (
-            <Layout title={workData.title[language]}>
-                <Popup
-                    title={workData.title[language]}
-                    isActive={true}
-                    idx={0}
-                    className={cn("info__popup")}
-                >
-                    {workInfo &&
-                        workInfo.map((item) => {
+            <Layout
+                title={workData.title[language]}
+                description={
+                    workData.description[language]?.substring(0, 80).trimEnd() +
+                    "..."
+                }
+            >
+                <WorkDetailInfoPopup workData={workData} />
+                <WorkDetailDescriptionPopup workData={workData} />
+
+                <div className={cn("container")}>
+                    <div className={cn("content__container")}>
+                        {workData.video?.map((video) => {
                             return (
-                                <li className={cn("info__list")}>
-                                    <p>
-                                        <strong>
-                                            {firsttLetterCapitalizer(item[0])} :{" "}
-                                        </strong>
-                                        {typeof item[1] === "string"
-                                            ? item[1]
-                                            : Array.isArray(item[1])
-                                            ? item[1].map(
-                                                  (
-                                                      item: string,
-                                                      idx,
-                                                      { length },
-                                                  ) => {
-                                                      let isLast: boolean =
-                                                          idx === length - 1;
-                                                      return `${item}${
-                                                          !isLast ? ", " : ""
-                                                      }`;
-                                                  },
-                                              )
-                                            : item[1][language]}
-                                    </p>
-                                </li>
+                                <div
+                                    className={cn(
+                                        video.fullSize
+                                            ? "col-md-12"
+                                            : "col-md-6",
+                                    )}
+                                >
+                                    <div className={cn("video__wrapper")}>
+                                        <YoutubeVideo
+                                            iframeClassName={cn(
+                                                "video__content",
+                                            )}
+                                            link={video.url}
+                                        />
+                                    </div>
+                                </div>
                             );
                         })}
-                </Popup>
-                <Popup
-                    title={workData.title[language]}
-                    idx={1}
-                    className={cn("description__popup")}
-                >
-                    {workData.description[language]}
-                </Popup>
+                    </div>
+
+                    <div className={cn("content__container")}>
+                        {workData.image?.map((image) => {
+                            return (
+                                <div
+                                    className={cn(
+                                        image.fullSize
+                                            ? "col-md-12"
+                                            : "col-md-6",
+                                    )}
+                                >
+                                    <img
+                                        src={image.url}
+                                        className={cn("image__content")}
+                                        alt={workData.title[language]}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
             </Layout>
         );
     else return <Layout>Wait for Second</Layout>;
 };
-export default Detail;
+export default WorkDetail;

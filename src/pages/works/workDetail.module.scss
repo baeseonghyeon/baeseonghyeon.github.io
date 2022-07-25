@@ -1,0 +1,41 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    @include media-not-mobile {
+        max-width: 1200px !important;
+        margin: auto;
+        padding-top: 45px;
+        padding-bottom: 40px;
+    }
+}
+
+.content__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.video {
+    &__wrapper {
+        position: relative;
+        height: 0;
+        padding-bottom: 100%;
+    }
+    &__content {
+        max-width: 100%;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+    }
+}
+
+.image {
+    &__content {
+        width: 100%;
+        vertical-align: middle;
+    }
+}

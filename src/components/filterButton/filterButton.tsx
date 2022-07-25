@@ -28,11 +28,7 @@ const FilterButton = (props: FilterButtonProps) => {
                 })}
 
                 {Object.keys(WorkRoleEnums).map((item) => {
-                    return (
-                        <option value={item}>
-                            {firsttLetterCapitalizer(item)}
-                        </option>
-                    );
+                    return <option value={item}>{item}</option>;
                 })}
             </select>
         </div>

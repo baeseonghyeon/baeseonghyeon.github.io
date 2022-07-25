@@ -6,7 +6,7 @@ import Link from "next/link";
 import useMediaQuery from "hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
-import { WorkPopupProps } from "../workPopup/workPopup";
+import { WorkPopupProps } from "../workPopup";
 import { useEffect } from "react";
 const cn = cb.bind(styles);
 

@@ -69,15 +69,12 @@ const Popup = (props: PopupProps) => {
     }, [isRandomPositon]);
 
     const setPositionRandom = (element: HTMLDivElement) => {
-        element.style.left = `${
-            Math.random() * ((window.innerWidth - element.offsetWidth) * 0.8) +
-            window.innerWidth * 0.13
-        }px`;
-        element.style.top = `${
-            Math.random() *
-                ((window.innerHeight - element.offsetHeight) * 0.7) +
-            window.innerHeight * 0.12
-        }px`;
+        element.style.left = `${Math.floor(
+            Math.random() * (window.innerWidth - element.offsetWidth),
+        )}px`;
+        element.style.top = `${Math.floor(
+            Math.random() * (window.innerHeight - element.offsetHeight),
+        )}px`;
     };
 
     const increasePopupOveray = () => {
@@ -100,11 +97,8 @@ const Popup = (props: PopupProps) => {
     return (
         <Draggable
             disabled={isPcScreenSize ? false : true}
-            axis="both"
-            handle=""
-            defaultPosition={{ x: 0, y: 0 }}
-            grid={[25, 25]}
-            scale={1}
+            grid={[50, 50]}
+            bounds="div"
             onDrag={() => isDraggable && increasePopupOveray()}
             onMouseDown={() => isDraggable && increasePopupOveray()}
         >

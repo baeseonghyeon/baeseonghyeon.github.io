@@ -8,6 +8,7 @@
     width: calc(100% - 20px) !important;
 
     .link {
+        width: fit-content;
         color: var(--blue-color);
         text-decoration: underline;
         cursor: pointer;

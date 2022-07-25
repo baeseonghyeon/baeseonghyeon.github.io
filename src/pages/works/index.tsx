@@ -10,7 +10,7 @@ import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
-import WorkListItem from "./workListItem/workListItem";
+import WorkListItem from "./workPopup/workListItem/workListItem";
 import WorkPopup from "./workPopup/workPopup";
 import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
 

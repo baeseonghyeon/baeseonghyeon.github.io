@@ -1,20 +1,18 @@
-import styles from "./workDescription.module.scss";
+import styles from "./workDescriptionPopup.module.scss";
 import cb from "classnames/bind";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
-import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
-import useMediaQuery from "hooks/useMediaQuery";
 import Link from "next/link";
 import { WorkPopupProps } from "../workPopup";
 const cn = cb.bind(styles);
 
-export interface WorkDescriptionProps extends WorkPopupProps {}
+export interface WorkDescriptionPopupProps extends WorkPopupProps {}
 
-const WorkDescription = (props: WorkDescriptionProps) => {
+const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
     const { workData, idx, id } = props;
     const language = useRecoilValue(languageState);
-    const maxLength = 80;
+    const maxLength = 100;
     const descriptionLenght = workData.description[language]?.length;
     const isOverMaxLenght: boolean =
         descriptionLenght !== undefined && descriptionLenght > maxLength;
@@ -28,16 +26,20 @@ const WorkDescription = (props: WorkDescriptionProps) => {
                 isActive={false}
                 isDraggable={false}
             >
-                {workData.description[language]?.substring(0, maxLength)}
+                <p>
+                    {workData.description[language]
+                        ?.substring(0, maxLength)
+                        .trimEnd()}
 
-                {isOverMaxLenght && (
-                    <>
-                        ...
-                        <Link href={`/works/${id}`}>
-                            <span className={cn("link")}>read more</span>
-                        </Link>
-                    </>
-                )}
+                    {isOverMaxLenght && (
+                        <>
+                            ...
+                            <Link href={`/works/${id}`}>
+                                <span className={cn("link")}>read more</span>
+                            </Link>
+                        </>
+                    )}
+                </p>
 
                 {workData.link &&
                     workData.link.map((link) => {
@@ -62,4 +64,4 @@ const WorkDescription = (props: WorkDescriptionProps) => {
     );
 };
 
-export default WorkDescription;
+export default WorkDescriptionPopup;
