@@ -20,3 +20,8 @@ export const currentActivePopupState = atom<HTMLDivElement | null>({
     key: "currentActivePopupState",
     default: null,
 });
+
+export const workFilterState = atom<string>({
+    key: "workFilterState",
+    default: "All",
+});

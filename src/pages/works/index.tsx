@@ -3,11 +3,11 @@ import { NextPage } from "next";
 import { useState } from "react";
 import cb from "classnames/bind";
 import styles from "./works.module.scss";
-import { WorkCategoryEnums, WorkDTO } from "interface/dto/work";
+import { WorkDTO } from "interface/dto/work";
 import workJson from "data/work.json";
 import Popup from "components/popup/popup";
-import { useRecoilValue } from "recoil";
-import { languageState } from "recoil/ui";
+import { useRecoilState } from "recoil";
+import { workFilterState } from "recoil/ui";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
 import WorkListItem from "./workPopup/workListItem/workListItem";
@@ -17,23 +17,21 @@ import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
 const cn = cb.bind(styles);
 
 const Works: NextPage = () => {
-    const language = useRecoilValue(languageState);
+    const [workFilterValue, setWorkFilterValue] =
+        useRecoilState(workFilterState);
     const works: WorkDTO = workJson;
     const [isRandomPositon, setIsRandomPositon] = useState<boolean>(true);
-    const [activePopup, setActivePopup] = useState<number>();
-    const [filterValue, setFilterValue] = useState<"All" | WorkCategoryEnums>(
-        "All",
-    );
 
     const filteredWorkData = works.data
         .slice(0)
         .reverse()
         .filter((item) =>
-            filterValue === "All"
+            workFilterValue === "All"
                 ? item
-                : filterValue === "Website" || filterValue === "Application"
-                ? item.info.category.includes(filterValue)
-                : item.info.role.includes(filterValue),
+                : workFilterValue === "Website" ||
+                  workFilterValue === "Application"
+                ? item.info.category.includes(workFilterValue)
+                : item.info.role.includes(workFilterValue),
         );
 
     const getWorkPopupId = (title: string | undefined, category: string) => {
@@ -43,14 +41,14 @@ const Works: NextPage = () => {
     return (
         <Layout title={"Works"}>
             <Popup
-                title={`${firsttLetterCapitalizer(filterValue)} Works`}
+                title={`${firsttLetterCapitalizer(workFilterValue)} Works`}
                 idx={0}
                 isActive={true}
                 isRandomPositon={false}
                 className={cn(`popup__all-work`)}
                 buttons={[
                     <FilterButton
-                        onChange={(e) => setFilterValue(e.target.value)}
+                        onChange={(e) => setWorkFilterValue(e.target.value)}
                     />,
                 ]}
             >

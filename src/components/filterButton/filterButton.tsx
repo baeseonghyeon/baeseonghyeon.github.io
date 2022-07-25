@@ -1,9 +1,10 @@
 import cb from "classnames/bind";
 import styles from "./filterButton.module.scss";
-import React, { HtmlHTMLAttributes, useRef, useState } from "react";
+import React, { HtmlHTMLAttributes } from "react";
 import { IoMdOptions } from "react-icons/io";
 import { WorkCategoryEnums, WorkRoleEnums } from "interface/dto/work";
-import { firsttLetterCapitalizer } from "libs/textParser";
+import { workFilterState } from "recoil/ui";
+import { useRecoilValue } from "recoil";
 
 const cn = cb.bind(styles);
 
@@ -13,12 +14,13 @@ interface FilterButtonProps extends HtmlHTMLAttributes<HTMLSelectElement> {
 
 const FilterButton = (props: FilterButtonProps) => {
     const { onChange } = props;
+    const workFilterValue = useRecoilValue(workFilterState);
 
     return (
         <div className={cn("button")}>
             <IoMdOptions></IoMdOptions>
             <select
-                defaultValue={"All"}
+                defaultValue={workFilterValue}
                 className={cn("select")}
                 onChange={onChange}
             >
