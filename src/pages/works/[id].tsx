@@ -6,13 +6,17 @@ import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
 import { googleCloudImageUrl, lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
-import { languageState } from "recoil/ui";
+import { darkModeState, languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
 import cb from "classnames/bind";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDetailDescriptionPopup from "./workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
 import WorkDetailInfoPopup from "./workPopup/workDetailInfoPopup/workDetailInfoPopup";
 import NotFound from "pages/404";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonBox from "components/skeletonBox/skeletonBox";
+
 const cn = cb.bind(styles);
 
 const WorkDetail: NextPage = () => {
@@ -21,6 +25,7 @@ const WorkDetail: NextPage = () => {
     const works: WorkDTO = workJson;
     const [workId, setWorkId] = useState<string>();
     const [workData, setWorkData] = useState<WorkData>();
+    const [imageLoading, setImageLoading] = useState<boolean>(true);
 
     useEffect(() => {
         if (router.isReady) {
@@ -91,10 +96,16 @@ const WorkDetail: NextPage = () => {
                                             : "col-md-6",
                                     )}
                                 >
+                                    {imageLoading && (
+                                        <SkeletonBox
+                                            className={cn("skeleton")}
+                                        />
+                                    )}
                                     <img
                                         src={googleCloudImageUrl(image.url)}
                                         className={cn("image__content")}
                                         alt={workData.title[language]}
+                                        onLoad={() => setImageLoading(false)}
                                     />
                                 </div>
                             );

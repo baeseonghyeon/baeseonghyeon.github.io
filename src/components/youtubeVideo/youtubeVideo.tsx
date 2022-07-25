@@ -1,6 +1,6 @@
 import cb from "classnames/bind";
 import styles from "./youtubeVideo.module.scss";
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, { HtmlHTMLAttributes } from "react";
 
 const cn = cb.bind(styles);
 
