@@ -10,3 +10,7 @@ export const lowerCaseParser = (text: string | undefined) => {
         return text.toLowerCase().replaceAll(" ", "-");
     }
 };
+
+export const googleCloudImageUrl = (imageId: string) => {
+    return "https://drive.google.com/uc?export=view&id=" + imageId;
+};

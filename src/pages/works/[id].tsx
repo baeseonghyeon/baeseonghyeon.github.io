@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
-import { lowerCaseParser } from "libs/textParser";
+import { googleCloudImageUrl, lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
@@ -12,6 +12,7 @@ import cb from "classnames/bind";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDetailDescriptionPopup from "./workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
 import WorkDetailInfoPopup from "./workPopup/workDetailInfoPopup/workDetailInfoPopup";
+import NotFound from "pages/404";
 const cn = cb.bind(styles);
 
 const WorkDetail: NextPage = () => {
@@ -91,7 +92,7 @@ const WorkDetail: NextPage = () => {
                                     )}
                                 >
                                     <img
-                                        src={image.url}
+                                        src={googleCloudImageUrl(image.url)}
                                         className={cn("image__content")}
                                         alt={workData.title[language]}
                                     />
@@ -102,6 +103,6 @@ const WorkDetail: NextPage = () => {
                 </div>
             </Layout>
         );
-    else return <Layout>Wait for Second</Layout>;
+    else return <NotFound />;
 };
 export default WorkDetail;

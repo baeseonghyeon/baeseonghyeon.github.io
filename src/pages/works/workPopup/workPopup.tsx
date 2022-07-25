@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup from "./workDescriptionPopup/workDescriptionPopup";
+import { googleCloudImageUrl } from "libs/textParser";
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {
@@ -56,7 +57,11 @@ const WorkPopup = (props: WorkPopupProps) => {
                 workData.thumbUrl && (
                     <div
                         className={cn("image__container")}
-                        style={{ backgroundImage: `url(${workData.thumbUrl})` }}
+                        style={{
+                            backgroundImage: `url(${googleCloudImageUrl(
+                                workData.thumbUrl,
+                            )})`,
+                        }}
                     />
                 )
             )}
