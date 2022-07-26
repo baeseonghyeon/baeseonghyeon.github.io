@@ -4,6 +4,7 @@ import React, { HtmlHTMLAttributes } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { darkModeState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const cn = cb.bind(styles);
 
@@ -19,7 +20,7 @@ const SkeletonBox = (props: SkeletonBoxProps) => {
             highlightColor={darkMode ? "#404040" : ""}
             borderRadius={0}
         >
-            <Skeleton className={cn(props.className)} />
+            <Skeleton className={cn("container", props.className)} />
         </SkeletonTheme>
     );
 };

@@ -6,16 +6,14 @@ import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
 import { googleCloudImageUrl, lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
-import { darkModeState, languageState } from "recoil/ui";
+import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
 import cb from "classnames/bind";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDetailDescriptionPopup from "./workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
 import WorkDetailInfoPopup from "./workPopup/workDetailInfoPopup/workDetailInfoPopup";
 import NotFound from "pages/404";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import SkeletonBox from "components/skeletonBox/skeletonBox";
+import ContentImage from "components/contentImage/contentImage";
 
 const cn = cb.bind(styles);
 
@@ -25,7 +23,7 @@ const WorkDetail: NextPage = () => {
     const works: WorkDTO = workJson;
     const [workId, setWorkId] = useState<string>();
     const [workData, setWorkData] = useState<WorkData>();
-    const [imageLoading, setImageLoading] = useState<boolean>(true);
+    const [isNotfound, setIsNotfound] = useState<any>(null);
 
     useEffect(() => {
         if (router.isReady) {
@@ -40,15 +38,21 @@ const WorkDetail: NextPage = () => {
             const category = splitedWorkId[splitedWorkId.length - 1];
             const title = workId.replace(`-${category}`, "");
 
-            works.data
+            const filtereData = works.data
                 .filter(
                     (item) =>
                         lowerCaseParser(item.title.en) === title &&
                         item.info.category[0]?.toLowerCase() === category,
                 )
                 .map((item) => setWorkData(item));
+
+            setIsNotfound(filtereData.length);
         }
     }, [workId]);
+
+    if (isNotfound === 0) {
+        return <NotFound />;
+    }
 
     if (workData)
         return (
@@ -96,16 +100,10 @@ const WorkDetail: NextPage = () => {
                                             : "col-md-6",
                                     )}
                                 >
-                                    {imageLoading && (
-                                        <SkeletonBox
-                                            className={cn("skeleton")}
-                                        />
-                                    )}
-                                    <img
+                                    <ContentImage
                                         src={googleCloudImageUrl(image.url)}
                                         className={cn("image__content")}
-                                        alt={workData.title[language]}
-                                        onLoad={() => setImageLoading(false)}
+                                        skeletonClassName={cn("skeleton")}
                                     />
                                 </div>
                             );
@@ -114,6 +112,11 @@ const WorkDetail: NextPage = () => {
                 </div>
             </Layout>
         );
-    else return <NotFound />;
+    else
+        return (
+            <div className={cn("loading")}>
+                <p style={{ textAlign: "center" }}>Loading...</p>
+            </div>
+        );
 };
 export default WorkDetail;

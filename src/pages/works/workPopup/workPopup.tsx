@@ -9,6 +9,8 @@ import useMediaQuery from "hooks/useMediaQuery";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup from "./workDescriptionPopup/workDescriptionPopup";
 import { googleCloudImageUrl } from "libs/textParser";
+import SkeletonBox from "components/skeletonBox/skeletonBox";
+import ContentImage from "components/contentImage/contentImage";
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {
@@ -55,19 +57,14 @@ const WorkPopup = (props: WorkPopupProps) => {
                 />
             ) : (
                 workData.thumbUrl && (
-                    <div
+                    <ContentImage
+                        src={googleCloudImageUrl(workData.thumbUrl)}
                         className={cn("image__container")}
-                        style={{
-                            backgroundImage: `url(${googleCloudImageUrl(
-                                workData.thumbUrl,
-                            )})`,
-                        }}
+                        skeletonClassName={cn("skeleton", "video__container")}
+                        isBackgroundImage
                     />
                 )
             )}
-
-            {!workData.video ||
-                (!workData.thumbUrl && workData.title[language])}
 
             {innerPopupVisibility && (
                 <WorkDescriptionPopup workData={workData} idx={idx} id={id} />

@@ -59,6 +59,12 @@
             transform: rotateY(360deg);
         }
     }
+
+    @-webkit-keyframes rotate {
+        from {
+            -webkit-transform: rotateY(360deg);
+        }
+    }
 }
 
 .hide {

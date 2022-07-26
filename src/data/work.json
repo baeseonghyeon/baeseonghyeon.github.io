@@ -83,7 +83,7 @@
             "thumbUrl": "1q5YBrzaW25dIq5_67alYj-87MkXzIuWV",
             "image": [
                 {
-                    "url": "1laO33PX7qyR4koTJEFLNGBEDJ35WroMi",
+                    "url": "1laO33PX7qyR4KrTJEFLNGBEDJ35WroMi",
                     "fullSize": true
                 },
                 {
@@ -399,11 +399,11 @@
                 "en": "We have developed the app client, and admin web client for the club party connection platform named Clubber.",
                 "link": [
                     {
-                        "ko": "GooglePlay",
+                        "common": "GooglePlay",
                         "url": "https://play.google.com/store/apps/details?id=com.wonitclient"
                     },
                     {
-                        "ko": "AppStore",
+                        "common": "AppStore",
                         "url": "https://apps.apple.com/ko/app/clubber/id1561355313"
                     }
                 ]

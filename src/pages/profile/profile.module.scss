@@ -30,5 +30,9 @@
             top: 195px !important;
             left: 50px !important;
         }
+        &__comment {
+            width: 600px;
+            word-break: keep-all;
+        }
     }
 }

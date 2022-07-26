@@ -45,3 +45,10 @@
     height: 0;
     padding-bottom: 100%;
 }
+
+.loading {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

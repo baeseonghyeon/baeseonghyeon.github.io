@@ -11,6 +11,11 @@ export const languageState = atom<Language>({
     default: Language.ko,
 });
 
+export const workFilterState = atom<string>({
+    key: "workFilterState",
+    default: "All",
+});
+
 export const popupOverlayState = atom<number>({
     key: "popupOverlayState",
     default: 999,
@@ -19,9 +24,4 @@ export const popupOverlayState = atom<number>({
 export const currentActivePopupState = atom<HTMLDivElement | null>({
     key: "currentActivePopupState",
     default: null,
-});
-
-export const workFilterState = atom<string>({
-    key: "workFilterState",
-    default: "All",
 });

@@ -35,7 +35,7 @@ const NotFound: NextPage = () => {
     }, []);
 
     return (
-        <Layout title="Oops!">
+        <Layout title="Oops 404!">
             <div className={cn("container")}>
                 <h2 className={cn("num__label")}>404 :-(</h2>
                 <h3 className={cn("label")}>
