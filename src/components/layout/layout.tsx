@@ -49,7 +49,8 @@ const Layout = (props: LayoutProps) => {
                     content={isDarkMode ? "#272727" : "#fff"}
                 />
 
-                <link rel="icon" href="/favicon/favicon.ico" />
+                <link rel="icon" href="/favicon.ico" />
+
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"

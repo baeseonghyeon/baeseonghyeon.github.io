@@ -53,7 +53,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                     })}
 
                 {!isOverMaxLenght && (
-                    <Link href={`/works/${idx}`}>
+                    <Link href={`/works/${id}`}>
                         <span className={cn("link", "link--block")}>
                             Read More →
                         </span>
