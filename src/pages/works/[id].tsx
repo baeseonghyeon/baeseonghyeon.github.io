@@ -76,11 +76,15 @@ const WorkDetail: NextPage = () => {
                                             ? "col-md-12"
                                             : "col-md-6",
                                     )}
+                                    key={video.url}
                                 >
                                     <div className={cn("video__wrapper")}>
                                         <YoutubeVideo
                                             iframeClassName={cn(
                                                 "video__content",
+                                            )}
+                                            skeletonClassName={cn(
+                                                cn("video__content"),
                                             )}
                                             link={video.url}
                                         />
@@ -99,6 +103,7 @@ const WorkDetail: NextPage = () => {
                                             ? "col-md-12"
                                             : "col-md-6",
                                     )}
+                                    key={image.url}
                                 >
                                     <ContentImage
                                         src={googleCloudImageUrl(image.url)}

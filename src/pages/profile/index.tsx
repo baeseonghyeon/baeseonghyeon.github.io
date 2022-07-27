@@ -35,7 +35,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                         title={item.common?.toUpperCase()}
                         isActive={idx === 0}
                         isRandomPositon={isRandomPositon}
-                        key={`popup--${item.sort}`}
+                        key={`popup--${item.common}-${item.sort}`}
                         idx={Number(item.sort)}
                         className={cn(`popup__${item.common}`)}
                         style={{ order: item.sort }}
@@ -49,7 +49,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                     <Popup
                         title={item.title.toUpperCase()}
                         isRandomPositon={isRandomPositon}
-                        key={`popup--${item.sort}`}
+                        key={`popup--${item.title}-${item.sort}`}
                         idx={Number(item.sort)}
                         className={cn(
                             "popup__list__container",

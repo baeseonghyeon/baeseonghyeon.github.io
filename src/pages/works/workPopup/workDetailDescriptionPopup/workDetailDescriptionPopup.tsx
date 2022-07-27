@@ -14,33 +14,41 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
     const { workData } = props;
     const language = useRecoilValue(languageState);
 
-    return (
-        <Popup
-            title={workData.title[language]}
-            idx={1}
-            className={cn("container")}
-        >
-            {workData.description[language]}
+    if (workData) {
+        return (
+            <Popup
+                title={workData.title[language]}
+                idx={1}
+                className={cn("container")}
+            >
+                {workData.description[language]}
 
-            {workData.description.link?.map((item, idx, { length }) => {
-                return (
-                    <a href={item.url} target="_blank">
-                        {idx === 0 && "("}
-                        {item.common ? item.common : item[language]}
-                        {idx !== length - 1 ? ", " : ")"}
-                    </a>
-                );
-            })}
+                {workData.description.link?.map((item, idx, { length }) => {
+                    return (
+                        <a href={item.url} target="_blank">
+                            {idx === 0 && "("}
+                            {item.common ? item.common : item[language]}
+                            {idx !== length - 1 ? ", " : ")"}
+                        </a>
+                    );
+                })}
 
-            {workData.link?.map((item) => {
-                return (
-                    <a href={item.url} target="_blank" className={cn("link")}>
-                        Visit the {item.type} →
-                    </a>
-                );
-            })}
-        </Popup>
-    );
+                {workData.link?.map((item) => {
+                    return (
+                        <a
+                            href={item.url}
+                            target="_blank"
+                            className={cn("link")}
+                        >
+                            Visit the {item.type} →
+                        </a>
+                    );
+                })}
+            </Popup>
+        );
+    } else {
+        return null;
+    }
 };
 
 export default WorkDetailDescriptionPopup;

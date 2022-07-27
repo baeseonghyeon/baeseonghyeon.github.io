@@ -18,7 +18,7 @@ export interface ProfileListItemProps {
 const ProfileListItem = (props: ProfileListItemProps) => {
     const { listData } = props;
     const language = useRecoilValue(languageState);
-    const isIcon = listData.icon !== undefined;
+    const isIcon = listData && listData.icon !== undefined;
 
     const listIconHandler = (name?: string) => {
         switch (name) {
@@ -31,22 +31,26 @@ const ProfileListItem = (props: ProfileListItemProps) => {
         }
     };
 
-    return (
-        <li className={cn(isIcon && "list--has-icon")}>
-            {listData.icon && isIcon && (
-                <span className={cn("brand-icon")}>
-                    {listIconHandler(listData.title.common)}
-                </span>
-            )}
+    if (listData) {
+        return (
+            <li className={cn(isIcon && "list--has-icon")}>
+                {listData.icon && isIcon && (
+                    <span className={cn("brand-icon")}>
+                        {listIconHandler(listData.title.common)}
+                    </span>
+                )}
 
-            <a href={listData.url} target="_blank">
-                {listData.title[language]}
-                {!isIcon && "("}
-                {listData.title["common"]}
-                {!isIcon && ")"}
-            </a>
-        </li>
-    );
+                <a href={listData.url} target="_blank">
+                    {listData.title[language]}
+                    {!isIcon && "("}
+                    {listData.title["common"]}
+                    {!isIcon && ")"}
+                </a>
+            </li>
+        );
+    } else {
+        return null;
+    }
 };
 
 export default ProfileListItem;

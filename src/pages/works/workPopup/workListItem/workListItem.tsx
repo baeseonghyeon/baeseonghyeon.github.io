@@ -49,28 +49,32 @@ const WorkListItem = (props: WorkListItemProps) => {
         }
     };
 
-    return (
-        <span className={cn("wrapper", "mr-2")} key={idx}>
-            <span
-                className={cn("footnote")}
-                onClick={() => popupActivator(id)}
-                onTouchStart={() => popupActivator(id)}
-            >
-                [{idx}]
-            </span>
-            <Link
-                href={redirectLink}
-                onTouchStart={() => {
-                    isPcScreenSize && (window.location.href = redirectLink);
-                }}
-            >
-                <span className={cn("link")}>
-                    {workData.title[language]} ( {workData.info.date} ) [
-                    {workData.info.category}]
+    if (workData) {
+        return (
+            <span className={cn("wrapper", "mr-2")} key={idx}>
+                <span
+                    className={cn("footnote")}
+                    onClick={() => popupActivator(id)}
+                    onTouchStart={() => popupActivator(id)}
+                >
+                    [{idx}]
                 </span>
-            </Link>
-        </span>
-    );
+                <Link
+                    href={redirectLink}
+                    onTouchStart={() => {
+                        isPcScreenSize && (window.location.href = redirectLink);
+                    }}
+                >
+                    <span className={cn("link")}>
+                        {workData.title[language]} ( {workData.info.date} ) [
+                        {workData.info.category}]
+                    </span>
+                </Link>
+            </span>
+        );
+    } else {
+        return null;
+    }
 };
 
 export default WorkListItem;

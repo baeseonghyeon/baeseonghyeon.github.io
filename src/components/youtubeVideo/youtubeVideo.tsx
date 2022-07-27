@@ -8,17 +8,18 @@ const cn = cb.bind(styles);
 interface YoutubeVideoProps extends HtmlHTMLAttributes<HTMLDivElement> {
     link: string;
     iframeClassName?: string;
+    skeletonClassName?: string;
 }
 
 const YoutubeVideo = (props: YoutubeVideoProps) => {
-    const { link, iframeClassName } = props;
+    const { link, iframeClassName, skeletonClassName } = props;
 
     const [loading, setLoading] = useState(true);
 
     return (
         <div className={cn(props.className)}>
             {loading && (
-                <SkeletonBox className={cn(iframeClassName, "skeleton")} />
+                <SkeletonBox className={cn(skeletonClassName, "skeleton")} />
             )}
             <iframe
                 className={cn(iframeClassName, loading && "hide")}
