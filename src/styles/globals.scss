@@ -6,17 +6,21 @@
 
 /* color */
 body {
-    @include ColorBright;
+    @include color-bright;
     &.dark-theme {
-        @include ColorDark;
+        @include color-dark;
     }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        @include ColorDark;
+        @include color-dark;
         &.bright-theme {
-            @include ColorBright;
+            @include color-bright;
         }
     }
 }
@@ -53,21 +57,57 @@ a,
 span,
 div {
     color: var(--on-background-color);
-    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
-        Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo",
-        "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol", sans-serif;
-    // font-family: "Noto Sans KR", sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
     font-size: $fs-m;
     font-weight: $fw;
     letter-spacing: $ls;
+    line-height: $lh-m;
 }
 
 a {
-    // color: $color-primary;
     color: var(--blue-color);
+    &:hover {
+        text-decoration: none;
+    }
+    &:not([href]) {
+        color: var(--on-background-color);
+    }
 }
 
-* {
+a * {
     box-sizing: border-box;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    li {
+        font-size: $fs-m;
+        a {
+            letter-spacing: $ls;
+            font-weight: $fw;
+            display: inline-block;
+        }
+        p {
+            display: inline-block;
+        }
+    }
+}
+
+.col-md-6,
+.col-md-12 {
+    position: relative;
+    width: 100%;
+}
+.col-md-6 {
+    @include media-not-mobile {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
 }

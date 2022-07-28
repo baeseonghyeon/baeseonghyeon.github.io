@@ -1,0 +1,11 @@
+.default {
+    transition: all 0.25s linear;
+}
+
+.show {
+    opacity: 1;
+}
+
+.hide {
+    opacity: 0;
+}

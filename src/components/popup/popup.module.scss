@@ -1,0 +1,98 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    position: absolute;
+    @include shadow-outline(1vh);
+    p {
+        margin: 0;
+    }
+    ul {
+        text-align: left;
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
+    .header {
+        border-bottom: 1px solid var(--lightgray-color);
+        text-align: left;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 11px;
+
+        h1 {
+            font-size: $fs-m;
+            font-weight: bold;
+            touch-action: auto;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        cursor: pointer;
+        .button__wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .close__button {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: auto;
+            font-weight: bold;
+            margin-right: 2px;
+        }
+
+        &:hover {
+            border-bottom-color: var(--on-background-color);
+        }
+
+        &--active {
+            transition: none;
+            background-color: var(--on-background-color);
+            border-bottom-color: var(--on-background-color);
+            h1 {
+                color: var(--background-color) !important;
+            }
+            &:hover {
+                color: initial;
+                .close__button {
+                    color: var(--background-color);
+                }
+            }
+            .close__button {
+                color: var(--background-color);
+            }
+            svg {
+                fill: var(--background-color) !important;
+            }
+        }
+    }
+
+    .body {
+        padding: 12px 10px 15px;
+        text-align: left;
+        touch-action: auto;
+        white-space: pre-wrap;
+    }
+
+    @include media-mobile {
+        position: relative;
+        width: 100%;
+        margin-bottom: 5px;
+        top: initial !important;
+        left: initial !important;
+        transform: initial !important;
+    }
+
+    &.hide {
+        opacity: 0;
+        z-index: -1;
+    }
+}

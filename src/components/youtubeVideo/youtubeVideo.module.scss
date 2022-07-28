@@ -1,0 +1,12 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.skeleton {
+    position: absolute !important;
+    z-index: -1;
+    height: 100%;
+}
+
+.hide {
+    display: none;
+}

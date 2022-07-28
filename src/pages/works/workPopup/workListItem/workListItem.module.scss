@@ -1,0 +1,26 @@
+@import "styles/base/variables";
+
+.wrapper {
+    margin-right: 0.5rem;
+    .footnote {
+        font-size: $fs-xs;
+        color: var(--blue-color) !important;
+        cursor: pointer;
+        position: relative;
+        top: -4px;
+        -webkit-text-stroke: 0.2px;
+        margin-right: 2px;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .link {
+        color: var(--blue-color) !important;
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

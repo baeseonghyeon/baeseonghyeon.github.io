@@ -1,31 +1,12 @@
 @import "styles/base/variables";
+@import "styles/base/mixins";
 
-.container {
-    height: calc(100% - 200px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.num__label {
-    font-weight: 900;
-    font-size: 2.5rem;
-}
-
-.label {
-    font-weight: 900;
-    margin-bottom: 20px;
-}
-
-.link__label {
-    color: $color-primary;
-    font-weight: 700;
-    text-decoration: none;
-    margin-left: 5px;
-    cursor: pointer;
-    &:hover {
-        color: $color-primary;
-        text-decoration: underline;
+.popup {
+    &__all-work {
+        @include media-not-mobile {
+            width: 400px;
+            top: 50px !important;
+            left: 26px !important;
+        }
     }
 }
