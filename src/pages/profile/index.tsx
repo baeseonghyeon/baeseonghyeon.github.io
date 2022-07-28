@@ -40,7 +40,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                         className={cn(`popup__${item.common}`)}
                         style={{ order: item.sort }}
                     >
-                        {item[language]}
+                        <p>{item[language]}</p>
                     </Popup>
                 );
             })}

@@ -11,6 +11,8 @@ import Draggable from "react-draggable";
 import useMediaQuery from "hooks/useMediaQuery";
 import { currentActivePopupState, popupOverlayState } from "recoil/ui";
 import { useRecoilState } from "recoil";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IoIosClose, IoMdClose } from "react-icons/io";
 const cn = cb.bind(styles);
 
 export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
@@ -134,7 +136,7 @@ const Popup = (props: PopupProps) => {
                                 isPcScreenSize && onClosePopup(popupRef.current)
                             }
                         >
-                            ×
+                            <IoMdClose size={17.5} />
                         </div>
                     </div>
                 </div>

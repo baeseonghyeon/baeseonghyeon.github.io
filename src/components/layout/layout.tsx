@@ -3,6 +3,7 @@ import Footer from "components/footer/footer";
 import Navbar from "components/navbar/navbar";
 import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
 import useDarkMode from "hooks/useDarkMode";
+import { googleCloudImageUrl } from "libs/textParser";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
@@ -23,7 +24,22 @@ const Layout = (props: LayoutProps) => {
     const [isLaod, setIsLoad] = useState(false);
     const defaultTitle = "Bae Seonghyeon 배성현";
     const defaultDescription =
-        "배성현은 아름답고 효과적인 서비스를 만드는 프론트엔드 개발자 입니다.";
+        "배성현은 프론트엔드 개발자 입니다. 아름답고 효과적인 서비스를 만들고 있습니다.";
+
+    const pageTitle = `${defaultTitle}${
+        (router && router.pathname === "/") || !title ? "" : ` | ${title}`
+    }`;
+
+    const pageDescription =
+        description != undefined ? description : defaultDescription;
+
+    const googleAnalyticsScript = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-174985234-1');
+    `;
 
     useEffect(() => {
         setIsLoad(true);
@@ -32,25 +48,23 @@ const Layout = (props: LayoutProps) => {
     return (
         <>
             <Head>
-                <title>
-                    {defaultTitle}
-                    {router && router.pathname === "/" ? "" : ` | ${title}`}
-                </title>
-                <meta
-                    name="description"
-                    content={
-                        description != undefined
-                            ? description
-                            : defaultDescription
-                    }
-                />
+                <title>{pageTitle}</title>
+                <meta name="description" content={pageDescription} />
+                <meta property="og:title" content={pageTitle} />
+                {router.pathname !== "/works" && (
+                    <meta
+                        property="og:image"
+                        content={googleCloudImageUrl(
+                            "1yMHIgjjWl4YKRpM9HPdta1YhAjqya6nD",
+                        )}
+                    />
+                )}
+                <meta property="og:description" content={pageDescription} />
                 <meta
                     name="theme-color"
                     content={isDarkMode ? "#272727" : "#fff"}
                 />
-
                 <link rel="icon" href="/favicon.ico" />
-
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
@@ -73,6 +87,14 @@ const Layout = (props: LayoutProps) => {
                     rel="mask-icon"
                     href="/favicon/safari-pinned-tab.svg"
                     color="#5bbad5"
+                />
+
+                <script
+                    dangerouslySetInnerHTML={{ __html: googleAnalyticsScript }}
+                />
+                <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=UA-174985234-1"
                 />
             </Head>
             <Navbar />

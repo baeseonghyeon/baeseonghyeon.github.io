@@ -1,5 +1,5 @@
 import Layout from "components/layout/layout";
-import { NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import workJson from "data/work.json";
@@ -119,9 +119,31 @@ const WorkDetail: NextPage = () => {
         );
     else
         return (
-            <div className={cn("loading")}>
-                <p style={{ textAlign: "center" }}>Loading...</p>
-            </div>
+            <Layout>
+                <div className={cn("loading")}>
+                    <p style={{ textAlign: "center" }}>Loading...</p>
+                </div>
+            </Layout>
         );
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const works: WorkDTO = workJson;
+
+    const getWorkPopupId = (title: string | undefined, category: string) => {
+        return `${lowerCaseParser(title)}-${lowerCaseParser(category)}`;
+    };
+
+    const paths = works.data.map((item) => ({
+        params: { id: getWorkPopupId(item.title.en, item.info.category[0]) },
+    }));
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const workId = context.params?.id || "";
+    const work = { id: workId };
+    return { props: { work } };
+};
+
 export default WorkDetail;

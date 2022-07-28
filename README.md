@@ -1,4 +1,10 @@
-# next-ts-boiler-plate
+# Bae SeongHyeon Portfolio Website
+
+### [Visit the website](https://baeseonghyeon.github.io/)
+
+**This website was developed using Next.js + TypeScript and Deployed on Github Page. Website developed and designed by Bae Seonghyeon**
+
+© 2022 Bae Seonghyeon (github.io)
 
 ## specification
 

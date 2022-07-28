@@ -21,17 +21,18 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                 idx={1}
                 className={cn("container")}
             >
-                {workData.description[language]}
-
-                {workData.description.link?.map((item, idx, { length }) => {
-                    return (
-                        <a href={item.url} target="_blank">
-                            {idx === 0 && "("}
-                            {item.common ? item.common : item[language]}
-                            {idx !== length - 1 ? ", " : ")"}
-                        </a>
-                    );
-                })}
+                <p>
+                    {workData.description[language]}{" "}
+                    {workData.description.link?.map((item, idx, { length }) => {
+                        return (
+                            <a href={item.url} target="_blank">
+                                {idx === 0 && "("}
+                                {item.common ? item.common : item[language]}
+                                {idx !== length - 1 ? ", " : ")"}
+                            </a>
+                        );
+                    })}
+                </p>
 
                 {workData.link?.map((item) => {
                     return (
