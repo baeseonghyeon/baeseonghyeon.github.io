@@ -1,8 +1,9 @@
 import cb from "classnames/bind";
 import styles from "./shuffleButton.module.scss";
-import React, { HtmlHTMLAttributes, useRef, useState } from "react";
+import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
-import useMediaQuery from "hooks/useMediaQuery";
+import { IoMdClose } from "react-icons/io";
+import { setPositionRandom } from "libs/positionHandler";
 
 const cn = cb.bind(styles);
 
@@ -12,40 +13,40 @@ interface ShuffleButtonProps extends HtmlHTMLAttributes<HTMLDivElement> {
 
 const ShuffleButton = (props: ShuffleButtonProps) => {
     const { onClick } = props;
-    const { isPcScreenSize } = useMediaQuery();
     const [visibility, setVisibility] = useState(true);
-
     const buttonRef = useRef<HTMLDivElement>(null);
 
-    const onCloseButton = (popupElement: HTMLDivElement | null) => {
+    useEffect(() => {
+        if (buttonRef.current !== null) {
+            setPositionRandom(buttonRef.current);
+        }
+    }, []);
+
+    const onCloseButton = () => {
         setVisibility(!visibility);
     };
 
-    if (isPcScreenSize) {
-        return (
-            <Draggable defaultPosition={{ x: 0, y: 0 }} grid={[25, 25]}>
-                <div className={cn("container", !visibility && "hide")}>
-                    <div
-                        className={cn("close__button")}
-                        onClick={() => onCloseButton(buttonRef.current)}
-                        onTouchStart={() => onCloseButton(buttonRef.current)}
-                    >
-                        <span>×</span>
-                    </div>
-
-                    <div
-                        ref={buttonRef}
-                        className={cn("wrapper")}
-                        onClick={() => visibility && onClick()}
-                    >
-                        shuffle!
-                    </div>
+    return (
+        <Draggable grid={[50, 50]} bounds="div">
+            <div
+                className={cn("container", !visibility && "hide")}
+                ref={buttonRef}
+            >
+                <div
+                    className={cn("close__button")}
+                    onClick={() => onCloseButton()}
+                    onTouchStart={() => onCloseButton()}
+                >
+                    <IoMdClose size={17.5} />
                 </div>
-            </Draggable>
-        );
-    } else {
-        return <></>;
-    }
+
+                <div
+                    className={cn("wrapper")}
+                    onClick={() => visibility && onClick()}
+                />
+            </div>
+        </Draggable>
+    );
 };
 
 export default ShuffleButton;

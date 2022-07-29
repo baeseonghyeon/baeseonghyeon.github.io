@@ -29,8 +29,6 @@ const WorkDetail: NextPage = ({ work }: any) => {
         if (router.isReady) {
             const { id } = router.query;
             if (id) setWorkId(id as string);
-
-            console.log(work);
         }
     }, [router.isReady]);
 
