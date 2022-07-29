@@ -2,7 +2,7 @@
 
 ### [Visit the website](https://baeseonghyeon.github.io/)
 
-**This website was developed using Next.js + TypeScript and Deployed on Github Page. Website developed and designed by Bae Seonghyeon**
+**This website was developed using Next.js + TypeScript and Deployed on Github Pages. Website developed and designed by Bae Seonghyeon**
 
 © 2022 Bae Seonghyeon (github.io)
 

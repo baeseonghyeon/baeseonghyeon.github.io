@@ -15,10 +15,11 @@ const cn = cb.bind(styles);
 interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
     description?: string;
+    image?: string;
 }
 
 const Layout = (props: LayoutProps) => {
-    const { title, description } = props;
+    const { title, description, image } = props;
     const router = useRouter();
     const isDarkMode = useDarkMode();
     const [isLaod, setIsLoad] = useState(false);
@@ -55,7 +56,7 @@ const Layout = (props: LayoutProps) => {
                     <meta
                         property="og:image"
                         content={googleCloudImageUrl(
-                            "1yMHIgjjWl4YKRpM9HPdta1YhAjqya6nD",
+                            image ? image : "1yMHIgjjWl4YKRpM9HPdta1YhAjqya6nD",
                         )}
                     />
                 )}
@@ -86,8 +87,13 @@ const Layout = (props: LayoutProps) => {
                 <link
                     rel="mask-icon"
                     href="/favicon/safari-pinned-tab.svg"
-                    color="#5bbad5"
+                    color="#000000"
                 />
+                <meta
+                    name="/favicon/msapplication-TileColor"
+                    content="#ffffff"
+                />
+                <meta name="theme-color" content="#ffffff" />
 
                 <script
                     dangerouslySetInnerHTML={{ __html: googleAnalyticsScript }}

@@ -18,5 +18,8 @@
         @include media-mobile {
             padding: 45px 11px 40px;
         }
+        @include media-tablet {
+            padding: 45px 11px 40px;
+        }
     }
 }

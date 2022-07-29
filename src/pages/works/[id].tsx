@@ -17,7 +17,7 @@ import ContentImage from "components/contentImage/contentImage";
 
 const cn = cb.bind(styles);
 
-const WorkDetail: NextPage = () => {
+const WorkDetail: NextPage = ({ work }: any) => {
     const router = useRouter();
     const language = useRecoilValue(languageState);
     const works: WorkDTO = workJson;
@@ -29,6 +29,8 @@ const WorkDetail: NextPage = () => {
         if (router.isReady) {
             const { id } = router.query;
             if (id) setWorkId(id as string);
+
+            console.log(work);
         }
     }, [router.isReady]);
 
@@ -119,8 +121,14 @@ const WorkDetail: NextPage = () => {
         );
     else
         return (
-            <Layout>
+            <Layout
+                title={work.title}
+                description={work.content}
+                image={work.image}
+            >
                 <div className={cn("loading")}>
+                    <h1>{work.title}</h1>
+                    <p>{work.content}</p>
                     <p style={{ textAlign: "center" }}>Loading...</p>
                 </div>
             </Layout>
@@ -135,14 +143,42 @@ export const getStaticPaths: GetStaticPaths = async () => {
     };
 
     const paths = works.data.map((item) => ({
-        params: { id: getWorkPopupId(item.title.en, item.info.category[0]) },
+        params: {
+            id: getWorkPopupId(item.title.en, item.info.category[0]),
+        },
     }));
     return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const workId = context.params?.id || "";
-    const work = { id: workId };
+    const works: WorkDTO = workJson;
+    const workId: string = (context.params?.id as string) || "";
+    let workDescription;
+    let workTitle;
+    let workImage;
+    let splitedWorkId = workId.split("-");
+    const category = splitedWorkId[splitedWorkId.length - 1];
+    const title = workId.replace(`-${category}`, "");
+
+    works.data
+        .filter(
+            (item) =>
+                lowerCaseParser(item.title.en) === title &&
+                item.info.category[0]?.toLowerCase() === category,
+        )
+        .map((item) => {
+            workDescription = item.description.ko;
+            workTitle = item.title.ko;
+            workImage = item.image ? item.image[0].url : null;
+        });
+
+    const work = {
+        id: workId,
+        title: workTitle,
+        content: workDescription,
+        image: workImage,
+    };
+
     return { props: { work } };
 };
 

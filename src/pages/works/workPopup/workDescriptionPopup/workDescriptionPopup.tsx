@@ -7,12 +7,15 @@ import Link from "next/link";
 import { WorkPopupProps } from "../workPopup";
 const cn = cb.bind(styles);
 
-export interface WorkDescriptionPopupProps extends WorkPopupProps {}
+export interface WorkDescriptionPopupProps extends WorkPopupProps {
+    className?: string;
+    onClickClose?: () => void;
+}
 
 const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
-    const { workData, idx, id } = props;
+    const { workData, idx, id, className, onClickClose } = props;
     const language = useRecoilValue(languageState);
-    const maxLength = 100;
+    const maxLength = 90;
     const descriptionLenght =
         workData && workData.description[language]?.length;
     const isOverMaxLenght: boolean =
@@ -24,9 +27,10 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                 <Popup
                     title={`${workData.info.category} - ${workData.info.role}`}
                     idx={idx + 1}
-                    className={cn("container")}
+                    className={cn("container", className)}
                     isActive={false}
                     isDraggable={false}
+                    onClickClose={onClickClose}
                 >
                     <p>
                         {workData.description[language]
