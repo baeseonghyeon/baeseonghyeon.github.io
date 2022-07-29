@@ -35,4 +35,19 @@
             word-break: keep-all;
         }
     }
+
+    @include media-tablet {
+        &__bae-seonghyeon {
+            top: initial !important;
+            left: initial !important;
+        }
+        &__contact {
+            top: initial !important;
+            left: initial !important;
+        }
+        &__comment {
+            width: 100% !important;
+            word-break: keep-all;
+        }
+    }
 }

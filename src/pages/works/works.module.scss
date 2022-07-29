@@ -8,5 +8,11 @@
             top: 50px !important;
             left: 26px !important;
         }
+
+        @include media-tablet {
+            width: 100%;
+            top: initial !important;
+            left: initial !important;
+        }
     }
 }

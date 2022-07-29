@@ -91,6 +91,15 @@
         transform: initial !important;
     }
 
+    @include media-tablet {
+        position: relative;
+        width: 100%;
+        margin-bottom: 5px;
+        top: initial !important;
+        left: initial !important;
+        transform: initial !important;
+    }
+
     &.hide {
         opacity: 0;
         z-index: -1;

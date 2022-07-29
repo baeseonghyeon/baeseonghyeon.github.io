@@ -15,8 +15,8 @@
         {
             "sort": 99,
             "common": "description",
-            "ko": "이 웹사이트는 Next.js + TypeScript로 개발되어 Github.io에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
-            "en": "This website was developed using Next.js + TypeScript and Deployed on Github.io \n\nWebsite developed and designed by Bae Seonghyeon"
+            "ko": "이 웹사이트는 Next.js + TypeScript로 개발되어 Github Pages에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
+            "en": "This website was developed using Next.js + TypeScript and Deployed on Github Pages \n\nWebsite developed and designed by Bae Seonghyeon"
         }
     ],
     "list": [

@@ -8,6 +8,10 @@
         width: 100%;
     }
 
+    @include media-tablet {
+        width: 100%;
+    }
+
     .body {
         padding: 0 !important;
         position: relative;
@@ -36,10 +40,14 @@
         }
     }
     .skeleton {
-        // position: absolute;
-        // width: 100%;
-        // height: 100%;
-        // left: 0;
         z-index: initial !important;
+    }
+
+    .description-popup {
+        opacity: 1;
+        &--hide {
+            opacity: 0;
+            z-index: -1 !important;
+        }
     }
 }

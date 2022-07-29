@@ -69,13 +69,17 @@ const WorkPopup = (props: WorkPopupProps) => {
                     )
                 )}
 
-                {innerPopupVisibility && (
-                    <WorkDescriptionPopup
-                        workData={workData}
-                        idx={idx}
-                        id={id}
-                    />
-                )}
+                {/* {innerPopupVisibility && ( */}
+                <WorkDescriptionPopup
+                    className={cn(
+                        `description-popup${!innerPopupVisibility && "--hide"}`,
+                    )}
+                    workData={workData}
+                    idx={idx}
+                    id={id}
+                    onClickClose={() => setInnerPopupVisibility(false)}
+                />
+                {/* )} */}
             </Popup>
         );
     } else {

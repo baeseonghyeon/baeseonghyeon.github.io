@@ -65,6 +65,14 @@
             -webkit-transform: rotateY(360deg);
         }
     }
+
+    @include media-mobile {
+        display: none;
+    }
+
+    @include media-tablet {
+        display: none;
+    }
 }
 
 .hide {

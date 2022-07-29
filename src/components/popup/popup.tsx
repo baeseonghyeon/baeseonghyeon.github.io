@@ -11,8 +11,7 @@ import Draggable from "react-draggable";
 import useMediaQuery from "hooks/useMediaQuery";
 import { currentActivePopupState, popupOverlayState } from "recoil/ui";
 import { useRecoilState } from "recoil";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IoIosClose, IoMdClose } from "react-icons/io";
+import { IoMdClose } from "react-icons/io";
 const cn = cb.bind(styles);
 
 export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
@@ -23,6 +22,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     isRandomPositon?: boolean;
     buttons?: ReactNode[];
     bodyClassName?: string;
+    onClickClose?: () => void;
 }
 
 const Popup = (props: PopupProps) => {
@@ -34,6 +34,7 @@ const Popup = (props: PopupProps) => {
         isRandomPositon = true,
         buttons = null,
         bodyClassName,
+        onClickClose,
     } = props;
 
     const { isPcScreenSize } = useMediaQuery();
@@ -131,9 +132,17 @@ const Popup = (props: PopupProps) => {
                             })}
                         <div
                             className={cn("close__button")}
-                            onClick={() => onClosePopup(popupRef.current)}
-                            onTouchStart={() =>
-                                isPcScreenSize && onClosePopup(popupRef.current)
+                            onClick={
+                                onClickClose
+                                    ? onClickClose
+                                    : () => onClosePopup(popupRef.current)
+                            }
+                            onTouchStart={
+                                onClickClose
+                                    ? onClickClose
+                                    : () =>
+                                          isPcScreenSize &&
+                                          onClosePopup(popupRef.current)
                             }
                         >
                             <IoMdClose size={17.5} />
