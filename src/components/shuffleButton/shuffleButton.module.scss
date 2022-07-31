@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     .close__button {
+        z-index: 1;
         width: 25px;
         height: 25px;
         display: flex;
