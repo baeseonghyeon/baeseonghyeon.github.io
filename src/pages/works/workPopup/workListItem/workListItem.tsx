@@ -19,7 +19,6 @@ const WorkListItem = (props: WorkListItemProps) => {
         currentActivePopupState,
     );
     const router = useRouter();
-    const { isPcScreenSize } = useMediaQuery();
     const redirectLink = `/works/${id}`;
 
     useEffect(() => {
@@ -59,13 +58,13 @@ const WorkListItem = (props: WorkListItemProps) => {
                 >
                     [{idx}]
                 </span>
-                <Link
-                    href={redirectLink}
-                    onTouchStart={() => {
-                        isPcScreenSize && (window.location.href = redirectLink);
-                    }}
-                >
-                    <span className={cn("link")}>
+                <Link href={redirectLink}>
+                    <span
+                        className={cn("link")}
+                        onTouchStart={() => {
+                            router.push(redirectLink);
+                        }}
+                    >
                         {workData.title[language]} ( {workData.info.date} ) [
                         {workData.info.category}]
                     </span>

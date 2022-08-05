@@ -9,6 +9,7 @@ import {
     faInstagram,
     faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
+import { touchRedirect } from "libs/touchHandler";
 const cn = cb.bind(styles);
 
 export interface ProfileListItemProps {
@@ -40,7 +41,11 @@ const ProfileListItem = (props: ProfileListItemProps) => {
                     </span>
                 )}
 
-                <a href={listData.url} target="_blank">
+                <a
+                    href={listData.url}
+                    target="_blank"
+                    onTouchStart={() => touchRedirect(listData.url, true)}
+                >
                     {listData.title[language]}
                     {!isIcon && "("}
                     {listData.title["common"]}

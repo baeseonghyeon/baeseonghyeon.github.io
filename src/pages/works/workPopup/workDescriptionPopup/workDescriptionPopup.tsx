@@ -5,6 +5,8 @@ import { languageState } from "recoil/ui";
 import Popup from "components/popup/popup";
 import Link from "next/link";
 import { WorkPopupProps } from "../workPopup";
+import { useRouter } from "next/router";
+import { touchRedirect } from "libs/touchHandler";
 const cn = cb.bind(styles);
 
 export interface WorkDescriptionPopupProps extends WorkPopupProps {
@@ -14,6 +16,7 @@ export interface WorkDescriptionPopupProps extends WorkPopupProps {
 
 const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
     const { workData, idx, id, className, onClickClose } = props;
+    const router = useRouter();
     const language = useRecoilValue(languageState);
     const maxLength = 90;
     const descriptionLenght =
@@ -41,7 +44,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                             <>
                                 ...
                                 <Link href={`/works/${id}`}>
-                                    <span className={cn("link")}>
+                                    <span
+                                        className={cn("link")}
+                                        onTouchStart={() => {
+                                            router.push(`/works/${id}`);
+                                        }}
+                                    >
                                         read more
                                     </span>
                                 </Link>
@@ -53,7 +61,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         workData.link.map((link) => {
                             return (
                                 <Link href={link.url} target="_blank">
-                                    <span className={cn("link", "link--block")}>
+                                    <span
+                                        className={cn("link", "link--block")}
+                                        onTouchStart={() =>
+                                            touchRedirect(link.url)
+                                        }
+                                    >
                                         Visit the {link.type} →
                                     </span>
                                 </Link>
@@ -62,7 +75,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
 
                     {!isOverMaxLenght && (
                         <Link href={`/works/${id}`}>
-                            <span className={cn("link", "link--block")}>
+                            <span
+                                className={cn("link", "link--block")}
+                                onTouchStart={() => {
+                                    router.push(`/works/${id}`);
+                                }}
+                            >
                                 Read More →
                             </span>
                         </Link>

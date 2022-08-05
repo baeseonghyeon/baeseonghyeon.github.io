@@ -43,6 +43,7 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
                 <div
                     className={cn("wrapper")}
                     onClick={() => visibility && onClick()}
+                    onTouchStart={() => visibility && onClick()}
                 />
             </div>
         </Draggable>

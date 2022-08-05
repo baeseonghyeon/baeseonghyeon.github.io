@@ -1,6 +1,6 @@
 import cb from "classnames/bind";
 import styles from "./filterButton.module.scss";
-import React, { HtmlHTMLAttributes } from "react";
+import React, { HtmlHTMLAttributes, useRef } from "react";
 import { IoMdOptions } from "react-icons/io";
 import { WorkCategoryEnums, WorkRoleEnums } from "interface/dto/work";
 import { workFilterState } from "recoil/ui";
@@ -15,14 +15,19 @@ interface FilterButtonProps extends HtmlHTMLAttributes<HTMLSelectElement> {
 const FilterButton = (props: FilterButtonProps) => {
     const { onChange } = props;
     const workFilterValue = useRecoilValue(workFilterState);
+    const selectRef = useRef<HTMLSelectElement>(null);
 
     return (
-        <div className={cn("button")}>
+        <div
+            className={cn("button")}
+            onTouchStart={() => selectRef.current?.focus()}
+        >
             <IoMdOptions></IoMdOptions>
             <select
                 defaultValue={workFilterValue}
                 className={cn("select")}
                 onChange={onChange}
+                ref={selectRef}
             >
                 <option value="All">All</option>
                 {Object.keys(WorkCategoryEnums).map((item) => {

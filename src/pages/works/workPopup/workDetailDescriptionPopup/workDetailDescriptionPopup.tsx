@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
+import { touchRedirect } from "libs/touchHandler";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -25,7 +26,11 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                     {workData.description[language]}{" "}
                     {workData.description.link?.map((item, idx, { length }) => {
                         return (
-                            <a href={item.url} target="_blank">
+                            <a
+                                href={item.url}
+                                target="_blank"
+                                onTouchStart={() => touchRedirect(item.url)}
+                            >
                                 {idx === 0 && "("}
                                 {item.common ? item.common : item[language]}
                                 {idx !== length - 1 ? ", " : ")"}
@@ -40,6 +45,7 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             href={item.url}
                             target="_blank"
                             className={cn("link")}
+                            onTouchStart={() => touchRedirect(item.url)}
                         >
                             Visit the {item.type} →
                         </a>
