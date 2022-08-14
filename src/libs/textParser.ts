@@ -6,8 +6,8 @@ export const lowerCaseParser = (text: string | undefined) => {
     let reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
 
     if (text) {
-        text = text.replaceAll(reg, "");
-        return text.toLowerCase().replaceAll(" ", "-");
+        text = text.replace(reg, "") as string;
+        return text.toLowerCase().replace(/ /g, "-") as string;
     }
 };
 

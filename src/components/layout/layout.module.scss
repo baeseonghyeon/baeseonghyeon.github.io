@@ -14,6 +14,7 @@
         padding: 0px 30px;
         @include media-not-mobile {
             height: 100vh;
+            overflow: unset;
         }
         @include media-mobile {
             padding: 45px 11px 40px;

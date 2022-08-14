@@ -582,7 +582,7 @@
             },
             "description": {
                 "ko": "새로운 시대를 NEXTERA하다. NEXTERA는 세계 최초의 L2E (Life to Earn) 메타버스입니다. 메타버스와 일상생활에서 유저가 경험을 통해 보상을 얻을 수 있습니다. 넥스테라의 앱, 게임 클라이언트의 개발과 기획, UI디자인을 담당했습니다.",
-                "en": "It's a app that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D. I was in charge of app client development, planning, and design."
+                "en": "NEXTERA a new era. NEXTERA is the world's first Life to Earn (L2E) metaverse. Users can gain rewards through experience in metaverse and daily life. I was in charge of development, planning, and UI design of Nextera's app and game client."
             },
             "link": [
                 { "type": "Website", "url": "https://www.nextera.land/" },
@@ -608,15 +608,15 @@
             ],
             "image": [
                 {
-                    "url": "1EQI130ykbe28PMwxJpCIsr7cijhmN-2Y",
-                    "fullSize": true
-                },
-                {
                     "url": "1FSGhaROZ-GSWfXWWIKBbK-gVoy1LVlOH",
                     "fullSize": true
                 },
                 {
                     "url": "1DUHIAo8iRRC6tGy2jWpvVCZhsSuyOw36",
+                    "fullSize": true
+                },
+                {
+                    "url": "1EQI130ykbe28PMwxJpCIsr7cijhmN-2Y",
                     "fullSize": true
                 }
             ]

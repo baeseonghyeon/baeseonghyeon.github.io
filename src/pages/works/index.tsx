@@ -10,8 +10,8 @@ import { useRecoilState } from "recoil";
 import { workFilterState } from "recoil/ui";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
-import WorkListItem from "./workPopup/workListItem/workListItem";
-import WorkPopup from "./workPopup/workPopup";
+import WorkListItem from "../../components/workPopup/workListItem/workListItem";
+import WorkPopup from "../../components/workPopup/workPopup";
 import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
 
 const cn = cb.bind(styles);

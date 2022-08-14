@@ -23,18 +23,18 @@ const Footer: NextPage = () => {
     const languageStateCookie = getCookie(languageStateCookieKey);
     const currentYear = moment().format("YYYY");
 
-    const darkModeCookieHandler = (darkModeState: boolean) => {
-        setCookie(darkModeStateCookieKey, darkModeState, { path: "/" });
-        setDarkMode(darkModeState);
+    const darkModeCookieHandler = (darkModeValue: boolean) => {
+        setCookie(darkModeStateCookieKey, darkModeValue, { path: "/" });
+        setDarkMode(darkModeValue);
     };
 
-    const languageCookieHandler = (languageState: Language) => {
-        setCookie(languageStateCookieKey, languageState, { path: "/" });
-        setLanguage(languageState);
+    const languageCookieHandler = (languageValue: Language) => {
+        setCookie(languageStateCookieKey, languageValue, { path: "/" });
+        setLanguage(languageValue);
     };
 
     useEffect(() => {
-        if (languageStateCookie !== null) {
+        if (languageStateCookie !== undefined) {
             setLanguage(
                 languageStateCookie === "ko" ? Language.ko : Language.en,
             );

@@ -3,10 +3,13 @@ import Footer from "components/footer/footer";
 import Navbar from "components/navbar/navbar";
 import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
 import useDarkMode from "hooks/useDarkMode";
+import { Language } from "interface/enums";
 import { googleCloudImageUrl } from "libs/textParser";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { languageState } from "recoil/ui";
 
 import styles from "./layout.module.scss";
 
@@ -22,13 +25,18 @@ const Layout = (props: LayoutProps) => {
     const { title, description, image } = props;
     const router = useRouter();
     const isDarkMode = useDarkMode();
+    const language = useRecoilValue(languageState);
     const [isLaod, setIsLoad] = useState(false);
-    const defaultTitle = "Bae Seonghyeon 배성현";
+    const defaultTitle = language === Language.ko ? "배성현" : "Bae Seonghyeon";
     const defaultDescription =
         "배성현은 프론트엔드 개발자 입니다. 아름답고 효과적인 서비스를 만들고 있습니다.";
 
-    const pageTitle = `${defaultTitle}${
-        (router && router.pathname === "/") || !title ? "" : ` | ${title}`
+    const pageTitle = `${defaultTitle} - ${
+        (router && router.pathname === "/") || !title
+            ? language === Language.ko
+                ? "Bae Seonghyeon"
+                : "배성현"
+            : title
     }`;
 
     const pageDescription =

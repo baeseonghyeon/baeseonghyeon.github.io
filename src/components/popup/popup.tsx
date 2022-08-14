@@ -12,6 +12,7 @@ import useMediaQuery from "hooks/useMediaQuery";
 import { currentActivePopupState, popupOverlayState } from "recoil/ui";
 import { useRecoilState } from "recoil";
 import { IoMdClose } from "react-icons/io";
+import { setPositionRandom } from "libs/positionHandler";
 const cn = cb.bind(styles);
 
 export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
@@ -70,15 +71,6 @@ const Popup = (props: PopupProps) => {
             setPositionRandom(popupRef.current);
         }
     }, [isRandomPositon]);
-
-    const setPositionRandom = (element: HTMLDivElement) => {
-        element.style.left = `${Math.floor(
-            Math.random() * (window.innerWidth - element.offsetWidth),
-        )}px`;
-        element.style.top = `${Math.floor(
-            Math.random() * (window.innerHeight - element.offsetHeight),
-        )}px`;
-    };
 
     const increasePopupOveray = () => {
         setZindex(popupOverlayDepth + 1);

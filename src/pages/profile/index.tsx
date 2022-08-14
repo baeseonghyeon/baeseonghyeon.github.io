@@ -13,7 +13,7 @@ import { useRecoilValue } from "recoil";
 import Popup from "components/popup/popup";
 import { useState } from "react";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
-import ProfileListItem from "./profileListItem/profileListItem";
+import ProfileListItem from "../../components/profileListItem/profileListItem";
 
 const cn = cb.bind(styles);
 
