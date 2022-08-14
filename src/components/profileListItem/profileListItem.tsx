@@ -10,6 +10,7 @@ import {
     faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import { touchRedirect } from "libs/touchHandler";
+import VelogLogoIcon from "components/icons/velogLogoIcon";
 const cn = cb.bind(styles);
 
 export interface ProfileListItemProps {
@@ -25,10 +26,10 @@ const ProfileListItem = (props: ProfileListItemProps) => {
         switch (name) {
             case "Github":
                 return <FontAwesomeIcon icon={faGithub} />;
-            case "Linkedin":
+            case "LinkedIn":
                 return <FontAwesomeIcon icon={faLinkedin} />;
             default:
-                return <FontAwesomeIcon icon={faInstagram} />;
+                return <VelogLogoIcon />;
         }
     };
 

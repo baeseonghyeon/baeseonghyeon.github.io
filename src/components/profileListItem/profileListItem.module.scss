@@ -20,6 +20,9 @@
         justify-content: center;
         svg {
             width: 14px;
+            path {
+                fill: var(--blue-color) !important;
+            }
         }
     }
 }

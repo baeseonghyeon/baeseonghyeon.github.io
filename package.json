@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "deploy": "rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
+        "deploy": "sh script/generate-sitemap.sh && rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
         "start": "next start",
         "lint": "next lint",
         "test": "jest --watch",
@@ -48,6 +48,7 @@
         "@types/react-dom": "18.0.5",
         "eslint": "^8.17.0",
         "eslint-config-next": "12.1.6",
+        "prettier": "2.7.1",
         "react-devtools": "^4.25.0",
         "typescript": "4.7.3"
     }

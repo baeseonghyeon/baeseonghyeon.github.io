@@ -10,8 +10,8 @@ import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
 import cb from "classnames/bind";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
-import WorkDetailDescriptionPopup from "./workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
-import WorkDetailInfoPopup from "./workPopup/workDetailInfoPopup/workDetailInfoPopup";
+import WorkDetailDescriptionPopup from "../../components/workPopup/workDetailDescriptionPopup/workDetailDescriptionPopup";
+import WorkDetailInfoPopup from "../../components/workPopup/workDetailInfoPopup/workDetailInfoPopup";
 import NotFound from "pages/404";
 import ContentImage from "components/contentImage/contentImage";
 
