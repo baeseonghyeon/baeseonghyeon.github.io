@@ -26,9 +26,24 @@ const WorkPopup = (props: WorkPopupProps) => {
     const { isPcScreenSize } = useMediaQuery();
     const [innerPopupVisibility, setInnerPopupVisibility] = useState(false);
 
+    // const scrollToPopup = () => {
+    //     const currentPopup = document.getElementById(id);
+    //     const screenHeight = document.documentElement.clientHeight;
+
+    //     if (currentPopup)
+    //         window.scrollTo({
+    //             top:
+    //                 currentPopup.offsetTop -
+    //                 (screenHeight / 2 - currentPopup.offsetHeight / 2),
+
+    //             behavior: "smooth",
+    //         });
+    // };
+
     useEffect(() => {
         if (currentActivePopup == document.getElementById(id)) {
             setInnerPopupVisibility(true);
+            // scrollToPopup();
         } else {
             setInnerPopupVisibility(false);
         }
@@ -69,7 +84,6 @@ const WorkPopup = (props: WorkPopupProps) => {
                     )
                 )}
 
-                {/* {innerPopupVisibility && ( */}
                 <WorkDescriptionPopup
                     className={cn(
                         `description-popup${!innerPopupVisibility && "--hide"}`,
@@ -79,7 +93,6 @@ const WorkPopup = (props: WorkPopupProps) => {
                     id={id}
                     onClickClose={() => setInnerPopupVisibility(false)}
                 />
-                {/* )} */}
             </Popup>
         );
     } else {

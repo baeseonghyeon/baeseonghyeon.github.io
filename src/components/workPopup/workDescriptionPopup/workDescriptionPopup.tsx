@@ -7,6 +7,7 @@ import Link from "next/link";
 import { WorkPopupProps } from "../workPopup";
 import { useRouter } from "next/router";
 import { touchRedirect } from "libs/touchHandler";
+import useMediaQuery from "hooks/useMediaQuery";
 const cn = cb.bind(styles);
 
 export interface WorkDescriptionPopupProps extends WorkPopupProps {
@@ -23,6 +24,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
         workData && workData.description[language]?.length;
     const isOverMaxLenght: boolean =
         descriptionLenght !== undefined && descriptionLenght > maxLength;
+    const { isPcScreenSize } = useMediaQuery();
 
     if (workData) {
         return (
@@ -46,9 +48,10 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                                 <Link href={`/works/${id}`}>
                                     <span
                                         className={cn("link")}
-                                        onTouchStart={() => {
-                                            router.push(`/works/${id}`);
-                                        }}
+                                        onTouchStart={() =>
+                                            isPcScreenSize &&
+                                            router.push(`/works/${id}`)
+                                        }
                                     >
                                         read more
                                     </span>
@@ -64,6 +67,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                                     <span
                                         className={cn("link", "link--block")}
                                         onTouchStart={() =>
+                                            isPcScreenSize &&
                                             touchRedirect(link.url)
                                         }
                                     >
@@ -77,9 +81,10 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         <Link href={`/works/${id}`}>
                             <span
                                 className={cn("link", "link--block")}
-                                onTouchStart={() => {
-                                    router.push(`/works/${id}`);
-                                }}
+                                onTouchStart={() =>
+                                    isPcScreenSize &&
+                                    router.push(`/works/${id}`)
+                                }
                             >
                                 Read More →
                             </span>

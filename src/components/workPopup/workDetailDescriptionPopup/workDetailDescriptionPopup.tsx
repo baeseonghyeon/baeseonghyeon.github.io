@@ -5,6 +5,7 @@ import { languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
 import { touchRedirect } from "libs/touchHandler";
+import useMediaQuery from "hooks/useMediaQuery";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -14,6 +15,7 @@ export interface WorkDetailDescriptionPopupProps {
 const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
     const { workData } = props;
     const language = useRecoilValue(languageState);
+    const { isPcScreenSize } = useMediaQuery();
 
     if (workData) {
         return (
@@ -29,7 +31,9 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             <a
                                 href={item.url}
                                 target="_blank"
-                                onTouchStart={() => touchRedirect(item.url)}
+                                onTouchStart={() =>
+                                    isPcScreenSize && touchRedirect(item.url)
+                                }
                             >
                                 {idx === 0 && "("}
                                 {item.common ? item.common : item[language]}
@@ -45,7 +49,9 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             href={item.url}
                             target="_blank"
                             className={cn("link")}
-                            onTouchStart={() => touchRedirect(item.url)}
+                            onTouchStart={() =>
+                                isPcScreenSize && touchRedirect(item.url)
+                            }
                         >
                             Visit the {item.type} →
                         </a>
