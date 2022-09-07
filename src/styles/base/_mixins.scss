@@ -2,12 +2,12 @@
 
 // Break Point
 $large: 1280px;
-$medium: 768px;
+$medium: 844px;
 $small: 480px;
 
 // Pc
 @mixin media-pc {
-    @media screen and (min-width: $medium) and (max-width: $large) {
+    @media screen and (min-width: $large) {
         @content;
     }
 }
@@ -26,17 +26,34 @@ $small: 480px;
     }
 }
 
-// Color
-@mixin ColorBright {
-    --background-color: #fff;
-    --on-background-color: #222;
-    --blue-color: blue;
-    --shadow-color: #777777;
+// Not Mobile
+@mixin media-not-mobile {
+    @media screen and (min-width: ($medium + 1)) {
+        @content;
+    }
 }
 
-@mixin ColorDark {
-    --background-color: #272727;
+// Color
+@mixin color-bright {
+    --background-color: #fff;
+    --on-background-color: #222;
+    --shadow-color: #777777;
+    --blue-color: blue;
+    --lightgray-color: #ddd;
+    --gray-color: #969696;
+}
+
+@mixin color-dark {
+    --background-color: #171717;
     --on-background-color: #eee;
     --blue-color: #0078ff;
     --shadow-color: #000;
+    --lightgray-color: #333;
+    --gray-color: #7e7e7e;
+}
+
+@mixin shadow-outline($shadow-weight) {
+    border: 1px solid var(--on-background-color);
+    background: var(--background-color);
+    box-shadow: 0vh 0vh $shadow-weight var(--on-background-color);
 }

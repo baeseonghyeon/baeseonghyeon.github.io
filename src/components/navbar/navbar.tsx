@@ -14,7 +14,7 @@ interface NavItem {
 const Navbar: NextPage = () => {
     const router = useRouter();
     const navItems: NavItem[] = [
-        { title: "Bae Seonghyeon", path: "/" },
+        { title: "Bae Seonghyeon", path: "/profile" },
         { title: "Works", path: "/works" },
     ];
 
@@ -29,6 +29,11 @@ const Navbar: NextPage = () => {
                                 "link__label",
                                 router &&
                                     router.pathname === item.path &&
+                                    "link__label-active",
+
+                                router &&
+                                    router.pathname === "/" &&
+                                    item.path === "/profile" &&
                                     "link__label-active",
                             )}
                         >

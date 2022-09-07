@@ -1,7 +1,7 @@
 @import "styles/base/variables";
 
 .container {
-    height: calc(100% - 200px);
+    height: calc(100vh - 85px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,13 +19,14 @@
 }
 
 .link__label {
-    color: $color-primary;
+    color: var(--blue-color);
     font-weight: 700;
+    font-size: $fs-m;
     text-decoration: none;
     margin-left: 5px;
     cursor: pointer;
     &:hover {
-        color: $color-primary;
+        color: var(--blue-color);
         text-decoration: underline;
     }
 }

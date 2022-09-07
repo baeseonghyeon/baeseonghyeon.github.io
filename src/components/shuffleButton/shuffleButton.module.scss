@@ -1,0 +1,94 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    z-index: 999;
+    position: absolute;
+    // left: calc(50vw - 33.5px);
+    // top: calc(50vh - 17.5px);
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .close__button {
+        z-index: 1;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 00px;
+        right: 00px;
+        cursor: pointer;
+        border: 1px solid var(--lightgray-color);
+        background-color: var(--background-color);
+
+        svg {
+            transform: initial;
+            transition: ease all 0.1s;
+        }
+        &:hover {
+            border-color: var(--on-background-color);
+        }
+    }
+
+    .wrapper {
+        padding: 5px 10px;
+
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: white;
+        &:hover {
+            text-decoration: underline;
+        }
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite;
+        -moz-animation: bounce 2s infinite;
+        background-image: url("./pointer.svg");
+        height: 50px;
+        width: 50px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-20px);
+        }
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+
+    @include media-mobile {
+        display: none;
+    }
+
+    @include media-tablet {
+        display: none;
+    }
+}
+
+.hide {
+    .wrapper {
+        opacity: 0;
+        cursor: initial;
+    }
+    .close__button {
+        svg {
+            transform: rotate(45deg);
+        }
+    }
+}

@@ -16,6 +16,12 @@
         "incremental": true,
         "baseUrl": "./src"
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.setup.js"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "jest.setup.js",
+        "script/robots.js"
+    ],
     "exclude": ["node_modules"]
 }
