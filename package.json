@@ -1,5 +1,5 @@
 {
-    "homepage": "https://baeseonghyeon.github.io/",
+    "homepage": "https://baeseonghyeon.github.io//",
     "name": "baesh_portfolio_website",
     "version": "0.1.0",
     "private": true,
@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "deploy": "sh script/generate-sitemap.sh && rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages --force",
+        "deploy": "sh script/generate-sitemap.sh && rm -rf node_modules/.cache && next build && next export && touch out/.nojekyll && git add out/ && git commit -m \"Deploy Next.js to gh-pages\" && git subtree push --prefix out origin gh-pages",
         "start": "next start",
         "lint": "next lint",
         "test": "jest --watch",
