@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import next, { NextPage } from "next";
 import styles from "./profile.module.scss";
 import cb from "classnames/bind";
 import Layout from "components/layout/layout";

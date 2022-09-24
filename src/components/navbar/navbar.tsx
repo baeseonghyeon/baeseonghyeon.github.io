@@ -3,6 +3,8 @@ import cb from "classnames/bind";
 import { useRouter } from "next/router";
 import styles from "./navbar.module.scss";
 import { NextPage } from "next";
+import { useRecoilValue } from "recoil";
+import { prefixState } from "recoil/env";
 
 const cn = cb.bind(styles);
 
@@ -13,6 +15,7 @@ interface NavItem {
 
 const Navbar: NextPage = () => {
     const router = useRouter();
+    const prefix = useRecoilValue(prefixState);
     const navItems: NavItem[] = [
         { title: "Bae Seonghyeon", path: "/profile" },
         { title: "Works", path: "/works" },
@@ -22,7 +25,7 @@ const Navbar: NextPage = () => {
         <div className={cn("container", "flex-row", "d-flex")}>
             {navItems.map((item, idx) => {
                 return (
-                    <Link href={item.path} key={idx}>
+                    <Link href={item.path} as={prefix + item.path} key={idx}>
                         <a
                             href={item.path}
                             className={cn(

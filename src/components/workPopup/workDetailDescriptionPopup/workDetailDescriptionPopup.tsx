@@ -6,6 +6,7 @@ import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
 import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
+import { prefixState } from "recoil/env";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -14,7 +15,9 @@ export interface WorkDetailDescriptionPopupProps {
 
 const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
     const { workData } = props;
+    const prefix = useRecoilValue(prefixState);
     const language = useRecoilValue(languageState);
+
     const { isPcScreenSize } = useMediaQuery();
 
     if (workData) {

@@ -9,6 +9,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
+import { prefixState } from "recoil/env";
 import { languageState } from "recoil/ui";
 
 import styles from "./layout.module.scss";
@@ -24,6 +25,7 @@ interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
 const Layout = (props: LayoutProps) => {
     const { title, description, image } = props;
     const router = useRouter();
+    const prefix = useRecoilValue(prefixState);
     const isDarkMode = useDarkMode();
     const language = useRecoilValue(languageState);
     const [isLaod, setIsLoad] = useState(false);
@@ -60,7 +62,7 @@ const Layout = (props: LayoutProps) => {
                 <title>{pageTitle}</title>
                 <meta name="description" content={pageDescription} />
                 <meta property="og:title" content={pageTitle} />
-                {router.pathname !== "/works" && (
+                {router.pathname !== `${prefix}/works` && (
                     <meta
                         property="og:image"
                         content={googleCloudImageUrl(
@@ -73,32 +75,35 @@ const Layout = (props: LayoutProps) => {
                     name="theme-color"
                     content={isDarkMode ? "#272727" : "#fff"}
                 />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href={`${prefix}/favicon.ico`} />
                 <link
                     rel="apple-touch-icon"
                     sizes="180x180"
-                    href="/favicon/apple-touch-icon.png"
+                    href={`${prefix}/favicon/apple-touch-icon.png`}
                 />
                 <link
                     rel="icon"
                     type="image/png"
                     sizes="32x32"
-                    href="/favicon/favicon-32x32.png"
+                    href={`${prefix}/favicon/favicon-32x32.png`}
                 />
                 <link
                     rel="icon"
                     type="image/png"
                     sizes="16x16"
-                    href="/favicon/favicon-16x16.png"
+                    href={`${prefix}/favicon/favicon-16x16.png`}
                 />
-                <link rel="manifest" href="/favicon/site.webmanifest" />
+                <link
+                    rel="manifest"
+                    href={`${prefix}/favicon/site.webmanifes`}
+                />
                 <link
                     rel="mask-icon"
-                    href="/favicon/safari-pinned-tab.svg"
+                    href={`${prefix}/favicon/safari-pinned-tab.svg`}
                     color="#000000"
                 />
                 <meta
-                    name="/favicon/msapplication-TileColor"
+                    name={`${prefix}/favicon/msapplication-TileColor`}
                     content="#ffffff"
                 />
                 <meta name="theme-color" content="#ffffff" />

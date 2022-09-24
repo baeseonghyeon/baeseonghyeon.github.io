@@ -2,18 +2,21 @@ import styles from "./workListItem.module.scss";
 import cb from "classnames/bind";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { currentActivePopupState, languageState } from "recoil/ui";
+import { prefixState } from "recoil/env";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
 import { WorkPopupProps } from "../workPopup";
 import { useEffect } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
+
 const cn = cb.bind(styles);
 
 export interface WorkListItemProps extends WorkPopupProps {}
 
 const WorkListItem = (props: WorkListItemProps) => {
     const { workData, idx, id } = props;
+    const prefix = useRecoilValue(prefixState);
     const language = useRecoilValue(languageState);
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
@@ -62,13 +65,14 @@ const WorkListItem = (props: WorkListItemProps) => {
                 >
                     [{idx}]
                 </span>
-                <Link href={redirectLink}>
-                    <span
-                        className={cn("link")}
-                        onTouchStart={() =>
-                            isPcScreenSize && router.push(redirectLink)
-                        }
-                    >
+                <Link
+                    href={redirectLink}
+                    as={prefix + redirectLink}
+                    onTouchStart={() =>
+                        isPcScreenSize && router.push(prefix + redirectLink)
+                    }
+                >
+                    <span className={cn("link")}>
                         {workData.title[language]} ( {workData.info.date} ) [
                         {workData.info.category}]
                     </span>
