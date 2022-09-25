@@ -6,8 +6,6 @@ $popup-padding: 24px;
 .container {
     position: absolute;
     border-radius: $b-radius + 2;
-    // @include shadow-without-outline();
-
     &::before {
         content: "";
         border-radius: $b-radius + 2;
@@ -43,7 +41,7 @@ $popup-padding: 24px;
         padding-bottom: $popup-padding - 10;
 
         h1 {
-            font-size: $fs-l;
+            font-size: $fs-l - 0.1;
             font-weight: bold;
             touch-action: auto;
             text-overflow: ellipsis;

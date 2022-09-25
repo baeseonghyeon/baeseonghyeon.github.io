@@ -62,6 +62,7 @@ div {
     font-weight: $fw;
     letter-spacing: $ls;
     line-height: $lh-m;
+    word-break: break-all;
 }
 
 a {
@@ -84,6 +85,7 @@ ul {
     list-style: none;
     li {
         font-size: $fs-m;
+        word-break: break-all;
         a {
             letter-spacing: $ls;
             font-weight: $fw;

@@ -43,6 +43,7 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                     })}
                 </p>
 
+                {workData.link && <br></br>}
                 {workData.link?.map((item) => {
                     return (
                         <a

@@ -69,8 +69,7 @@ const WorkListItem = (props: WorkListItemProps) => {
                             isPcScreenSize && router.push(workDetailPath)
                         }
                     >
-                        {workData.title[language]} ( {workData.info.date} ) [
-                        {workData.info.category}]
+                        {`${workData.title[language]} (${workData.info.date}) [${workData.info.category}]`}
                     </span>
                 </Link>
             </span>

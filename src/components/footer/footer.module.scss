@@ -18,18 +18,19 @@
         justify-content: center;
         align-items: center;
         font-size: $fs-s !important;
+
         span {
             font-size: $fs-s !important;
+            color: var(--gray-color);
         }
         a {
-            color: var(--on-background-color);
             text-decoration: none;
             height: 100%;
             width: 4px;
         }
         &::before {
             content: "©";
-            color: var(--on-background-color);
+            color: var(--gray-color);
             float: left;
             margin-left: -13px;
         }
@@ -38,7 +39,6 @@
         &__container {
             position: relative;
             top: 1px;
-            min-width: 118px;
             display: flex;
             flex-direction: row;
             justify-content: flex-end;
