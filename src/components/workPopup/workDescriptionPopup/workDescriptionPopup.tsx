@@ -25,6 +25,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
     const isOverMaxLenght: boolean =
         descriptionLenght !== undefined && descriptionLenght > maxLength;
     const { isPcScreenSize } = useMediaQuery();
+    const workDetailPath = `/works/${id}`;
 
     if (workData) {
         return (
@@ -45,12 +46,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         {isOverMaxLenght && (
                             <>
                                 ...
-                                <Link href={`/works/${id}`}>
+                                <Link href={workDetailPath}>
                                     <span
                                         className={cn("link")}
                                         onTouchStart={() =>
                                             isPcScreenSize &&
-                                            router.push(`/works/${id}`)
+                                            router.push(workDetailPath)
                                         }
                                     >
                                         read more
@@ -78,12 +79,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         })}
 
                     {!isOverMaxLenght && (
-                        <Link href={`/works/${id}`}>
+                        <Link href={workDetailPath}>
                             <span
                                 className={cn("link", "link--block")}
                                 onTouchStart={() =>
                                     isPcScreenSize &&
-                                    router.push(`/works/${id}`)
+                                    router.push(workDetailPath)
                                 }
                             >
                                 Read More →

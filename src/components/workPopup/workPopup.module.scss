@@ -17,6 +17,7 @@
         position: relative;
         width: 100%;
         background-color: black;
+        border-radius: 0 0 $b-radius $b-radius !important;
     }
 
     .image,
@@ -24,10 +25,12 @@
         &__container {
             height: 0;
             padding-bottom: 56.25%;
+            border-radius: 0 0 $b-radius $b-radius !important;
             iframe {
                 width: 100%;
                 height: 100%;
                 position: absolute;
+                border-radius: 0 0 $b-radius $b-radius !important;
             }
         }
     }
@@ -41,6 +44,7 @@
     }
     .skeleton {
         z-index: initial !important;
+        border-radius: 0 0 $b-radius $b-radius !important;
     }
 
     .description-popup {

@@ -1,5 +1,5 @@
 import { Language } from "interface/enums";
-import { atom, selector } from "recoil";
+import { atom } from "recoil";
 
 export const darkModeState = atom<boolean>({
     key: "darkModeState",
