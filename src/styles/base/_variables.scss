@@ -14,9 +14,9 @@ $color-blue-dark: #0078ff;
 $color-shadow-dark: #000;
 
 /* font size */
-$fs-xs: 0.6rem;
-$fs-s: 0.75rem;
-$fs-m: 0.9rem;
+$fs-xs: 0.7rem;
+$fs-s: 0.9rem;
+$fs-m: 1rem;
 $fs-l: 1.2rem;
 
 /* font weight */
@@ -31,8 +31,9 @@ $lh-s: 1.6;
 $lh-m: 1.6;
 $lh-l: 1.9;
 
-/* border width */
+/* border width, radius */
 $bw: 1px;
+$b-radius: 8px;
 
 /* zindex */
 $z-layout: 999;

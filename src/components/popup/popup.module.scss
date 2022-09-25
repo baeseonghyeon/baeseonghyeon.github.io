@@ -3,6 +3,7 @@
 
 .container {
     position: absolute;
+    border-radius: $b-radius + 2;
     @include shadow-outline(1vh);
     p {
         margin: 0;
@@ -11,10 +12,12 @@
         text-align: left;
         li {
             margin-bottom: 5px;
+            display: flex;
         }
     }
 
     .header {
+        border-radius: $b-radius $b-radius 0 0;
         border-bottom: 1px solid var(--lightgray-color);
         text-align: left;
         height: 30px;
@@ -22,6 +25,8 @@
         align-items: center;
         justify-content: space-between;
         padding-left: 11px;
+        padding-top: 3px;
+        padding-bottom: 3px;
 
         h1 {
             font-size: $fs-m;
@@ -76,7 +81,7 @@
     }
 
     .body {
-        padding: 12px 10px 15px;
+        padding: 12px 11px 15px;
         text-align: left;
         touch-action: auto;
         white-space: pre-wrap;

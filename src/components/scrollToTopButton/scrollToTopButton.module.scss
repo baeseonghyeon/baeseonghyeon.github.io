@@ -11,13 +11,12 @@
     border-radius: 100%;
     font-size: 1.2rem;
     line-height: 2rem;
-    text-shadow: 0 0 3px var(--shadow-color);
     text-align: center;
     margin-left: -17.5px;
     z-index: $z-layout;
     cursor: pointer;
     font-family: "Noto Sans KR", sans-serif;
-    @include shadow-outline(0.5vh);
+    @include shadow-outline(0vh);
 }
 
 .visible {

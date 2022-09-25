@@ -15,6 +15,8 @@
     width: fit-content;
 
     @include media-mobile {
+        width: 100%;
+        justify-content: center;
         padding: 10px 8px;
         left: 50%;
         transform: translate(-50%, 0);
@@ -31,12 +33,18 @@
     }
 
     :not(:last-of-type) {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
 }
 
 .link {
     &__label {
+        border: 1px solid var(--on-background-color);
+        padding: 5px 10px 8px;
+        border-radius: 999px;
+        font-size: 1.2rem;
+        line-height: 1.2;
+        background-color: var(--background-color);
         min-width: fit-content;
         transition: all ease 0.1s 0s;
         -moz-transition: all ease 0.1s 0s;
@@ -48,9 +56,11 @@
             display: block;
         }
         &-active {
-            border-bottom: $bw solid var(--on-background-color) !important;
+            // border-bottom: $bw solid var(--on-background-color) !important;
             font-weight: bold;
-            line-height: 1.2;
+            background-color: var(--on-background-color);
+            color: var(--background-color);
+
             transition: all ease 0.1s 0s;
             -moz-transition: all ease 0.1s 0s;
             -webkit-transition: all ease 0.1s 0s;

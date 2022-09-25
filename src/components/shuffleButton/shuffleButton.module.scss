@@ -4,8 +4,6 @@
 .container {
     z-index: 999;
     position: absolute;
-    // left: calc(50vw - 33.5px);
-    // top: calc(50vh - 17.5px);
     width: 90px;
     height: 90px;
     display: flex;
@@ -24,7 +22,7 @@
         cursor: pointer;
         border: 1px solid var(--lightgray-color);
         background-color: var(--background-color);
-
+        border-radius: $b-radius;
         svg {
             transform: initial;
             transition: ease all 0.1s;
@@ -36,7 +34,6 @@
 
     .wrapper {
         padding: 5px 10px;
-
         position: absolute;
         display: flex;
         justify-content: center;
