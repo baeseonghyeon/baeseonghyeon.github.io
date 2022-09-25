@@ -39,12 +39,12 @@
 
 .link {
     &__label {
-        border: 1px solid var(--on-background-color);
+        border: 1px solid var(--lightgray-color);
         padding: 5px 10px 8px;
         border-radius: 999px;
-        font-size: 1.2rem;
+        font-size: $fs-l;
         line-height: 1.2;
-        background-color: var(--background-color);
+        background-color: var(--lightgray-color);
         min-width: fit-content;
         transition: all ease 0.1s 0s;
         -moz-transition: all ease 0.1s 0s;
@@ -59,6 +59,7 @@
             // border-bottom: $bw solid var(--on-background-color) !important;
             font-weight: bold;
             background-color: var(--on-background-color);
+            border-color: var(--on-background-color);
             color: var(--background-color);
 
             transition: all ease 0.1s 0s;

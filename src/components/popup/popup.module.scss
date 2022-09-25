@@ -1,10 +1,25 @@
 @import "styles/base/variables";
 @import "styles/base/mixins";
 
+$popup-padding: 24px;
+
 .container {
     position: absolute;
     border-radius: $b-radius + 2;
-    @include shadow-outline(1vh);
+    @include shadow-without-outline();
+
+    // &::after {
+    //     content: "";
+    //     //   box-shadow: 0 0 20px black;
+    //     border-radius: $b-radius + 2;
+    //     @include shadow-without-outline();
+    //     position: absolute;
+    //     top: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     left: 0;
+    //     z-index: -1;
+    // }
     p {
         margin: 0;
     }
@@ -24,12 +39,12 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding-left: 11px;
-        padding-top: 3px;
-        padding-bottom: 3px;
+        padding-left: $popup-padding;
+        padding-top: $popup-padding - 10;
+        padding-bottom: $popup-padding - 10;
 
         h1 {
-            font-size: $fs-m;
+            font-size: $fs-l;
             font-weight: bold;
             touch-action: auto;
             text-overflow: ellipsis;
@@ -41,6 +56,9 @@
         .button__wrapper {
             display: flex;
             flex-direction: row;
+            svg {
+                fill: var(--gray-color) !important;
+            }
         }
 
         .close__button {
@@ -51,7 +69,10 @@
             justify-content: center;
             touch-action: auto;
             font-weight: bold;
-            margin-right: 2px;
+            margin-right: $popup-padding - 10;
+            svg {
+                fill: var(--gray-color) !important;
+            }
         }
 
         &:hover {
@@ -81,7 +102,7 @@
     }
 
     .body {
-        padding: 12px 11px 15px;
+        padding: $popup-padding - 8 $popup-padding $popup-padding - 2;
         text-align: left;
         touch-action: auto;
         white-space: pre-wrap;
@@ -90,7 +111,7 @@
     @include media-mobile {
         position: relative;
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 11px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;
@@ -99,7 +120,7 @@
     @include media-tablet {
         position: relative;
         width: 100%;
-        margin-bottom: 5px;
+        margin-bottom: 11px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;

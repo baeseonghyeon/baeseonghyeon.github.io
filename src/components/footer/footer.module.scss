@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
-    border-top: 1px solid var(--on-background-color);
+    border-top: 1px solid var(--lightgray-color);
     background-color: var(--background-color);
     .copy-right {
         text-align: left;
@@ -22,12 +22,14 @@
             font-size: $fs-s !important;
         }
         a {
+            color: var(--on-background-color);
             text-decoration: none;
             height: 100%;
             width: 4px;
         }
         &::before {
             content: "©";
+            color: var(--on-background-color);
             float: left;
             margin-left: -13px;
         }
@@ -76,7 +78,7 @@
         }
     }
     @include media-mobile {
-        padding: 0.5rem 11px;
+        padding: 0.65rem 11px;
         .copy-right {
             padding-left: 15px;
         }

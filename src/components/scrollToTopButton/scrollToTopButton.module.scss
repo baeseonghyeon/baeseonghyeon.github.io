@@ -17,6 +17,8 @@
     cursor: pointer;
     font-family: "Noto Sans KR", sans-serif;
     @include shadow-outline(0vh);
+    color: var(--background-color);
+    background-color: var(--on-background-color);
 }
 
 .visible {

@@ -51,7 +51,7 @@ const Footer: NextPage = () => {
                 />
                 <span>
                     {currentYear ? currentYear : "2022"} Bae Seonghyeon
-                    (github.io)
+                    (github.io).
                 </span>
             </span>
             <span className={cn("toggle__container")}>

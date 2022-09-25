@@ -36,16 +36,20 @@ $small: 480px;
 // Color
 @mixin color-bright {
     --background-color: #fff;
-    --on-background-color: #222;
+    --background-second-color: #fff;
+    --on-background-color: #222222;
+    --on-background-color--opacity: #22222280;
     --shadow-color: #777777;
-    --blue-color: blue;
+    --blue-color: #323efd;
     --lightgray-color: #ddd;
     --gray-color: #969696;
 }
 
 @mixin color-dark {
     --background-color: #171717;
+    --background-second-color: #222224;
     --on-background-color: #eee;
+    --on-background-color--opacity: #000000;
     --blue-color: #0078ff;
     --shadow-color: #000;
     --lightgray-color: #333;
@@ -56,4 +60,9 @@ $small: 480px;
     border: 1px solid var(--on-background-color);
     background: var(--background-color);
     box-shadow: 0vh 0vh $shadow-weight var(--on-background-color);
+}
+
+@mixin shadow-without-outline() {
+    background: var(--background-second-color);
+    box-shadow: 2px 5px 40px 0 var(--on-background-color--opacity);
 }
