@@ -38,7 +38,7 @@ $small: 480px;
     --background-color: #fff;
     --background-second-color: #fff;
     --on-background-color: #222222;
-    --on-background-color--opacity: #22222280;
+    --on-background-color--opacity: #22222260;
     --shadow-color: #777777;
     --blue-color: #323efd;
     --lightgray-color: #ddd;
@@ -64,5 +64,5 @@ $small: 480px;
 
 @mixin shadow-without-outline() {
     background: var(--background-second-color);
-    box-shadow: 2px 5px 40px 0 var(--on-background-color--opacity);
+    box-shadow: 2px 5px 20px 0 var(--on-background-color--opacity);
 }

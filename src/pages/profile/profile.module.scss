@@ -35,6 +35,11 @@
             word-break: keep-all;
         }
     }
+    @include media-mobile {
+        &__description {
+            z-index: 1 !important;
+        }
+    }
 
     @include media-tablet {
         &__bae-seonghyeon {
@@ -48,6 +53,9 @@
         &__comment {
             width: 100% !important;
             word-break: keep-all;
+        }
+        &__description {
+            z-index: 1 !important;
         }
     }
 }

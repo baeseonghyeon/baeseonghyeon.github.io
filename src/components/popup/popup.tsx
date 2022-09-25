@@ -104,7 +104,10 @@ const Popup = (props: PopupProps) => {
                     !visibility && "hide",
                     props.className,
                 )}
-                style={(props.style, { zIndex: zIndex, order: idx })}
+                style={
+                    (props.style,
+                    { zIndex: isPcScreenSize ? zIndex : 0, order: idx })
+                }
                 onMouseEnter={props.onMouseEnter}
                 onMouseLeave={props.onMouseLeave}
                 ref={popupRef}

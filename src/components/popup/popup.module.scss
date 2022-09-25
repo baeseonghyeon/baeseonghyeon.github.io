@@ -6,20 +6,19 @@ $popup-padding: 24px;
 .container {
     position: absolute;
     border-radius: $b-radius + 2;
-    @include shadow-without-outline();
+    // @include shadow-without-outline();
 
-    // &::after {
-    //     content: "";
-    //     //   box-shadow: 0 0 20px black;
-    //     border-radius: $b-radius + 2;
-    //     @include shadow-without-outline();
-    //     position: absolute;
-    //     top: 0;
-    //     right: 0;
-    //     bottom: 0;
-    //     left: 0;
-    //     z-index: -1;
-    // }
+    &::before {
+        content: "";
+        border-radius: $b-radius + 2;
+        @include shadow-without-outline();
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+    }
     p {
         margin: 0;
     }
