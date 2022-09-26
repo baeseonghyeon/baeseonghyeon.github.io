@@ -20,7 +20,7 @@ const WorkListItem = (props: WorkListItemProps) => {
     );
     const { isPcScreenSize } = useMediaQuery();
     const router = useRouter();
-    const redirectLink = `/works/${id}`;
+    const workDetailPath = `/works/${id}`;
 
     useEffect(() => {
         if (router.isReady) {
@@ -37,7 +37,7 @@ const WorkListItem = (props: WorkListItemProps) => {
             scrollToPopup(currentPopup);
             router.push(`?target=${id}`);
         } else {
-            router.push(redirectLink);
+            router.push(workDetailPath);
         }
     };
 
@@ -62,14 +62,16 @@ const WorkListItem = (props: WorkListItemProps) => {
                 >
                     [{idx}]
                 </span>
-                <Link href={redirectLink}>
+                <Link href={workDetailPath}>
                     <span
                         className={cn("link")}
                         onTouchStart={() =>
-                            isPcScreenSize && router.push(redirectLink)
+                            isPcScreenSize && router.push(workDetailPath)
                         }
                     >
-                        {`${workData.title[language]} (${workData.info.date}) [${workData.info.category}]`}
+                        {`${workData.title[language]} (${
+                            workData.info.date
+                        }) [${workData.info.category.join(", ")}]`}
                     </span>
                 </Link>
             </span>
