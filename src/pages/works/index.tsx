@@ -10,9 +10,9 @@ import { useRecoilState } from "recoil";
 import { workFilterState } from "recoil/ui";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
-import WorkListItem from "../../components/workPopup/workListItem/workListItem";
-import WorkPopup from "../../components/workPopup/workPopup";
-import { firsttLetterCapitalizer, lowerCaseParser } from "libs/textParser";
+import WorkListItem from "../../components/popup/workPopup/workListItem/workListItem";
+import WorkPopup from "../../components/popup/workPopup/workPopup";
+import { firsttLetterCapitalizer } from "libs/textParser";
 
 const cn = cb.bind(styles);
 
@@ -34,15 +34,11 @@ const Works: NextPage = () => {
                 : item.info.role.includes(workFilterValue),
         );
 
-    const getWorkPopupId = (title: string | undefined, category: string) => {
-        return `${lowerCaseParser(title)}-${lowerCaseParser(category)}`;
-    };
-
     return (
         <Layout title={"Works"}>
             <Popup
                 title={`${firsttLetterCapitalizer(workFilterValue)} Works`}
-                idx={0}
+                index={0}
                 isActive={true}
                 isRandomPositon={false}
                 className={cn(`popup__all-work`)}
@@ -52,32 +48,29 @@ const Works: NextPage = () => {
                     />,
                 ]}
             >
-                {filteredWorkData.map((item, idx) => {
+                {filteredWorkData.map((item, index) => {
                     return (
                         <WorkListItem
-                            id={getWorkPopupId(
-                                item.title.en,
-                                item.info.category[0],
-                            )}
-                            workData={item}
-                            idx={filteredWorkData.length - idx}
-                            key={filteredWorkData.length - idx}
+                            workPopupData={{
+                                workData: item,
+                                index: filteredWorkData.length - index,
+                                isRandomPositon: isRandomPositon,
+                            }}
+                            key={filteredWorkData.length - index}
                         />
                     );
                 })}
             </Popup>
 
-            {filteredWorkData.map((item, idx) => {
+            {filteredWorkData.map((item, index) => {
                 return (
                     <WorkPopup
-                        id={getWorkPopupId(
-                            item.title.en,
-                            item.info.category[0],
-                        )}
-                        workData={item}
-                        isRandomPositon={isRandomPositon}
-                        idx={idx}
-                        key={idx}
+                        workPopupData={{
+                            workData: item,
+                            index: index,
+                            isRandomPositon: isRandomPositon,
+                        }}
+                        key={index}
                     />
                 );
             })}

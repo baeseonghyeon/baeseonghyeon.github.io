@@ -10,11 +10,10 @@ import {
 import profileJson from "data/profile.json";
 import { languageState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
-import Popup from "components/popup/popup";
 import { useState } from "react";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
-import ProfileListItem from "../../components/profileListItem/profileListItem";
-
+import ProfileListItem from "../../components/iconListItem/iconListItem";
+import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 const cn = cb.bind(styles);
 
 export interface ProfileProps {}
@@ -28,29 +27,31 @@ const Profile: NextPage = (props: ProfileProps) => {
     const [isRandomPositon, setIsRandomPositon] = useState<boolean>(true);
 
     return (
-        <Layout title="Profile" className={cn("container")}>
+        <Layout title="Profile">
             {textProfiles.map((item, idx) => {
                 return (
-                    <Popup
+                    <ScrollTargetPopup
+                        id={`popup__${item.common}`}
                         title={item.common?.toUpperCase()}
                         isActive={idx === 0}
                         isRandomPositon={isRandomPositon}
                         key={`popup--${item.common}-${item.sort}`}
-                        idx={Number(item.sort)}
+                        index={Number(item.sort)}
                         className={cn(`popup__${item.common}`)}
                         style={{ order: item.sort }}
                     >
                         <p>{item[language]}</p>
-                    </Popup>
+                    </ScrollTargetPopup>
                 );
             })}
             {listProfiles.map((item) => {
                 return (
-                    <Popup
+                    <ScrollTargetPopup
+                        id={`popup__${item.title}`}
                         title={item.title.toUpperCase()}
                         isRandomPositon={isRandomPositon}
                         key={`popup--${item.title}-${item.sort}`}
-                        idx={Number(item.sort)}
+                        index={Number(item.sort)}
                         className={cn(
                             "popup__list__container",
                             `popup__${item.title}`,
@@ -58,11 +59,16 @@ const Profile: NextPage = (props: ProfileProps) => {
                         style={{ order: item.sort }}
                     >
                         <ul>
-                            {item.listData.map((list) => {
-                                return <ProfileListItem listData={list} />;
+                            {item.listData.map((list, index) => {
+                                return (
+                                    <ProfileListItem
+                                        listData={list}
+                                        key={`${list.title}-${index}-item`}
+                                    />
+                                );
                             })}
                         </ul>
-                    </Popup>
+                    </ScrollTargetPopup>
                 );
             })}
             <ShuffleButton

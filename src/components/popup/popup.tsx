@@ -1,9 +1,12 @@
 import styles from "./popup.module.scss";
 import cb from "classnames/bind";
 import {
+    Fragment,
     HtmlHTMLAttributes,
     ReactNode,
+    RefObject,
     useEffect,
+    useLayoutEffect,
     useRef,
     useState,
 } from "react";
@@ -13,10 +16,11 @@ import { currentActivePopupState, popupOverlayState } from "recoil/ui";
 import { useRecoilState } from "recoil";
 import { IoMdClose } from "react-icons/io";
 import { setPositionRandom } from "libs/positionHandler";
+import { scrollToPopup } from "components/popup/workPopup/workListItem/workListItem";
 const cn = cb.bind(styles);
 
 export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
-    idx: number;
+    index: number;
     title?: string;
     isActive?: boolean;
     isDraggable?: boolean;
@@ -24,33 +28,33 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     buttons?: ReactNode[];
     bodyClassName?: string;
     onClickClose?: () => void;
+    popupRef?: RefObject<HTMLDivElement>;
 }
 
 const Popup = (props: PopupProps) => {
     const {
         title = "title",
-        idx,
+        index,
         isActive = false,
         isDraggable = true,
         isRandomPositon = true,
         buttons = null,
         bodyClassName,
         onClickClose,
+        popupRef = useRef<HTMLDivElement>(null),
     } = props;
 
     const { isPcScreenSize } = useMediaQuery();
-    const [zIndex, setZindex] = useState<number>(100 + idx * -1);
+    const [zIndex, setZindex] = useState<number>(100 + index * -1);
     const [popupOverlayDepth, setPopupOverlayDepth] =
         useRecoilState(popupOverlayState);
-
     const [visibility, setVisibility] = useState<boolean>(true);
-    const popupRef = useRef<HTMLDivElement>(null);
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
     );
 
-    useEffect(() => {
-        if (popupRef.current !== null) {
+    useLayoutEffect(() => {
+        if (popupRef.current) {
             if (isRandomPositon) {
                 setPositionRandom(popupRef.current);
             }
@@ -61,16 +65,17 @@ const Popup = (props: PopupProps) => {
     }, []);
 
     useEffect(() => {
-        if (popupRef.current === currentActivePopup) {
-            increasePopupOveray();
-        }
-    }, [currentActivePopup]);
-
-    useEffect(() => {
-        if (popupRef.current !== null) {
+        if (popupRef.current) {
             setPositionRandom(popupRef.current);
         }
     }, [isRandomPositon]);
+
+    useLayoutEffect(() => {
+        if (popupRef.current === currentActivePopup) {
+            increasePopupOveray();
+            scrollToPopup(currentActivePopup);
+        }
+    }, [currentActivePopup]);
 
     const increasePopupOveray = () => {
         setZindex(popupOverlayDepth + 1);
@@ -96,15 +101,16 @@ const Popup = (props: PopupProps) => {
             bounds="div"
             onDrag={() => isDraggable && increasePopupOveray()}
             onMouseDown={() => isDraggable && increasePopupOveray()}
+            nodeRef={popupRef}
         >
             <div
                 id={props.id}
                 className={cn(
+                    props.className,
                     "container",
                     !visibility && "hide",
-                    props.className,
                 )}
-                style={(props.style, { zIndex: zIndex, order: idx })}
+                style={{ ...props.style, zIndex: zIndex, order: index }}
                 onMouseEnter={props.onMouseEnter}
                 onMouseLeave={props.onMouseLeave}
                 ref={popupRef}
@@ -118,9 +124,11 @@ const Popup = (props: PopupProps) => {
                 >
                     <h1>{title}</h1>
                     <div className={cn("button__wrapper")}>
-                        {buttons !== null &&
-                            buttons.map((button) => {
-                                return button;
+                        {buttons &&
+                            buttons.map((button, index) => {
+                                return (
+                                    <Fragment key={index}>{button}</Fragment>
+                                );
                             })}
                         <div
                             className={cn("close__button")}

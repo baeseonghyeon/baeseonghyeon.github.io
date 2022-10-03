@@ -1,0 +1,15 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    @include media-not-mobile {
+        width: 450px;
+        top: 330px !important;
+        left: 40px !important;
+    }
+
+    .link {
+        display: block;
+        width: fit-content;
+    }
+}

@@ -2,14 +2,14 @@ import cb from "classnames/bind";
 import { NextPage } from "next";
 import styles from "./scrollToTopButton.module.scss";
 import { animateScroll as scroll } from "react-scroll";
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useEffect, useState } from "react";
 
 const cn = cb.bind(styles);
 
 const ScrollToTopButton: NextPage = () => {
     const [visibility, setVisibility] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         window.addEventListener("scroll", listenScrollEvent);
         return () => {
             window.removeEventListener("scroll", listenScrollEvent);

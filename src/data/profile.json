@@ -3,14 +3,14 @@
         {
             "sort": 1,
             "common": "bae-seonghyeon",
-            "ko": "배성현은 프론트엔드 개발자, 소프트웨어 엔지니어, 웹/앱 개발자, UI개발자, UI/UX 기획자, 서비스 기획자 입니다.",
-            "en": "Bae Seonghyeon is a Front-end Developer, Software engineer, WEB/APP Developer, UI Developer, UI/UX Planner, IT Service Planner, Product Manager."
+            "ko": "배성현은 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, UI · UX 기획자, 프로덕트 매니저 입니다.",
+            "en": "Bae Seonghyeon is a Frontend Engineer, WEB · APP Developer, UI Developer, UI · UX Planner, Product Manager."
         },
         {
             "sort": 2,
             "common": "comment",
-            "ko": "디자이너의 시선과 기획자의 생각으로 개발합니다. 심미적으로 아름답고 기능적으로 효과적인 서비스를 만들고 있습니다. 대한민국 경기도에 거주하며 삼육대학교 경영정보학과를 전공했습니다.",
-            "en": "I develop it from the eye of the designer and the idea of the planner. I'm interested in creating a service that is aesthetically beautiful and functionally effective. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems at Sahmyook University."
+            "ko": "디자이너의 시선과 기획자의 생각으로 개발하며, 심미적으로 아름답고 기능적으로 효과적인 서비스를 만들고 있습니다. 지속가능한 개발을 하기 위해 생각하고 탐구하며, 사용자 경험의 최전선에서 최고의 프로덕트를 만들어갑니다. 대한민국 경기도에 거주하며 경영정보학과를 전공했습니다.",
+            "en": "I develop aesthetically beautiful and functionally effective services with the designer's perspective and the planner's thoughts. I always think and study for sustainable development, and create the best products at the forefront of user experience. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems."
         },
         {
             "sort": 99,
@@ -60,16 +60,24 @@
             "listData": [
                 {
                     "title": {
-                        "ko": "바오밥파트너즈 메타버스 개발팀 소프트웨어 엔지니어",
-                        "en": "Baobab Partners Inc. Metaverse Development Team, Software engineer",
+                        "ko": "빗썸메타 메타개발실 개발팀 프론트엔드 엔지니어",
+                        "en": "BithumbMeta Meta Development Team, Frontend Engineer",
                         "common": "2022"
                     },
                     "url": "https://www.baobabpartners.io/"
                 },
                 {
                     "title": {
-                        "ko": "(주)올드루키 서비스 개발팀 소프트웨어 엔지니어, 기획자",
-                        "en": "oldrookie Corp SoftWare engineer, Service Planner",
+                        "ko": "바오밥파트너즈 메타버스 개발팀 프론트엔드 엔지니어",
+                        "en": "Baobab Partners Inc. Metaverse Development Team, Frontend Engineer",
+                        "common": "2022"
+                    },
+                    "url": "https://www.baobabpartners.io/"
+                },
+                {
+                    "title": {
+                        "ko": "(주)올드루키 서비스 개발팀 프론트엔드 엔지니어, 기획자",
+                        "en": "oldrookie Corp Frontend Engineer, Service Planner",
                         "common": "2020-2022"
                     },
                     "url": "https://oldrookie.notion.site/3f60ba345d4040f2a6b3f44580e3fe71"
@@ -84,7 +92,7 @@
                 },
                 {
                     "title": {
-                        "ko": "멋쟁이사자처럼 at 삼육대학교 6기, 7기 대표",
+                        "ko": "멋쟁이 사자처럼 at 삼육대학교 6기, 7기 대표",
                         "en": "LIKELION at Sahmyook University 6th, 7th Leader",
                         "common": "2018-2019"
                     },
@@ -108,7 +116,7 @@
                     "title": {
                         "ko": "웹",
                         "en": "WEB",
-                        "common": "HTML5, CSS3, SCSS, React, Next.js, Svelte, StoryBook, A-frame, Django, Ruby on Rails, CodeIgniter"
+                        "common": "React, Next.js, SCSS, StoryBook, Svelte, A-frame, Django, Ruby on Rails, CodeIgniter"
                     }
                 },
                 {

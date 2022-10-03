@@ -1,0 +1,20 @@
+@import "styles/base/variables";
+
+.container {
+    width: calc(100% - 20px) !important;
+
+    .link {
+        width: fit-content;
+        color: var(--blue-color);
+        text-decoration: underline;
+        cursor: pointer;
+
+        &--block {
+            display: block;
+        }
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}

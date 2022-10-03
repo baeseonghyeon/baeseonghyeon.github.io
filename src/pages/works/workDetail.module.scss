@@ -7,6 +7,7 @@
         margin: auto;
         padding: 45px 0;
     }
+    order: 3;
 }
 
 .content__container {
@@ -15,6 +16,12 @@
     justify-content: center;
     margin: auto;
     flex-wrap: wrap;
+    @include media-mobile {
+        width: calc(100vw - 22px);
+    }
+    @include media-tablet {
+        width: calc(100vw - 22px);
+    }
 }
 
 .video {

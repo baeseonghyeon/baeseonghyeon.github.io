@@ -10,22 +10,20 @@
                 "category": ["Website"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
-                    "HTML5",
-                    "CSS3",
+                    "Ruby on Rails",
                     "JavaScript",
                     "jQuery",
-                    "Ruby on Rails",
                     "SQLite",
-                    "Git",
                     "AWS EC2",
                     "AWS S3",
-                    "Heroku"
+                    "Heroku",
+                    "Git"
                 ],
                 "team": null
             },
             "description": {
-                "ko": "멋쟁이 사자처럼 at 삼육대학교 웹사이트입니다. 멋쟁이 사자처럼 활동 중 멤버관리, 공지사항게시, 과제게시, 수업자료게시, 활동홍보를 목적으로 제작하였습니다. 웹사이트의 기획과 설계, 디자인, 기능개발, 서버 배포를 담당했습니다.",
-                "en": "It is a website of Likelion at Sahmyook University. It is produced for the purpose of managing members, posting notices, posting assignments, posting class materials, and promoting activities during activities Likelion. I was in charge of Planning, Design, function Development, and server deploy of the website."
+                "ko": "멋쟁이 사자처럼 at 삼육대학교 웹사이트입니다. 멋쟁이 사자처럼 활동 중 활동홍보 및 멤버관리, 공지사항게시, 과제게시, 수업자료게시를 위해 개발하였습니다.\n이를 통해 활동 운영 효율을 개선하였습니다. 웹사이트의 기획과 설계, 디자인, 개발, 배포를 담당했습니다.",
+                "en": "It is a website of Likelion at Sahmyook University. It is developed for the purpose of managing members, posting notices, posting assignments, posting class materials, and promoting activities during activities Likelion.\nThrough this, I improved the operation efficiency of our activities. I was in charge of Planning, Design, function Development, and server deploy of the website."
             },
             "link": [
                 {
@@ -37,7 +35,6 @@
                     "url": "https://github.com/baeseonghyeon/likelion_syu_website"
                 }
             ],
-            "thumbUrl": "https://ww.namu.la/s/3f55b7c22bebc146f5b172e73512b8951690eb1012225cb764f2a104dcf26aa541388fe5373b9c044365f71a2c4b505aa61c87c504a7e74bbe9e2e4a14bb9304f10c59bd1a3d8a0f5f787edb19905b45fd69c92c122a0b13675932867818dfb0",
             "image": null,
             "video": [
                 {
@@ -58,11 +55,11 @@
                 "category": ["Website"],
                 "role": ["Development", "Planning"],
                 "stack": [
+                    "PHP",
                     "HTML5",
                     "CSS3",
                     "JavaScript",
                     "jQuery",
-                    "PHP",
                     "phpMyAdmin"
                 ],
                 "team": {
@@ -71,8 +68,8 @@
                 }
             },
             "description": {
-                "ko": "삼육대학교 학술정보원 출석 이벤트 페이지 입니다. 기간동안 이벤트 참여후 출석체크 진행 및 출석내역을 확인할 수 있습니다. 출석체크 이벤트 기능과, 관리자 기능, 서버 및 화면설계, UI를 구현하였습니다.",
-                "en": "This is the attendance check event page of Sahmyook University Academic Information Service. After participating in the event, you can attendance and check attendance details. I developed attendance check event function, administrator function, server and screen design, and UI."
+                "ko": "삼육대학교 학술정보원 출석 이벤트 페이지입니다. 이벤트 기간동안 출석체크 이벤트참여와 참여내역을 확인할 수 있습니다.\n출석체크 관련 기능과, 관리자 기능, 데이터베이스 설계와 화면을 설계 및 구현하고 운영했습니다. 이를 통해 이벤트 참여 및 참여자(당첨자)관리 효율을 개선했습니다.",
+                "en": "This is the attendance check event page of Sahmyook University Academic Information Service. After participating in the event, you can attendance and check attendance details.\nI developed attendance check event function, administrator function, database and screen design and develop it. Through this, I improved the efficiency of event participation and participant (winner) management."
             },
             "link": [
                 {
@@ -103,11 +100,11 @@
                 "category": ["Website"],
                 "role": ["Development", "Planning"],
                 "stack": [
+                    "PHP",
                     "HTML5",
                     "CSS3",
                     "JavaScript",
                     "jQuery",
-                    "PHP",
                     "phpMyAdmin"
                 ],
                 "team": {
@@ -116,8 +113,8 @@
                 }
             },
             "description": {
-                "ko": "컨테이너 도시 농장 팜클라우드의 유저 웹 인터페이스 입니다. 웹 기반 인터페이스를 통해 무인 스마트팜의 재배 환경을 모니터링하고 제어할 수 있습니다. 사업초기 웹 모듈 프로토타입의 기획과 화면설계, 프론트 엔드 개발을 담당했습니다.",
-                "en": "It is User Web interface for the farm cloud(Contianer City Farm). The Web-based interface allow to monitor and control the growing environment of unattended smart farms. I was responsible for Planning, screen Design, and front-end Development of early web module prototypes."
+                "ko": "컨테이너 도시 농장 팜클라우드의 웹 인터페이스 입니다. 웹 기반 인터페이스를 통해 무인 스마트팜의 재배 환경을 모니터링하고 제어할 수 있습니다.\n프로토타입 기획과 화면설계, 화면 개발을 담당했습니다.",
+                "en": "It is User Web interface for the farm cloud(Contianer City Farm). The Web-based interface allow to monitor and control the growing environment of unattended smart farms.\nI was responsible for Planning, Page Design, and Development of web prototype version."
             },
             "link": [
                 {
@@ -154,11 +151,9 @@
                 "category": ["Website"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
-                    "HTML5",
-                    "CSS3",
+                    "Django",
                     "JavaScript",
                     "jQuery",
-                    "Django",
                     "REST API",
                     "MySQL",
                     "Git"
@@ -169,8 +164,8 @@
                 }
             },
             "description": {
-                "ko": "항만 자율주행 운반차량 모니터링 및 제어 웹 인터페이스입니다. 웹 기반 인터페이스를 통해 아두이노로 개발된 프로토타입 자율주행 자동차를 모니터링하고 관리하며 제어할 수 있습니다. YAHAIT팀과 협업하며 인터페이스의 디자인과 프론트엔드 개발을 담당하였습니다. 해당 프로젝트의 결과로, 2019 스마트 해상물류 프로젝트 경진대회(스마트 항만물류 공모전) ‘항만 지능형 자율 운반 스마트 차량’ 동상 수상과 울산항만공사 스마트항만물류지원센터 주관‘2019 스마트 항만물류 창업아이템 발굴 지원사업’에 선정되어, 2640만원 수주하였습니다.",
-                "en": "This is the web interface for monitoring and control of port self-driving vehicles. Web-based interfaces allow you to monitor, manage and control prototype self-driving vehicles developed use Arduino. I worked with the YAHAIT teamto design the interface and develop the front end. As a result of this project, we won the 2019 Smart Port Logistics Project Competition (Smart Port Logistics Contest) 'Port Intelligent Autonomous Transport Smart Vehicle' and was selected as the '2019 Smart Port Logistics Startup Item Discovery Support Project' by Ulsan Port Corporation. Through this, we received business funds 26.4 million won.",
+                "ko": "항만 자율주행 운반차량 모니터링 및 제어 웹 인터페이스입니다. 웹 기반 인터페이스를 통해 아두이노로 개발된 자율주행 자동차를 모니터링하고 관리 및 제어할 수 있습니다.\nYAHAIT팀과 협업하여 화면 개발과 기획 디자인을 포함하여 프론트엔드 전반을 담당하였습니다.\n이를 통해 2019 스마트 해상물류 프로젝트 경진대회(스마트 항만물류 공모전) ‘항만 지능형 자율 운반 스마트 차량’ 동상 수상과 울산항만공사 스마트항만물류지원센터 주관‘2019 스마트 항만물류 창업아이템 발굴 지원사업’에 선정되어, 2640만원 수주하였습니다.",
+                "en": "This is the web interface for monitoring and control of port self-driving vehicles. Web-based interfaces allow you to monitor, manage and control prototype self-driving vehicles developed use Arduino.\nI worked with the team YAHAIT to design the interface and develop the front end.\nAs a result of this project, we won the 2019 Smart Port Logistics Project Competition (Smart Port Logistics Contest) 'Port Intelligent Autonomous Transport Smart Vehicle' and was selected as the '2019 Smart Port Logistics Startup Item Discovery Support Project' by Ulsan Port Corporation. Through this, we received business funds 26.4 million won.",
                 "link": [
                     {
                         "ko": "조선일보",
@@ -216,14 +211,12 @@
                 "role": ["Development", "Planning"],
                 "stack": [
                     "Django",
-                    "HTML5",
-                    "CSS3",
                     "JavaScript",
                     "jQuery",
-                    "Git",
                     "AWS Elastic Beanstalk",
                     "AWS S3",
-                    "AWS RDS"
+                    "AWS RDS",
+                    "Git"
                 ],
                 "team": {
                     "ko": "멋쟁이사자처럼 at 삼육대학교",
@@ -231,8 +224,8 @@
                 }
             },
             "description": {
-                "ko": "삼육대학교 천보축전 & 체육대회 웹사이트입니다. 삼육대학교 축제(천보축전)와 체육대회의 홍보, 정보게시, 이벤트 진행을 목적으로 개발되었습니다. 메인페이지를 통해 각각 다른 컨셉과 디자인의 축제 웹사이트와 체육대회 웹사이트를 이용할 수 있습니다. 삼육대학교 총학생회와 멋쟁이사자처럼 at 삼육대학교가 협업하여 제작하였습니다. 프로젝트와 웹사이트의 기획과 프론트엔드 개발을 총괄하였습니다. 한 주간 페이뷰 수 37,473을 기록했습니다.",
-                "en": "This is the website of the Cheonbo Festival & Athletic Competition of Sahmyook University. It was developed for the purpose of promoting Sahmyook University Festival (Cheonbo Festival) and Athletic Competition, posting information, and support events. Through the one main page, you can experience two website with a different Design and concept. Like the student council of Sahmyook University and Likelion at Sahmyook University teamated and produced it. I taken the lead of Planning the project and front-end developing the front-end."
+                "ko": "삼육대학교 축제 & 체육대회 웹사이트입니다. 삼육대학교 축제와 체육대회의 홍보, 정보게시, 이벤트 진행을 목적으로 삼육대학교 총학생회와 멋쟁이사자처럼 at 삼육대학교가 협업하여 제작하였습니다. 메인페이지를 통해 각각 다른 컨셉과 디자인의 축제 웹사이트와 체육대회 웹사이트를 이용할 수 있습니다.\n단순 홍보뿐만 아니라 축제 이벤트에 특화된 투표기능, 공유기능 등으로 행사와 부스 참여를 편하게 하며 37,473페이지 뷰를 기록했습니다.\n프로젝트의 기획 관리와 프론트엔드 파트를 총괄하였습니다.",
+                "en": "This is the website of the Cheonbo Festival & Athletic Competition of Sahmyook University. It was developed for the purpose of promoting Sahmyook University Festival (Cheonbo Festival) and Athletic Competition, posting information, and support events. Through the one main page, you can experience two website with a different Design and concept. Like the student council of Sahmyook University and Likelion at Sahmyook University teamated and produced it.\n In addition to simple promotion, it making it easier to participate in events and booths with voting and sharing functions specialized in festival events. So, it recorded 37,473 page views.\nI taken the lead of Planning the project and front-end developing the front-end."
             },
             "link": [
                 {
@@ -268,15 +261,13 @@
                 "category": ["Website"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
-                    "HTML5",
-                    "CSS3",
+                    "Django",
                     "JavaScript",
                     "jQuery",
-                    "Django",
                     "MySQL",
+                    "GCP Compute Engine",
                     "Docker",
-                    "Git",
-                    "GCP Compute Engine"
+                    "Git"
                 ],
                 "team": {
                     "ko": "박기홍",
@@ -284,8 +275,8 @@
                 }
             },
             "description": {
-                "ko": "Google Developer Student Clubs 삼육대학교 에서 진행한 Github 정원사들('두유 Know 잔디?)이벤트 출석부 웹사이트입니다. GDG 판교의 정원사들 시즌5 출석부의 코드 및 디자인 리팩토링을 통해 개발하였습니다. 두 달간 이벤트 진행을 위해 사용하였습니다.",
-                "en": "This is the Github gardener ('Do you Know Grass?') event attendance website held by the Google Developer Student Clubs Sahmyook University. This website was developed through code and Design refactoring of Gardeners season5 of GDG Pangyo.",
+                "ko": "Google Developer Student Clubs 삼육대학교 에서 진행한 Github 정원사들('두유 Know 잔디?)이벤트 출석부 웹사이트입니다.\nGDG 판교의 정원사들 시즌5 출석부의 코드 및 디자인 리팩토링을 통해 개발하였습니다. 이를 통해 두 달간 이벤트를 성공적으로 진행하였습니다.\n코드 리팩토링 및 UI 개선과 빌드 배포를 담당했습니다.",
+                "en": "This is the Github gardener ('Do you Know Grass?') event attendance website held by the Google Developer Student Clubs Sahmyook University.\nThis website was developed through code and Design refactoring of Gardeners season5 of GDG Pangyo. Through this, the event was successfully conducted for two months.\nI was responsible for code refactoring, UI improvement, and build deploy.",
                 "link": [
                     {
                         "common": "junho85 Github Link",
@@ -323,10 +314,11 @@
                     "React Native",
                     "React",
                     "TypeScript",
+                    "Redux",
                     "SCSS",
                     "Storybook",
-                    "Git",
-                    "GraphQL"
+                    "GraphQL",
+                    "Git"
                 ],
                 "team": {
                     "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
@@ -334,8 +326,8 @@
                 }
             },
             "description": {
-                "ko": "화물 거래 플랫폼 디젤트럭(Diesel Truck)의 딜러앱, 셀러앱 클라이언트, 관리자 웹 클라이언트를 외주 개발하였습니다.",
-                "en": "We have developed a dealer app, seller app client, and admin web client for the cargo trading platform named Diesel Truck.",
+                "ko": "화물 거래 플랫폼 디젤트럭(Diesel Truck)의 딜러앱, 셀러앱 클라이언트, 관리자 웹 클라이언트를 외주 개발하였습니다.\n웹과 앱을 포함하여 프론트엔드 챕터의 a to z까지 개발했습니다.",
+                "en": "We have developed a dealer app, seller app client, and admin web client for the cargo trading platform named Diesel Truck.\nI developed front-end chapters A to Z, including web and apps.",
                 "link": [
                     {
                         "ko": "GooglePlay(딜러)",
@@ -384,10 +376,11 @@
                     "React Native",
                     "React",
                     "TypeScript",
+                    "Redux",
                     "SCSS",
                     "Storybook",
-                    "Git",
-                    "GraphQL"
+                    "GraphQL",
+                    "Git"
                 ],
                 "team": {
                     "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
@@ -395,8 +388,8 @@
                 }
             },
             "description": {
-                "ko": "클럽 모임 커뮤니티, 연결 플랫폼 클러버(Clubber)의 앱 클라이언트, 관리자 웹 클라이언트를 외주 개발하였습니다.",
-                "en": "We have developed the app client, and admin web client for the club party connection platform named Clubber.",
+                "ko": "클럽 모임 커뮤니티, 연결 플랫폼 클러버(Clubber)의 앱 클라이언트, 관리자 웹 클라이언트를 외주 개발하였습니다.\n웹과 앱을 포함하여 프론트엔드 챕터의 a to z까지 개발했습니다.",
+                "en": "We have developed the app client, and admin web client for the club party connection platform named Clubber.\nI developed front-end chapters A to Z, including web and apps.",
                 "link": [
                     {
                         "common": "GooglePlay",
@@ -436,8 +429,8 @@
                 }
             },
             "description": {
-                "ko": "KT 엔터프라이즈에서 진행한 KT 스마트메시지 초성퀴즈 이벤트 웹사이트를 외주 개발하였습니다. 해당 웹사이트를 통해 번호인증 이후 이벤트에 참여할 수 있도록 인증서버와 클라이언트를 개발하였습니다. 본 이벤트는 9월 29일부터 10월 30일까지 약 20일간 진행되었습니다. 기간 동안 총 7,320명이 이 웹사이트를 통해 이벤트에 응모하였습니다.",
-                "en": "We outsourced and developed the KT Smart Message Initial Quiz Event website held by KT enterprise. We have developed an authentication server and client so that you can participate in the event after number authentication through the website. This event lasted about 20 days from September 29th to October 30th. A total of 7,320 people applied for the event through this website during the period."
+                "ko": "KT 엔터프라이즈에서 진행한 KT 스마트메시지 초성퀴즈 이벤트 웹사이트를 외주 개발하였습니다.\n해당 웹사이트를 통해 번호인증 이후 이벤트에 참여할 수 있도록 웹사이트를 개발하였습니다. 약 20일간 진행된 이벤트 기간 동안 총 7,320명이 이 웹사이트를 통해 이벤트에 응모하였습니다. React와 TypeScript를 통해 해당 프로젝트의 프론트엔드 챕터 전반을 개발하고 운영했습니다.",
+                "en": "We outsourced and developed the KT Smart Message Initial Quiz Event website held by KT enterprise.\nWe have developed an client so that you can participate in the event after number authentication through the website. This event lasted about 20 days from September 29th to October 30th. A total of 7,320 people applied for the event through this website during the period. I developed and operated use React, TypeScript and entire front-end chapter of the project."
             },
             "link": [
                 {
@@ -482,15 +475,22 @@
                 "date": "2021",
                 "category": ["Website"],
                 "role": ["Development", "Planning", "Design"],
-                "stack": ["Next.js", "TypeScript", "SCSS", "Git", "AWS"],
+                "stack": [
+                    "Next.js",
+                    "TypeScript",
+                    "Redux",
+                    "SCSS",
+                    "Git",
+                    "AWS"
+                ],
                 "team": {
                     "ko": "oldrookie",
                     "en": "oldrookie"
                 }
             },
             "description": {
-                "ko": "현실을 담은 패션플랫폼 해픈의 프로모션 웹사이트 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다. 해픈의 웹사이트 클라이언트의 개발과 기획, 디자인을 담당했습니다.",
-                "en": "It's a haffn website for promotion that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D. I was in charge of web client development, planning, and design."
+                "ko": "현실을 담은 패션플랫폼 해픈의 프로모션 웹사이트 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다.\nNext.js로 프로젝트의 클라이언트를 개발과 운영했습니다. AWS를 사용한 빌드 배포와 기획, 디자인을 담당했습니다.",
+                "en": "It's a haffn website for promotion that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D.\nI was in charge of web client developed, operation and use Next.js, build, deploy use AWS and planning and design."
             },
             "link": [
                 {
@@ -523,8 +523,8 @@
                 }
             },
             "description": {
-                "ko": "현실을 담은 패션플랫폼 해픈 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다. 크로스 플랫폼 앱 클라이언트의 개발과 기획, 디자인을 담당했습니다.",
-                "en": "It's a haffn that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D. I was in charge of web client development, planning, and design."
+                "ko": "현실을 담은 패션플랫폼 해픈 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다.\n플러터를 사용한 크로스 플랫폼 앱 클라이언트의 개발과 빌드, 배포, 운영 그리고 기획, 디자인을 담당했습니다.",
+                "en": "It's a haffn that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D.\nI was in charge of web client developed, operation use a flutter and build, deploy use AWS and planning and design."
             },
             "link": [
                 {
@@ -571,9 +571,9 @@
                 "stack": [
                     "Unity",
                     "React Native",
-                    "Git",
                     "AWS S3",
-                    "AWS Redis"
+                    "AWS Redis",
+                    "Git"
                 ],
                 "team": {
                     "ko": "Baobab Partners Inc.",
@@ -581,8 +581,8 @@
                 }
             },
             "description": {
-                "ko": "새로운 시대를 NEXTERA하다. NEXTERA는 세계 최초의 L2E (Life to Earn) 메타버스입니다. 메타버스와 일상생활에서 유저가 경험을 통해 보상을 얻을 수 있습니다. 넥스테라의 앱, 게임 클라이언트의 개발과 기획, UI디자인을 담당했습니다.",
-                "en": "NEXTERA a new era. NEXTERA is the world's first Life to Earn (L2E) metaverse. Users can gain rewards through experience in metaverse and daily life. I was in charge of development, planning, and UI design of Nextera's app and game client."
+                "ko": "새로운 시대를 NEXTERA하다. NEXTERA는 세계 최초의 L2E (Life to Earn) 메타버스입니다. 메타버스와 일상생활에서 보상을 얻을 수 있습니다.\nUnity로 넥스테라 게임 클라이언트를 개발하고 React Native로 크로스플랫폼 앱으로 인터그레이션 했습니다. 클라이언트 개발과 운영 그리고 기획, UI디자인을 담당했습니다.",
+                "en": "NEXTERA a new era. NEXTERA is the world's first Life to Earn (L2E) metaverse. Users can gain rewards through experience in metaverse and daily life.\nI was in charge of developing NEXTERA that cross-platform app with React Native. and It integrated and developed that game clients with Unity. and I was planning, and UI design it."
             },
             "link": [
                 { "type": "Website", "url": "https://www.nextera.land/" },

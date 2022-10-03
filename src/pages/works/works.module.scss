@@ -3,6 +3,10 @@
 
 .popup {
     &__all-work {
+        span {
+            word-break: break-all !important;
+        }
+
         @include media-not-mobile {
             width: 400px;
             top: 50px !important;

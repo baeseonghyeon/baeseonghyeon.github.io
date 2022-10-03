@@ -1,0 +1,28 @@
+@import "styles/base/variables";
+
+.container {
+    display: flex;
+    flex-flow: column;
+}
+
+.list--has-icon {
+    padding-left: 0 !important;
+    display: flex !important;
+    &::before {
+        content: none !important;
+    }
+    .brand-icon {
+        margin-right: 4px;
+        color: var(--blue-color) !important;
+        width: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            width: 15px;
+            path {
+                fill: var(--blue-color) !important;
+            }
+        }
+    }
+}

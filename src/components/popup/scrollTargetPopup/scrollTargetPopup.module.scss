@@ -1,0 +1,22 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.target-popup {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: -1 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: 2px !important;
+    height: 2px !important;
+    opacity: 0.00000001;
+    div,
+    svg {
+        display: none;
+    }
+    &--hide {
+        opacity: 0;
+        z-index: -1 !important;
+    }
+}
