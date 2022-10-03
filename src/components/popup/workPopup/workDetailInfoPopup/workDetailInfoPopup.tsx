@@ -5,6 +5,8 @@ import { languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
 import { firsttLetterCapitalizer } from "libs/textParser";
+import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
+import { Fragment } from "react";
 const cn = cb.bind(styles);
 
 export interface WorkDetailInfoPopupProps {
@@ -17,15 +19,16 @@ const WorkDetailInfoPopup = (props: WorkDetailInfoPopupProps) => {
 
     if (workData) {
         return (
-            <Popup
+            <ScrollTargetPopup
+                id={workData.title[language] as string}
                 title={workData.title[language]}
                 isActive={true}
-                idx={0}
+                index={0}
                 className={cn("container")}
             >
-                {Object.entries(workData.info).map((item) => {
+                {Object.entries(workData.info).map((item, index) => {
                     return (
-                        <li className={cn("list")}>
+                        <li className={cn("list")} key={index}>
                             <p>
                                 <strong>
                                     {item[1] &&
@@ -39,14 +42,17 @@ const WorkDetailInfoPopup = (props: WorkDetailInfoPopupProps) => {
                                         ? item[1].map(
                                               (
                                                   item: string,
-                                                  idx,
+                                                  index,
                                                   { length },
                                               ) => {
                                                   let isLast: boolean =
-                                                      idx === length - 1;
-                                                  return `${item}${
-                                                      !isLast ? ", " : ""
-                                                  }`;
+                                                      index === length - 1;
+                                                  return (
+                                                      <Fragment key={index}>
+                                                          {item}
+                                                          {!isLast ? ", " : ""}
+                                                      </Fragment>
+                                                  );
                                               },
                                           )
                                         : item[1][language]
@@ -55,7 +61,7 @@ const WorkDetailInfoPopup = (props: WorkDetailInfoPopupProps) => {
                         </li>
                     );
                 })}
-            </Popup>
+            </ScrollTargetPopup>
         );
     } else {
         return null;

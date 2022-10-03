@@ -3,7 +3,7 @@
 
 .container {
     @include media-not-mobile {
-        width: 350px;
+        width: 380px;
         top: 50px !important;
         left: 20px !important;
     }

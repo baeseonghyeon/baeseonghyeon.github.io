@@ -3,9 +3,9 @@ import cb from "classnames/bind";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
-import Popup from "components/popup/popup";
 import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
+import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -19,31 +19,30 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
 
     if (workData) {
         return (
-            <Popup
+            <ScrollTargetPopup
+                id={`${workData.title[language]}-description` as string}
                 title={workData.title[language]}
-                idx={1}
+                index={1}
                 className={cn("container")}
             >
-                <p>
-                    {workData.description[language]}{" "}
-                    {workData.description.link?.map((item, idx, { length }) => {
-                        return (
-                            <a
-                                href={item.url}
-                                target="_blank"
-                                onTouchStart={() =>
-                                    isPcScreenSize && touchRedirect(item.url)
-                                }
-                            >
-                                {idx === 0 && "("}
-                                {item.common ? item.common : item[language]}
-                                {idx !== length - 1 ? ", " : ")"}
-                            </a>
-                        );
-                    })}
-                </p>
-
-                {workData.link?.map((item) => {
+                {workData.description[language]}{" "}
+                {workData.description.link?.map((item, index, { length }) => {
+                    return (
+                        <a
+                            href={item.url}
+                            target="_blank"
+                            onTouchStart={() =>
+                                isPcScreenSize && touchRedirect(item.url)
+                            }
+                            key={`${item.common}-${index}`}
+                        >
+                            {index === 0 && "("}
+                            {item.common ? item.common : item[language]}
+                            {index !== length - 1 ? ", " : ")"}
+                        </a>
+                    );
+                })}
+                {workData.link?.map((item, index) => {
                     return (
                         <a
                             href={item.url}
@@ -52,12 +51,13 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             onTouchStart={() =>
                                 isPcScreenSize && touchRedirect(item.url)
                             }
+                            key={`${item.url}-${index}`}
                         >
                             Visit the {item.type} →
                         </a>
                     );
                 })}
-            </Popup>
+            </ScrollTargetPopup>
         );
     } else {
         return null;

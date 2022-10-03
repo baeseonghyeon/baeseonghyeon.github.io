@@ -13,7 +13,7 @@ import {
     languageStateCookieKey,
     setCookie,
 } from "libs/cookies";
-import { useEffect } from "react";
+import { useLayoutEffect, useEffect } from "react";
 
 const cn = cb.bind(styles);
 
@@ -33,7 +33,7 @@ const Footer: NextPage = () => {
         setLanguage(languageValue);
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (languageStateCookie !== undefined) {
             setLanguage(
                 languageStateCookie === "ko" ? Language.ko : Language.en,

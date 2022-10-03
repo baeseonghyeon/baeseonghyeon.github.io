@@ -1,6 +1,12 @@
 import cb from "classnames/bind";
 import styles from "./shuffleButton.module.scss";
-import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
+import React, {
+    HtmlHTMLAttributes,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState,
+} from "react";
 import Draggable from "react-draggable";
 import { IoMdClose } from "react-icons/io";
 import { setPositionRandom } from "libs/positionHandler";
@@ -16,7 +22,7 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
     const [visibility, setVisibility] = useState(true);
     const buttonRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (buttonRef.current !== null) {
             setPositionRandom(buttonRef.current);
         }
@@ -27,7 +33,7 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
     };
 
     return (
-        <Draggable grid={[50, 50]} bounds="div">
+        <Draggable grid={[50, 50]} bounds="div" nodeRef={buttonRef}>
             <div
                 className={cn("container", !visibility && "hide")}
                 ref={buttonRef}

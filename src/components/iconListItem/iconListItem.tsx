@@ -1,23 +1,19 @@
-import styles from "./profileListItem.module.scss";
+import styles from "./iconListItem.module.scss";
 import cb from "classnames/bind";
 import { ListContent } from "interface/dto/profile";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faGithub,
-    faInstagram,
-    faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { touchRedirect } from "libs/touchHandler";
 import VelogLogoIcon from "components/icons/velogLogoIcon";
 const cn = cb.bind(styles);
 
-export interface ProfileListItemProps {
+export interface IconListItemProps {
     listData: ListContent;
 }
 
-const ProfileListItem = (props: ProfileListItemProps) => {
+const IconListItem = (props: IconListItemProps) => {
     const { listData } = props;
     const language = useRecoilValue(languageState);
     const isIcon = listData && listData.icon !== undefined;
@@ -59,4 +55,4 @@ const ProfileListItem = (props: ProfileListItemProps) => {
     }
 };
 
-export default ProfileListItem;
+export default IconListItem;

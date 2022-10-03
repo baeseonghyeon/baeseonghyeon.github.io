@@ -45,6 +45,10 @@
 
     .description-popup {
         opacity: 1;
+        margin: 10px;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
         &--hide {
             opacity: 0;
             z-index: -1 !important;

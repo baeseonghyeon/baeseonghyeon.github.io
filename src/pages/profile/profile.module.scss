@@ -1,11 +1,6 @@
 @import "styles/base/variables";
 @import "styles/base/mixins";
 
-.container {
-    display: flex;
-    flex-flow: column;
-}
-
 .popup {
     &__list__container {
         ul {

@@ -3,6 +3,6 @@ export const setPositionRandom = (element: HTMLDivElement) => {
         Math.random() * (window.innerWidth - element.offsetWidth),
     )}px`;
     element.style.top = `${Math.floor(
-        Math.random() * (window.innerHeight - element.offsetHeight),
+        Math.random() * (window.innerHeight - element.offsetHeight * 1.2),
     )}px`;
 };

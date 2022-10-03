@@ -27,10 +27,8 @@ const Layout = (props: LayoutProps) => {
     const isDarkMode = useDarkMode();
     const language = useRecoilValue(languageState);
     const [isLaod, setIsLoad] = useState(false);
-    const defaultTitle = language === Language.ko ? "배성현" : "Bae Seonghyeon";
-    const defaultDescription =
-        "배성현은 프론트엔드 개발자 입니다. 아름답고 효과적인 서비스를 만들고 있습니다.";
 
+    const defaultTitle = language === Language.ko ? "배성현" : "Bae Seonghyeon";
     const pageTitle = `${defaultTitle} - ${
         (router && router.pathname === "/") || !title
             ? language === Language.ko
@@ -39,6 +37,8 @@ const Layout = (props: LayoutProps) => {
             : title
     }`;
 
+    const defaultDescription =
+        "배성현은 프론트엔드 개발자 입니다. 아름답고 효과적인 서비스를 만들고 있습니다.";
     const pageDescription =
         description != undefined ? description : defaultDescription;
 

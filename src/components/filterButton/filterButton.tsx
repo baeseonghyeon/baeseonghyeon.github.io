@@ -30,12 +30,20 @@ const FilterButton = (props: FilterButtonProps) => {
                 ref={selectRef}
             >
                 <option value="All">All</option>
-                {Object.keys(WorkCategoryEnums).map((item) => {
-                    return <option value={item}>{item}</option>;
+                {Object.keys(WorkCategoryEnums).map((item, index) => {
+                    return (
+                        <option value={item} key={`${item}-${index}`}>
+                            {item}
+                        </option>
+                    );
                 })}
 
-                {Object.keys(WorkRoleEnums).map((item) => {
-                    return <option value={item}>{item}</option>;
+                {Object.keys(WorkRoleEnums).map((item, index) => {
+                    return (
+                        <option value={item} key={`${item}-${index}`}>
+                            {item}
+                        </option>
+                    );
                 })}
             </select>
         </div>

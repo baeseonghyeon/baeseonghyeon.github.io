@@ -1,10 +1,6 @@
 @import "styles/base/variables";
 
 .container {
-    position: absolute;
-    top: 0 !important;
-    left: 0 !important;
-    margin: 10px;
     width: calc(100% - 20px) !important;
 
     .link {

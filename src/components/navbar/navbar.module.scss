@@ -13,15 +13,16 @@
     scrollbar-width: none;
     transition: none;
     width: fit-content;
+    transition: all 0.3s;
 
     @include media-mobile {
-        padding: 10px 8px;
+        padding: 10px 0px;
         left: 50%;
         transform: translate(-50%, 0);
     }
 
     @include media-tablet {
-        padding: 10px 8px;
+        padding: 10px 0px;
         left: 50%;
         transform: translate(-50%, 0);
     }
@@ -42,6 +43,7 @@
         -moz-transition: all ease 0.1s 0s;
         -webkit-transition: all ease 0.1s 0s;
         text-decoration: none;
+        font-size: $fs-l;
         color: var(--on-background-color);
         a {
             margin-top: 0.7rem;
@@ -56,5 +58,11 @@
             -webkit-transition: all ease 0.1s 0s;
             letter-spacing: $ls-bold;
         }
+    }
+}
+
+.hide {
+    @include media-mobile {
+        transform: translate(-50%, -75%);
     }
 }

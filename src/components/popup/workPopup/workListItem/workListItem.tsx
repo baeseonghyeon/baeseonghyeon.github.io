@@ -6,23 +6,39 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
 import { WorkPopupProps } from "../workPopup";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
+import { getWorkPopupId } from "../workDescriptionPopup/workDescriptionPopup";
 const cn = cb.bind(styles);
 
 export interface WorkListItemProps extends WorkPopupProps {}
 
+export const scrollToPopup = (targetPopup: HTMLElement | null) => {
+    const screenHeight = document.documentElement.clientHeight;
+
+    if (targetPopup !== null) {
+        scroll.scrollTo(
+            targetPopup.offsetTop -
+                (screenHeight / 2 - targetPopup.offsetHeight / 2),
+        );
+    }
+};
+
 const WorkListItem = (props: WorkListItemProps) => {
-    const { workData, idx, id } = props;
+    const { workPopupData } = props;
     const language = useRecoilValue(languageState);
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
     );
     const { isPcScreenSize } = useMediaQuery();
     const router = useRouter();
+    const workData = workPopupData.workData;
+    const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
+    const index = workPopupData.index;
+
     const workDetailPath = `/works/${id}`;
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (router.isReady) {
             if (id === router.query.target) {
                 popupActivator(router.query.target as string);
@@ -41,26 +57,15 @@ const WorkListItem = (props: WorkListItemProps) => {
         }
     };
 
-    const scrollToPopup = (targetPopup: HTMLElement | null) => {
-        const screenHeight = document.documentElement.clientHeight;
-
-        if (targetPopup !== null) {
-            scroll.scrollTo(
-                targetPopup.offsetTop -
-                    (screenHeight / 2 - targetPopup.offsetHeight / 2),
-            );
-        }
-    };
-
     if (workData) {
         return (
-            <span className={cn("wrapper", "mr-2")} key={idx}>
+            <span className={cn("wrapper", "mr-2")} key={index}>
                 <span
                     className={cn("footnote")}
                     onClick={() => popupActivator(id)}
                     onTouchStart={() => isPcScreenSize && popupActivator(id)}
                 >
-                    [{idx}]
+                    [{index}]
                 </span>
                 <Link href={workDetailPath}>
                     <span

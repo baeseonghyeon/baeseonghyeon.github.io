@@ -22,7 +22,7 @@
         top: 00px;
         right: 00px;
         cursor: pointer;
-        border: 1px solid var(--lightgray-color);
+        border: $bw solid var(--lightgray-color);
         background-color: var(--background-color);
 
         svg {
