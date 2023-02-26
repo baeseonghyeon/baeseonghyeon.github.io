@@ -620,6 +620,56 @@
                     "fullSize": true
                 }
             ]
+        },
+        {
+            "title": {
+                "ko": "네모마켓",
+                "en": "NAEMO NFT Marketplace"
+            },
+            "info": {
+                "date": "2022-2023",
+                "category": ["Website"],
+                "role": ["Development"],
+                "stack": ["React", "TypeScript", "Mobx", "AWS", "Git"],
+                "team": {
+                    "ko": "빗썸 메타",
+                    "en": "Bitthumb META"
+                }
+            },
+            "description": {
+                "ko": "네모마켓에서 내가 소유한 NFT를 거래하고 공유해보세요. NFT를 판매하고 관리하고 싶은 브랜드와 크리에이터를 위한 원스탑 서비스도 지원합니다. \n네모 마켓 베타 2.0(사용자간 NFT 2차거래) 개발과 크리에이터, 백오피스 서비스를 개발했습니다.",
+                "en": "Trade and share the NFT I own in the NAEMO Marketplace. It also supports one-stop services for brands and creators who want to sell and manage NFT. I developed NAEMO Marketplace Beta 2.0 (NFT 2nd Transaction between Users), creators, and back office services."
+            },
+            "link": [{ "type": "Website", "url": "https://naemo.io/" }],
+            "thumbUrl": "10-EKk5PU8aaH7uDEPDYZkPZM8Ja3lO1V",
+            "image": [
+                {
+                    "url": "1a9SlWMbEv-B50KykbbQ8EkHIi60FPfFx"
+                },
+                {
+                    "url": "1kg0iZQ1TkzGgxo0YWeqTC9GJNaTCw-Yi"
+                },
+                {
+                    "url": "https://drive.google.com/file/d/1cYreMiqbSj1gQMPYkkqkTI9nA7uVDzAg/view?usp=share_link",
+                    "fullSize": true
+                },
+                {
+                    "url": "https://drive.google.com/file/d/1fS9gekst_zy3Ljq8u79dsEuOkWMIQUbE/view?usp=share_link",
+                    "fullSize": true
+                },
+                {
+                    "url": "https://drive.google.com/file/d/1j4YdAmidQnHUTG9DqCZ-GWgeVfZJUgaa/view?usp=sharing",
+                    "fullSize": true
+                },
+                {
+                    "url": "https://drive.google.com/file/d/1CoFacuYXvUNsJ5FnMb7SANtdEe06Z-fv/view?usp=share_link",
+                    "fullSize": true
+                },
+                {
+                    "url": "https://drive.google.com/file/d/1UzDmwyP1omKPMdF7MqzF25caL-D3a4hW/view?usp=share_link",
+                    "fullSize": true
+                }
+            ]
         }
     ]
 }

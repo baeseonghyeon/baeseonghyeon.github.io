@@ -67,10 +67,18 @@ const WorkPopup = (props: WorkPopupProps) => {
                         className={cn("video__container")}
                         skeletonClassName={cn("video__container", "skeleton")}
                     />
+                ) : workData.thumbUrl ? (
+                    <ContentImage
+                        src={googleCloudImageUrl(workData.thumbUrl)}
+                        className={cn("image__container")}
+                        skeletonClassName={cn("video__container")}
+                        isBackgroundImage
+                    />
                 ) : (
-                    workData.thumbUrl && (
+                    workData.image &&
+                    workData.image[0] && (
                         <ContentImage
-                            src={googleCloudImageUrl(workData.thumbUrl)}
+                            src={googleCloudImageUrl(workData.image[0].url)}
                             className={cn("image__container")}
                             skeletonClassName={cn("video__container")}
                             isBackgroundImage

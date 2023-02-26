@@ -12,5 +12,11 @@ export const lowerCaseParser = (text: string | undefined) => {
 };
 
 export const googleCloudImageUrl = (imageId: string) => {
+    let imageUrlArray = imageId.split("/");
+
+    if (imageUrlArray[0] === "https:") {
+        imageId = imageUrlArray[5];
+    }
+
     return "https://drive.google.com/uc?export=view&id=" + imageId;
 };
