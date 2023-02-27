@@ -2,17 +2,19 @@ import cb from "classnames/bind";
 import styles from "./contentImage.module.scss";
 import React, { HtmlHTMLAttributes, useState } from "react";
 import SkeletonBox from "components/skeletonBox/skeletonBox";
+import Image from "next/image";
 
 const cn = cb.bind(styles);
 
 interface ContentImageProps extends HtmlHTMLAttributes<HTMLDivElement> {
     src: string;
+    alt: string;
     skeletonClassName?: string;
     isBackgroundImage?: boolean;
 }
 
 const ContentImage = (props: ContentImageProps) => {
-    const { src, isBackgroundImage = false, skeletonClassName } = props;
+    const { src, isBackgroundImage = false, skeletonClassName, alt } = props;
 
     const [loading, setLoading] = useState(true);
 
@@ -37,6 +39,7 @@ const ContentImage = (props: ContentImageProps) => {
                     props.className,
                     (loading || isBackgroundImage) && "hide",
                 )}
+                alt={alt}
                 onLoad={() => setLoading(false)}
             />
         </>

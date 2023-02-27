@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { touchRedirect } from "libs/touchHandler";
 import VelogLogoIcon from "components/icons/velogLogoIcon";
+import Link from "next/link";
 const cn = cb.bind(styles);
 
 export interface IconListItemProps {
@@ -38,8 +39,8 @@ const IconListItem = (props: IconListItemProps) => {
                     </span>
                 )}
 
-                <a
-                    href={listData.url}
+                <Link
+                    href={listData.url ? listData.url : ""}
                     target="_blank"
                     onTouchStart={() => touchRedirect(listData.url, true)}
                 >
@@ -47,7 +48,7 @@ const IconListItem = (props: IconListItemProps) => {
                     {!isIcon && "("}
                     {listData.title["common"]}
                     {!isIcon && ")"}
-                </a>
+                </Link>
             </li>
         );
     } else {

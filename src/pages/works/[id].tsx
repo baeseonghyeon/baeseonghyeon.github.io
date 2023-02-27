@@ -95,7 +95,7 @@ const WorkDetail: NextPage = ({ work }: any) => {
                     </div>
 
                     <div className={cn("content__container")}>
-                        {workData.image?.map((image) => {
+                        {workData.image?.map((image, index) => {
                             return (
                                 <div
                                     className={cn(
@@ -109,6 +109,7 @@ const WorkDetail: NextPage = ({ work }: any) => {
                                         src={googleCloudImageUrl(image.url)}
                                         className={cn("image__content")}
                                         skeletonClassName={cn("skeleton")}
+                                        alt={`${workData.title[language]} Image ${index}`}
                                     />
                                 </div>
                             );

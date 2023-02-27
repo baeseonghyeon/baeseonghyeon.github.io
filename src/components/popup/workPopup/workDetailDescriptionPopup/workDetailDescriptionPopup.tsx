@@ -6,6 +6,7 @@ import { WorkData } from "interface/dto/work";
 import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
+import Link from "next/link";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -28,8 +29,8 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                 {workData.description[language]}{" "}
                 {workData.description.link?.map((item, index, { length }) => {
                     return (
-                        <a
-                            href={item.url}
+                        <Link
+                            href={item.url ? item.url : ""}
                             target="_blank"
                             onTouchStart={() =>
                                 isPcScreenSize && touchRedirect(item.url)
@@ -39,12 +40,12 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             {index === 0 && "("}
                             {item.common ? item.common : item[language]}
                             {index !== length - 1 ? ", " : ")"}
-                        </a>
+                        </Link>
                     );
                 })}
                 {workData.link?.map((item, index) => {
                     return (
-                        <a
+                        <Link
                             href={item.url}
                             target="_blank"
                             className={cn("link")}
@@ -54,7 +55,7 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             key={`${item.url}-${index}`}
                         >
                             Visit the {item.type} →
-                        </a>
+                        </Link>
                     );
                 })}
             </ScrollTargetPopup>
