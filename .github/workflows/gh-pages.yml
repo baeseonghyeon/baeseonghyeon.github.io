@@ -2,7 +2,8 @@ name: Deployment Github Page
 
 on:
   push:
-    branches: dev
+    branches: 
+    - dev
 jobs:
   deploy:
     runs-on: ubuntu-latest
