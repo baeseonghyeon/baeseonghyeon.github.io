@@ -10,10 +10,17 @@ import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
+import { Noto_Sans_KR } from "next/font/google";
 
 import styles from "./layout.module.scss";
 
 const cn = cb.bind(styles);
+
+const notoSansKr = Noto_Sans_KR({
+    weight: ["400", "700"],
+    subsets: ["latin"],
+    display: "swap",
+});
 
 interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
@@ -111,14 +118,16 @@ const Layout = (props: LayoutProps) => {
                     src="https://www.googletagmanager.com/gtag/js?id=UA-174985234-1"
                 />
             </Head>
-            <Navbar />
-            <div className={cn("container", isLaod && "animated")}>
-                <div className={cn("body", props.className)}>
-                    {props.children}
+            <div className={notoSansKr.className}>
+                <Navbar />
+                <div className={cn("container", isLaod && "animated")}>
+                    <div className={cn("body", props.className)}>
+                        {props.children}
+                    </div>
                 </div>
+                <Footer />
+                <ScrollToTopButton />
             </div>
-            <Footer />
-            <ScrollToTopButton />
         </>
     );
 };
