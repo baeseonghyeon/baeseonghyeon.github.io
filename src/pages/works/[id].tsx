@@ -167,7 +167,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
         .map((item) => {
             workDescription = item.description.ko;
             workTitle = item.title.ko;
-            workImage = item.image ? item.image[0].url : null;
+            workImage = item.thumbUrl
+                ? item.thumbUrl
+                : item.image
+                ? item.image[0].url
+                : null;
         });
 
     const work = {
