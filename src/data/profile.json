@@ -116,7 +116,7 @@
                     "title": {
                         "ko": "웹",
                         "en": "WEB",
-                        "common": "React, Next.js, SCSS, StoryBook, Svelte, A-frame, Django, Ruby on Rails, CodeIgniter"
+                        "common": "React, Next.js, Svelte, A-frame, Django, Ruby on Rails, CodeIgniter"
                     }
                 },
                 {
@@ -137,7 +137,7 @@
                     "title": {
                         "ko": "프로그래밍언어",
                         "en": "LANGUAGE",
-                        "common": "JavaScript, TypeScript, Python, C++, C#, Ruby, PHP"
+                        "common": "JavaScript, TypeScript, Python, C++, Dart, C#, Ruby, PHP"
                     }
                 },
                 {
