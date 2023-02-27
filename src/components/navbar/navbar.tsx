@@ -52,23 +52,22 @@ const Navbar: NextPage = () => {
         >
             {navItems.map((item, idx) => {
                 return (
-                    <Link href={item.path} key={idx}>
-                        <a
-                            href={item.path}
-                            className={cn(
-                                "link__label",
-                                router &&
-                                    router.pathname === item.path &&
-                                    "link__label-active",
+                    <Link
+                        href={item.path}
+                        key={idx}
+                        className={cn(
+                            "link__label",
+                            router &&
+                                router.pathname === item.path &&
+                                "link__label-active",
 
-                                router &&
-                                    router.pathname === "/" &&
-                                    item.path === "/profile" &&
-                                    "link__label-active",
-                            )}
-                        >
-                            {item.title}
-                        </a>
+                            router &&
+                                router.pathname === "/" &&
+                                item.path === "/profile" &&
+                                "link__label-active",
+                        )}
+                    >
+                        {item.title}
                     </Link>
                 );
             })}

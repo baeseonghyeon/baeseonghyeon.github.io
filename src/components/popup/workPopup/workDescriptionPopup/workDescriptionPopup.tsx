@@ -75,7 +75,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                     workData.link &&
                     workData.link.map((link, index) => {
                         return (
-                            <a
+                            <Link
                                 href={link.url}
                                 target="_blank"
                                 className={cn("link", "link--block")}
@@ -85,12 +85,12 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                                 key={`${link.url}-${index}`}
                             >
                                 Visit the {link.type} →
-                            </a>
+                            </Link>
                         );
                     })}
 
                 {!isPcScreenSize && workData.link && (
-                    <a
+                    <Link
                         href={workData.link[0].url}
                         target="_blank"
                         className={cn("link", "link--block")}
@@ -101,7 +101,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         }
                     >
                         Visit the {workData.link[0].type} →
-                    </a>
+                    </Link>
                 )}
 
                 {!isOverMaxLenght && (

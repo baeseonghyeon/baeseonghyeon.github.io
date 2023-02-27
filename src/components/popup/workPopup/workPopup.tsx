@@ -73,6 +73,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                         className={cn("image__container")}
                         skeletonClassName={cn("video__container")}
                         isBackgroundImage
+                        alt={`${workData.title[language]}-thumbnail`}
                     />
                 ) : (
                     workData.image &&
@@ -82,6 +83,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                             className={cn("image__container")}
                             skeletonClassName={cn("video__container")}
                             isBackgroundImage
+                            alt={`${workData.title[language]}-thumbnail`}
                         />
                     )
                 )}
