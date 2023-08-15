@@ -12,6 +12,7 @@ import WorkDescriptionPopup, {
 } from "./workDescriptionPopup/workDescriptionPopup";
 import { googleCloudImageUrl } from "libs/textParser";
 import ContentImage from "components/contentImage/contentImage";
+
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {

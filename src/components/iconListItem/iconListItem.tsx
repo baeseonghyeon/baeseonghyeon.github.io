@@ -30,6 +30,17 @@ const IconListItem = (props: IconListItemProps) => {
         }
     };
 
+    const getListContent = () => {
+        return (
+            <>
+                {listData.title[language]}
+                {!isIcon && "("}
+                {listData.title["common"]}
+                {!isIcon && ")"}
+            </>
+        );
+    };
+
     if (listData) {
         return (
             <li className={cn(isIcon && "list--has-icon")}>
@@ -39,16 +50,17 @@ const IconListItem = (props: IconListItemProps) => {
                     </span>
                 )}
 
-                <Link
-                    href={listData.url ? listData.url : ""}
-                    target="_blank"
-                    onTouchStart={() => touchRedirect(listData.url, true)}
-                >
-                    {listData.title[language]}
-                    {!isIcon && "("}
-                    {listData.title["common"]}
-                    {!isIcon && ")"}
-                </Link>
+                {listData.url ? (
+                    <Link
+                        href={listData.url}
+                        target="_blank"
+                        onTouchStart={() => touchRedirect(listData.url, true)}
+                    >
+                        {getListContent()}
+                    </Link>
+                ) : (
+                    getListContent()
+                )}
             </li>
         );
     } else {
