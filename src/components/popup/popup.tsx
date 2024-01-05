@@ -145,7 +145,7 @@ const Popup = (props: PopupProps) => {
                                           onClosePopup(popupRef.current)
                             }
                         >
-                            <IoMdClose size={17.5} />
+                            <IoMdClose size={isPcScreenSize ? 22 : 20} />
                         </div>
                     </div>
                 </div>

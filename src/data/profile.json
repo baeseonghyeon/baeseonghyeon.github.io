@@ -3,19 +3,19 @@
         {
             "sort": 1,
             "common": "bae-seonghyeon",
-            "ko": "배성현은 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, UI · UX 기획자, 프로덕트 매니저 입니다.",
-            "en": "Bae Seonghyeon is a Frontend Engineer, WEB · APP Developer, UI Developer, UI · UX Planner, Product Manager."
+            "ko": "배성현은 웹 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, UI · UX 기획자 겸 디자이너 입니다.",
+            "en": "Bae Seonghyeon is a web frontend engineer, web and app developer, UI developer, UI and UX planner and designer."
         },
         {
             "sort": 2,
             "common": "comment",
-            "ko": "디자이너의 시선과 기획자의 생각으로 개발하며, 심미적으로 아름답고 기능적으로 효과적인 서비스를 만들고 있습니다. 지속가능한 개발을 하기 위해 생각하고 탐구하며, 사용자 경험의 최전선에서 최고의 프로덕트를 만들어갑니다. 대한민국 경기도에 거주하며 경영정보학과를 전공했습니다.",
-            "en": "I develop aesthetically beautiful and functionally effective services with the designer's perspective and the planner's thoughts. I always think and study for sustainable development, and create the best products at the forefront of user experience. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems."
+            "ko": "누구나 사용하고 싶은 서비스를 만드는 것을 목표로 합니다. 기획자와 디자이너의 관점을 아우르며 사용자 친화적인 서비스를 만들기 위해 노력합니다. 함께 일하고 싶은 개발자가 되기 위해 늘 배우고 탐구하고 있습니다. 클린하고 변화에 유연한 코드에 대해 고민하며, 개발문화를 발전시키는 것을 즐깁니다. 대한민국 경기도에 거주하며 경영정보학과를 전공했습니다.",
+            "en": "I aim to create a service that everyone wants to use. I try to create user-friendly services that encompass the perspectives of planners and designers. I am always learning and exploring to become a developer I want to work with. I enjoy thinking about clean and changeable codes, and developing a development culture. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems."
         },
         {
             "sort": 99,
             "common": "description",
-            "ko": "이 웹사이트는 Next.js + TypeScript로 개발되어 Github Pages에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
+            "ko": "이 웹사이트는 Next.js with TypeScript로 개발되어 Github Pages에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현).",
             "en": "This website was developed using Next.js + TypeScript and Deployed on Github Pages \n\nWebsite developed and designed by Bae Seonghyeon"
         }
     ],
@@ -76,7 +76,7 @@
                 },
                 {
                     "title": {
-                        "ko": "(주)올드루키 서비스 개발팀 프론트엔드 엔지니어, 기획자",
+                        "ko": "올드루키 서비스 개발팀 프론트엔드 엔지니어, 기획자",
                         "en": "oldrookie Corp Frontend Engineer, Service Planner",
                         "common": "2020-2022"
                     },
@@ -109,21 +109,90 @@
             ]
         },
         {
-            "title": "skill",
+            "title": "core skill",
             "sort": 5,
             "listData": [
                 {
                     "title": {
                         "ko": "웹",
-                        "en": "WEB",
-                        "common": "React, Next.js, Svelte, A-frame, Django, Ruby on Rails, CodeIgniter"
+                        "en": "Web",
+                        "common": "React, Next.js"
                     }
                 },
                 {
                     "title": {
                         "ko": "앱",
-                        "en": "APP",
-                        "common": "Flutter, React Native"
+                        "en": "App",
+                        "common": "React Native"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "프로그래밍언어",
+                        "en": "Language",
+                        "common": "JavaScript, TypeScript"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "상태 관리",
+                        "en": "State management",
+                        "common": "React Query, MobX, Redux"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "패키지 관리",
+                        "en": "Package management",
+                        "common": "Yarn, npm"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "스타일링",
+                        "en": "Styling",
+                        "common": "Styled-Components, SCSS, CSS, MUI, JSS"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "빌드 도구",
+                        "en": "Build tools",
+                        "common": "Webpack"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "CI/CD",
+                        "en": "CI/CD",
+                        "common": "GitLab Pipelines, GitHub Actions, Jenkins"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "sub skill",
+            "sort": 6,
+            "listData": [
+                {
+                    "title": {
+                        "ko": "웹",
+                        "en": "Web",
+                        "common": "Django, Ruby on Rails, CodeIgniter"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "앱",
+                        "en": "App",
+                        "common": "React Native, Flutter"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "프로그래밍언어",
+                        "en": "Language",
+                        "common": "Python, C++, Dart, C#, Ruby, PHP"
                     }
                 },
                 {
@@ -135,22 +204,15 @@
                 },
                 {
                     "title": {
-                        "ko": "프로그래밍언어",
-                        "en": "LANGUAGE",
-                        "common": "JavaScript, TypeScript, Python, C++, Dart, C#, Ruby, PHP"
-                    }
-                },
-                {
-                    "title": {
                         "ko": "데이터베이스",
-                        "en": "DATABASE",
+                        "en": "Database",
                         "common": "MySQL, GraphQL, MongoDB, SQLite, PostgreSQL"
                     }
                 },
                 {
                     "title": {
                         "ko": "인프라",
-                        "en": "INFRA",
+                        "en": "Infra",
                         "common": "Git, AWS, GCP, Docker"
                     }
                 }

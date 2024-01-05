@@ -14,10 +14,16 @@ $color-blue-dark: #0078ff;
 $color-shadow-dark: #000;
 
 /* font size */
-$fs-xs: 0.7rem;
-$fs-s: 0.8rem;
-$fs-m: 1rem;
-$fs-l: 1rem;
+$fs-xs: 0.9rem;
+$fs-s: 1rem;
+$fs-m: 1.1rem;
+$fs-l: 1.3rem;
+
+/* font size - mobile */
+$fs-xs-mobile: 0.8rem;
+$fs-s-mobile: 0.9rem;
+$fs-m-mobile: 1rem;
+$fs-l-mobile: 1.1rem;
 
 /* font weight */
 $fw: 400;
@@ -32,7 +38,7 @@ $lh-m: 1.6;
 $lh-l: 1.9;
 
 /* border width */
-$bw: 1px;
+$bw: 1.5px;
 
 /* zindex */
 $z-layout: 999;

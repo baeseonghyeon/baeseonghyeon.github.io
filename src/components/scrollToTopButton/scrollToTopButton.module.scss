@@ -15,7 +15,9 @@
     margin-left: -17.5px;
     z-index: $z-layout;
     cursor: pointer;
-    @include shadow-outline(0.5vh);
+
+    border: $bw solid var(--on-background-color);
+    background: var(--background-color);
 }
 
 .visible {

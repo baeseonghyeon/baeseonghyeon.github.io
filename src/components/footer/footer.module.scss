@@ -16,8 +16,14 @@
         justify-content: center;
         align-items: center;
         font-size: $fs-s !important;
+        @include media-mobile {
+            font-size: $fs-s-mobile !important;
+        }
         span {
             font-size: $fs-s !important;
+            @include media-mobile {
+                font-size: $fs-s-mobile !important;
+            }
         }
         a {
             text-decoration: none;
@@ -39,7 +45,7 @@
             justify-content: flex-end;
             align-items: center;
             :not(:last-of-type) {
-                margin-right: 5px;
+                margin-right: 7.5px;
             }
         }
         &__wrapper {
@@ -52,14 +58,23 @@
             cursor: pointer;
         }
         &__darkmode {
-            height: 20px;
+            height: 22px;
+            @include media-mobile {
+                height: 20px;
+            }
             svg {
                 stroke: var(--on-background-color);
                 width: $fs-s;
+                @include media-mobile {
+                    font-size: $fs-s-mobile;
+                }
             }
         }
         &__language {
             font-size: $fs-s !important;
+            @include media-mobile {
+                font-size: $fs-s-mobile !important;
+            }
             padding-bottom: 1px;
             padding-left: 1px;
         }

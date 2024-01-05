@@ -59,6 +59,10 @@ div {
     letter-spacing: $ls;
     line-height: $lh-m;
     word-break: keep-all;
+    @include media-mobile {
+        font-size: $fs-m-mobile;
+        line-height: $lh-m;
+    }
 }
 
 a {
@@ -81,7 +85,9 @@ ul {
     list-style: none;
     li {
         font-size: $fs-m;
-
+        @include media-mobile {
+            font-size: $fs-m-mobile;
+        }
         a {
             letter-spacing: $ls;
             font-weight: $fw;
