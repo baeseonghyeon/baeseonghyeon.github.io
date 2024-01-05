@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
 import { lowerCaseParser } from "libs/textParser";
+import { Language } from "interface/enums";
 const cn = cb.bind(styles);
 
 export interface WorkDescriptionPopupProps extends WorkPopupProps {
@@ -25,7 +26,13 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
     const router = useRouter();
     const language = useRecoilValue(languageState);
     const { isPcScreenSize } = useMediaQuery();
-    const maxLength = isPcScreenSize ? 120 : 80;
+    const maxLength = isPcScreenSize
+        ? language === Language.en
+            ? 130
+            : 110
+        : language === Language.en
+        ? 90
+        : 65;
     const workData = workPopupData.workData;
     const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
     const index = workPopupData.index;

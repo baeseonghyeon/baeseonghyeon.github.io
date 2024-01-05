@@ -44,9 +44,7 @@
             flex-direction: row;
             justify-content: flex-end;
             align-items: center;
-            :not(:last-of-type) {
-                margin-right: 7.5px;
-            }
+            gap: 5px;
         }
         &__wrapper {
             display: flex;
@@ -66,7 +64,7 @@
                 stroke: var(--on-background-color);
                 width: $fs-s;
                 @include media-mobile {
-                    font-size: $fs-s-mobile;
+                    width: $fs-m-mobile;
                 }
             }
         }

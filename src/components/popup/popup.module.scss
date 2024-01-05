@@ -94,12 +94,14 @@
         text-align: left;
         touch-action: auto;
         white-space: pre-wrap;
+        @include media-not-desktop {
+            padding: 12px 10px 30px;
+        }
     }
 
     @include media-mobile {
         position: relative;
         width: 100%;
-        // margin-bottom: 5px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;
@@ -108,7 +110,6 @@
     @include media-tablet {
         position: relative;
         width: 100%;
-        // margin-bottom: 5px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;

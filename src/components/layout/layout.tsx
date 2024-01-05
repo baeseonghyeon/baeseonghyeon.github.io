@@ -17,7 +17,7 @@ import styles from "./layout.module.scss";
 const cn = cb.bind(styles);
 
 const notoSansKr = Noto_Sans_KR({
-    weight: ["400", "700"],
+    weight: ["400", "500", "700"],
     subsets: ["latin"],
     display: "swap",
 });
