@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
-import { googleCloudImageUrl, lowerCaseParser } from "libs/textParser";
+import { convertImgurUrlToDirectLink, lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
@@ -106,7 +106,9 @@ const WorkDetail: NextPage = ({ work }: any) => {
                                     key={image.url}
                                 >
                                     <ContentImage
-                                        src={googleCloudImageUrl(image.url)}
+                                        src={convertImgurUrlToDirectLink(
+                                            image.url,
+                                        )}
                                         className={cn("image__content")}
                                         skeletonClassName={cn("skeleton")}
                                         alt={`${workData.title[language]} Image ${index}`}

@@ -10,7 +10,7 @@ import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup, {
     getWorkPopupId,
 } from "./workDescriptionPopup/workDescriptionPopup";
-import { googleCloudImageUrl } from "libs/textParser";
+import { convertImgurUrlToDirectLink } from "libs/textParser";
 import ContentImage from "components/contentImage/contentImage";
 
 const cn = cb.bind(styles);
@@ -70,7 +70,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                     />
                 ) : workData.thumbUrl ? (
                     <ContentImage
-                        src={googleCloudImageUrl(workData.thumbUrl)}
+                        src={convertImgurUrlToDirectLink(workData.thumbUrl)}
                         className={cn("image__container")}
                         skeletonClassName={cn("video__container")}
                         isBackgroundImage

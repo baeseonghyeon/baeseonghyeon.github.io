@@ -11,6 +11,7 @@ export const lowerCaseParser = (text: string | undefined) => {
     }
 };
 
+// Its deprecated, but we keep it for backward compatibility
 export const googleCloudImageUrl = (imageId: string) => {
     let imageUrlArray = imageId.split("/");
 
@@ -19,4 +20,18 @@ export const googleCloudImageUrl = (imageId: string) => {
     }
 
     return "https://drive.google.com/uc?export=view&id=" + imageId;
+};
+
+export const convertImgurUrlToDirectLink = (
+    url: string,
+    extension: string = "png",
+): string => {
+    const regex =
+        /^https?:\/\/(?:www\.)?imgur\.com\/(?:gallery\/|a\/)?([a-zA-Z0-9]+)$/;
+    const match = url.match(regex);
+    if (match && match[1]) {
+        const imageId = match[1];
+        return `https://i.imgur.com/${imageId}.${extension}`;
+    }
+    return url;
 };

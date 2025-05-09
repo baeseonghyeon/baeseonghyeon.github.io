@@ -4,7 +4,7 @@ import Navbar from "components/navbar/navbar";
 import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
 import useDarkMode from "hooks/useDarkMode";
 import { Language } from "interface/enums";
-import { googleCloudImageUrl } from "libs/textParser";
+import { convertImgurUrlToDirectLink } from "libs/textParser";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
@@ -70,7 +70,7 @@ const Layout = (props: LayoutProps) => {
                 {router.pathname !== "/works" && (
                     <meta
                         property="og:image"
-                        content={googleCloudImageUrl(
+                        content={convertImgurUrlToDirectLink(
                             image ? image : "1yMHIgjjWl4YKRpM9HPdta1YhAjqya6nD",
                         )}
                     />
