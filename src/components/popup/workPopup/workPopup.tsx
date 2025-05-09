@@ -18,7 +18,7 @@ const cn = cb.bind(styles);
 export interface WorkPopupProps {
     workPopupData: {
         workData: WorkData;
-        isRandomPositon?: boolean;
+        isRandomPosition?: boolean;
         index: number;
     };
 }
@@ -32,7 +32,7 @@ const WorkPopup = (props: WorkPopupProps) => {
     const [innerPopupVisibility, setInnerPopupVisibility] = useState(false);
     const workData = workPopupData.workData;
     const index = workPopupData.index;
-    const isRandomPositon = workPopupData.isRandomPositon;
+    const isRandomPosition = workPopupData.isRandomPosition;
     const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
 
     useLayoutEffect(() => {
@@ -48,7 +48,7 @@ const WorkPopup = (props: WorkPopupProps) => {
             <Popup
                 id={id}
                 title={workData.title[language]}
-                isRandomPositon={isRandomPositon}
+                isRandomPosition={isRandomPosition}
                 index={index + 1}
                 onMouseEnter={() =>
                     isPcScreenSize && setInnerPopupVisibility(true)

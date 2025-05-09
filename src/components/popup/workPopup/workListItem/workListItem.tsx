@@ -62,7 +62,10 @@ const WorkListItem = (props: WorkListItemProps) => {
             <span className={cn("wrapper", "mr-2")} key={index}>
                 <span
                     className={cn("footnote")}
-                    onClick={() => popupActivator(id)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        popupActivator(id);
+                    }}
                     onTouchStart={() => isPcScreenSize && popupActivator(id)}
                 >
                     [{index}]

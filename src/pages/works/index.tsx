@@ -20,7 +20,7 @@ const Works: NextPage = () => {
     const [workFilterValue, setWorkFilterValue] =
         useRecoilState(workFilterState);
     const works: WorkDTO = workJson;
-    const [isRandomPositon, setIsRandomPositon] = useState<boolean>(true);
+    const [isRandomPosition, setIsRandomPosition] = useState<boolean>(true);
 
     const filteredWorkData = works.data
         .slice(0)
@@ -40,7 +40,7 @@ const Works: NextPage = () => {
                 title={`${firsttLetterCapitalizer(workFilterValue)} Works`}
                 index={0}
                 isActive={true}
-                isRandomPositon={false}
+                isRandomPosition={false}
                 className={cn(`popup__all-work`)}
                 buttons={[
                     <FilterButton
@@ -54,7 +54,7 @@ const Works: NextPage = () => {
                             workPopupData={{
                                 workData: item,
                                 index: filteredWorkData.length - index,
-                                isRandomPositon: isRandomPositon,
+                                isRandomPosition: isRandomPosition,
                             }}
                             key={filteredWorkData.length - index}
                         />
@@ -68,7 +68,7 @@ const Works: NextPage = () => {
                         workPopupData={{
                             workData: item,
                             index: index,
-                            isRandomPositon: isRandomPositon,
+                            isRandomPosition: isRandomPosition,
                         }}
                         key={index}
                     />
@@ -76,7 +76,7 @@ const Works: NextPage = () => {
             })}
 
             <ShuffleButton
-                onClick={() => setIsRandomPositon(!isRandomPositon)}
+                onClick={() => setIsRandomPosition(!isRandomPosition)}
             />
         </Layout>
     );

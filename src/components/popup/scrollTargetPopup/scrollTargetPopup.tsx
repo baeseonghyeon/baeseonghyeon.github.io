@@ -16,7 +16,7 @@ const ScrollTargetPopup = (props: ScrollTargetPopupProps) => {
         title = "title",
         index,
         isActive = false,
-        isRandomPositon = true,
+        isRandomPosition: isRandomPosition = true,
         bodyClassName,
         onClickClose,
     } = props;
@@ -38,7 +38,7 @@ const ScrollTargetPopup = (props: ScrollTargetPopupProps) => {
         <Popup
             title={title}
             isActive={isActive}
-            isRandomPositon={isRandomPositon}
+            isRandomPosition={isRandomPosition}
             index={index + 1}
             onMouseEnter={() => isPcScreenSize && setInnerPopupVisibility(true)}
             onMouseLeave={() =>

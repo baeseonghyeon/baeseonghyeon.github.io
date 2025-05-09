@@ -24,7 +24,7 @@ const Profile: NextPage = (props: ProfileProps) => {
     const profile: ProfileDTO = profileJson;
     const textProfiles: textProfileType[] = profile.text;
     const listProfiles: listProfileType[] = profile.list;
-    const [isRandomPositon, setIsRandomPositon] = useState<boolean>(true);
+    const [isRandomPosition, setIsRandomPosition] = useState<boolean>(true);
 
     return (
         <Layout title="Profile">
@@ -34,7 +34,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                         id={`popup__${item.common}`}
                         title={item.common?.toUpperCase()}
                         isActive={idx === 0}
-                        isRandomPositon={isRandomPositon}
+                        isRandomPosition={isRandomPosition}
                         key={`popup--${item.common}-${item.sort}`}
                         index={Number(item.sort)}
                         className={cn(`popup__${item.common}`)}
@@ -49,7 +49,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                     <ScrollTargetPopup
                         id={`popup__${item.title}`}
                         title={item.title.toUpperCase()}
-                        isRandomPositon={isRandomPositon}
+                        isRandomPosition={isRandomPosition}
                         key={`popup--${item.title}-${item.sort}`}
                         index={Number(item.sort)}
                         className={cn(
@@ -72,7 +72,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                 );
             })}
             <ShuffleButton
-                onClick={() => setIsRandomPositon(!isRandomPositon)}
+                onClick={() => setIsRandomPosition(!isRandomPosition)}
             />
         </Layout>
     );

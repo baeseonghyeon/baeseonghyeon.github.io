@@ -53,7 +53,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                 isActive={false}
                 isDraggable={false}
                 onClickClose={onClickClose}
-                isRandomPositon={false}
+                isRandomPosition={false}
             >
                 <p>
                     {workData.description[language]

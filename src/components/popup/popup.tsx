@@ -24,7 +24,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
     isActive?: boolean;
     isDraggable?: boolean;
-    isRandomPositon?: boolean;
+    isRandomPosition?: boolean;
     buttons?: ReactNode[];
     bodyClassName?: string;
     onClickClose?: () => void;
@@ -37,7 +37,7 @@ const Popup = (props: PopupProps) => {
         index,
         isActive = false,
         isDraggable = true,
-        isRandomPositon = true,
+        isRandomPosition: isRandomPosition = true,
         buttons = null,
         bodyClassName,
         onClickClose,
@@ -55,7 +55,7 @@ const Popup = (props: PopupProps) => {
 
     useLayoutEffect(() => {
         if (popupRef.current) {
-            if (isRandomPositon) {
+            if (isRandomPosition) {
                 setPositionRandom(popupRef.current);
             }
             if (isActive) {
@@ -68,16 +68,16 @@ const Popup = (props: PopupProps) => {
         if (popupRef.current) {
             setPositionRandom(popupRef.current);
         }
-    }, [isRandomPositon]);
+    }, [isRandomPosition]);
 
     useLayoutEffect(() => {
         if (popupRef.current === currentActivePopup) {
-            increasePopupOveray();
+            increasePopupOverlay();
             scrollToPopup(currentActivePopup);
         }
     }, [currentActivePopup]);
 
-    const increasePopupOveray = () => {
+    const increasePopupOverlay = () => {
         setZindex(popupOverlayDepth + 1);
         setPopupOverlayDepth(popupOverlayDepth + 1);
         setCurrentActivePopup(popupRef.current);
@@ -99,8 +99,7 @@ const Popup = (props: PopupProps) => {
             disabled={isPcScreenSize ? false : true}
             grid={[50, 50]}
             bounds="div"
-            onDrag={() => isDraggable && increasePopupOveray()}
-            onMouseDown={() => isDraggable && increasePopupOveray()}
+            onDrag={() => isDraggable && increasePopupOverlay()}
             nodeRef={popupRef}
         >
             <div
@@ -113,6 +112,10 @@ const Popup = (props: PopupProps) => {
                 style={{ ...props.style, zIndex: zIndex, order: index }}
                 onMouseEnter={props.onMouseEnter}
                 onMouseLeave={props.onMouseLeave}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    isDraggable && increasePopupOverlay();
+                }}
                 ref={popupRef}
             >
                 <div
@@ -132,18 +135,19 @@ const Popup = (props: PopupProps) => {
                             })}
                         <div
                             className={cn("close__button")}
-                            onClick={
+                            onClick={(e) => {
+                                e.stopPropagation(); // Prevent event propagation
                                 onClickClose
-                                    ? onClickClose
-                                    : () => onClosePopup(popupRef.current)
-                            }
-                            onTouchStart={
+                                    ? onClickClose()
+                                    : onClosePopup(popupRef.current);
+                            }}
+                            onTouchStart={(e) => {
+                                e.stopPropagation(); // Prevent event propagation
                                 onClickClose
-                                    ? onClickClose
-                                    : () =>
-                                          isPcScreenSize &&
-                                          onClosePopup(popupRef.current)
-                            }
+                                    ? onClickClose()
+                                    : isPcScreenSize &&
+                                      onClosePopup(popupRef.current);
+                            }}
                         >
                             <IoMdClose size={isPcScreenSize ? 22 : 20} />
                         </div>
