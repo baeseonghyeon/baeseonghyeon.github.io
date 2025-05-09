@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { currentActivePopupState, languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup, {
@@ -80,7 +80,9 @@ const WorkPopup = (props: WorkPopupProps) => {
                     workData.image &&
                     workData.image[0] && (
                         <ContentImage
-                            src={googleCloudImageUrl(workData.image[0].url)}
+                            src={convertImgurUrlToDirectLink(
+                                workData.image[0].url,
+                            )}
                             className={cn("image__container")}
                             skeletonClassName={cn("video__container")}
                             isBackgroundImage
