@@ -77,7 +77,7 @@
                     "url": "http://syulib.suedumi.com/bbs/event.php"
                 }
             ],
-            "thumbUrl": "1q5YBrzaW25dIq5_67alYj-87MkXzIuWV",
+            "thumbUrl": "https://imgur.com/Za8c1HJ",
             "image": [
                 {
                     "url": "1laO33PX7qyR4KrTJEFLNGBEDJ35WroMi",
@@ -122,7 +122,7 @@
                     "url": "http://dfarmcloud.com/"
                 }
             ],
-            "thumbUrl": "1wJTQsc703hGdbF-zHOPYDXfjBoi-dOjh",
+            "thumbUrl": "https://imgur.com/FLCDnV9",
             "image": [
                 {
                     "url": "19zCQJ46CRhF0BBI5YuZCJVZsx0MVGr88"
@@ -347,7 +347,7 @@
                 ]
             },
             "link": null,
-            "thumbUrl": "1QRhdOFpdSWytIMEuv2LuwACKRJ8uWzB2",
+            "thumbUrl": "https://imgur.com/XG5lc1T",
             "image": [
                 {
                     "url": "1WnzXpSgqGDgLwUHFIbyJAiMEAAlmzXAr"
@@ -402,7 +402,7 @@
                 ]
             },
             "link": null,
-            "thumbUrl": "17qWFUoWSJtMzN1sdSD_-Don0jKweUTTs",
+            "thumbUrl": "https://imgur.com/jeeiMAc",
             "image": [
                 {
                     "url": "1RgCr-0OUuRKLjAghej719wXrUCbbW9pO"
@@ -472,10 +472,11 @@
                 "en": "HaFFn"
             },
             "info": {
-                "date": "2021",
-                "category": ["Website"],
+                "date": "2022",
+                "category": ["Application", "Website"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
+                    "Flutter",
                     "Next.js",
                     "TypeScript",
                     "Redux",
@@ -489,44 +490,14 @@
                 }
             },
             "description": {
-                "ko": "현실을 담은 패션플랫폼 해픈의 프로모션 웹사이트 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다.\nNext.js로 프로젝트의 클라이언트를 개발과 운영했습니다. AWS를 사용한 빌드 배포와 기획, 디자인을 담당했습니다.",
-                "en": "It's a haffn website for promotion that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D.\nI was in charge of web client developed, operation and use Next.js, build, deploy use AWS and planning and design."
+                "ko": "현실을 담은 패션플랫폼 해픈 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다.\n플러터를 사용한 크로스 플랫폼 앱 클라이언트의 개발과 빌드, 배포, 운영 그리고 기획, 디자인을 담당했습니다.",
+                "en": "It's a haffn that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D.\nI was in charge of web client developed, operation use a flutter and build, deploy use AWS and planning and design."
             },
             "link": [
                 {
                     "type": "Website",
                     "url": "https://www.haffn.com/"
-                }
-            ],
-            "video": [
-                {
-                    "url": "https://www.youtube.com/embed/pc_ndpLZTMc"
                 },
-                {
-                    "url": "https://www.youtube.com/embed/ijrx6tS981k"
-                }
-            ]
-        },
-        {
-            "title": {
-                "ko": "해픈(HaFFn)",
-                "en": "HaFFn"
-            },
-            "info": {
-                "date": "2022",
-                "category": ["Application"],
-                "role": ["Development", "Planning", "Design"],
-                "stack": ["Flutter", "Git", "AWS"],
-                "team": {
-                    "ko": "oldrookie",
-                    "en": "oldrookie"
-                }
-            },
-            "description": {
-                "ko": "현실을 담은 패션플랫폼 해픈 입니다. 해픈은 3D로 모델링된 실제 의류 아이템을 가상으로 살펴보고, 입혀보고, 공유하고, 구매할 수 있는 패션 의류 커머스 메타버스 플랫폼입니다.\n플러터를 사용한 크로스 플랫폼 앱 클라이언트의 개발과 빌드, 배포, 운영 그리고 기획, 디자인을 담당했습니다.",
-                "en": "It's a haffn that fashion platform that contains reality. HaFFn is a fashion commerce metabus platform that able to virtually look at, wear, share, and purchase real clothing items modeled in 3D.\nI was in charge of web client developed, operation use a flutter and build, deploy use AWS and planning and design."
-            },
-            "link": [
                 {
                     "type": "Google Play",
                     "url": "https://play.google.com/store/apps/details?id=com.oldrookiecorp.haffn"
@@ -556,6 +527,9 @@
             "video": [
                 {
                     "url": "https://www.youtube.com/embed/nR-PDwWCJ80"
+                },
+                {
+                    "url": "https://www.youtube.com/embed/pc_ndpLZTMc"
                 }
             ]
         },

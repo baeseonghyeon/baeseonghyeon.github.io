@@ -3,8 +3,8 @@
         {
             "sort": 1,
             "common": "bae-seonghyeon",
-            "ko": "배성현은 웹 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, UI · UX 기획자 겸 디자이너 입니다.",
-            "en": "Bae Seonghyeon is a web frontend engineer, web and app developer, UI developer, UI and UX planner and designer."
+            "ko": "배성현은 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, PM,  UI · UX 디자이너 입니다.",
+            "en": "Bae Seonghyeon is a frontend engineer, web and app developer, UI developer, Project Manager, UI · UX designer."
         },
         {
             "sort": 2,
@@ -60,24 +60,24 @@
             "listData": [
                 {
                     "title": {
-                        "ko": "빗썸메타 블록개발실 개발팀 프론트엔드 엔지니어",
-                        "en": "Bithumb META NFT Market Development Team, Frontend Engineer",
+                        "ko": "빗썸메타 블록개발실 프론트엔드 엔지니어",
+                        "en": "Bithumb META NFT Market Place Team, Frontend Engineer",
                         "common": "2022-2023"
                     },
                     "url": "https://bithumbmeta.io/"
                 },
                 {
                     "title": {
-                        "ko": "바오밥파트너즈 메타버스 개발팀 프론트엔드 엔지니어",
-                        "en": "Baobab Partners Inc. Metaverse Development Team, Frontend Engineer",
+                        "ko": "바오밥파트너즈 메타버스팀 프론트엔드 엔지니어",
+                        "en": "Baobab Partners Inc. Metaverse Team, Frontend Engineer",
                         "common": "2022"
                     },
                     "url": "https://www.baobabpartners.io/"
                 },
                 {
                     "title": {
-                        "ko": "올드루키 서비스 개발팀 프론트엔드 엔지니어, 기획자",
-                        "en": "oldrookie Corp Frontend Engineer, Service Planner",
+                        "ko": "올드루키 프론트엔드 엔지니어",
+                        "en": "oldrookie Corp Frontend Engineer",
                         "common": "2020-2022"
                     },
                     "url": "https://oldrookie.notion.site/3f60ba345d4040f2a6b3f44580e3fe71"
@@ -100,7 +100,7 @@
                 },
                 {
                     "title": {
-                        "ko": "오픈버스(주) 개발팀 인턴",
+                        "ko": "오픈버스 개발팀 인턴",
                         "en": "OpenBUS Development Team Intern",
                         "common": "2018-2019"
                     },
