@@ -1,0 +1,52 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.container {
+    z-index: $z-layout;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+
+    .toggle {
+        &__container {
+            position: relative;
+            top: 1px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+        }
+        &__wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 25px;
+            height: 25px;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+        &__darkmode {
+            height: 22px;
+
+            @include media-mobile {
+                height: 20px;
+            }
+            svg {
+                stroke: var(--on-background-color);
+                width: $fs-s;
+                @include media-mobile {
+                    width: $fs-m-mobile;
+                }
+            }
+        }
+        &__language {
+            font-size: $fs-s !important;
+            @include media-mobile {
+                font-size: $fs-s-mobile !important;
+            }
+            padding-bottom: 1px;
+            padding-left: 1px;
+        }
+    }
+}

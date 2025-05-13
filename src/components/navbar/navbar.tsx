@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styles from "./navbar.module.scss";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
+import DarkModeLanguageToggle from "components/darkModeLanguageToggle/darkModeLanguageToggle";
 
 const cn = cb.bind(styles);
 
@@ -50,27 +51,40 @@ const Navbar: NextPage = () => {
                 !visible && "hide",
             )}
         >
-            {navItems.map((item, idx) => {
-                return (
-                    <Link
-                        href={item.path}
-                        key={idx}
-                        className={cn(
-                            "link__label",
-                            router &&
-                                router.pathname === item.path &&
-                                "link__label-active",
+            <div
+                className={cn(
+                    "wrapper",
+                    "flex-row",
+                    "d-flex",
+                    "justify-content-between",
+                )}
+            >
+                <span className={cn("links__wrapper")}>
+                    {navItems.map((item, idx) => {
+                        return (
+                            <Link
+                                href={item.path}
+                                key={idx}
+                                className={cn(
+                                    "link__label",
+                                    router &&
+                                        router.pathname === item.path &&
+                                        "link__label-active",
 
-                            router &&
-                                router.pathname === "/" &&
-                                item.path === "/profile" &&
-                                "link__label-active",
-                        )}
-                    >
-                        {item.title}
-                    </Link>
-                );
-            })}
+                                    router &&
+                                        router.pathname === "/" &&
+                                        item.path === "/profile" &&
+                                        "link__label-active",
+                                )}
+                            >
+                                {item.title}
+                            </Link>
+                        );
+                    })}
+                </span>
+                <div className={cn("divider")} />
+                <DarkModeLanguageToggle />
+            </div>
         </div>
     );
 };
