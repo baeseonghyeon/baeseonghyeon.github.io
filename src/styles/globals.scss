@@ -59,7 +59,7 @@ div {
     letter-spacing: $ls;
     line-height: $lh-m;
     word-break: keep-all;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
     @include media-mobile {
         font-size: $fs-m-mobile;
         line-height: $lh-m;
