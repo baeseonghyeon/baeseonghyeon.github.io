@@ -15,7 +15,7 @@
             "jp": "誰もが使いたくなるサービスを作ることを目指しています。企画者とデザイナーの視点を理解し、ユーザーフレンドリーなサービス作りに努めています。一緒に働きたい開発者になるため、常に学び探求しています。クリーンで変化に柔軟なコードについて考え、健全な開発文化を作ることを楽しんでいます。京畿道に居住しており、経営情報学を専攻しました。"
         },
         {
-            "sort": 99,
+            "sort": 10,
             "common": "description",
             "ko": "이 웹사이트는 Next.js와 TypeScript로 개발되어 GitHub Pages에 배포되었습니다. \n\n개발 및 디자인 (배성현).",
             "en": "This website was developed using Next.js and TypeScript, and deployed on GitHub Pages.\n\nDesigned and developed by Bae Seonghyeon.",
@@ -65,7 +65,7 @@
                     "title": {
                         "ko": "프리랜서 React Native 개발자",
                         "en": "Freelancer React Native Developer",
-                        "jp": "フリーランスReact Native開発者",
+                        "jp": "フリーランスReact Nativeエンジニア",
                         "common": "2025"
                     }
                 },

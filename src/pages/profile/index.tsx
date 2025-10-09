@@ -10,11 +10,12 @@ import {
 import profileJson from "data/profile.json";
 import { languageState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import ProfileListItem from "../../components/iconListItem/iconListItem";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 import { getLocalizedText } from "libs/languageHelper";
+import { clearAllPositions } from "libs/positionHandler";
 const cn = cb.bind(styles);
 
 export interface ProfileProps {}
@@ -25,7 +26,12 @@ const Profile: NextPage = (props: ProfileProps) => {
     const profile: ProfileDTO = profileJson;
     const textProfiles: textProfileType[] = profile.text;
     const listProfiles: listProfileType[] = profile.list;
-    const [isRandomPosition, setIsRandomPosition] = useState<boolean>(true);
+    const [shuffleTrigger, setShuffleTrigger] = useState<number>(0);
+
+    // 페이지 마운트 시 위치 초기화 (깨끗한 상태에서 시작)
+    useEffect(() => {
+        clearAllPositions();
+    }, []);
 
     return (
         <Layout title="Profile">
@@ -35,7 +41,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                         id={`popup__${item.common}`}
                         title={item.common?.toUpperCase()}
                         isActive={idx === 0}
-                        isRandomPosition={isRandomPosition}
+                        isRandomPosition={shuffleTrigger}
                         key={`popup--${item.common}-${item.sort}`}
                         index={Number(item.sort)}
                         className={cn(`popup__${item.common}`)}
@@ -50,7 +56,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                     <ScrollTargetPopup
                         id={`popup__${item.title}`}
                         title={item.title.toUpperCase()}
-                        isRandomPosition={isRandomPosition}
+                        isRandomPosition={shuffleTrigger}
                         key={`popup--${item.title}-${item.sort}`}
                         index={Number(item.sort)}
                         className={cn(
@@ -73,7 +79,10 @@ const Profile: NextPage = (props: ProfileProps) => {
                 );
             })}
             <ShuffleButton
-                onClick={() => setIsRandomPosition(!isRandomPosition)}
+                onClick={() => {
+                    clearAllPositions(); // 저장된 위치 초기화
+                    setShuffleTrigger((prev) => prev + 1); // 트리거 값 증가로 항상 변경 감지
+                }}
             />
         </Layout>
     );

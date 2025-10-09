@@ -24,7 +24,7 @@ export interface PopupProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
     isActive?: boolean;
     isDraggable?: boolean;
-    isRandomPosition?: boolean;
+    isRandomPosition?: boolean | number; // boolean 또는 number(트리거) 허용
     buttons?: ReactNode[];
     bodyClassName?: string;
     onClickClose?: () => void;
@@ -55,8 +55,16 @@ const Popup = (props: PopupProps) => {
 
     useLayoutEffect(() => {
         if (popupRef.current) {
-            if (isRandomPosition) {
-                setPositionRandom(popupRef.current);
+            // 초기 렌더 시 위치 설정 (렌더 전에 동기적으로 실행)
+            if (isRandomPosition !== false) {
+                // index에 따른 지연으로 순차 배치 (셔플과 동일하게)
+                // 충돌 감지가 정확하도록 충분한 간격 확보
+                const delay = Math.min(index * 5, 100);
+                setTimeout(() => {
+                    if (popupRef.current) {
+                        setPositionRandom(popupRef.current);
+                    }
+                }, delay);
             }
             if (isActive) {
                 setCurrentActivePopup(popupRef.current);
@@ -65,8 +73,23 @@ const Popup = (props: PopupProps) => {
     }, []);
 
     useEffect(() => {
-        if (popupRef.current) {
-            setPositionRandom(popupRef.current);
+        // 셔플 버튼으로 isRandomPosition이 변경될 때만 위치 재설정
+        if (
+            popupRef.current &&
+            isRandomPosition !== false &&
+            isRandomPosition !== true &&
+            isRandomPosition !== 0
+        ) {
+            // shuffleTrigger가 1 이상일 때만 (초기값 0 제외)
+            // index에 따른 지연 (최대 100ms로 제한)
+            const delay = Math.min(index * 5, 100);
+            const timer = setTimeout(() => {
+                if (popupRef.current) {
+                    setPositionRandom(popupRef.current);
+                }
+            }, delay);
+
+            return () => clearTimeout(timer);
         }
     }, [isRandomPosition]);
 

@@ -20,7 +20,7 @@ const cn = cb.bind(styles);
 export interface WorkPopupProps {
     workPopupData: {
         workData: WorkData;
-        isRandomPosition?: boolean;
+        isRandomPosition?: boolean | number;
         index: number;
     };
 }
