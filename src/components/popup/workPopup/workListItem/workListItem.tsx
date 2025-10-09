@@ -9,6 +9,7 @@ import { WorkPopupProps } from "../workPopup";
 import { useEffect, useLayoutEffect } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import { getWorkPopupId } from "../workDescriptionPopup/workDescriptionPopup";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface WorkListItemProps extends WorkPopupProps {}
@@ -77,7 +78,7 @@ const WorkListItem = (props: WorkListItemProps) => {
                             isPcScreenSize && router.push(workDetailPath)
                         }
                     >
-                        {`${workData.title[language]} (${
+                        {`${getLocalizedText(workData.title, language)} (${
                             workData.info.date
                         }) [${workData.info.category.join(", ")}]`}
                     </span>

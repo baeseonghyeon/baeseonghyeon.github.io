@@ -10,6 +10,7 @@ import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
 import { lowerCaseParser } from "libs/textParser";
 import { Language } from "interface/enums";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface WorkDescriptionPopupProps extends WorkPopupProps {
@@ -36,8 +37,11 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
     const workData = workPopupData.workData;
     const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
     const index = workPopupData.index;
-    const descriptionLenght =
-        workData && workData.description[language]?.length;
+    const localizedDescription = getLocalizedText(
+        workData.description,
+        language,
+    );
+    const descriptionLenght = localizedDescription?.length;
     const isOverMaxLenght: boolean =
         descriptionLenght !== undefined && descriptionLenght > maxLength;
     const workDetailPath = `/works/${id}`;
@@ -56,9 +60,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                 isRandomPosition={false}
             >
                 <p>
-                    {workData.description[language]
-                        ?.substring(0, maxLength)
-                        .trimEnd()}
+                    {localizedDescription?.substring(0, maxLength).trimEnd()}
 
                     {isOverMaxLenght && (
                         <>
@@ -96,7 +98,7 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                         );
                     })}
 
-                {!isPcScreenSize && workData.link && (
+                {!isPcScreenSize && workData.link && workData.link[0] && (
                     <Link
                         href={workData.link[0].url}
                         target="_blank"

@@ -14,6 +14,7 @@ import { useState } from "react";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
 import ProfileListItem from "../../components/iconListItem/iconListItem";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface ProfileProps {}
@@ -40,7 +41,7 @@ const Profile: NextPage = (props: ProfileProps) => {
                         className={cn(`popup__${item.common}`)}
                         style={{ order: item.sort }}
                     >
-                        <p>{item[language]}</p>
+                        <p>{getLocalizedText(item, language)}</p>
                     </ScrollTargetPopup>
                 );
             })}

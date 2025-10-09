@@ -2,7 +2,6 @@ import cb from "classnames/bind";
 import styles from "./shuffleButton.module.scss";
 import React, {
     HtmlHTMLAttributes,
-    useEffect,
     useLayoutEffect,
     useRef,
     useState,
@@ -45,7 +44,6 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
                 >
                     <IoMdClose size={17.5} />
                 </div>
-
                 <div
                     className={cn("wrapper")}
                     onClick={() => visibility && onClick()}

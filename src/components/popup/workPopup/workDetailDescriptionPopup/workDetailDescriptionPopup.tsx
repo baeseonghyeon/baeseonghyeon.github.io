@@ -7,6 +7,7 @@ import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 import Link from "next/link";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface WorkDetailDescriptionPopupProps {
@@ -19,14 +20,20 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
     const { isPcScreenSize } = useMediaQuery();
 
     if (workData) {
+        const localizedTitle = getLocalizedText(workData.title, language);
+        const localizedDescription = getLocalizedText(
+            workData.description,
+            language,
+        );
+
         return (
             <ScrollTargetPopup
-                id={`${workData.title[language]}-description` as string}
-                title={workData.title[language]}
+                id={`${localizedTitle}-description` as string}
+                title={localizedTitle}
                 index={1}
                 className={cn("container")}
             >
-                {workData.description[language]}{" "}
+                {localizedDescription}{" "}
                 {workData.description.link?.map((item, index, { length }) => {
                     return (
                         <Link
@@ -38,7 +45,9 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             key={`${item.common}-${index}`}
                         >
                             {index === 0 && "("}
-                            {item.common ? item.common : item[language]}
+                            {item.common
+                                ? item.common
+                                : getLocalizedText(item, language)}
                             {index !== length - 1 ? ", " : ")"}
                         </Link>
                     );

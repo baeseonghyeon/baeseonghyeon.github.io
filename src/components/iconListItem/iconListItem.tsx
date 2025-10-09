@@ -8,6 +8,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { touchRedirect } from "libs/touchHandler";
 import VelogLogoIcon from "components/icons/velogLogoIcon";
 import Link from "next/link";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface IconListItemProps {
@@ -31,12 +32,18 @@ const IconListItem = (props: IconListItemProps) => {
     };
 
     const getListContent = () => {
+        const localizedText = getLocalizedText(listData.title, language);
+        const commonText = listData.title["common"];
+
+        // 현지화된 텍스트와 common이 같으면 중복 방지
+        const showCommon = localizedText !== commonText;
+
         return (
             <>
-                {listData.title[language]}
-                {!isIcon && "("}
-                {listData.title["common"]}
-                {!isIcon && ")"}
+                {localizedText}
+                {!isIcon && showCommon && "("}
+                {!isIcon && showCommon && commonText}
+                {!isIcon && showCommon && ")"}
             </>
         );
     };

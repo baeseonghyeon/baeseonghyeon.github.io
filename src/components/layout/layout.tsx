@@ -1,4 +1,5 @@
 import cb from "classnames/bind";
+import BackgroundParticles from "components/backgroundParticles/backgroundParticles";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar/navbar";
 import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
@@ -35,11 +36,18 @@ const Layout = (props: LayoutProps) => {
     const language = useRecoilValue(languageState);
     const [isLaod, setIsLoad] = useState(false);
 
-    const defaultTitle = language === Language.ko ? "배성현" : "Bae Seonghyeon";
+    const defaultTitle =
+        language === Language.ko
+            ? "배성현"
+            : language === Language.jp
+            ? "ベ・ソンヒョン"
+            : "Bae Seonghyeon";
     const pageTitle = `${defaultTitle} - ${
         (router && router.pathname === "/") || !title
             ? language === Language.ko
                 ? "Bae Seonghyeon"
+                : language === Language.jp
+                ? "ベ・ソンヒョン"
                 : "배성현"
             : title
     }`;
@@ -119,6 +127,7 @@ const Layout = (props: LayoutProps) => {
                 />
             </Head>
             <div className={notoSansKr.className}>
+                <BackgroundParticles />
                 <Navbar />
                 <div className={cn("container", isLaod && "animated")}>
                     <div className={cn("body", props.className)}>

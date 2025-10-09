@@ -7,6 +7,7 @@ import Popup from "components/popup/popup";
 import { firsttLetterCapitalizer } from "libs/textParser";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 import { Fragment } from "react";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface WorkDetailInfoPopupProps {
@@ -18,10 +19,12 @@ const WorkDetailInfoPopup = (props: WorkDetailInfoPopupProps) => {
     const language = useRecoilValue(languageState);
 
     if (workData) {
+        const localizedTitle = getLocalizedText(workData.title, language);
+
         return (
             <ScrollTargetPopup
-                id={workData.title[language] as string}
-                title={workData.title[language]}
+                id={localizedTitle as string}
+                title={localizedTitle}
                 isActive={true}
                 index={0}
                 className={cn("container")}
@@ -55,7 +58,7 @@ const WorkDetailInfoPopup = (props: WorkDetailInfoPopupProps) => {
                                                   );
                                               },
                                           )
-                                        : item[1][language]
+                                        : getLocalizedText(item[1], language)
                                     : null}
                             </p>
                         </li>

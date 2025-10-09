@@ -32,11 +32,38 @@ const DarkModeLanguageToggle: NextPage = () => {
         setLanguage(languageValue);
     };
 
+    const getNextLanguage = (currentLang: Language): Language => {
+        switch (currentLang) {
+            case Language.ko:
+                return Language.en;
+            case Language.en:
+                return Language.jp;
+            case Language.jp:
+                return Language.ko;
+            default:
+                return Language.ko;
+        }
+    };
+
+    const getLanguageLabel = (currentLang: Language): string => {
+        switch (currentLang) {
+            case Language.ko:
+                return "EN";
+            case Language.en:
+                return "JP";
+            case Language.jp:
+                return "KO";
+            default:
+                return "EN";
+        }
+    };
+
     useLayoutEffect(() => {
         if (languageStateCookie !== undefined) {
-            setLanguage(
-                languageStateCookie === "ko" ? Language.ko : Language.en,
-            );
+            let langValue = Language.ko;
+            if (languageStateCookie === "en") langValue = Language.en;
+            else if (languageStateCookie === "jp") langValue = Language.jp;
+            setLanguage(langValue);
         }
     }, []);
 
@@ -56,15 +83,11 @@ const DarkModeLanguageToggle: NextPage = () => {
                 <span
                     className={cn("toggle__wrapper")}
                     onClick={() =>
-                        languageCookieHandler(
-                            language === Language.ko
-                                ? Language.en
-                                : Language.ko,
-                        )
+                        languageCookieHandler(getNextLanguage(language))
                     }
                 >
                     <span className={cn("toggle__language")}>
-                        {language === Language.ko ? "EN" : "KO"}
+                        {getLanguageLabel(language)}
                     </span>
                 </span>
             </span>

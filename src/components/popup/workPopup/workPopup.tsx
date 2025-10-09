@@ -1,3 +1,4 @@
+"use client";
 import styles from "./workPopup.module.scss";
 import cb from "classnames/bind";
 import { useRecoilValue } from "recoil";
@@ -12,6 +13,7 @@ import WorkDescriptionPopup, {
 } from "./workDescriptionPopup/workDescriptionPopup";
 import { convertImgurUrlToDirectLink } from "libs/textParser";
 import ContentImage from "components/contentImage/contentImage";
+import { getLocalizedText } from "libs/languageHelper";
 
 const cn = cb.bind(styles);
 
@@ -47,7 +49,7 @@ const WorkPopup = (props: WorkPopupProps) => {
         return (
             <Popup
                 id={id}
-                title={workData.title[language]}
+                title={getLocalizedText(workData.title, language)}
                 isRandomPosition={isRandomPosition}
                 index={index + 1}
                 onMouseEnter={() =>
@@ -74,21 +76,30 @@ const WorkPopup = (props: WorkPopupProps) => {
                         className={cn("image__container")}
                         skeletonClassName={cn("video__container")}
                         isBackgroundImage
-                        alt={`${workData.title[language]}-thumbnail`}
+                        alt={`${getLocalizedText(
+                            workData.title,
+                            language,
+                        )}-thumbnail`}
+                    />
+                ) : workData.image && workData.image[0] ? (
+                    <ContentImage
+                        src={convertImgurUrlToDirectLink(workData.image[0].url)}
+                        className={cn("image__container")}
+                        skeletonClassName={cn("video__container")}
+                        isBackgroundImage
+                        alt={`${getLocalizedText(
+                            workData.title,
+                            language,
+                        )}-thumbnail`}
                     />
                 ) : (
-                    workData.image &&
-                    workData.image[0] && (
-                        <ContentImage
-                            src={convertImgurUrlToDirectLink(
-                                workData.image[0].url,
-                            )}
-                            className={cn("image__container")}
-                            skeletonClassName={cn("video__container")}
-                            isBackgroundImage
-                            alt={`${workData.title[language]}-thumbnail`}
-                        />
-                    )
+                    <ContentImage
+                        src={""}
+                        className={cn("image__container")}
+                        skeletonClassName={cn("video__container")}
+                        isBackgroundImage
+                        alt={`thumbnail`}
+                    />
                 )}
 
                 <WorkDescriptionPopup
