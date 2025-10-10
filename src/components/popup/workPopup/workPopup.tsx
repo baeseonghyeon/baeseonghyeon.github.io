@@ -124,13 +124,19 @@ const WorkPopup = (props: WorkPopupProps) => {
                 ) : (
                     <div className={cn("image__container", "placeholder")}>
                         <div className={cn("placeholder__content")}>
-                            <img 
-                                src="/favicon/apple-touch-icon.png" 
+                            <div className={cn("speech-bubbles")}>
+                                <div className={cn("speech-bubble")}>
+                                    <p>{localizedTitle}.</p>
+                                </div>
+                                <div className={cn("speech-bubble")}>
+                                    <p>{workData.info.category.join(" · ")}.</p>
+                                </div>
+                            </div>
+                            <img
+                                src="/favicon/apple-touch-icon.png"
                                 alt="logo"
                                 className={cn("placeholder__icon")}
                             />
-                            <h3>{localizedTitle}</h3>
-                            <p>{workData.info.category.join(" · ")}</p>
                         </div>
                     </div>
                 )}

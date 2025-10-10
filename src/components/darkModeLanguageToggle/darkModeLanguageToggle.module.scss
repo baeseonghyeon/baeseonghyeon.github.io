@@ -77,7 +77,9 @@
         }
         &__language {
             font-size: $fs-s !important;
-            font-weight: lighter;
+            @include media-not-mobile {
+                font-weight: lighter;
+            }
             @include media-mobile {
                 font-size: $fs-s-mobile !important;
             }
