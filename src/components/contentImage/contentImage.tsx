@@ -1,6 +1,12 @@
 import cb from "classnames/bind";
 import styles from "./contentImage.module.scss";
-import React, { HtmlHTMLAttributes, useEffect, useRef, useState } from "react";
+import React, {
+    HtmlHTMLAttributes,
+    useEffect,
+    useRef,
+    useState,
+    memo,
+} from "react";
 import SkeletonBox from "components/skeletonBox/skeletonBox";
 import Image from "next/image";
 
@@ -57,4 +63,5 @@ const ContentImage = (props: ContentImageProps) => {
     );
 };
 
-export default ContentImage;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(ContentImage);

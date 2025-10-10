@@ -1,27 +1,14 @@
-import { darkModeStateCookieKey, getCookie } from "libs/cookies";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { darkModeState } from "recoil/ui";
 
 const useDarkMode = () => {
-    const [darkMode, setDarkMode] = useRecoilState(darkModeState);
-    const darkModeStateCookie = getCookie(darkModeStateCookieKey);
-    const isSystemThemeDark = useMemo(
-        () =>
-            typeof window !== "undefined" &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches,
-        [],
-    );
+    const [darkMode] = useRecoilState(darkModeState);
 
     useEffect(() => {
-        if (darkModeStateCookie === null) {
-            setDarkMode(isSystemThemeDark);
-        } else {
-            setDarkMode(darkModeStateCookie === "true" ? true : false);
-        }
-    }, []);
-
-    useEffect(() => {
+        // Recoil 상태에 따라 클래스 토글
+        // _document.tsx의 스크립트가 이미 초기 클래스를 설정했으므로
+        // 이 effect는 상태 변경 시에만 실행됨
         if (darkMode) {
             document.body.classList.add("dark-theme");
             document.body.classList.remove("bright-theme");

@@ -5,7 +5,14 @@ import { useRecoilValue } from "recoil";
 import { currentActivePopupState, languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
-import { useLayoutEffect, useRef, useState } from "react";
+import {
+    useLayoutEffect,
+    useRef,
+    useState,
+    useCallback,
+    useMemo,
+    memo,
+} from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup, {
@@ -35,7 +42,18 @@ const WorkPopup = (props: WorkPopupProps) => {
     const workData = workPopupData.workData;
     const index = workPopupData.index;
     const isRandomPosition = workPopupData.isRandomPosition;
-    const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
+
+    // id를 useMemo로 메모이제이션
+    const id = useMemo(
+        () => getWorkPopupId(workData.title.en, workData.info.category[0]),
+        [workData.title.en, workData.info.category],
+    );
+
+    // title을 useMemo로 메모이제이션
+    const localizedTitle = useMemo(
+        () => getLocalizedText(workData.title, language),
+        [workData.title, language],
+    );
 
     useLayoutEffect(() => {
         if (currentActivePopup === popupRef.current) {
@@ -45,21 +63,32 @@ const WorkPopup = (props: WorkPopupProps) => {
         }
     }, [currentActivePopup]);
 
+    // onMouseEnter를 useCallback으로 메모이제이션
+    const handleMouseEnter = useCallback(() => {
+        isPcScreenSize && setInnerPopupVisibility(true);
+    }, [isPcScreenSize]);
+
+    // onMouseLeave를 useCallback으로 메모이제이션
+    const handleMouseLeave = useCallback(() => {
+        isPcScreenSize &&
+            !(currentActivePopup === popupRef.current) &&
+            setInnerPopupVisibility(false);
+    }, [isPcScreenSize, currentActivePopup]);
+
+    // onClickClose를 useCallback으로 메모이제이션
+    const handleCloseInnerPopup = useCallback(() => {
+        setInnerPopupVisibility(false);
+    }, []);
+
     if (workData) {
         return (
             <Popup
                 id={id}
-                title={getLocalizedText(workData.title, language)}
+                title={localizedTitle}
                 isRandomPosition={isRandomPosition}
                 index={index + 1}
-                onMouseEnter={() =>
-                    isPcScreenSize && setInnerPopupVisibility(true)
-                }
-                onMouseLeave={() =>
-                    isPcScreenSize &&
-                    !(currentActivePopup === popupRef.current) &&
-                    setInnerPopupVisibility(false)
-                }
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 className={cn("container")}
                 bodyClassName={cn("body")}
                 popupRef={popupRef}
@@ -93,13 +122,17 @@ const WorkPopup = (props: WorkPopupProps) => {
                         )}-thumbnail`}
                     />
                 ) : (
-                    <ContentImage
-                        src={""}
-                        className={cn("image__container")}
-                        skeletonClassName={cn("video__container")}
-                        isBackgroundImage
-                        alt={`thumbnail`}
-                    />
+                    <div className={cn("image__container", "placeholder")}>
+                        <div className={cn("placeholder__content")}>
+                            <img 
+                                src="/favicon/apple-touch-icon.png" 
+                                alt="logo"
+                                className={cn("placeholder__icon")}
+                            />
+                            <h3>{localizedTitle}</h3>
+                            <p>{workData.info.category.join(" · ")}</p>
+                        </div>
+                    </div>
                 )}
 
                 <WorkDescriptionPopup
@@ -108,7 +141,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                         !innerPopupVisibility && "description-popup--hide",
                     )}
                     workPopupData={workPopupData}
-                    onClickClose={() => setInnerPopupVisibility(false)}
+                    onClickClose={handleCloseInnerPopup}
                 />
             </Popup>
         );
@@ -117,4 +150,5 @@ const WorkPopup = (props: WorkPopupProps) => {
     }
 };
 
-export default WorkPopup;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(WorkPopup);

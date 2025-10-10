@@ -53,6 +53,10 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                     );
                 })}
                 {workData.link?.map((item, index) => {
+                    const displayName = item.name
+                        ? getLocalizedText(item.name, language)
+                        : item.type;
+
                     return (
                         <Link
                             href={item.url}
@@ -63,7 +67,7 @@ const WorkDetailDescriptionPopup = (props: WorkDetailDescriptionPopupProps) => {
                             }
                             key={`${item.url}-${index}`}
                         >
-                            Visit the {item.type} →
+                            Visit the {displayName} →
                         </Link>
                     );
                 })}

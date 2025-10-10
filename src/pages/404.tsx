@@ -13,7 +13,8 @@ const cn = cb.bind(styles);
 
 const NotFound: NextPage = () => {
     const language = useRecoilValue(languageState);
-    const [counter, setCounter] = useState(5);
+    const staySeconds = 5;
+    const [counter, setCounter] = useState(staySeconds);
 
     useEffect(() => {
         const countdown = setInterval(() => {
@@ -30,7 +31,7 @@ const NotFound: NextPage = () => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             Router.push("/");
-        }, 5000);
+        }, staySeconds * 1000);
         return () => clearTimeout(timeout);
     }, []);
 
@@ -41,26 +42,38 @@ const NotFound: NextPage = () => {
                 <h3 className={cn("label")}>
                     {language === Language.en
                         ? "Page Not Found"
-                        : "페이지를 찾을 수 없습니다!"}
+                        : language === Language.jp
+                        ? "ページが見つかりません"
+                        : "페이지를 찾을 수 없습니다"}
                 </h3>
 
-                {language === Language.en ? (
-                    <p>
-                        After <strong>{counter}</strong> seconds, move to{" "}
-                        <Link href="/" className={cn("link__label")}>
-                            home
-                        </Link>
-                        .
-                    </p>
-                ) : (
-                    <p>
-                        <strong>{counter}</strong>초 후{" "}
-                        <Link href="/" className={cn("link__label")}>
-                            메인
-                        </Link>
-                        으로 이동합니다.
-                    </p>
-                )}
+                <p>
+                    {language === Language.en ? (
+                        <>
+                            Redirecting to{" "}
+                            <Link href="/" className={cn("link__label")}>
+                                home
+                            </Link>{" "}
+                            in <strong>{counter}</strong> seconds...
+                        </>
+                    ) : language === Language.jp ? (
+                        <>
+                            <strong>{counter}</strong>秒後に
+                            <Link href="/" className={cn("link__label")}>
+                                ホーム
+                            </Link>
+                            へ移動します
+                        </>
+                    ) : (
+                        <>
+                            <strong>{counter}</strong>초 후{" "}
+                            <Link href="/" className={cn("link__label")}>
+                                메인
+                            </Link>
+                            으로 이동합니다
+                        </>
+                    )}
+                </p>
             </div>
         </Layout>
     );

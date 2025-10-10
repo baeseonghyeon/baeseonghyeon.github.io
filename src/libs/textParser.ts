@@ -1,4 +1,4 @@
-export const firsttLetterCapitalizer = (text: string) => {
+export const firstLetterCapitalizer = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
 };
 

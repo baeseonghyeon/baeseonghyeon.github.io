@@ -51,6 +51,7 @@ const Popup = (props: PopupProps) => {
     const [popupOverlayDepth, setPopupOverlayDepth] =
         useRecoilState(popupOverlayState);
     const [visibility, setVisibility] = useState<boolean>(true);
+    const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true); // 초기 로드 구분
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
     );
@@ -105,12 +106,30 @@ const Popup = (props: PopupProps) => {
         setControlledPosition({ x: data.x, y: data.y });
     }, []);
 
+    // 팝업 클릭 핸들러 (useCallback으로 메모이제이션)
+    const handlePopupClick = useCallback(
+        (e: React.MouseEvent<HTMLDivElement>) => {
+            e.stopPropagation();
+            // 링크나 버튼 클릭 시에는 z-index 변경하지 않음
+            const target = e.target as HTMLElement;
+            const isLink = target.tagName === "A" || target.closest("a");
+            const isButton =
+                target.tagName === "BUTTON" || target.closest("button");
+
+            if (isDraggable && !isLink && !isButton) {
+                increasePopupOverlay();
+            }
+        },
+        [isDraggable, increasePopupOverlay],
+    );
+
     useLayoutEffect(() => {
         if (popupRef.current) {
-            // 초기 렌더 시 위치 설정 (렌더 전에 동기적으로 실행)
+            // 랜덤 위치가 필요한 경우 초기에 숨김
             if (isRandomPosition !== false) {
-                // index에 따른 지연으로 순차 배치 (셔플과 동일하게)
-                // 충돌 감지가 정확하도록 충분한 간격 확보
+                setVisibility(false);
+
+                // index에 따른 지연으로 순차 배치
                 const delay = Math.min(index * 5, 100);
                 setTimeout(() => {
                     if (popupRef.current) {
@@ -118,12 +137,17 @@ const Popup = (props: PopupProps) => {
                         // Draggable의 내부 state 리셋
                         setControlledPosition({ x: 0, y: 0 });
 
-                        // 위치 설정 후 드래그 경계 계산
+                        // 위치 설정 후 드래그 경계 계산 및 표시
                         setTimeout(() => {
                             updateDragBounds();
+                            setVisibility(true); // 위치 결정 후 fade-in
+                            setIsInitialLoad(false); // 초기 로드 완료
                         }, 50);
                     }
                 }, delay);
+            } else {
+                // 랜덤 위치가 아닌 경우 즉시 초기 로드 완료 처리
+                setIsInitialLoad(false);
             }
             if (isActive) {
                 setCurrentActivePopup(popupRef.current);
@@ -160,7 +184,10 @@ const Popup = (props: PopupProps) => {
     }, [isRandomPosition, index, updateDragBounds]);
 
     useLayoutEffect(() => {
-        if (popupRef.current === currentActivePopup && currentActivePopup !== null) {
+        if (
+            popupRef.current === currentActivePopup &&
+            currentActivePopup !== null
+        ) {
             // 전역 overlay depth를 증가시키고, 그 값을 현재 팝업의 z-index로 설정
             setPopupOverlayDepth((prev) => {
                 const newDepth = prev + 1;
@@ -181,6 +208,16 @@ const Popup = (props: PopupProps) => {
         }
     }, []);
 
+    // Close 버튼 onClick 핸들러 (useCallback으로 메모이제이션)
+    const handleCloseClick = useCallback(
+        (e: React.MouseEvent | React.TouchEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onClickClose ? onClickClose() : onClosePopup(popupRef.current);
+        },
+        [onClickClose, onClosePopup],
+    );
+
     return (
         <Draggable
             disabled={isPcScreenSize ? false : true}
@@ -197,27 +234,19 @@ const Popup = (props: PopupProps) => {
                     props.className,
                     "container",
                     !visibility && "hide",
+                    !isInitialLoad && "smooth-transition", // 초기 로드 후에는 smooth transition
                 )}
                 style={{ ...props.style, zIndex: zIndex, order: index }}
                 onMouseEnter={props.onMouseEnter}
                 onMouseLeave={props.onMouseLeave}
-                onClick={(e) => {
-                    e.stopPropagation();
-                    // 링크나 버튼 클릭 시에는 z-index 변경하지 않음
-                    const target = e.target as HTMLElement;
-                    const isLink = target.tagName === 'A' || target.closest('a');
-                    const isButton = target.tagName === 'BUTTON' || target.closest('button');
-                    
-                    if (isDraggable && !isLink && !isButton) {
-                        increasePopupOverlay();
-                    }
-                }}
+                onClick={handlePopupClick}
                 ref={popupRef}
             >
                 <div
                     className={cn(
                         "header",
-                        currentActivePopup === popupRef.current &&
+                        !isInitialLoad &&
+                            currentActivePopup === popupRef.current &&
                             "header--active",
                     )}
                 >
@@ -231,21 +260,9 @@ const Popup = (props: PopupProps) => {
                             })}
                         <div
                             className={cn("close__button")}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                onClickClose
-                                    ? onClickClose()
-                                    : onClosePopup(popupRef.current);
-                            }}
-                            onTouchEnd={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                onClickClose
-                                    ? onClickClose()
-                                    : onClosePopup(popupRef.current);
-                            }}
-                            style={{ WebkitTapHighlightColor: 'transparent' }}
+                            onClick={handleCloseClick}
+                            onTouchEnd={handleCloseClick}
+                            style={{ WebkitTapHighlightColor: "transparent" }}
                         >
                             <IoMdClose size={isPcScreenSize ? 22 : 20} />
                         </div>

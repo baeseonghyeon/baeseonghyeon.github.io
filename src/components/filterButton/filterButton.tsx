@@ -1,6 +1,6 @@
 import cb from "classnames/bind";
 import styles from "./filterButton.module.scss";
-import React, { HtmlHTMLAttributes, useRef } from "react";
+import React, { HtmlHTMLAttributes, useRef, useCallback, memo } from "react";
 import { IoMdOptions } from "react-icons/io";
 import { WorkCategoryEnums, WorkRoleEnums } from "interface/dto/work";
 import { workFilterState } from "recoil/ui";
@@ -17,11 +17,13 @@ const FilterButton = (props: FilterButtonProps) => {
     const workFilterValue = useRecoilValue(workFilterState);
     const selectRef = useRef<HTMLSelectElement>(null);
 
+    // handleTouchStart를 useCallback으로 메모이제이션
+    const handleTouchStart = useCallback(() => {
+        selectRef.current?.focus();
+    }, []);
+
     return (
-        <div
-            className={cn("button")}
-            onTouchStart={() => selectRef.current?.focus()}
-        >
+        <div className={cn("button")} onTouchStart={handleTouchStart}>
             <IoMdOptions></IoMdOptions>
             <select
                 defaultValue={workFilterValue}
@@ -50,4 +52,5 @@ const FilterButton = (props: FilterButtonProps) => {
     );
 };
 
-export default FilterButton;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(FilterButton);

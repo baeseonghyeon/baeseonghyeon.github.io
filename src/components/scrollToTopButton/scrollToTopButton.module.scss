@@ -15,7 +15,7 @@
     margin-left: -17.5px;
     z-index: $z-layout;
     cursor: pointer;
-
+    transition: opacity 0.3s ease-in-out;
     border: $bw solid var(--on-background-color);
     background: var(--background-color);
 }

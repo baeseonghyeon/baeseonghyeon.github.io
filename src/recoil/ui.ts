@@ -1,6 +1,7 @@
 import { Language } from "interface/enums";
 import { atom, selector } from "recoil";
 
+// SSR과 CSR 모두 동일한 기본값 사용 (Hydration 에러 방지)
 export const darkModeState = atom<boolean>({
     key: "darkModeState",
     default: false,

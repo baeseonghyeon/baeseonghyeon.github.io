@@ -12,7 +12,7 @@ import ShuffleButton from "components/shuffleButton/shuffleButton";
 import FilterButton from "components/filterButton/filterButton";
 import WorkListItem from "../../components/popup/workPopup/workListItem/workListItem";
 import WorkPopup from "../../components/popup/workPopup/workPopup";
-import { firsttLetterCapitalizer } from "libs/textParser";
+import { firstLetterCapitalizer } from "libs/textParser";
 import { clearAllPositions } from "libs/positionHandler";
 
 const cn = cb.bind(styles);
@@ -36,8 +36,7 @@ const Works: NextPage = () => {
             .filter((item) =>
                 workFilterValue === "All"
                     ? item
-                    : workFilterValue === "Website" ||
-                      workFilterValue === "Application"
+                    : workFilterValue === "Web" || workFilterValue === "Mobile"
                     ? item.info.category.includes(workFilterValue)
                     : item.info.role.includes(workFilterValue),
             );
@@ -46,7 +45,7 @@ const Works: NextPage = () => {
     return (
         <Layout title={"Works"}>
             <Popup
-                title={`${firsttLetterCapitalizer(workFilterValue)} Works`}
+                title={`${firstLetterCapitalizer(workFilterValue)} Works`}
                 index={0}
                 isActive={true}
                 isRandomPosition={false}

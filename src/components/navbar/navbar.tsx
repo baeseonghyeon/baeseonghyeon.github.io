@@ -13,16 +13,56 @@ interface NavItem {
     path: string;
 }
 
+// 상수를 컴포넌트 외부로 이동하여 메모리 최적화
+const NAV_ITEMS: NavItem[] = [
+    { title: "Bae Seonghyeon", path: "/profile" },
+    { title: "Works", path: "/works" },
+];
+
+const ANIMATION_DURATION = 180; // 0.18초
+
 const Navbar: NextPage = () => {
     const router = useRouter();
-    const navItems: NavItem[] = [
-        { title: "Bae Seonghyeon", path: "/profile" },
-        { title: "Works", path: "/works" },
-    ];
 
     const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(true);
+    const [animatingPath, setAnimatingPath] = useState<string>("");
+    const hasAnimatedRef = useRef<Set<string>>(new Set()); // useState 대신 useRef 사용
     const ticking = useRef<boolean>(false);
+    const [, forceUpdate] = useState({}); // 리렌더링 트리거용
+
+    // 초기 로드 시 현재 경로를 hasAnimated에 추가
+    useEffect(() => {
+        const pathname = router.pathname;
+        if (pathname) {
+            hasAnimatedRef.current.add(pathname);
+
+            // "/" 경로는 "/profile"로도 매핑되므로 둘 다 추가
+            if (pathname === "/") {
+                hasAnimatedRef.current.add("/profile");
+            }
+
+            forceUpdate({}); // 한 번만 리렌더링
+        }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    // 페이지 전환 시 애니메이션 트리거
+    useEffect(() => {
+        const handleRouteChange = (url: string) => {
+            setAnimatingPath(url);
+
+            // 애니메이션 후 hasAnimated에 추가
+            setTimeout(() => {
+                hasAnimatedRef.current.add(url);
+                setAnimatingPath("");
+            }, ANIMATION_DURATION);
+        };
+
+        router.events.on("routeChangeComplete", handleRouteChange);
+        return () => {
+            router.events.off("routeChangeComplete", handleRouteChange);
+        };
+    }, [router.events]);
 
     const handleScroll = useCallback(() => {
         if (!ticking.current) {
@@ -86,21 +126,27 @@ const Navbar: NextPage = () => {
                 )}
             >
                 <span className={cn("links__wrapper")}>
-                    {navItems.map((item, idx) => {
+                    {NAV_ITEMS.map((item, idx) => {
+                        const isActive =
+                            router.pathname === item.path ||
+                            (router.pathname === "/" &&
+                                item.path === "/profile");
+                        const shouldAnimate =
+                            isActive && animatingPath === item.path;
+                        const hasAnimatedBefore = hasAnimatedRef.current.has(
+                            item.path,
+                        );
+
                         return (
                             <Link
                                 href={item.path}
-                                key={idx}
+                                key={item.path} // idx 대신 path 사용으로 더 안정적
                                 className={cn(
                                     "link__label",
-                                    router &&
-                                        router.pathname === item.path &&
-                                        "link__label-active",
-
-                                    router &&
-                                        router.pathname === "/" &&
-                                        item.path === "/profile" &&
-                                        "link__label-active",
+                                    isActive && "link__label-active",
+                                    (shouldAnimate ||
+                                        (isActive && hasAnimatedBefore)) &&
+                                        "link__label-animate",
                                 )}
                             >
                                 {item.title}

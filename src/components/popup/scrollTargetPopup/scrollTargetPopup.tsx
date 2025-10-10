@@ -52,14 +52,6 @@ const ScrollTargetPopup = (props: ScrollTargetPopupProps) => {
             popupRef={popupRef}
         >
             {props.children}
-            <Popup
-                title=""
-                className={cn(
-                    "target-popup",
-                    `target-popup${!innerPopupVisibility && "--hide"}`,
-                )}
-                index={index}
-            />
         </Popup>
     );
 };

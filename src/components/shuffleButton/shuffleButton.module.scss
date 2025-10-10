@@ -4,13 +4,14 @@
 .container {
     z-index: 99999;
     position: absolute;
-    // left: calc(50vw - 33.5px);
-    // top: calc(50vh - 17.5px);
     width: 90px;
     height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
     .close__button {
         z-index: 1;
         width: 25px;
@@ -79,6 +80,10 @@
     @include media-tablet {
         display: none;
     }
+}
+
+.fade-in {
+    opacity: 0;
 }
 
 .hide {

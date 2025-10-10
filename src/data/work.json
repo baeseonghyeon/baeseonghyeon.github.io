@@ -3,29 +3,27 @@
         {
             "title": {
                 "ko": "멋쟁이 사자처럼 at 삼육대학교",
-                "en": "Likelion at Sahmyook University",
-                "jp": "ライオンのように（LIKELION）at 三育大学"
+                "en": "LIKELION at Sahmyook University",
+                "jp": "LIKELION at 三育大学"
             },
             "info": {
                 "date": "2018-2019",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "Ruby on Rails",
                     "JavaScript",
                     "jQuery",
                     "SQLite",
-                    "AWS EC2",
                     "AWS S3",
-                    "Heroku",
-                    "Git"
+                    "Heroku"
                 ],
                 "team": null
             },
             "description": {
-                "ko": "삼육대학교 '멋쟁이 사자처럼' 공식 웹사이트를 개발했습니다.\n멤버 관리, 공지·과제·수업자료 게시 등 운영 핵심 기능을 구현하여 운영 효율성과 멤버 소통을 향상시켰습니다.\n기획부터 배포까지 전 과정을 담당했습니다.",
-                "en": "Developed the official website for Likelion at Sahmyook University.\nImplemented core operational features including member management and posting systems, improving efficiency and communication.\nLed the entire process from planning to deployment.",
-                "jp": "三育大学のライオンのように（LIKELION）公式ウェブサイトを開発しました。\nメンバー管理、お知らせ・課題・授業資料の投稿など運営の核心機能を実装し、運営効率とメンバーコミュニケーションを向上させました。\n企画からデプロイまで全過程を担当しました。"
+                "ko": "삼육대학교 '멋쟁이 사자처럼' 공식 웹사이트를 개발했습니다.\n멤버 관리 및 콘텐츠 게시 시스템을 구현하여 커뮤니티 운영 효율성을 향상시켰습니다.\nRuby on Rails 기반으로 구축하여 커뮤니티 활동을 지원했습니다.",
+                "en": "Developed the official website for LIKELION at Sahmyook University.\nImplemented member management and content posting systems, improving community operational efficiency.\nBuilt with Ruby on Rails to support community activities.",
+                "jp": "三育大学のLIKELION公式ウェブサイトを開発しました。\nメンバー管理及びコンテンツ投稿システムを実装し、コミュニティ運営効率を向上させました。\nRuby on Railsベースで構築し、コミュニティ活動を支援しました。"
             },
             "link": [
                 {
@@ -33,7 +31,7 @@
                     "url": "http://sahmyook.likelion.org/"
                 },
                 {
-                    "type": "Github Repository",
+                    "type": "GitHub",
                     "url": "https://github.com/baeseonghyeon/likelion_syu_website"
                 }
             ],
@@ -49,13 +47,13 @@
         },
         {
             "title": {
-                "ko": "삼육대학교 학술정보원 출석 이벤트",
-                "en": "Sahmyook University Library Event",
-                "jp": "三育大学学術情報院出席イベント"
+                "ko": "삼육대학교 학술정보원 방문 이벤트",
+                "en": "Sahmyook University Library Visit Event",
+                "jp": "三育大学図書館来館イベント"
             },
             "info": {
                 "date": "2019",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development", "Planning"],
                 "stack": [
                     "PHP",
@@ -63,7 +61,7 @@
                     "CSS3",
                     "JavaScript",
                     "jQuery",
-                    "phpMyAdmin"
+                    "MySQL"
                 ],
                 "team": {
                     "ko": "오픈버스",
@@ -71,9 +69,9 @@
                 }
             },
             "description": {
-                "ko": "삼육대학교 학술정보원 출석 이벤트 웹사이트를 개발했습니다.\n이벤트 응모, 조회, 관리자 기능 및 데이터베이스를 구현했습니다.\n한 달간 약 200명이 참여하며 이벤트 운영 효율성을 향상시켰습니다.",
-                "en": "Developed the attendance event website for Sahmyook University Library.\nImplemented event entry, inquiry, admin features, and database.\nAchieved 200 participants in one month, improving operational efficiency.",
-                "jp": "三育大学学術情報院の出席イベントウェブサイトを開発しました。\nイベント応募、照会、管理者機能、データベースを実装しました。\n1ヶ月間で約200名が参加し、イベント運営効率を向上させました。"
+                "ko": "삼육대학교 도서관 방문 유도 이벤트 웹사이트를 개발했습니다.\n사용자 참여 시스템, 실시간 조회, 관리자 대시보드를 구현했습니다.\n한 달간 200명 참여를 달성하며 도서관 이용률 증대에 기여했습니다.",
+                "en": "Developed a library visit promotion website for Sahmyook University.\nBuilt user participation system, real-time tracking, and admin dashboard.\nAchieved 200 participants in one month, increasing library usage.",
+                "jp": "三育大学図書館の来館促進イベントウェブサイトを開発しました。\nユーザー参加システム、リアルタイム照会、管理者ダッシュボードを実装しました。\n1ヶ月間で200名の参加を達成し、図書館利用率向上に貢献しました。"
             },
             "link": [
                 {
@@ -96,49 +94,53 @@
         },
         {
             "title": {
-                "ko": "항만 자율주행 운반차량 인터페이스",
-                "en": "Port Self-driving Car Interface",
-                "jp": "港湾自律走行運搬車両インターフェース"
+                "ko": "스마트 항만 자율주행 인터페이스",
+                "en": "Smart Port Autonomous Vehicle Interface",
+                "jp": "スマート港湾自律走行インターフェース"
             },
             "info": {
                 "date": "2019",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "Django",
                     "JavaScript",
                     "jQuery",
                     "REST API",
-                    "MySQL",
-                    "Git"
+                    "MySQL"
                 ],
                 "team": {
-                    "ko": "YAHAIT(한정우, 박순호, 김준형, 김태양)",
+                    "ko": "YAHAIT",
                     "en": "YAHAIT"
                 }
             },
             "description": {
-                "ko": "아두이노 기반 자율주행 운반차량의 웹 인터페이스를 개발했습니다.\nYAHAIT팀과 협업하여 프론트엔드를 담당했습니다.\n2019 스마트 해상물류 경진대회 동상 수상, 창업아이템 지원사업 선정(2,640만원 수주)을 달성했습니다.",
-                "en": "Developed a web interface for Arduino-based self-driving transport vehicles.\nLed front-end development in collaboration with YAHAIT team.\nWon Bronze at 2019 Smart Port Logistics Contest and secured KRW 26.4M startup funding.",
-                "jp": "Arduino基盤の自律走行運搬車両のウェブインターフェースを開発しました。\nYAHAITチームと協業しフロントエンドを担当しました。\n2019スマート海上物流コンテスト銅賞受賞、創業アイテム支援事業選定（2,640万ウォン受注）を達成しました。",
-
-                "link": [
-                    {
-                        "ko": "조선일보",
-                        "en": "ChosunMedia",
-                        "url": "http://news.chosun.com/pan/site/data/html_dir/2019/11/06/2019110601298.html"
-                    },
-                    {
-                        "ko": "중앙일보",
-                        "en": "JoongAng Ilbo",
-                        "url": "https://news.joins.com/article/23625842"
-                    }
-                ]
+                "ko": "항만 자율주행 운반차량을 제어하는 웹 인터페이스를 개발했습니다.\nYAHAIT 팀과 협업하여 실시간 모니터링 및 제어 시스템을 구현했습니다.\n2019 스마트 해상물류 경진대회 수상 및 2,640만원 규모의 창업지원금을 확보했습니다.",
+                "en": "Developed a web interface for controlling autonomous transport vehicles in port operations.\nCollaborated with YAHAIT team to implement real-time monitoring and control system.\nWon award at 2019 Smart Port Logistics Contest and secured KRW 26.4M startup funding.",
+                "jp": "港湾自律走行運搬車両を制御するウェブインターフェースを開発しました。\nYAHAITチームと協業し、リアルタイムモニタリング及び制御システムを実装しました。\n2019スマート海上物流コンテスト受賞及び2,640万ウォン規模の創業支援金を確保しました。"
             },
             "link": [
                 {
-                    "type": "Github Repository",
+                    "type": "GitHub",
                     "url": "https://github.com/baeseonghyeon/hanium-smartcar"
+                },
+                {
+                    "type": "News",
+                    "name": {
+                        "ko": "조선일보",
+                        "en": "Chosun Ilbo",
+                        "jp": "朝鮮日報"
+                    },
+                    "url": "http://news.chosun.com/pan/site/data/html_dir/2019/11/06/2019110601298.html"
+                },
+                {
+                    "type": "News",
+                    "name": {
+                        "ko": "중앙일보",
+                        "en": "JoongAng Ilbo",
+                        "jp": "中央日報"
+                    },
+                    "url": "https://news.joins.com/article/23625842"
                 }
             ],
             "thumbUrl": null,
@@ -159,7 +161,7 @@
             },
             "info": {
                 "date": "2019",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development", "Planning"],
                 "stack": [
                     "Django",
@@ -167,8 +169,7 @@
                     "jQuery",
                     "AWS Elastic Beanstalk",
                     "AWS S3",
-                    "AWS RDS",
-                    "Git"
+                    "AWS RDS"
                 ],
                 "team": {
                     "ko": "멋쟁이사자처럼 at 삼육대학교",
@@ -176,13 +177,13 @@
                 }
             },
             "description": {
-                "ko": "삼육대학교 축제·체육대회 웹사이트를 기획하고 프론트엔드 개발을 담당했습니다.\n투표, 공유 등 이벤트 특화 기능을 구현하여 37,473 페이지뷰를 달성했습니다.\n기획부터 운영까지 리드하며 프로젝트 경험과 리더십을 쌓았습니다.",
-                "en": "Planned and developed front-end for Sahmyook University's festival and athletic event website.\nImplemented event-focused features including voting and sharing, achieving 37,473 page views.\nLed from planning to operation, building practical experience and leadership.",
-                "jp": "三育大学の祭り・体育大会ウェブサイトを企画しフロントエンド開発を担当しました。\n投票、共有などイベント特化機能を実装し、37,473ページビューを達成しました。\n企画から運営までリードし、実務経験とリーダーシップを培いました。"
+                "ko": "삼육대학교 축제·체육대회 웹사이트를 기획하고 프론트엔드 개발을 담당했습니다.\n투표, 공유 등 이벤트 특화 기능을 구현했습니다.\n프론트엔드 개발을 리드하며 37,473 페이지뷰를 달성했습니다.",
+                "en": "Planned and developed front-end for Sahmyook University's festival and athletic event website.\nImplemented event-focused features including voting and sharing.\nLed front-end development achieving 37,473 page views.",
+                "jp": "三育大学の祭り・体育大会ウェブサイトを企画しフロントエンド開発を担当しました。\n投票、共有などイベント特化機能を実装しました。\nフロントエンド開発をリードし37,473ページビューを達成しました。"
             },
             "link": [
                 {
-                    "type": "Github Repository",
+                    "type": "GitHub",
                     "url": "https://github.com/likelion-syu/syufesta"
                 }
             ],
@@ -212,37 +213,39 @@
             },
             "info": {
                 "date": "2020",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "Django",
                     "JavaScript",
                     "jQuery",
                     "MySQL",
-                    "GCP Compute Engine",
                     "Docker",
-                    "Git"
+                    "GCP Compute Engine"
                 ],
                 "team": {
-                    "ko": "박기홍",
-                    "en": "Gihong-Park"
+                    "ko": "GDSC",
+                    "en": "GDSC"
                 }
             },
             "description": {
-                "ko": "Google Developer Student Clubs 삼육대학교 이벤트 출석부 웹사이트를 개발·운영했습니다.\n코드 리팩토링, UI 개선, 배포 및 2개월간 이벤트 운영을 담당했습니다.\n커뮤니티 리더십과 프로젝트 경험을 쌓았습니다.",
-                "en": "Developed and operated the event attendance website for Google Developer Student Clubs Sahmyook University.\nManaged code refactoring, UI improvement, deployment, and 2-month event operation.\nBuilt community leadership and practical experience.",
-                "jp": "Google Developer Student Clubs\n三育大学のイベント出席簿ウェブサイトを開発・運営しました。\nコードリファクタリング、UI改善、デプロイ及び2ヶ月間のイベント運営を担当しました。\nコミュニティリーダーシップと実務経験を培いました。",
-                "link": [
-                    {
-                        "common": "junho85 GitHub Link",
-                        "url": "https://github.com/junho85/garden4"
-                    }
-                ]
+                "ko": "GDSC 삼육대학교의 GitHub 커밋 이벤트 출석 관리 웹사이트를 개발·운영했습니다.\n코드 리팩토링과 UI 개선을 통해 사용자 경험을 향상시켰습니다.\n2개월간 안정적인 이벤트 운영을 지원하며 커뮤니티 활동에 기여했습니다.",
+                "en": "Developed and operated a GitHub commit event attendance management website for GDSC Sahmyook University.\nImproved user experience through code refactoring and UI enhancements.\nSupported stable event operations for 2 months, contributing to community activities.",
+                "jp": "GDSC三育大学のGitHubコミットイベント出席管理ウェブサイトを開発・運営しました。\nコードリファクタリングとUI改善を通じてユーザーエクスペリエンスを向上させました。\n2ヶ月間安定的なイベント運営を支援し、コミュニティ活動に貢献しました。"
             },
             "link": [
                 {
-                    "type": "Github Repository",
+                    "type": "GitHub",
                     "url": "https://github.com/DSC-Sahmyook/SYU_Garden"
+                },
+                {
+                    "type": "Reference",
+                    "name": {
+                        "ko": "junho85 GitHub",
+                        "en": "junho85's GitHub",
+                        "jp": "junho85のGitHub"
+                    },
+                    "url": "https://github.com/junho85/garden4"
                 }
             ],
             "thumbUrl": null,
@@ -264,7 +267,7 @@
             },
             "info": {
                 "date": "2021",
-                "category": ["Application", "Website"],
+                "category": ["Mobile", "Web"],
                 "role": ["Development"],
                 "stack": [
                     "React Native",
@@ -273,37 +276,47 @@
                     "Redux",
                     "SCSS",
                     "Storybook",
-                    "GraphQL",
-                    "Git"
+                    "GraphQL"
                 ],
                 "team": {
-                    "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
+                    "ko": "oldrookie, 유미스",
                     "en": "oldrookie, Yumis"
                 }
             },
             "description": {
-                "ko": "화물 거래 플랫폼 '디젤트럭'의 딜러·셀러 앱과 관리자 웹을 개발했습니다.\n매칭 플랫폼 앱, 관리자 Back Office, GraphQL Subscription 기반 채팅 기능을 구현했습니다.\nApp Store와 Google Play Store에 성공적으로 런칭했습니다.",
-                "en": "Developed dealer/seller apps and admin web for the cargo trading platform 'Diesel Truck'.\nImplemented matching platform app, admin back office, and chat using GraphQL Subscription.\nSuccessfully launched on App Store and Google Play Store.",
-                "jp": "貨物取引プラットフォーム「ディーゼルトラック」のディーラー・セラーアプリと管理者ウェブを開発しました。\nマッチングプラットフォームアプリ、管理者バックオフィス、GraphQL Subscriptionベースのチャット機能を実装しました。\nApp StoreとGoogle Play Storeに成功的にローンチしました。",
-                "link": [
-                    {
-                        "ko": "GooglePlay(딜러)",
-                        "en": "GooglePlay(Dealer)",
-                        "url": "https://play.google.com/store/apps/details?id=net.dstruck.dieseltruckDealer"
-                    },
-                    {
-                        "ko": "GooglePlay(셀러)",
-                        "en": "GooglePlay(Seller)",
-                        "url": "https://play.google.com/store/apps/details?id=net.dstruck.dieseltruckSeller"
-                    },
-                    {
-                        "ko": "AppStore(딜러)",
-                        "en": "AppStore(Dealer)",
-                        "url": "https://apps.apple.com/ko/app/%EB%94%94%EC%A0%A4%ED%8A%B8%EB%9F%AD-%EB%94%9C%EB%9F%AC%EC%9A%A9/id1558957863"
-                    }
-                ]
+                "ko": "화물 거래 플랫폼의 모바일 앱과 관리자 웹을 개발했습니다.\n딜러·셀러 매칭, Back Office, 실시간 채팅을 구현했습니다.\nApp Store와 Google Play에 정식 런칭했습니다.",
+                "en": "Developed mobile apps and admin web for a cargo trading platform.\nImplemented dealer/seller matching, back office, and real-time chat.\nOfficially launched on App Store and Google Play.",
+                "jp": "貨物取引プラットフォームのモバイルアプリと管理者ウェブを開発しました。\nディーラー・セラーマッチング、バックオフィス、リアルタイムチャットを実装しました。\nApp StoreとGoogle Playに正式ローンチしました。"
             },
-            "link": null,
+            "link": [
+                {
+                    "type": "Google Play",
+                    "name": {
+                        "ko": "Google Play 딜러 앱",
+                        "en": "Google Play Dealer App",
+                        "jp": "Google Play ディーラーアプリ"
+                    },
+                    "url": "https://play.google.com/store/apps/details?id=net.dstruck.dieseltruckDealer"
+                },
+                {
+                    "type": "Google Play",
+                    "name": {
+                        "ko": "Google Play 셀러 앱",
+                        "en": "Google Play Seller App",
+                        "jp": "Google Play セラーアプリ"
+                    },
+                    "url": "https://play.google.com/store/apps/details?id=net.dstruck.dieseltruckSeller"
+                },
+                {
+                    "type": "App Store",
+                    "name": {
+                        "ko": "App Store 딜러 앱",
+                        "en": "App Store Dealer App",
+                        "jp": "App Store ディーラーアプリ"
+                    },
+                    "url": "https://apps.apple.com/ko/app/%EB%94%94%EC%A0%A4%ED%8A%B8%EB%9F%AD-%EB%94%9C%EB%9F%AC%EC%9A%A9/id1558957863"
+                }
+            ],
             "thumbUrl": "https://imgur.com/XG5lc1T",
             "image": [
                 {
@@ -328,7 +341,7 @@
             },
             "info": {
                 "date": "2021",
-                "category": ["Application", "Website"],
+                "category": ["Mobile", "Web"],
                 "role": ["Development"],
                 "stack": [
                     "React Native",
@@ -337,30 +350,28 @@
                     "Redux",
                     "SCSS",
                     "Storybook",
-                    "GraphQL",
-                    "Git"
+                    "GraphQL"
                 ],
                 "team": {
-                    "ko": "oldrookie(유경수, 박기홍, 김혜원), 유미스",
+                    "ko": "oldrookie, 유미스",
                     "en": "oldrookie, Yumis"
                 }
             },
             "description": {
-                "ko": "클럽 커뮤니티 플랫폼 '클러버'의 앱과 관리자 웹을 개발했습니다.\n커뮤니티 앱, 관리자 Back Office 개발 및 npm private package와 Storybook으로 코어 UI를 관리했습니다.\nApp Store와 Google Play에 성공적으로 런칭했습니다.",
-                "en": "Developed app and admin web for the club community platform 'CLUBBER'.\nBuilt community app, admin back office, and managed core UI with npm private package and Storybook.\nSuccessfully launched on App Store and Google Play.",
-                "jp": "クラブコミュニティプラットフォーム「CLUBBER」のアプリと管理者ウェブを開発しました。\nコミュニティアプリ、管理者バックオフィス開発、npm privateパッケージとStorybookでコアUIを管理しました。\nApp StoreとGoogle Playに成功的にローンチしました。",
-                "link": [
-                    {
-                        "common": "GooglePlay",
-                        "url": "https://play.google.com/store/apps/details?id=com.wonitclient"
-                    },
-                    {
-                        "common": "AppStore",
-                        "url": "https://apps.apple.com/ko/app/clubber/id1561355313"
-                    }
-                ]
+                "ko": "클럽 커뮤니티 플랫폼의 모바일 앱과 관리자 웹을 개발했습니다.\nnpm private package와 Storybook으로 UI 컴포넌트를 표준화했습니다.\nApp Store와 Google Play에 정식 런칭했습니다.",
+                "en": "Developed mobile app and admin web for a club community platform.\nStandardized UI components with npm private package and Storybook.\nOfficially launched on App Store and Google Play.",
+                "jp": "クラブコミュニティプラットフォームのモバイルアプリと管理者ウェブを開発しました。\nnpm privateパッケージとStorybookでUIコンポーネントを標準化しました。\nApp StoreとGoogle Playに正式ローンチしました。"
             },
-            "link": null,
+            "link": [
+                {
+                    "type": "Google Play",
+                    "url": "https://play.google.com/store/apps/details?id=com.wonitclient"
+                },
+                {
+                    "type": "App Store",
+                    "url": "https://apps.apple.com/ko/app/clubber/id1561355313"
+                }
+            ],
             "thumbUrl": "https://imgur.com/jeeiMAc",
             "image": [
                 {
@@ -374,24 +385,24 @@
         },
         {
             "title": {
-                "ko": "KT스마트메시지 초성 퀴즈 이벤트",
+                "ko": "KT스마트메시지 퀴즈 이벤트",
                 "en": "KT Smart Message Quiz Event",
-                "jp": "KTスマートメッセージ初声クイズイベント"
+                "jp": "KTスマートメッセージクイズイベント"
             },
             "info": {
                 "date": "2021",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development"],
-                "stack": ["React", "TypeScript", "SCSS", "Git", "Jenkins"],
+                "stack": ["React", "TypeScript", "SCSS", "Jenkins"],
                 "team": {
-                    "ko": "oldrookie(유경수, 배성현, 이수연), 아이디어오븐",
+                    "ko": "oldrookie, 아이디어오븐",
                     "en": "oldrookie, IdeaOven"
                 }
             },
             "description": {
-                "ko": "KT 엔터프라이즈의 초성퀴즈 이벤트 웹사이트를 개발했습니다.\n본인 인증 및 이벤트 참여 기능을 구현하고 배포했습니다.\n2주간 약 7,300명의 참여를 달성했습니다.",
-                "en": "Developed the KT Smart Message Quiz Event website for KT Enterprise.\nImplemented phone authentication and event participation features.\nAchieved 7,300 participants in two weeks.",
-                "jp": "KTエンタープライズの初声クイズイベントウェブサイトを開発しました。\n本人認証及びイベント参加機能を実装しデプロイしました。\n2週間で約7,300名の参加を達成しました。"
+                "ko": "KT 엔터프라이즈의 퀴즈 이벤트 웹사이트를 개발했습니다.\n본인 인증 및 이벤트 참여 기능을 구현했습니다.\n2주간 7,300명의 참여를 달성했습니다.",
+                "en": "Developed a quiz event website for KT Enterprise.\nImplemented phone authentication and event participation features.\nAchieved 7,300 participants in two weeks.",
+                "jp": "KTエンタープライズのクイズイベントウェブサイトを開発しました。\n本人認証及びイベント参加機能を実装しました。\n2週間で7,300名の参加を達成しました。"
             },
             "link": [
                 {
@@ -436,7 +447,7 @@
             },
             "info": {
                 "date": "2022",
-                "category": ["Application", "Website"],
+                "category": ["Mobile", "Web"],
                 "role": ["Development", "Planning", "Design"],
                 "stack": [
                     "Flutter",
@@ -444,8 +455,7 @@
                     "TypeScript",
                     "Redux",
                     "SCSS",
-                    "Git",
-                    "AWS"
+                    "AWS S3"
                 ],
                 "team": {
                     "ko": "oldrookie",
@@ -453,9 +463,9 @@
                 }
             },
             "description": {
-                "ko": "3D 패션 커머스 메타버스 '해픈'의 앱 개발부터 기획·디자인·운영·배포까지 담당했습니다.\nFlutter XR 앱, React 웹 뷰(Babylon.js 3D 뷰어), Next.js 랜딩 웹사이트를 개발하고 배포했습니다.\n패션 브랜드 협업(어셈블스테이션, 디오스피스, 룸룸) 및 앱 런칭(App Store, Google Play)을 달성했습니다.",
-                "en": "Led the 3D fashion commerce metaverse 'HaFFn' from app development to planning, design, operation, and deployment.\nDeveloped and launched Flutter XR app, React web view (Babylon.js 3D viewer), and Next.js landing website.\nCollaborated with fashion brands (Assemblestation, Diospis, RoomRoom) and launched on App Store and Google Play.",
-                "jp": "3Dファッションコマースメタバース「HaFFn」のアプリ開発から企画・デザイン・運営・デプロイまで担当しました。\nFlutter XRアプリ、Reactウェブビュー（Babylon.js 3Dビューアー）、Next.jsランディングウェブサイトを開発しデプロイしました。\nファッションブランド協業（Assemblestation、Diospis、RoomRoom）及びアプリローンチ（App Store、Google Play）を達成しました。"
+                "ko": "3D 패션 커머스 메타버스 플랫폼을 풀스택으로 개발했습니다.\nFlutter XR 앱, React 웹 뷰(Babylon.js 3D), Next.js 랜딩 페이지를 구축했습니다.\n3개 패션 브랜드와 협업하며 App Store와 Google Play에 정식 런칭했습니다.",
+                "en": "Developed a full-stack 3D fashion commerce metaverse platform.\nBuilt Flutter XR app, React web view (Babylon.js 3D), and Next.js landing page.\nCollaborated with 3 fashion brands and officially launched on App Store and Google Play.",
+                "jp": "3Dファッションコマースメタバースプラットフォームをフルスタックで開発しました。\nFlutter XRアプリ、Reactウェブビュー（Babylon.js 3D）、Next.jsランディングページを構築しました。\n3つのファッションブランドと協業しApp StoreとGoogle Playに正式ローンチしました。"
             },
             "link": [
                 {
@@ -505,24 +515,18 @@
             },
             "info": {
                 "date": "2022",
-                "category": ["Application"],
+                "category": ["Mobile"],
                 "role": ["Development", "Planning", "Design"],
-                "stack": [
-                    "Unity",
-                    "React Native",
-                    "AWS S3",
-                    "AWS Redis",
-                    "Git"
-                ],
+                "stack": ["Unity", "React Native", "AWS S3", "AWS Redis"],
                 "team": {
                     "ko": "Baobab Partners Inc.",
                     "en": "Baobab Partners Inc."
                 }
             },
             "description": {
-                "ko": "L2E 메타버스 '넥스테라'의 게임·앱 클라이언트를 개발하고 Unity·React Native 통합을 담당했습니다.\n플랫폼을 App Store와 Google Play에 런칭하고, Unity 클라이언트 성능·용량을 최적화했습니다.",
-                "en": "Developed and integrated game/app clients for L2E metaverse 'Nextera' using Unity and React Native.\nLaunched the platform on App Store and Google Play, and optimized Unity client performance and size.",
-                "jp": "L2Eメタバース「Nextera」のゲーム・アプリクライアントを開発しUnity・React Native統合を担当しました。\nプラットフォームをApp StoreとGoogle Playにローンチし、Unityクライアントのパフォーマンス・容量を最適化しました。"
+                "ko": "L2E 메타버스의 Unity 게임과 React Native 앱을 개발했습니다.\nUnity와 React Native를 통합한 하이브리드 구조를 구축했습니다.\nApp Store와 Google Play에 런칭하고 성능을 최적화했습니다.",
+                "en": "Developed Unity game and React Native app for an L2E metaverse.\nBuilt a hybrid architecture integrating Unity and React Native.\nLaunched on App Store and Google Play with performance optimization.",
+                "jp": "L2EメタバースのUnityゲームとReact Nativeアプリを開発しました。\nUnityとReact Nativeを統合したハイブリッド構造を構築しました。\nApp StoreとGoogle Playにローンチしパフォーマンスを最適化しました。"
             },
             "link": [
                 { "type": "Website", "url": "https://www.nextera.land/" },
@@ -573,9 +577,18 @@
             },
             "info": {
                 "date": "2022-2023",
-                "category": ["Website"],
+                "category": ["Web"],
                 "role": ["Development"],
-                "stack": ["React", "TypeScript", "Mobx", "AWS", "Git"],
+                "stack": [
+                    "React",
+                    "TypeScript",
+                    "TanStack Query",
+                    "MobX",
+                    "Recoil",
+                    "AWS CloudFront",
+                    "AWS Lambda",
+                    "AWS S3"
+                ],
                 "team": {
                     "ko": "빗썸 메타",
                     "en": "Bithumb META"
@@ -625,15 +638,14 @@
             },
             "info": {
                 "date": "2025",
-                "category": ["Application"],
+                "category": ["Mobile"],
                 "role": ["Development"],
                 "stack": [
                     "React Native",
                     "Expo",
                     "TypeScript",
                     "Zustand",
-                    "Tanstack Query",
-                    "Git"
+                    "TanStack Query"
                 ],
                 "team": {
                     "ko": "RNSE",
@@ -641,9 +653,9 @@
                 }
             },
             "description": {
-                "ko": "필리핀 겜블 서비스 'Suitup3D'의 앱 클라이언트를 개발했습니다.\nReact Native와 Expo를 사용하여 iOS 및 Android용 앱을 구축하고 배포했습니다.\n실시간 게임 데이터 처리 및 겜블 애니메이션 구현과 사용자 인터페이스 최적화를 통해 원활한 사용자 경험을 제공했습니다.",
-                "en": "Developed and operated gambling service 'Suitup3D', including app client development.\nBuilt and deployed apps for iOS and Android using React Native and Expo.\nProvided a seamless user experience through real-time game data processing, gambling animation implementation, and user interface optimization.",
-                "jp": "フィリピンのギャンブルサービス「Suitup3D」のアプリクライアントを開発しました。\nReact NativeとExpoを使用してiOSおよびAndroid用のアプリを構築および展開しました。\nリアルタイムのゲームデータ処理、ギャンブルアニメーションの実装、ユーザーインターフェースの最適化を通じてシームレスなユーザーエクスペリエンスを提供しました。"
+                "ko": "카지노 게임 플랫폼 모바일 앱을 개발했습니다.\nReact Native와 Expo로 크로스 플랫폼을 구축했습니다.\n실시간 게임 데이터 처리와 애니메이션을 최적화했습니다.",
+                "en": "Developed a mobile app for a casino game platform.\nBuilt a cross-platform solution with React Native and Expo.\nOptimized real-time game data processing and animations.",
+                "jp": "カジノゲームプラットフォームのモバイルアプリを開発しました。\nReact NativeとExpoでクロスプラットフォームを構築しました。\nリアルタイムゲームデータ処理とアニメーションを最適化しました。"
             },
             "link": [],
             "thumbUrl": "",

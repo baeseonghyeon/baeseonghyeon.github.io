@@ -4,7 +4,7 @@
 .container {
     z-index: $z-layout;
     position: fixed;
-    padding: 10px 15px;
+    padding: 15px 15px;
     display: flex;
     align-items: center;
     line-height: 1;
@@ -28,7 +28,7 @@
         .divider {
             border-left: 1.5px solid var(--on-background-color);
             height: 16px;
-            margin: 4px 0.8rem 0px 1.2rem;
+            margin: 4px 0.8rem 2px 1.2rem;
             @include media-not-desktop {
                 display: none;
             }
@@ -40,7 +40,7 @@
     }
 
     @include media-not-desktop {
-        padding: 10px 0px;
+        padding: 11px 0px;
         left: 50%;
         transform: translate(-50%, 0);
     }
@@ -66,28 +66,58 @@
 .link {
     &__label {
         min-width: fit-content;
-        transition: all ease 0.1s 0s;
-        -moz-transition: all ease 0.1s 0s;
-        -webkit-transition: all ease 0.1s 0s;
+        position: relative;
+        display: inline-block;
         text-decoration: none;
         font-size: $fs-l;
+        line-height: 1.2;
+        padding-bottom: 2px;
+        white-space: nowrap; // 줄바꿈 방지
         @include media-mobile {
             font-size: $fs-l-mobile;
         }
         color: var(--on-background-color);
+
         a {
             margin-top: 0.7rem;
             display: block;
+            white-space: nowrap; // a 태그도 줄바꿈 방지
         }
+
+        // 언더라인을 위한 가상 요소
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0; // 항상 0에서 시작
+            height: $bw;
+            background-color: var(--on-background-color);
+            transform: translateX(-50%);
+        }
+
         &-active {
-            border-bottom: $bw solid var(--on-background-color) !important;
             font-weight: bold;
-            line-height: 1.2;
-            transition: all ease 0.1s 0s;
-            -moz-transition: all ease 0.1s 0s;
-            -webkit-transition: all ease 0.1s 0s;
             letter-spacing: $ls-bold;
+            // width 설정 제거 - 애니메이션만 사용
         }
+
+        // 애니메이션 트리거용 클래스
+        &-animate::after {
+            animation: expandFromCenter 0.18s
+                cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            will-change: width; // GPU 가속 활성화
+        }
+    }
+}
+
+// 중앙에서 양쪽으로 쭉 늘어나는 애니메이션
+@keyframes expandFromCenter {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
     }
 }
 

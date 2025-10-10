@@ -130,7 +130,10 @@ const Layout = (props: LayoutProps) => {
                 <BackgroundParticles />
                 <Navbar />
                 <div className={cn("container", isLaod && "animated")}>
-                    <div className={cn("body", props.className)}>
+                    <div
+                        className={cn("body", props.className)}
+                        data-scroll-container="true"
+                    >
                         {props.children}
                     </div>
                 </div>
