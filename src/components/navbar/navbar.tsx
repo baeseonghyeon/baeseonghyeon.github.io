@@ -3,7 +3,7 @@ import cb from "classnames/bind";
 import { useRouter } from "next/router";
 import styles from "./navbar.module.scss";
 import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import DarkModeLanguageToggle from "components/darkModeLanguageToggle/darkModeLanguageToggle";
 
 const cn = cb.bind(styles);
@@ -22,25 +22,51 @@ const Navbar: NextPage = () => {
 
     const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(true);
+    const ticking = useRef<boolean>(false);
 
-    const handleScroll = () => {
-        const currentScrollPos = window.scrollY;
-        const scrollHeight =
-            document.body.scrollHeight - window.screen.height + 99;
+    const handleScroll = useCallback(() => {
+        if (!ticking.current) {
+            window.requestAnimationFrame(() => {
+                const currentScrollPos = window.scrollY;
+                const scrollableHeight =
+                    document.body.scrollHeight - window.innerHeight;
 
-        if (currentScrollPos > 10 && currentScrollPos - prevScrollPos > 0) {
-            setVisible(false);
-        } else {
-            if (currentScrollPos < scrollHeight) setVisible(true);
+                // 스크롤 가능한 높이가 100px 미만이면 항상 표시
+                if (scrollableHeight < 100) {
+                    setVisible(true);
+                    setPrevScrollPos(currentScrollPos);
+                    ticking.current = false;
+                    return;
+                }
+
+                // 최상단 근처(10px 이내)면 항상 표시
+                if (currentScrollPos < 10) {
+                    setVisible(true);
+                }
+                // 아래로 스크롤 중이면 숨김
+                else if (
+                    currentScrollPos > prevScrollPos &&
+                    currentScrollPos > 10
+                ) {
+                    setVisible(false);
+                }
+                // 위로 스크롤 중이면 표시
+                else if (currentScrollPos < prevScrollPos) {
+                    setVisible(true);
+                }
+
+                setPrevScrollPos(currentScrollPos);
+                ticking.current = false;
+            });
+            ticking.current = true;
         }
-        setPrevScrollPos(currentScrollPos);
-    };
+    }, [prevScrollPos]);
 
     useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => window.removeEventListener("scroll", handleScroll);
-    });
+    }, [handleScroll]);
 
     return (
         <div

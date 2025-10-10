@@ -17,6 +17,11 @@
         position: relative;
         width: 100%;
         background-color: black;
+        @include media-not-mobile {
+            max-height: calc(100vh - 100px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+        }
     }
 
     .image,

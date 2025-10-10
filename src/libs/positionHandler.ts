@@ -81,18 +81,18 @@ const findNonOverlappingPosition = (
     viewportHeight: number,
     safeMargin: number = SAFE_MARGIN,
 ): { left: number; top: number } => {
-    const maxLeft = Math.max(
-        safeMargin,
-        viewportWidth - popupWidth - safeMargin,
-    );
-    const maxTop = Math.max(
-        safeMargin,
-        viewportHeight - popupHeight - safeMargin,
-    );
+    // 팝업이 배치될 수 있는 최대 위치 계산
+    // left는 safeMargin부터 (viewportWidth - popupWidth - safeMargin)까지
+    const maxLeft = viewportWidth - popupWidth - safeMargin;
+    const maxTop = viewportHeight - popupHeight - safeMargin;
 
     // 가용 공간이 너무 작으면 바로 랜덤 분산 배치로
     if (maxLeft < safeMargin * 2 || maxTop < safeMargin * 2) {
-        return getRandomDistributedPosition(maxLeft, maxTop, safeMargin);
+        return getRandomDistributedPosition(
+            Math.max(safeMargin, maxLeft),
+            Math.max(safeMargin, maxTop),
+            safeMargin,
+        );
     }
 
     // 화면 밀도 확인
@@ -115,10 +115,11 @@ const findNonOverlappingPosition = (
     };
 
     for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        // safeMargin과 maxLeft 사이의 랜덤 위치
         newPosition.left =
-            Math.floor(Math.random() * (maxLeft - safeMargin)) + safeMargin;
+            Math.floor(Math.random() * (maxLeft - safeMargin + 1)) + safeMargin;
         newPosition.top =
-            Math.floor(Math.random() * (maxTop - safeMargin)) + safeMargin;
+            Math.floor(Math.random() * (maxTop - safeMargin + 1)) + safeMargin;
 
         // 다른 팝업들과 겹치는지 확인 (some은 조기 종료됨)
         const hasOverlap = occupiedPositions.some((pos) =>
@@ -132,8 +133,9 @@ const findNonOverlappingPosition = (
 
     // 겹치지 않는 위치를 찾지 못한 경우에도 완전 랜덤하게 배치 (약간 겹쳐도 OK)
     return {
-        left: Math.floor(Math.random() * (maxLeft - safeMargin)) + safeMargin,
-        top: Math.floor(Math.random() * (maxTop - safeMargin)) + safeMargin,
+        left:
+            Math.floor(Math.random() * (maxLeft - safeMargin + 1)) + safeMargin,
+        top: Math.floor(Math.random() * (maxTop - safeMargin + 1)) + safeMargin,
     };
 };
 
@@ -143,11 +145,22 @@ const getRandomDistributedPosition = (
     maxTop: number,
     safeMargin: number,
 ): { left: number; top: number } => {
-    // 화면 전체에서 완전히 랜덤한 위치 (이미 계산된 maxLeft, maxTop 사용)
-    return {
-        left: Math.floor(safeMargin + Math.random() * (maxLeft - safeMargin)),
-        top: Math.floor(safeMargin + Math.random() * (maxTop - safeMargin)),
-    };
+    // safeMargin부터 maxLeft까지의 범위에서 랜덤 위치
+    const left = Math.max(
+        safeMargin,
+        Math.min(
+            maxLeft,
+            Math.floor(Math.random() * (maxLeft - safeMargin + 1)) + safeMargin,
+        ),
+    );
+    const top = Math.max(
+        safeMargin,
+        Math.min(
+            maxTop,
+            Math.floor(Math.random() * (maxTop - safeMargin + 1)) + safeMargin,
+        ),
+    );
+    return { left, top };
 };
 
 export const setPositionRandom = (element: HTMLDivElement) => {

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
 import { WorkPopupProps } from "../workPopup";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useCallback } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import { getWorkPopupId } from "../workDescriptionPopup/workDescriptionPopup";
 import { getLocalizedText } from "libs/languageHelper";
@@ -58,26 +58,25 @@ const WorkListItem = (props: WorkListItemProps) => {
         }
     };
 
+    const handleFootnoteClick = (e: React.MouseEvent | React.TouchEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        popupActivator(id);
+    };
+
     if (workData) {
         return (
             <span className={cn("wrapper", "mr-2")} key={index}>
                 <span
                     className={cn("footnote")}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        popupActivator(id);
-                    }}
-                    onTouchStart={() => isPcScreenSize && popupActivator(id)}
+                    onClick={handleFootnoteClick}
+                    onTouchEnd={handleFootnoteClick}
+                    style={{ cursor: 'pointer', WebkitTapHighlightColor: 'transparent' }}
                 >
                     [{index}]
                 </span>
                 <Link href={workDetailPath}>
-                    <span
-                        className={cn("link")}
-                        onTouchStart={() =>
-                            isPcScreenSize && router.push(workDetailPath)
-                        }
-                    >
+                    <span className={cn("link")}>
                         {`${getLocalizedText(workData.title, language)} (${
                             workData.info.date
                         }) [${workData.info.category.join(", ")}]`}

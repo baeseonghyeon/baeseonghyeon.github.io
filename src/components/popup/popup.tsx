@@ -5,8 +5,10 @@ import {
     HtmlHTMLAttributes,
     ReactNode,
     RefObject,
+    useCallback,
     useEffect,
     useLayoutEffect,
+    useMemo,
     useRef,
     useState,
 } from "react";
@@ -52,6 +54,56 @@ const Popup = (props: PopupProps) => {
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
     );
+    const [dragBounds, setDragBounds] = useState({
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+    });
+    const [controlledPosition, setControlledPosition] = useState({
+        x: 0,
+        y: 0,
+    });
+
+    // 드래그 경계 업데이트 함수 (useCallback으로 메모이제이션)
+    const updateDragBounds = useCallback(() => {
+        if (popupRef.current) {
+            const popup = popupRef.current;
+            const rect = popup.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            // 현재 위치를 기준으로 이동 가능한 범위 계산
+            setDragBounds({
+                left: -rect.left,
+                top: -rect.top,
+                right: viewportWidth - rect.left - rect.width,
+                bottom: viewportHeight - rect.top - rect.height,
+            });
+        }
+    }, []);
+
+    // increasePopupOverlay를 먼저 정의 (useCallback으로 메모이제이션)
+    const increasePopupOverlay = useCallback(() => {
+        // 전역 overlay depth를 증가시키고, 그 값을 현재 팝업의 z-index로 설정
+        setPopupOverlayDepth((prev) => {
+            const newDepth = prev + 1;
+            setZindex(newDepth); // 새로운 depth 값을 z-index로 설정
+            return newDepth;
+        });
+        setCurrentActivePopup(popupRef.current);
+    }, [setPopupOverlayDepth, setCurrentActivePopup]);
+
+    // 드래그 시작 시 경계 계산 (useCallback으로 메모이제이션)
+    const handleDragStart = useCallback(() => {
+        updateDragBounds();
+        isDraggable && increasePopupOverlay();
+    }, [isDraggable, updateDragBounds, increasePopupOverlay]);
+
+    // 드래그 중일 때 위치 업데이트 (useCallback으로 메모이제이션)
+    const handleDrag = useCallback((e: any, data: { x: number; y: number }) => {
+        setControlledPosition({ x: data.x, y: data.y });
+    }, []);
 
     useLayoutEffect(() => {
         if (popupRef.current) {
@@ -63,6 +115,13 @@ const Popup = (props: PopupProps) => {
                 setTimeout(() => {
                     if (popupRef.current) {
                         setPositionRandom(popupRef.current);
+                        // Draggable의 내부 state 리셋
+                        setControlledPosition({ x: 0, y: 0 });
+
+                        // 위치 설정 후 드래그 경계 계산
+                        setTimeout(() => {
+                            updateDragBounds();
+                        }, 50);
                     }
                 }, delay);
             }
@@ -74,55 +133,62 @@ const Popup = (props: PopupProps) => {
 
     useEffect(() => {
         // 셔플 버튼으로 isRandomPosition이 변경될 때만 위치 재설정
+        // shuffleTrigger가 1 이상일 때만 (초기값 0 제외)
         if (
             popupRef.current &&
             isRandomPosition !== false &&
             isRandomPosition !== true &&
             isRandomPosition !== 0
         ) {
-            // shuffleTrigger가 1 이상일 때만 (초기값 0 제외)
             // index에 따른 지연 (최대 100ms로 제한)
             const delay = Math.min(index * 5, 100);
             const timer = setTimeout(() => {
                 if (popupRef.current) {
                     setPositionRandom(popupRef.current);
+                    // Draggable의 내부 state 리셋 (애니메이션 유지)
+                    setControlledPosition({ x: 0, y: 0 });
+
+                    // 위치 재설정 후 드래그 경계도 업데이트
+                    setTimeout(() => {
+                        updateDragBounds();
+                    }, 50); // 위치가 완전히 적용된 후 bounds 계산
                 }
             }, delay);
 
             return () => clearTimeout(timer);
         }
-    }, [isRandomPosition]);
+    }, [isRandomPosition, index, updateDragBounds]);
 
     useLayoutEffect(() => {
-        if (popupRef.current === currentActivePopup) {
-            increasePopupOverlay();
+        if (popupRef.current === currentActivePopup && currentActivePopup !== null) {
+            // 전역 overlay depth를 증가시키고, 그 값을 현재 팝업의 z-index로 설정
+            setPopupOverlayDepth((prev) => {
+                const newDepth = prev + 1;
+                setZindex(newDepth); // 새로운 depth 값을 z-index로 설정
+                return newDepth;
+            });
+            // 스크롤 이동
             scrollToPopup(currentActivePopup);
         }
-    }, [currentActivePopup]);
+    }, [currentActivePopup, setPopupOverlayDepth]);
 
-    const increasePopupOverlay = () => {
-        setZindex(popupOverlayDepth + 1);
-        setPopupOverlayDepth(popupOverlayDepth + 1);
-        setCurrentActivePopup(popupRef.current);
-    };
-
-    const onClosePopup = (popupElement: HTMLDivElement | null) => {
+    const onClosePopup = useCallback((popupElement: HTMLDivElement | null) => {
         setVisibility(false);
-        if (popupElement !== null) removePopup(popupElement);
-    };
-
-    const removePopup = (popupElement: HTMLDivElement) => {
-        setTimeout(() => {
-            popupElement.remove();
-        }, 250);
-    };
+        if (popupElement !== null) {
+            setTimeout(() => {
+                popupElement.remove();
+            }, 250);
+        }
+    }, []);
 
     return (
         <Draggable
             disabled={isPcScreenSize ? false : true}
             grid={[50, 50]}
-            bounds="div"
-            onDrag={() => isDraggable && increasePopupOverlay()}
+            bounds={dragBounds}
+            position={controlledPosition}
+            onStart={handleDragStart}
+            onDrag={handleDrag}
             nodeRef={popupRef}
         >
             <div
@@ -137,7 +203,14 @@ const Popup = (props: PopupProps) => {
                 onMouseLeave={props.onMouseLeave}
                 onClick={(e) => {
                     e.stopPropagation();
-                    isDraggable && increasePopupOverlay();
+                    // 링크나 버튼 클릭 시에는 z-index 변경하지 않음
+                    const target = e.target as HTMLElement;
+                    const isLink = target.tagName === 'A' || target.closest('a');
+                    const isButton = target.tagName === 'BUTTON' || target.closest('button');
+                    
+                    if (isDraggable && !isLink && !isButton) {
+                        increasePopupOverlay();
+                    }
                 }}
                 ref={popupRef}
             >
@@ -159,18 +232,20 @@ const Popup = (props: PopupProps) => {
                         <div
                             className={cn("close__button")}
                             onClick={(e) => {
-                                e.stopPropagation(); // Prevent event propagation
+                                e.preventDefault();
+                                e.stopPropagation();
                                 onClickClose
                                     ? onClickClose()
                                     : onClosePopup(popupRef.current);
                             }}
-                            onTouchStart={(e) => {
-                                e.stopPropagation(); // Prevent event propagation
+                            onTouchEnd={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
                                 onClickClose
                                     ? onClickClose()
-                                    : isPcScreenSize &&
-                                      onClosePopup(popupRef.current);
+                                    : onClosePopup(popupRef.current);
                             }}
+                            style={{ WebkitTapHighlightColor: 'transparent' }}
                         >
                             <IoMdClose size={isPcScreenSize ? 22 : 20} />
                         </div>

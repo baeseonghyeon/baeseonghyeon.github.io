@@ -19,7 +19,8 @@
         align-items: center;
         @include media-not-mobile {
             height: 100vh;
-            overflow: unset;
+            overflow-x: hidden;
+            overflow-y: hidden;
             display: block;
         }
         @include media-mobile {
