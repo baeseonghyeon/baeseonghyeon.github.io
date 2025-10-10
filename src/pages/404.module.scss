@@ -9,20 +9,17 @@
 }
 
 .num__label {
-    font-weight: 900;
     font-size: 2.5rem;
 }
 
 .label {
-    font-weight: 900;
-    margin-bottom: 20px;
+    font-size: $fs-l;
+    margin-bottom: 5px;
 }
 
 .link__label {
     color: var(--blue-color);
-    font-weight: 700;
-    font-size: $fs-m;
-    text-decoration: none;
+    text-decoration: underline;
     margin-left: 5px;
     cursor: pointer;
     &:hover {

@@ -6,9 +6,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
 import { WorkPopupProps } from "../workPopup";
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useCallback, useMemo, memo } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import { getWorkPopupId } from "../workDescriptionPopup/workDescriptionPopup";
+import { getLocalizedText } from "libs/languageHelper";
 const cn = cb.bind(styles);
 
 export interface WorkListItemProps extends WorkPopupProps {}
@@ -33,10 +34,30 @@ const WorkListItem = (props: WorkListItemProps) => {
     const { isPcScreenSize } = useMediaQuery();
     const router = useRouter();
     const workData = workPopupData.workData;
-    const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
+
+    // 파생 값들을 useMemo로 메모이제이션
+    const id = useMemo(
+        () => getWorkPopupId(workData.title.en, workData.info.category[0]),
+        [workData.title.en, workData.info.category],
+    );
     const index = workPopupData.index;
 
-    const workDetailPath = `/works/${id}`;
+    const workDetailPath = useMemo(() => `/works/${id}`, [id]);
+
+    // popupActivator 함수를 useCallback으로 메모이제이션
+    const popupActivator = useCallback(
+        (targetId: string) => {
+            const currentPopup = document.getElementById(targetId);
+            if (currentPopup) {
+                setCurrentActivePopup(currentPopup as HTMLDivElement);
+                scrollToPopup(currentPopup);
+                router.push(`?target=${targetId}`);
+            } else {
+                router.push(workDetailPath);
+            }
+        },
+        [setCurrentActivePopup, router, workDetailPath],
+    );
 
     useLayoutEffect(() => {
         if (router.isReady) {
@@ -46,38 +67,41 @@ const WorkListItem = (props: WorkListItemProps) => {
         }
     }, [router.isReady]);
 
-    const popupActivator = (id: string) => {
-        const currentPopup = document.getElementById(id);
-        if (currentPopup) {
-            setCurrentActivePopup(currentPopup as HTMLDivElement);
-            scrollToPopup(currentPopup);
-            router.push(`?target=${id}`);
-        } else {
-            router.push(workDetailPath);
-        }
-    };
+    // handleFootnoteClick을 useCallback으로 메모이제이션
+    const handleFootnoteClick = useCallback(
+        (e: React.MouseEvent | React.TouchEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            popupActivator(id);
+        },
+        [popupActivator, id],
+    );
+
+    // 링크 텍스트를 useMemo로 메모이제이션
+    const linkText = useMemo(
+        () =>
+            `${getLocalizedText(workData.title, language)} (${
+                workData.info.date
+            }) [${workData.info.category.join(", ")}]`,
+        [workData.title, workData.info.date, workData.info.category, language],
+    );
 
     if (workData) {
         return (
             <span className={cn("wrapper", "mr-2")} key={index}>
                 <span
                     className={cn("footnote")}
-                    onClick={() => popupActivator(id)}
-                    onTouchStart={() => isPcScreenSize && popupActivator(id)}
+                    onClick={handleFootnoteClick}
+                    onTouchEnd={handleFootnoteClick}
+                    style={{
+                        cursor: "pointer",
+                        WebkitTapHighlightColor: "transparent",
+                    }}
                 >
                     [{index}]
                 </span>
                 <Link href={workDetailPath}>
-                    <span
-                        className={cn("link")}
-                        onTouchStart={() =>
-                            isPcScreenSize && router.push(workDetailPath)
-                        }
-                    >
-                        {`${workData.title[language]} (${
-                            workData.info.date
-                        }) [${workData.info.category.join(", ")}]`}
-                    </span>
+                    <span className={cn("link")}>{linkText}</span>
                 </Link>
             </span>
         );
@@ -86,4 +110,5 @@ const WorkListItem = (props: WorkListItemProps) => {
     }
 };
 
-export default WorkListItem;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(WorkListItem);

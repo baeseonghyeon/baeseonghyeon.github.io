@@ -22,6 +22,7 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "airbnb",
+        "airbnb-typescript",
         "plugin:prettier/recommended"
     ],
     "plugins": ["react-hooks", "simple-import-sort", "prettier"],

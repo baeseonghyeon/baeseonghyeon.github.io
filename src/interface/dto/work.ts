@@ -22,8 +22,8 @@ export interface WorkInfo {
 }
 
 export enum WorkCategoryEnums {
-    Website = "Website",
-    Application = "Application",
+    Web = "Web",
+    Mobile = "Mobile",
 }
 
 export enum WorkRoleEnums {
@@ -42,6 +42,7 @@ export interface WorkDescriptionLink extends MultilingualContent {
 
 export interface WorkLink {
     type: string;
+    name?: MultilingualContent;
     url: string;
 }
 

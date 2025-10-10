@@ -4,6 +4,8 @@
 .container {
     opacity: 0;
     transform: scale(0.8);
+    position: relative;
+    z-index: 10;
     &.animated {
         opacity: 1;
         transform: scale(1);
@@ -17,14 +19,15 @@
         align-items: center;
         @include media-not-mobile {
             height: 100vh;
-            overflow: unset;
+            overflow-x: hidden;
+            overflow-y: auto;
             display: block;
         }
         @include media-mobile {
-            padding: 45px 11px 40px;
+            padding: 52px 11px 40px;
         }
         @include media-tablet {
-            padding: 45px 11px 40px;
+            padding: 55px 11px 40px;
         }
     }
 }

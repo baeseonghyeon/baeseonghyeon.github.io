@@ -4,6 +4,16 @@
 .container {
     position: absolute;
     @include shadow-outline(1vh);
+    opacity: 1;
+    transition: opacity 0.2s ease-in; // 기본: opacity만 애니메이션
+
+    // 초기 로드 후 셔플 시에는 위치 이동도 부드럽게 (더 빠르게)
+    &.smooth-transition {
+        transition: opacity 0.2s ease-in, top 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+            left 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+            transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     p {
         margin: 0;
     }
@@ -18,7 +28,10 @@
     .header {
         border-bottom: $bw solid var(--lightgray-color);
         text-align: left;
-        height: 30px;
+        height: 45px;
+        @include media-mobile {
+            height: 40px;
+        }
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -31,12 +44,19 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            @include media-mobile {
+                font-size: $fs-l-mobile;
+            }
         }
 
         cursor: pointer;
         .button__wrapper {
             display: flex;
             flex-direction: row;
+
+            @include media-not-mobile {
+                gap: 5px;
+            }
         }
 
         .close__button {
@@ -47,7 +67,10 @@
             justify-content: center;
             touch-action: auto;
             font-weight: bold;
-            margin-right: 2px;
+            margin-right: 5px;
+            @include media-mobile {
+                margin-right: 4px;
+            }
         }
 
         &:hover {
@@ -81,12 +104,14 @@
         text-align: left;
         touch-action: auto;
         white-space: pre-wrap;
+        @include media-not-desktop {
+            padding: 12px 10px 30px;
+        }
     }
 
     @include media-mobile {
         position: relative;
         width: 100%;
-        margin-bottom: 5px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;
@@ -95,14 +120,14 @@
     @include media-tablet {
         position: relative;
         width: 100%;
-        margin-bottom: 5px;
         top: initial !important;
         left: initial !important;
         transform: initial !important;
     }
 
     &.hide {
-        opacity: 0;
+        opacity: 0 !important;
+        pointer-events: none;
         z-index: -1;
     }
 }

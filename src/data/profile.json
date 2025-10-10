@@ -3,20 +3,23 @@
         {
             "sort": 1,
             "common": "bae-seonghyeon",
-            "ko": "배성현은 프론트엔드 엔지니어, 웹 · 앱 개발자, UI개발자, UI · UX 기획자, 프로덕트 매니저 입니다.",
-            "en": "Bae Seonghyeon is a Frontend Engineer, WEB · APP Developer, UI Developer, UI · UX Planner, Product Manager."
+            "ko": "배성현은 웹과 앱을 만드는 프론트엔드 엔지니어입니다.",
+            "en": "Bae Seonghyeon is a frontend engineer specializing in web and mobile applications.",
+            "jp": "ベ・ソンヒョンはウェブとアプリを作るフロントエンドエンジニアです。"
         },
         {
             "sort": 2,
-            "common": "comment",
-            "ko": "디자이너의 시선과 기획자의 생각으로 개발하며, 심미적으로 아름답고 기능적으로 효과적인 서비스를 만들고 있습니다. 지속가능한 개발을 하기 위해 생각하고 탐구하며, 사용자 경험의 최전선에서 최고의 프로덕트를 만들어갑니다. 대한민국 경기도에 거주하며 경영정보학과를 전공했습니다.",
-            "en": "I develop aesthetically beautiful and functionally effective services with the designer's perspective and the planner's thoughts. I always think and study for sustainable development, and create the best products at the forefront of user experience. I live in Gyeonggi-do, Republic of Korea, and majored in Management Information Systems."
+            "common": "about",
+            "ko": "누구나 사용하고 싶은 서비스를 만드는 것을 목표로 합니다. 기획자와 디자이너의 관점을 아우르며, 사용자 친화적인 서비스를 만들기 위해 노력합니다. 함께 일하고 싶은 개발자가 되기 위해 늘 배우고 탐구합니다. 클린하고 변화에 유연한 코드에 대해 고민하며, 건강한 개발 문화를 만드는 것을 즐깁니다.",
+            "en": "I aim to create services that everyone wants to use. I strive to build user-friendly products by embracing the perspectives of product managers and designers. I am always learning and exploring to become the kind of developer others want to work with. I enjoy thinking about clean and adaptable code, and contributing to a positive development culture.",
+            "jp": "誰もが使いたくなるサービスを作ることを目指しています。企画者とデザイナーの視点を理解し、ユーザーフレンドリーなサービス作りに努めています。一緒に働きたい開発者になるため、常に学び探求しています。クリーンで変化に柔軟なコードについて考え、健全な開発文化を作ることを楽しんでいます。"
         },
         {
-            "sort": 99,
+            "sort": 10,
             "common": "description",
-            "ko": "이 웹사이트는 Next.js + TypeScript로 개발되어 Github Pages에 배포 되었습니다. \n\n웹사이트 개발 및 디자인 (배성현)",
-            "en": "This website was developed using Next.js + TypeScript and Deployed on Github Pages \n\nWebsite developed and designed by Bae Seonghyeon"
+            "ko": "이 웹사이트는 Next.js와 TypeScript로 개발되어 GitHub Pages에 배포되었습니다. \n\n개발 및 디자인 (배성현).",
+            "en": "This website was developed using Next.js and TypeScript, and deployed on GitHub Pages.\n\nDesigned and developed by Bae Seonghyeon.",
+            "jp": "このウェブサイトはNext.jsとTypeScriptで開発され、GitHub Pagesにデプロイされました。\n\n開発及びデザイン（ベ・ソンヒョン）。"
         }
     ],
     "list": [
@@ -33,6 +36,13 @@
                 },
                 {
                     "title": {
+                        "common": "LinkedIn"
+                    },
+                    "icon": true,
+                    "url": "https://www.linkedin.com/in/%EC%84%B1%ED%98%84-%EB%B0%B0-abb1441a4/"
+                },
+                {
+                    "title": {
                         "common": "Github"
                     },
                     "icon": true,
@@ -44,114 +54,182 @@
                     },
                     "icon": true,
                     "url": "https://velog.io/@baesh"
-                },
-                {
-                    "title": {
-                        "common": "LinkedIn"
-                    },
-                    "icon": true,
-                    "url": "https://www.linkedin.com/in/%EC%84%B1%ED%98%84-%EB%B0%B0-abb1441a4/"
                 }
             ]
         },
         {
-            "title": "career",
+            "title": "experience",
             "sort": 4,
             "listData": [
                 {
                     "title": {
-                        "ko": "빗썸메타 블록개발실 개발팀 프론트엔드 엔지니어",
-                        "en": "Bithumb META NFT Market Development Team, Frontend Engineer",
+                        "ko": "프리랜서 프론트엔드 엔지니어",
+                        "en": "Freelancer Frontend Engineer",
+                        "jp": "フリーランスフロントエンドエンジニア",
+                        "common": "2025"
+                    },
+                    "url": "https://www.linkedin.com/in/%EC%84%B1%ED%98%84-%EB%B0%B0-abb1441a4/"
+                },
+                {
+                    "title": {
+                        "ko": "Bithumb Meta 프론트엔드 엔지니어",
+                        "en": "Bithumb Meta Frontend Engineer",
+                        "jp": "Bithumb Metaフロントエンドエンジニア",
                         "common": "2022-2023"
                     },
                     "url": "https://bithumbmeta.io/"
                 },
                 {
                     "title": {
-                        "ko": "바오밥파트너즈 메타버스 개발팀 프론트엔드 엔지니어",
-                        "en": "Baobab Partners Inc. Metaverse Development Team, Frontend Engineer",
+                        "ko": "바오밥파트너즈 프론트엔드 엔지니어",
+                        "en": "Baobab Partners Inc. Frontend Engineer",
+                        "jp": "Baobab Partners Inc. フロントエンドエンジニア",
                         "common": "2022"
                     },
                     "url": "https://www.baobabpartners.io/"
                 },
                 {
                     "title": {
-                        "ko": "(주)올드루키 서비스 개발팀 프론트엔드 엔지니어, 기획자",
-                        "en": "oldrookie Corp Frontend Engineer, Service Planner",
+                        "ko": "올드루키 프론트엔드 엔지니어",
+                        "en": "oldrookie Corp. Frontend Engineer",
+                        "jp": "oldrookie Corp. フロントエンドエンジニア",
                         "common": "2020-2022"
                     },
                     "url": "https://oldrookie.notion.site/3f60ba345d4040f2a6b3f44580e3fe71"
                 },
                 {
                     "title": {
+                        "ko": "오픈버스 인턴 프론트엔드 엔지니어",
+                        "en": "OpenBUS Intern Frontend Engineer",
+                        "jp": "OpenBUSインターンフロントエンドエンジニア",
+                        "common": "2018-2019"
+                    },
+                    "url": "http://www.openbus.me/index.php"
+                },
+                {
+                    "title": {
                         "ko": "Google Developer Student Clubs Lead",
                         "en": "Google Developer Student Clubs Lead",
+                        "jp": "Google Developer Student Clubs Lead",
                         "common": "2019-2020"
                     },
                     "url": "https://google.dev/badges/community/dsc/2019/lead?fbclid=IwAR0bSPj_62TH30Xa5ZbkIfVdjsXLmX9V_yt2oei95m-lfQqTz3veIk5Ry9A"
                 },
                 {
                     "title": {
-                        "ko": "멋쟁이 사자처럼 at 삼육대학교 6기, 7기 대표",
-                        "en": "LIKELION at Sahmyook University 6th, 7th Leader",
+                        "ko": "멋쟁이 사자처럼 6기, 7기 대표",
+                        "en": "LIKELION 6th, 7th Leader",
+                        "jp": "ライオンのように（LIKELION）6期、7期代表",
                         "common": "2018-2019"
                     },
                     "url": "http://sahmyook.likelion.org/users/2"
-                },
-                {
-                    "title": {
-                        "ko": "오픈버스(주) 개발팀 인턴",
-                        "en": "OpenBUS Development Team Intern",
-                        "common": "2018-2019"
-                    },
-                    "url": "http://www.openbus.me/index.php"
                 }
             ]
         },
         {
-            "title": "skill",
+            "title": "Skills",
             "sort": 5,
             "listData": [
                 {
                     "title": {
                         "ko": "웹",
-                        "en": "WEB",
-                        "common": "React, Next.js, SCSS, StoryBook, Svelte, A-frame, Django, Ruby on Rails, CodeIgniter"
+                        "en": "Web",
+                        "jp": "ウェブ",
+                        "common": "React, Next.js"
                     }
                 },
                 {
                     "title": {
                         "ko": "앱",
-                        "en": "APP",
-                        "common": "Flutter, React Native"
+                        "en": "Mobile",
+                        "jp": "アプリ",
+                        "common": "React Native, Flutter"
                     }
                 },
                 {
                     "title": {
-                        "ko": "3D",
-                        "en": "3D",
-                        "common": "Unity"
+                        "ko": "언어",
+                        "en": "Languages",
+                        "jp": "言語",
+                        "common": "TypeScript, JavaScript"
                     }
                 },
                 {
                     "title": {
-                        "ko": "프로그래밍언어",
-                        "en": "LANGUAGE",
-                        "common": "JavaScript, TypeScript, Python, C++, C#, Ruby, PHP"
+                        "ko": "상태 관리",
+                        "en": "State Management",
+                        "jp": "状態管理",
+                        "common": "TanStack Query, Zustand, Redux, MobX"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "스타일링",
+                        "en": "Styling",
+                        "jp": "スタイリング",
+                        "common": "Tailwind CSS, Styled-Components, SCSS"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "개발 도구",
+                        "en": "Development",
+                        "jp": "開発ツール",
+                        "common": "Webpack, Vite, pnpm"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "테스트",
+                        "en": "Testing",
+                        "jp": "テスト",
+                        "common": "Jest, React Testing Library, Vitest"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Additional Skills",
+            "sort": 6,
+            "listData": [
+                {
+                    "title": {
+                        "ko": "서버",
+                        "en": "Backend",
+                        "jp": "サーバー",
+                        "common": "Node.js, Django, Ruby on Rails, CodeIgniter"
                     }
                 },
                 {
                     "title": {
                         "ko": "데이터베이스",
-                        "en": "DATABASE",
-                        "common": "MySQL, GraphQL, MongoDB, SQLite, PostgreSQL"
+                        "en": "Database",
+                        "jp": "データベース",
+                        "common": "MySQL, PostgreSQL, MongoDB, SQLite"
                     }
                 },
                 {
                     "title": {
-                        "ko": "인프라",
-                        "en": "INFRA",
-                        "common": "Git, AWS, GCP, Docker"
+                        "ko": "CI/CD",
+                        "en": "CI/CD",
+                        "jp": "CI/CD",
+                        "common": "GitHub Actions, GitLab Pipelines, Jenkins"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "DevOps",
+                        "en": "DevOps",
+                        "jp": "DevOps",
+                        "common": "AWS, GCP, Docker"
+                    }
+                },
+                {
+                    "title": {
+                        "ko": "기타",
+                        "en": "Others",
+                        "jp": "その他",
+                        "common": "Unity"
                     }
                 }
             ]

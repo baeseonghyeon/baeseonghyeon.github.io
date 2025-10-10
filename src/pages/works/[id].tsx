@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
-import { googleCloudImageUrl, lowerCaseParser } from "libs/textParser";
+import { convertImgurUrlToDirectLink, lowerCaseParser } from "libs/textParser";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
@@ -14,6 +14,7 @@ import WorkDetailDescriptionPopup from "../../components/popup/workPopup/workDet
 import WorkDetailInfoPopup from "../../components/popup/workPopup/workDetailInfoPopup/workDetailInfoPopup";
 import NotFound from "pages/404";
 import ContentImage from "components/contentImage/contentImage";
+import { getLocalizedText } from "libs/languageHelper";
 
 const cn = cb.bind(styles);
 
@@ -57,10 +58,11 @@ const WorkDetail: NextPage = ({ work }: any) => {
     if (workData)
         return (
             <Layout
-                title={workData.title[language]}
+                title={getLocalizedText(workData.title, language)}
                 description={
-                    workData.description[language]?.substring(0, 80).trimEnd() +
-                    "..."
+                    getLocalizedText(workData.description, language)
+                        ?.substring(0, 80)
+                        .trimEnd() + "..."
                 }
             >
                 <WorkDetailInfoPopup workData={workData} />
@@ -106,10 +108,15 @@ const WorkDetail: NextPage = ({ work }: any) => {
                                     key={image.url}
                                 >
                                     <ContentImage
-                                        src={googleCloudImageUrl(image.url)}
+                                        src={convertImgurUrlToDirectLink(
+                                            image.url,
+                                        )}
                                         className={cn("image__content")}
                                         skeletonClassName={cn("skeleton")}
-                                        alt={`${workData.title[language]} Image ${index}`}
+                                        alt={`${getLocalizedText(
+                                            workData.title,
+                                            language,
+                                        )} Image ${index}`}
                                     />
                                 </div>
                             );
@@ -170,7 +177,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             workTitle = item.title.ko;
             workImage = item.thumbUrl
                 ? item.thumbUrl
-                : item.image
+                : item.image && item.image.length > 0
                 ? item.image[0].url
                 : null;
         });

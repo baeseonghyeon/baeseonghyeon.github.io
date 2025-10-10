@@ -16,16 +16,17 @@
             }
         }
     }
+
     @include media-not-mobile {
         &__bae-seonghyeon {
-            top: 50px !important;
+            top: 70px !important;
             left: 26px !important;
         }
         &__contact {
             top: 195px !important;
             left: 50px !important;
         }
-        &__comment {
+        &__about {
             width: 600px;
             word-break: keep-all;
         }
@@ -40,7 +41,7 @@
             top: initial !important;
             left: initial !important;
         }
-        &__comment {
+        &__about {
             width: 100% !important;
             word-break: keep-all;
         }

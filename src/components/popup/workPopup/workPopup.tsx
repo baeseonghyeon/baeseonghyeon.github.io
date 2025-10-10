@@ -1,23 +1,33 @@
+"use client";
 import styles from "./workPopup.module.scss";
 import cb from "classnames/bind";
 import { useRecoilValue } from "recoil";
 import { currentActivePopupState, languageState } from "recoil/ui";
 import { WorkData } from "interface/dto/work";
 import Popup from "components/popup/popup";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+    useLayoutEffect,
+    useRef,
+    useState,
+    useCallback,
+    useMemo,
+    memo,
+} from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import YoutubeVideo from "components/youtubeVideo/youtubeVideo";
 import WorkDescriptionPopup, {
     getWorkPopupId,
 } from "./workDescriptionPopup/workDescriptionPopup";
-import { googleCloudImageUrl } from "libs/textParser";
+import { convertImgurUrlToDirectLink } from "libs/textParser";
 import ContentImage from "components/contentImage/contentImage";
+import { getLocalizedText } from "libs/languageHelper";
+
 const cn = cb.bind(styles);
 
 export interface WorkPopupProps {
     workPopupData: {
         workData: WorkData;
-        isRandomPositon?: boolean;
+        isRandomPosition?: boolean | number;
         index: number;
     };
 }
@@ -31,8 +41,19 @@ const WorkPopup = (props: WorkPopupProps) => {
     const [innerPopupVisibility, setInnerPopupVisibility] = useState(false);
     const workData = workPopupData.workData;
     const index = workPopupData.index;
-    const isRandomPositon = workPopupData.isRandomPositon;
-    const id = getWorkPopupId(workData.title.en, workData.info.category[0]);
+    const isRandomPosition = workPopupData.isRandomPosition;
+
+    // id를 useMemo로 메모이제이션
+    const id = useMemo(
+        () => getWorkPopupId(workData.title.en, workData.info.category[0]),
+        [workData.title.en, workData.info.category],
+    );
+
+    // title을 useMemo로 메모이제이션
+    const localizedTitle = useMemo(
+        () => getLocalizedText(workData.title, language),
+        [workData.title, language],
+    );
 
     useLayoutEffect(() => {
         if (currentActivePopup === popupRef.current) {
@@ -42,21 +63,32 @@ const WorkPopup = (props: WorkPopupProps) => {
         }
     }, [currentActivePopup]);
 
+    // onMouseEnter를 useCallback으로 메모이제이션
+    const handleMouseEnter = useCallback(() => {
+        isPcScreenSize && setInnerPopupVisibility(true);
+    }, [isPcScreenSize]);
+
+    // onMouseLeave를 useCallback으로 메모이제이션
+    const handleMouseLeave = useCallback(() => {
+        isPcScreenSize &&
+            !(currentActivePopup === popupRef.current) &&
+            setInnerPopupVisibility(false);
+    }, [isPcScreenSize, currentActivePopup]);
+
+    // onClickClose를 useCallback으로 메모이제이션
+    const handleCloseInnerPopup = useCallback(() => {
+        setInnerPopupVisibility(false);
+    }, []);
+
     if (workData) {
         return (
             <Popup
                 id={id}
-                title={workData.title[language]}
-                isRandomPositon={isRandomPositon}
+                title={localizedTitle}
+                isRandomPosition={isRandomPosition}
                 index={index + 1}
-                onMouseEnter={() =>
-                    isPcScreenSize && setInnerPopupVisibility(true)
-                }
-                onMouseLeave={() =>
-                    isPcScreenSize &&
-                    !(currentActivePopup === popupRef.current) &&
-                    setInnerPopupVisibility(false)
-                }
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 className={cn("container")}
                 bodyClassName={cn("body")}
                 popupRef={popupRef}
@@ -69,23 +101,44 @@ const WorkPopup = (props: WorkPopupProps) => {
                     />
                 ) : workData.thumbUrl ? (
                     <ContentImage
-                        src={googleCloudImageUrl(workData.thumbUrl)}
+                        src={convertImgurUrlToDirectLink(workData.thumbUrl)}
                         className={cn("image__container")}
                         skeletonClassName={cn("video__container")}
                         isBackgroundImage
-                        alt={`${workData.title[language]}-thumbnail`}
+                        alt={`${getLocalizedText(
+                            workData.title,
+                            language,
+                        )}-thumbnail`}
+                    />
+                ) : workData.image && workData.image[0] ? (
+                    <ContentImage
+                        src={convertImgurUrlToDirectLink(workData.image[0].url)}
+                        className={cn("image__container")}
+                        skeletonClassName={cn("video__container")}
+                        isBackgroundImage
+                        alt={`${getLocalizedText(
+                            workData.title,
+                            language,
+                        )}-thumbnail`}
                     />
                 ) : (
-                    workData.image &&
-                    workData.image[0] && (
-                        <ContentImage
-                            src={googleCloudImageUrl(workData.image[0].url)}
-                            className={cn("image__container")}
-                            skeletonClassName={cn("video__container")}
-                            isBackgroundImage
-                            alt={`${workData.title[language]}-thumbnail`}
-                        />
-                    )
+                    <div className={cn("image__container", "placeholder")}>
+                        <div className={cn("placeholder__content")}>
+                            <div className={cn("speech-bubbles")}>
+                                <div className={cn("speech-bubble")}>
+                                    <p>{localizedTitle}.</p>
+                                </div>
+                                <div className={cn("speech-bubble")}>
+                                    <p>{workData.info.category.join(" · ")}.</p>
+                                </div>
+                            </div>
+                            <img
+                                src="/favicon/apple-touch-icon.png"
+                                alt="logo"
+                                className={cn("placeholder__icon")}
+                            />
+                        </div>
+                    </div>
                 )}
 
                 <WorkDescriptionPopup
@@ -94,7 +147,7 @@ const WorkPopup = (props: WorkPopupProps) => {
                         !innerPopupVisibility && "description-popup--hide",
                     )}
                     workPopupData={workPopupData}
-                    onClickClose={() => setInnerPopupVisibility(false)}
+                    onClickClose={handleCloseInnerPopup}
                 />
             </Popup>
         );
@@ -103,4 +156,5 @@ const WorkPopup = (props: WorkPopupProps) => {
     }
 };
 
-export default WorkPopup;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(WorkPopup);

@@ -1,19 +1,27 @@
 import cb from "classnames/bind";
+import BackgroundParticles from "components/backgroundParticles/backgroundParticles";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar/navbar";
 import ScrollToTopButton from "components/scrollToTopButton/scrollToTopButton";
 import useDarkMode from "hooks/useDarkMode";
 import { Language } from "interface/enums";
-import { googleCloudImageUrl } from "libs/textParser";
+import { convertImgurUrlToDirectLink } from "libs/textParser";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { HtmlHTMLAttributes, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
+import { Noto_Sans_KR } from "next/font/google";
 
 import styles from "./layout.module.scss";
 
 const cn = cb.bind(styles);
+
+const notoSansKr = Noto_Sans_KR({
+    weight: ["400", "500", "700"],
+    subsets: ["latin"],
+    display: "swap",
+});
 
 interface LayoutProps extends HtmlHTMLAttributes<HTMLDivElement> {
     title?: string;
@@ -28,11 +36,18 @@ const Layout = (props: LayoutProps) => {
     const language = useRecoilValue(languageState);
     const [isLaod, setIsLoad] = useState(false);
 
-    const defaultTitle = language === Language.ko ? "배성현" : "Bae Seonghyeon";
+    const defaultTitle =
+        language === Language.ko
+            ? "배성현"
+            : language === Language.jp
+            ? "ベ・ソンヒョン"
+            : "Bae Seonghyeon";
     const pageTitle = `${defaultTitle} - ${
         (router && router.pathname === "/") || !title
             ? language === Language.ko
                 ? "Bae Seonghyeon"
+                : language === Language.jp
+                ? "ベ・ソンヒョン"
                 : "배성현"
             : title
     }`;
@@ -63,7 +78,7 @@ const Layout = (props: LayoutProps) => {
                 {router.pathname !== "/works" && (
                     <meta
                         property="og:image"
-                        content={googleCloudImageUrl(
+                        content={convertImgurUrlToDirectLink(
                             image ? image : "1yMHIgjjWl4YKRpM9HPdta1YhAjqya6nD",
                         )}
                     />
@@ -111,14 +126,20 @@ const Layout = (props: LayoutProps) => {
                     src="https://www.googletagmanager.com/gtag/js?id=UA-174985234-1"
                 />
             </Head>
-            <Navbar />
-            <div className={cn("container", isLaod && "animated")}>
-                <div className={cn("body", props.className)}>
-                    {props.children}
+            <div className={notoSansKr.className}>
+                <BackgroundParticles />
+                <Navbar />
+                <div className={cn("container", isLaod && "animated")}>
+                    <div
+                        className={cn("body", props.className)}
+                        data-scroll-container="true"
+                    >
+                        {props.children}
+                    </div>
                 </div>
+                <Footer />
+                <ScrollToTopButton />
             </div>
-            <Footer />
-            <ScrollToTopButton />
         </>
     );
 };

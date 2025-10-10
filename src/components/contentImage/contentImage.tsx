@@ -1,6 +1,12 @@
 import cb from "classnames/bind";
 import styles from "./contentImage.module.scss";
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, {
+    HtmlHTMLAttributes,
+    useEffect,
+    useRef,
+    useState,
+    memo,
+} from "react";
 import SkeletonBox from "components/skeletonBox/skeletonBox";
 import Image from "next/image";
 
@@ -17,6 +23,16 @@ const ContentImage = (props: ContentImageProps) => {
     const { src, isBackgroundImage = false, skeletonClassName, alt } = props;
 
     const [loading, setLoading] = useState(true);
+
+    const imgRef = useRef<HTMLImageElement | null>(null);
+
+    useEffect(() => {
+        const imgEl = imgRef.current;
+
+        if (imgEl && imgEl.complete) {
+            setLoading(false);
+        }
+    }, [src]);
 
     return (
         <>
@@ -35,6 +51,7 @@ const ContentImage = (props: ContentImageProps) => {
 
             <img
                 src={src}
+                ref={imgRef}
                 className={cn(
                     props.className,
                     (loading || isBackgroundImage) && "hide",
@@ -46,4 +63,5 @@ const ContentImage = (props: ContentImageProps) => {
     );
 };
 
-export default ContentImage;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(ContentImage);

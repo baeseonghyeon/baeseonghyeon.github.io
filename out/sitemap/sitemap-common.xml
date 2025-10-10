@@ -5,17 +5,22 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
   <url>
+    <loc>https://baeseonghyeon.github.io/_document</loc>
+    <lastmod>2025-10-10T17:09:36.442Z</lastmod>
+  </url>
+
+  <url>
     <loc>https://baeseonghyeon.github.io/</loc>
-    <lastmod>2023-02-27T15:15:10.578Z</lastmod>
+    <lastmod>2025-10-10T17:09:36.442Z</lastmod>
   </url>
 
   <url>
     <loc>https://baeseonghyeon.github.io/profile</loc>
-    <lastmod>2023-02-27T15:15:10.578Z</lastmod>
+    <lastmod>2025-10-10T17:09:36.442Z</lastmod>
   </url>
 
   <url>
     <loc>https://baeseonghyeon.github.io/works</loc>
-    <lastmod>2023-02-27T15:15:10.578Z</lastmod>
+    <lastmod>2025-10-10T17:09:36.442Z</lastmod>
   </url>
 </urlset>

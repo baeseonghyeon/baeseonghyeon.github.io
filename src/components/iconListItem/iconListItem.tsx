@@ -8,6 +8,8 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { touchRedirect } from "libs/touchHandler";
 import VelogLogoIcon from "components/icons/velogLogoIcon";
 import Link from "next/link";
+import { getLocalizedText } from "libs/languageHelper";
+import { useMemo, useCallback, memo } from "react";
 const cn = cb.bind(styles);
 
 export interface IconListItemProps {
@@ -19,7 +21,8 @@ const IconListItem = (props: IconListItemProps) => {
     const language = useRecoilValue(languageState);
     const isIcon = listData && listData.icon !== undefined;
 
-    const listIconHandler = (name?: string) => {
+    // listIconHandler를 useCallback으로 메모이제이션
+    const listIconHandler = useCallback((name?: string) => {
         switch (name) {
             case "Github":
                 return <FontAwesomeIcon icon={faGithub} />;
@@ -28,7 +31,35 @@ const IconListItem = (props: IconListItemProps) => {
             default:
                 return <VelogLogoIcon />;
         }
-    };
+    }, []);
+
+    // 텍스트 관련 값들을 useMemo로 메모이제이션
+    const { localizedText, commonText, showCommon } = useMemo(() => {
+        const localizedText = getLocalizedText(listData.title, language);
+        const commonText = listData.title["common"];
+        const showCommon = localizedText !== commonText;
+
+        return { localizedText, commonText, showCommon };
+    }, [listData.title, language]);
+
+    // getListContent를 useMemo로 메모이제이션
+    const listContent = useMemo(() => {
+        return (
+            <>
+                {localizedText}
+                {!isIcon && showCommon && "("}
+                {!isIcon && showCommon && commonText}
+                {!isIcon && showCommon && ")"}
+            </>
+        );
+    }, [localizedText, commonText, showCommon, isIcon]);
+
+    // handleTouchStart를 useCallback으로 메모이제이션
+    const handleTouchStart = useCallback(() => {
+        if (listData.url) {
+            touchRedirect(listData.url, true);
+        }
+    }, [listData.url]);
 
     if (listData) {
         return (
@@ -39,16 +70,17 @@ const IconListItem = (props: IconListItemProps) => {
                     </span>
                 )}
 
-                <Link
-                    href={listData.url ? listData.url : ""}
-                    target="_blank"
-                    onTouchStart={() => touchRedirect(listData.url, true)}
-                >
-                    {listData.title[language]}
-                    {!isIcon && "("}
-                    {listData.title["common"]}
-                    {!isIcon && ")"}
-                </Link>
+                {listData.url ? (
+                    <Link
+                        href={listData.url}
+                        target="_blank"
+                        onTouchStart={handleTouchStart}
+                    >
+                        {listContent}
+                    </Link>
+                ) : (
+                    listContent
+                )}
             </li>
         );
     } else {
@@ -56,4 +88,5 @@ const IconListItem = (props: IconListItemProps) => {
     }
 };
 
-export default IconListItem;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(IconListItem);

@@ -1,6 +1,6 @@
 import cb from "classnames/bind";
 import styles from "./youtubeVideo.module.scss";
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, { HtmlHTMLAttributes, useState, memo } from "react";
 import SkeletonBox from "components/skeletonBox/skeletonBox";
 
 const cn = cb.bind(styles);
@@ -34,4 +34,5 @@ const YoutubeVideo = (props: YoutubeVideoProps) => {
     );
 };
 
-export default YoutubeVideo;
+// React.memo로 불필요한 리렌더링 방지
+export default memo(YoutubeVideo);
