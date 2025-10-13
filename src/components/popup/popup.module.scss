@@ -76,6 +76,7 @@
             touch-action: auto;
             font-weight: bold;
             margin-right: 5px;
+            cursor: pointer;
             @include media-mobile {
                 margin-right: 4px;
             }
