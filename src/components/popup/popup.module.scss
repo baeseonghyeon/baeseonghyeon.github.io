@@ -7,11 +7,17 @@
     opacity: 1;
     transition: opacity 0.2s ease-in; // 기본: opacity만 애니메이션
 
-    // 초기 로드 후 셔플 시에는 위치 이동도 부드럽게 (더 빠르게)
+    // GPU 가속 최적화
+    transform: translate3d(0, 0, 0); // GPU 레이어 강제 생성
+    backface-visibility: hidden; // 뒷면 렌더링 방지
+    perspective: 1000px; // 3D 공간 활성화
+
+    // 셔플 시에만 위치 이동도 부드럽게
     &.smooth-transition {
         transition: opacity 0.2s ease-in, top 0.28s cubic-bezier(0.4, 0, 0.2, 1),
             left 0.28s cubic-bezier(0.4, 0, 0.2, 1),
             transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: top, left, transform, opacity; // 브라우저에 애니메이션 예고
     }
 
     p {
@@ -23,6 +29,10 @@
             margin-bottom: 5px;
             display: flex;
         }
+    }
+
+    .is-dragging {
+        cursor: move;
     }
 
     .header {
@@ -48,8 +58,6 @@
                 font-size: $fs-l-mobile;
             }
         }
-
-        cursor: pointer;
         .button__wrapper {
             display: flex;
             flex-direction: row;
