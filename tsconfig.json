@@ -22,7 +22,7 @@
         "**/*.ts",
         "**/*.tsx",
         "jest.setup.js",
-        "script/robots.js"
+        "scripts/robots.js"
     ],
     "exclude": ["node_modules"]
 }

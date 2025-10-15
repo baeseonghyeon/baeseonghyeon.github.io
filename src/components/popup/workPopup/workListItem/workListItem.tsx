@@ -6,10 +6,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { animateScroll as scroll } from "react-scroll";
 import { WorkPopupProps } from "../workPopup";
-import { useEffect, useLayoutEffect, useCallback, useMemo, memo } from "react";
+import { useLayoutEffect, useCallback, useMemo, memo } from "react";
 import useMediaQuery from "hooks/useMediaQuery";
 import { getWorkPopupId } from "../workDescriptionPopup/workDescriptionPopup";
 import { getLocalizedText } from "libs/languageHelper";
+import useClearQueryString from "hooks/useClearQueryString";
 const cn = cb.bind(styles);
 
 export interface WorkListItemProps extends WorkPopupProps {}
@@ -86,13 +87,14 @@ const WorkListItem = (props: WorkListItemProps) => {
         [workData.title, workData.info.date, workData.info.category, language],
     );
 
+    const handleClearQueryString = useClearQueryString();
+
     if (workData) {
         return (
             <span className={cn("wrapper", "mr-2")} key={index}>
                 <span
                     className={cn("footnote")}
                     onClick={handleFootnoteClick}
-                    onTouchEnd={handleFootnoteClick}
                     style={{
                         cursor: "pointer",
                         WebkitTapHighlightColor: "transparent",
@@ -100,7 +102,7 @@ const WorkListItem = (props: WorkListItemProps) => {
                 >
                     [{index}]
                 </span>
-                <Link href={workDetailPath}>
+                <Link href={workDetailPath} onClick={handleClearQueryString}>
                     <span className={cn("link")}>{linkText}</span>
                 </Link>
             </span>
