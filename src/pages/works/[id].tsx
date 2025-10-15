@@ -166,6 +166,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const category = splitedWorkId[splitedWorkId.length - 1];
     const title = workId.replace(`-${category}`, "");
 
+    let categoryText = "";
+
     works.data
         .filter(
             (item) =>
@@ -175,11 +177,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
         .map((item) => {
             workDescription = item.description.ko;
             workTitle = item.title.ko;
-            workImage = item.thumbUrl
-                ? item.thumbUrl
-                : item.image && item.image.length > 0
-                ? item.image[0].url
-                : null;
+            categoryText = item.info.category.join(" · ");
+
+            // 이미지가 있으면 사용, 없으면 생성된 OG 이미지
+            if (item.thumbUrl) {
+                workImage = item.thumbUrl;
+            } else if (item.image && item.image.length > 0) {
+                workImage = item.image[0].url;
+            } else {
+                // 빌드 타임에 생성된 OG 이미지 사용
+                const fileName = `${
+                    item.title.en?.toLowerCase().replace(/\s+/g, "-") ||
+                    "project"
+                }-${item.info.category[0]?.toLowerCase() || "work"}.png`;
+                workImage = `/og/${fileName}`;
+            }
         });
 
     const work = {

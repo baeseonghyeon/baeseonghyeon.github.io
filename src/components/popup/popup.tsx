@@ -8,7 +8,6 @@ import {
     useCallback,
     useEffect,
     useLayoutEffect,
-    useMemo,
     useRef,
     useState,
 } from "react";
@@ -52,37 +51,14 @@ const Popup = (props: PopupProps) => {
         useRecoilState(popupOverlayState);
     const [visibility, setVisibility] = useState<boolean>(true);
     const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true); // 초기 로드 구분
+    const [isShuffling, setIsShuffling] = useState<boolean>(false); // 셔플 중인지 구분
     const [currentActivePopup, setCurrentActivePopup] = useRecoilState(
         currentActivePopupState,
     );
-    const [dragBounds, setDragBounds] = useState({
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-    });
     const [controlledPosition, setControlledPosition] = useState({
         x: 0,
         y: 0,
     });
-
-    // 드래그 경계 업데이트 함수 (useCallback으로 메모이제이션)
-    const updateDragBounds = useCallback(() => {
-        if (popupRef.current) {
-            const popup = popupRef.current;
-            const rect = popup.getBoundingClientRect();
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-
-            // 현재 위치를 기준으로 이동 가능한 범위 계산
-            setDragBounds({
-                left: -rect.left,
-                top: -rect.top,
-                right: viewportWidth - rect.left - rect.width,
-                bottom: viewportHeight - rect.top - rect.height,
-            });
-        }
-    }, []);
 
     // increasePopupOverlay를 먼저 정의 (useCallback으로 메모이제이션)
     const increasePopupOverlay = useCallback(() => {
@@ -95,11 +71,10 @@ const Popup = (props: PopupProps) => {
         setCurrentActivePopup(popupRef.current);
     }, [setPopupOverlayDepth, setCurrentActivePopup]);
 
-    // 드래그 시작 시 경계 계산 (useCallback으로 메모이제이션)
+    // 드래그 시작 시 z-index 업데이트 (useCallback으로 메모이제이션)
     const handleDragStart = useCallback(() => {
-        updateDragBounds();
         isDraggable && increasePopupOverlay();
-    }, [isDraggable, updateDragBounds, increasePopupOverlay]);
+    }, [isDraggable, increasePopupOverlay]);
 
     // 드래그 중일 때 위치 업데이트 (useCallback으로 메모이제이션)
     const handleDrag = useCallback((e: any, data: { x: number; y: number }) => {
@@ -137,9 +112,8 @@ const Popup = (props: PopupProps) => {
                         // Draggable의 내부 state 리셋
                         setControlledPosition({ x: 0, y: 0 });
 
-                        // 위치 설정 후 드래그 경계 계산 및 표시
+                        // 위치 설정 후 표시
                         setTimeout(() => {
-                            updateDragBounds();
                             setVisibility(true); // 위치 결정 후 fade-in
                             setIsInitialLoad(false); // 초기 로드 완료
                         }, 50);
@@ -164,24 +138,31 @@ const Popup = (props: PopupProps) => {
             isRandomPosition !== true &&
             isRandomPosition !== 0
         ) {
+            // 셔플 시작 - transition 클래스 즉시 적용
+            setIsShuffling(true);
+
             // index에 따른 지연 (최대 100ms로 제한)
             const delay = Math.min(index * 5, 100);
-            const timer = setTimeout(() => {
+            const positionTimer = setTimeout(() => {
                 if (popupRef.current) {
                     setPositionRandom(popupRef.current);
                     // Draggable의 내부 state 리셋 (애니메이션 유지)
                     setControlledPosition({ x: 0, y: 0 });
-
-                    // 위치 재설정 후 드래그 경계도 업데이트
-                    setTimeout(() => {
-                        updateDragBounds();
-                    }, 50); // 위치가 완전히 적용된 후 bounds 계산
                 }
             }, delay);
 
-            return () => clearTimeout(timer);
+            // 모든 애니메이션 완료 후 transition 클래스 제거
+            // delay + 0.28s animation + 여유 시간
+            const transitionTimer = setTimeout(() => {
+                setIsShuffling(false);
+            }, delay + 300);
+
+            return () => {
+                clearTimeout(positionTimer);
+                clearTimeout(transitionTimer);
+            };
         }
-    }, [isRandomPosition, index, updateDragBounds]);
+    }, [isRandomPosition, index]);
 
     useLayoutEffect(() => {
         if (
@@ -221,12 +202,12 @@ const Popup = (props: PopupProps) => {
     return (
         <Draggable
             disabled={isPcScreenSize ? false : true}
-            grid={[50, 50]}
-            bounds={dragBounds}
+            bounds="parent"
             position={controlledPosition}
             onStart={handleDragStart}
             onDrag={handleDrag}
             nodeRef={popupRef}
+            handle=".draggable-handle"
         >
             <div
                 id={props.id}
@@ -234,7 +215,7 @@ const Popup = (props: PopupProps) => {
                     props.className,
                     "container",
                     !visibility && "hide",
-                    !isInitialLoad && "smooth-transition", // 초기 로드 후에는 smooth transition
+                    isShuffling && "smooth-transition", // 셔플 중에만 smooth transition
                 )}
                 style={{ ...props.style, zIndex: zIndex, order: index }}
                 onMouseEnter={props.onMouseEnter}
@@ -245,6 +226,8 @@ const Popup = (props: PopupProps) => {
                 <div
                     className={cn(
                         "header",
+                        isDraggable && "draggable-handle",
+                        isDraggable && "is-dragging",
                         !isInitialLoad &&
                             currentActivePopup === popupRef.current &&
                             "header--active",

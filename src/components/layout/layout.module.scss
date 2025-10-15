@@ -13,15 +13,15 @@
 
     .body {
         flex: 1;
-        padding: 0px 30px;
         display: flex;
         flex-direction: column;
         align-items: center;
         @include media-not-mobile {
-            height: 100vh;
+            height: calc(100vh - 120px);
             overflow-x: hidden;
             overflow-y: auto;
             display: block;
+            padding: 60px 30px;
         }
         @include media-mobile {
             padding: 52px 11px 40px;

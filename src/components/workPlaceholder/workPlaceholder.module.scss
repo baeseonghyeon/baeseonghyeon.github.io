@@ -1,0 +1,56 @@
+@import "styles/base/variables";
+@import "styles/base/mixins";
+
+.placeholder__content {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .placeholder__group {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+
+    .placeholder__icon {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+        top: 10px;
+        position: relative;
+    }
+
+    .speech-bubbles {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+
+        .speech-bubble {
+            background: rgba(255, 255, 255, 1);
+            border: 2px solid black;
+            border-radius: 50px 50px 50px 0;
+            padding: 8px 16px;
+            width: fit-content;
+            text-align: left;
+
+            @include media-mobile {
+                padding: 7px 12px;
+                border-radius: 40px 40px 40px 0;
+            }
+
+            p {
+                line-height: normal;
+                font-size: $fs-s;
+                font-weight: bold;
+                color: #1a1a1a;
+                margin: 0;
+            }
+        }
+    }
+}

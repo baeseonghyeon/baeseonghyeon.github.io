@@ -21,7 +21,9 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
     const { onClick } = props;
     const [visibility, setVisibility] = useState(true);
     const [isLoaded, setIsLoaded] = useState(false); // 초기 로드 완료 여부
+    const [isShuffling, setIsShuffling] = useState(false); // 셔플 진행 중
     const buttonRef = useRef<HTMLDivElement>(null);
+    const shuffleTimerRef = useRef<NodeJS.Timeout | null>(null);
 
     useLayoutEffect(() => {
         if (buttonRef.current !== null) {
@@ -38,15 +40,26 @@ const ShuffleButton = (props: ShuffleButtonProps) => {
         setVisibility((prev) => !prev);
     }, []);
 
-    // handleShuffleClick을 useCallback으로 메모이제이션
+    // handleShuffleClick - 디바운스 적용
     const handleShuffleClick = useCallback(() => {
-        if (visibility) {
-            onClick();
+        if (!visibility || isShuffling) return; // 셔플 중이면 무시
+
+        // 이전 타이머 취소
+        if (shuffleTimerRef.current) {
+            clearTimeout(shuffleTimerRef.current);
         }
-    }, [visibility, onClick]);
+
+        setIsShuffling(true);
+        onClick();
+
+        // 애니메이션 완료 후 (0.28s + 여유) 다시 클릭 가능
+        shuffleTimerRef.current = setTimeout(() => {
+            setIsShuffling(false);
+        }, 400); // 0.28s 애니메이션 + 120ms 여유
+    }, [visibility, onClick, isShuffling]);
 
     return (
-        <Draggable grid={[50, 50]} bounds="div" nodeRef={buttonRef}>
+        <Draggable bounds="div" nodeRef={buttonRef}>
             <div
                 className={cn(
                     "container",

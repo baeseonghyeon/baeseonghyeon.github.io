@@ -21,6 +21,7 @@ import WorkDescriptionPopup, {
 import { convertImgurUrlToDirectLink } from "libs/textParser";
 import ContentImage from "components/contentImage/contentImage";
 import { getLocalizedText } from "libs/languageHelper";
+import WorkPlaceholder from "components/workPlaceholder/workPlaceholder";
 
 const cn = cb.bind(styles);
 
@@ -123,21 +124,10 @@ const WorkPopup = (props: WorkPopupProps) => {
                     />
                 ) : (
                     <div className={cn("image__container", "placeholder")}>
-                        <div className={cn("placeholder__content")}>
-                            <div className={cn("speech-bubbles")}>
-                                <div className={cn("speech-bubble")}>
-                                    <p>{localizedTitle}.</p>
-                                </div>
-                                <div className={cn("speech-bubble")}>
-                                    <p>{workData.info.category.join(" · ")}.</p>
-                                </div>
-                            </div>
-                            <img
-                                src="/favicon/apple-touch-icon.png"
-                                alt="logo"
-                                className={cn("placeholder__icon")}
-                            />
-                        </div>
+                        <WorkPlaceholder
+                            title={localizedTitle}
+                            category={workData.info.category.join(" · ")}
+                        />
                     </div>
                 )}
 
