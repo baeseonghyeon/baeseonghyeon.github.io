@@ -1,0 +1,12 @@
+{
+    "projects": {
+        "default": "my-portfolio-cb110"
+    },
+    "targets": {
+        "my-portfolio-cb110": {
+            "hosting": {
+                "portfolio": ["baesh"]
+            }
+        }
+    }
+}

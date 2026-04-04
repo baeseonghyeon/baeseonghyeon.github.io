@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 포트폴리오 데이터: 누구나 읽기 가능, 쓰기는 불가
+    match /portfolio/{document} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
