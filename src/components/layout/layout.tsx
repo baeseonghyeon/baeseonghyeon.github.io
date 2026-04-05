@@ -34,20 +34,20 @@ const Layout = (props: LayoutProps) => {
     const router = useRouter();
     const isDarkMode = useDarkMode();
     const language = useRecoilValue(languageState);
-    const [isLaod, setIsLoad] = useState(false);
+    const [isLoad, setIsLoad] = useState(false);
 
     const defaultTitle =
         language === Language.ko
             ? "배성현"
             : language === Language.jp
-            ? "ベ・ソンヒョン"
+            ? "ペ・ソンヒョン"
             : "Bae Seonghyeon";
     const pageTitle = `${defaultTitle} - ${
         (router && router.pathname === "/") || !title
             ? language === Language.ko
                 ? "Bae Seonghyeon"
                 : language === Language.jp
-                ? "ベ・ソンヒョン"
+                ? "ペ・ソンヒョン"
                 : "배성현"
             : title
     }`;
@@ -129,7 +129,7 @@ const Layout = (props: LayoutProps) => {
             <div className={notoSansKr.className}>
                 <BackgroundParticles />
                 <Navbar />
-                <div className={cn("container", isLaod && "animated")}>
+                <div className={cn("container", isLoad && "animated")}>
                     <div
                         className={cn("body", props.className)}
                         data-scroll-container="true"

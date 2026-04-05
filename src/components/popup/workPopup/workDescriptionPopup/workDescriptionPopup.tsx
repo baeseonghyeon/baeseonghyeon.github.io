@@ -6,12 +6,12 @@ import Popup from "components/popup/popup";
 import Link from "next/link";
 import { WorkPopupProps } from "../workPopup";
 import { useRouter } from "next/router";
-import { touchRedirect } from "libs/touchHandler";
 import useMediaQuery from "hooks/useMediaQuery";
 import { lowerCaseParser } from "libs/textParser";
 import { Language } from "interface/enums";
 import { getLocalizedText } from "libs/languageHelper";
 import { useMemo, useCallback, memo } from "react";
+import useClearQueryString from "hooks/useClearQueryString";
 const cn = cb.bind(styles);
 
 export interface WorkDescriptionPopupProps extends WorkPopupProps {
@@ -146,6 +146,8 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
         [workData.info.category, workData.info.role],
     );
 
+    const handleClearQueryString = useClearQueryString();
+
     if (workData) {
         return (
             <Popup
@@ -163,7 +165,10 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                     {isOverMaxLength && (
                         <>
                             ...
-                            <Link href={workDetailPath}>
+                            <Link
+                                href={workDetailPath}
+                                onClick={handleClearQueryString}
+                            >
                                 <span
                                     className={cn("link")}
                                     onTouchStart={() =>
@@ -179,7 +184,10 @@ const WorkDescriptionPopup = (props: WorkDescriptionPopupProps) => {
                 </p>
 
                 {!isOverMaxLength && (
-                    <Link href={workDetailPath}>
+                    <Link
+                        href={workDetailPath}
+                        onClick={handleClearQueryString}
+                    >
                         <span
                             className={cn("link", "link--block")}
                             onTouchStart={() =>

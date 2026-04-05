@@ -1,14 +1,12 @@
 {
     "text": [
         {
-            "sort": 1,
             "common": "bae-seonghyeon",
             "ko": "배성현은 웹과 앱을 만드는 프론트엔드 엔지니어입니다.",
             "en": "Bae Seonghyeon is a frontend engineer specializing in web and mobile applications.",
-            "jp": "ベ・ソンヒョンはウェブとアプリを作るフロントエンドエンジニアです。"
+            "jp": "ペ・ソンヒョンはウェブとアプリを作るフロントエンドエンジニアです。"
         },
         {
-            "sort": 2,
             "common": "about",
             "ko": "누구나 사용하고 싶은 서비스를 만드는 것을 목표로 합니다. 기획자와 디자이너의 관점을 아우르며, 사용자 친화적인 서비스를 만들기 위해 노력합니다. 함께 일하고 싶은 개발자가 되기 위해 늘 배우고 탐구합니다. 클린하고 변화에 유연한 코드에 대해 고민하며, 건강한 개발 문화를 만드는 것을 즐깁니다.",
             "en": "I aim to create services that everyone wants to use. I strive to build user-friendly products by embracing the perspectives of product managers and designers. I am always learning and exploring to become the kind of developer others want to work with. I enjoy thinking about clean and adaptable code, and contributing to a positive development culture.",
@@ -25,7 +23,6 @@
     "list": [
         {
             "title": "contact",
-            "sort": 3,
             "listData": [
                 {
                     "title": {
@@ -59,7 +56,6 @@
         },
         {
             "title": "experience",
-            "sort": 4,
             "listData": [
                 {
                     "title": {
@@ -128,7 +124,6 @@
         },
         {
             "title": "Skills",
-            "sort": 5,
             "listData": [
                 {
                     "title": {
@@ -190,7 +185,6 @@
         },
         {
             "title": "Additional Skills",
-            "sort": 6,
             "listData": [
                 {
                     "title": {

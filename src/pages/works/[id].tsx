@@ -2,9 +2,10 @@ import Layout from "components/layout/layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import workJson from "data/work.json";
 import { WorkData, WorkDTO } from "interface/dto/work";
+import { fetchWork } from "libs/firestore";
 import { convertImgurUrlToDirectLink, lowerCaseParser } from "libs/textParser";
+import workJson from "data/work.json";
 import { useRecoilValue } from "recoil";
 import { languageState } from "recoil/ui";
 import styles from "./workDetail.module.scss";
@@ -21,7 +22,6 @@ const cn = cb.bind(styles);
 const WorkDetail: NextPage = ({ work }: any) => {
     const router = useRouter();
     const language = useRecoilValue(languageState);
-    const works: WorkDTO = workJson;
     const [workId, setWorkId] = useState<string>();
     const [workData, setWorkData] = useState<WorkData>();
     const [isNotfound, setIsNotfound] = useState<any>(null);
@@ -33,22 +33,22 @@ const WorkDetail: NextPage = ({ work }: any) => {
         }
     }, [router.isReady]);
 
+    // Firestore에서 작업 데이터 로드 후 workId로 필터링
     useEffect(() => {
-        if (workId) {
-            let splitedWorkId = workId.split("-");
-            const category = splitedWorkId[splitedWorkId.length - 1];
-            const title = workId.replace(`-${category}`, "");
+        if (!workId) return;
+        const splitedWorkId = workId.split("-");
+        const category = splitedWorkId[splitedWorkId.length - 1];
+        const title = workId.replace(`-${category}`, "");
 
-            const filtereData = works.data
-                .filter(
-                    (item) =>
-                        lowerCaseParser(item.title.en) === title &&
-                        item.info.category[0]?.toLowerCase() === category,
-                )
-                .map((item) => setWorkData(item));
-
-            setIsNotfound(filtereData.length);
-        }
+        fetchWork().then((works: WorkDTO) => {
+            const filtered = works.data.filter(
+                (item) =>
+                    lowerCaseParser(item.title.en) === title &&
+                    item.info.category[0]?.toLowerCase() === category,
+            );
+            setIsNotfound(filtered.length);
+            if (filtered.length > 0) setWorkData(filtered[0]);
+        });
     }, [workId]);
 
     if (isNotfound === 0) {
@@ -142,6 +142,7 @@ const WorkDetail: NextPage = ({ work }: any) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+    // 빌드 타임 경로 생성은 로컬 JSON 사용 (Firebase 클라이언트 SDK는 브라우저 전용)
     const works: WorkDTO = workJson;
 
     const getWorkPopupId = (title: string | undefined, category: string) => {
@@ -157,16 +158,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+    // OG 메타데이터도 빌드 타임이므로 로컬 JSON 사용
     const works: WorkDTO = workJson;
     const workId: string = (context.params?.id as string) || "";
     let workDescription;
     let workTitle;
     let workImage;
-    let splitedWorkId = workId.split("-");
+    const splitedWorkId = workId.split("-");
     const category = splitedWorkId[splitedWorkId.length - 1];
     const title = workId.replace(`-${category}`, "");
-
-    let categoryText = "";
 
     works.data
         .filter(
@@ -177,7 +177,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
         .map((item) => {
             workDescription = item.description.ko;
             workTitle = item.title.ko;
-            categoryText = item.info.category.join(" · ");
 
             // 이미지가 있으면 사용, 없으면 생성된 OG 이미지
             if (item.thumbUrl) {

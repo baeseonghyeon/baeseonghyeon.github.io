@@ -169,14 +169,16 @@ const Popup = (props: PopupProps) => {
             popupRef.current === currentActivePopup &&
             currentActivePopup !== null
         ) {
-            // 전역 overlay depth를 증가시키고, 그 값을 현재 팝업의 z-index로 설정
+            // 0번 팝업(최초 진입)에는 스크롤 이동하지 않음
             setPopupOverlayDepth((prev) => {
                 const newDepth = prev + 1;
-                setZindex(newDepth); // 새로운 depth 값을 z-index로 설정
+                setZindex(newDepth);
                 return newDepth;
             });
-            // 스크롤 이동
-            scrollToPopup(currentActivePopup);
+            // index가 0이면 스크롤 이동 생략
+            if (index !== 0) {
+                scrollToPopup(currentActivePopup);
+            }
         }
     }, [currentActivePopup, setPopupOverlayDepth]);
 
@@ -199,6 +201,13 @@ const Popup = (props: PopupProps) => {
         [onClickClose, onClosePopup],
     );
 
+    // target 이동 핸들러 분리
+    const handleTargetMove = useCallback(() => {
+        if (props.title && props.id) {
+            window.history.replaceState(null, "", `?target=${props.id}`);
+        }
+    }, [props.title, props.id]);
+
     return (
         <Draggable
             disabled={isPcScreenSize ? false : true}
@@ -215,7 +224,7 @@ const Popup = (props: PopupProps) => {
                     props.className,
                     "container",
                     !visibility && "hide",
-                    isShuffling && "smooth-transition", // 셔플 중에만 smooth transition
+                    isShuffling && "smooth-transition",
                 )}
                 style={{ ...props.style, zIndex: zIndex, order: index }}
                 onMouseEnter={props.onMouseEnter}
@@ -232,6 +241,7 @@ const Popup = (props: PopupProps) => {
                             currentActivePopup === popupRef.current &&
                             "header--active",
                     )}
+                    onClick={handleTargetMove}
                 >
                     <h1>{title}</h1>
                     <div className={cn("button__wrapper")}>

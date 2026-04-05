@@ -54,13 +54,6 @@ const IconListItem = (props: IconListItemProps) => {
         );
     }, [localizedText, commonText, showCommon, isIcon]);
 
-    // handleTouchStart를 useCallback으로 메모이제이션
-    const handleTouchStart = useCallback(() => {
-        if (listData.url) {
-            touchRedirect(listData.url, true);
-        }
-    }, [listData.url]);
-
     if (listData) {
         return (
             <li className={cn(isIcon && "list--has-icon")}>
@@ -71,11 +64,7 @@ const IconListItem = (props: IconListItemProps) => {
                 )}
 
                 {listData.url ? (
-                    <Link
-                        href={listData.url}
-                        target="_blank"
-                        onTouchStart={handleTouchStart}
-                    >
+                    <Link href={listData.url} target="_blank">
                         {listContent}
                     </Link>
                 ) : (
@@ -88,5 +77,4 @@ const IconListItem = (props: IconListItemProps) => {
     }
 };
 
-// React.memo로 불필요한 리렌더링 방지
 export default memo(IconListItem);
