@@ -4,6 +4,9 @@ on:
     push:
         branches:
             - main
+    pull_request:
+        branches:
+            - main
 
 jobs:
     deploy:
@@ -31,11 +34,21 @@ jobs:
                   NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
                   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}
 
-            - name: Firebase Hosting 배포
+            - name: Firebase Hosting 배포 (main push → live)
+              if: github.event_name == 'push'
               uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: ${{ secrets.GITHUB_TOKEN }}
                   firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
                   channelId: live
+                  projectId: my-portfolio-cb110
+                  target: portfolio
+
+            - name: Firebase Hosting 배포 (PR → preview)
+              if: github.event_name == 'pull_request'
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
                   projectId: my-portfolio-cb110
                   target: portfolio
