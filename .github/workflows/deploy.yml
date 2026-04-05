@@ -9,12 +9,12 @@ on:
             - main
 
 jobs:
-    deploy:
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
-            - name: Node.js 설정
+            - name: Node.js 18 설정 (Next.js 13 빌드용)
               uses: actions/setup-node@v4
               with:
                   node-version: 18
@@ -35,6 +35,29 @@ jobs:
                   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID }}
                   NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
                   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}
+
+            - name: 빌드 결과물 업로드
+              uses: actions/upload-artifact@v4
+              with:
+                  name: out
+                  path: out/
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Node.js 20 설정 (Firebase CLI용)
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: 빌드 결과물 다운로드
+              uses: actions/download-artifact@v4
+              with:
+                  name: out
+                  path: out/
 
             - name: Firebase Hosting 배포 (main push → live)
               if: github.event_name == 'push'
