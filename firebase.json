@@ -1,6 +1,6 @@
 {
     "hosting": {
-        "site": "baesh",
+        "target": "portfolio",
         "public": "out",
         "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
         "trailingSlash": true,
