@@ -260,10 +260,8 @@ async function generateAllOGImages() {
             // 파일명: title-en-category.png
             const fileName = `${work.title.en
                 .toLowerCase()
-                .replace(
-                    /\s+/g,
-                    "-",
-                )}-${work.info.category[0].toLowerCase()}.png`;
+                .replace(/\s+/g, "-")
+                .replace(/[^a-z0-9\-]/g, "")}-${work.info.category[0].toLowerCase()}.png`;
             const outputPath = path.join(outputDir, fileName);
 
             await generateOGImage(title, category, outputPath);

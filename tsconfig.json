@@ -15,7 +15,7 @@
         "jsx": "preserve",
         "incremental": true,
         "baseUrl": "./src",
-        "types": ["node", "parse5"]
+        "types": ["node"]
     },
     "include": [
         "next-env.d.ts",

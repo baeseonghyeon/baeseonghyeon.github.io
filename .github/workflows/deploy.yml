@@ -4,21 +4,26 @@ on:
     push:
         branches:
             - main
+    pull_request:
+        branches:
+            - main
 
 jobs:
-    deploy:
+    build:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
 
-            - name: Node.js 설정
+            - name: Node.js 18 설정 (Next.js 13 빌드용)
               uses: actions/setup-node@v4
               with:
                   node-version: 18
-                  cache: yarn
+
+            - name: Corepack 활성화 (Yarn Berry)
+              run: corepack enable
 
             - name: 의존성 설치
-              run: yarn install --frozen-lockfile
+              run: yarn install --immutable
 
             - name: 빌드 및 정적 파일 생성
               run: yarn build && npx next export
@@ -31,11 +36,44 @@ jobs:
                   NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
                   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID }}
 
-            - name: Firebase Hosting 배포
+            - name: 빌드 결과물 업로드
+              uses: actions/upload-artifact@v4
+              with:
+                  name: out
+                  path: out/
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Node.js 20 설정 (Firebase CLI용)
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: 빌드 결과물 다운로드
+              uses: actions/download-artifact@v4
+              with:
+                  name: out
+                  path: out/
+
+            - name: Firebase Hosting 배포 (main push → live)
+              if: github.event_name == 'push'
               uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: ${{ secrets.GITHUB_TOKEN }}
                   firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
                   channelId: live
+                  projectId: my-portfolio-cb110
+                  target: portfolio
+
+            - name: Firebase Hosting 배포 (PR → preview)
+              if: github.event_name == 'pull_request'
+              uses: FirebaseExtended/action-hosting-deploy@v0
+              with:
+                  repoToken: ${{ secrets.GITHUB_TOKEN }}
+                  firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
                   projectId: my-portfolio-cb110
                   target: portfolio
