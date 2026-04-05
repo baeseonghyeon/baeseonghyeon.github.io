@@ -186,7 +186,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             } else {
                 // 빌드 타임에 생성된 OG 이미지 사용
                 const fileName = `${
-                    item.title.en?.toLowerCase().replace(/\s+/g, "-") ||
+                    item.title.en?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9\-]/g, "") ||
                     "project"
                 }-${item.info.category[0]?.toLowerCase() || "work"}.png`;
                 workImage = `/og/${fileName}`;
