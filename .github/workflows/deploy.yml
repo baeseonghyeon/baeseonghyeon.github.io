@@ -18,10 +18,12 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 18
-                  cache: yarn
+
+            - name: Corepack 활성화 (Yarn Berry)
+              run: corepack enable
 
             - name: 의존성 설치
-              run: yarn install --frozen-lockfile
+              run: yarn install --immutable
 
             - name: 빌드 및 정적 파일 생성
               run: yarn build && npx next export
