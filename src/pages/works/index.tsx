@@ -4,8 +4,7 @@ import { useState, useEffect, useMemo } from "react";
 import cb from "classnames/bind";
 import { useRecoilState } from "recoil";
 import styles from "./works.module.scss";
-import { WorkDTO } from "interface/dto/work";
-import workJson from "data/work.json";
+import { WorkData, WorkDTO } from "interface/dto/work";
 import Popup from "components/popup/popup";
 import { workFilterState } from "recoil/ui";
 import ShuffleButton from "components/shuffleButton/shuffleButton";
@@ -14,23 +13,29 @@ import WorkListItem from "../../components/popup/workPopup/workListItem/workList
 import WorkPopup from "../../components/popup/workPopup/workPopup";
 import { firstLetterCapitalizer } from "libs/textParser";
 import { clearAllPositions } from "libs/positionHandler";
+import { fetchWork } from "libs/firestore";
 
 const cn = cb.bind(styles);
 
 const Works: NextPage = () => {
     const [workFilterValue, setWorkFilterValue] =
         useRecoilState(workFilterState);
-    const works: WorkDTO = workJson;
+    const [workData, setWorkData] = useState<WorkData[]>([]);
     const [shuffleTrigger, setShuffleTrigger] = useState<number>(0);
 
-    // 페이지 마운트 시 위치 초기화 (깨끗한 상태에서 시작)
+    // 페이지 마운트 시 위치 초기화 및 Firestore 데이터 로드
     useEffect(() => {
         clearAllPositions();
+        fetchWork()
+            .then((works: WorkDTO) => {
+                setWorkData(works.data);
+            })
+            .catch((err) => console.error("[Firestore] work fetch 실패:", err));
     }, []);
 
     // 필터링된 작업 데이터 메모이제이션 (workFilterValue 변경 시에만 재계산)
     const filteredWorkData = useMemo(() => {
-        return works.data
+        return workData
             .slice(0)
             .reverse()
             .filter((item) =>
@@ -40,7 +45,7 @@ const Works: NextPage = () => {
                     ? item.info.category.includes(workFilterValue)
                     : item.info.role.includes(workFilterValue),
             );
-    }, [workFilterValue, works.data]);
+    }, [workFilterValue, workData]);
 
     return (
         <Layout title={"Works"}>

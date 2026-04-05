@@ -19,6 +19,9 @@
 .DS_Store
 *.pem
 
+# Firebase 서비스 계정 키
+*firebase-adminsdk*.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

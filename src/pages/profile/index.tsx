@@ -7,7 +7,6 @@ import {
     ProfileDTO,
     textProfileType,
 } from "interface/dto/profile";
-import profileJson from "data/profile.json";
 import { languageState } from "recoil/ui";
 import { useRecoilValue } from "recoil";
 import { useState, useEffect } from "react";
@@ -16,6 +15,7 @@ import ProfileListItem from "../../components/iconListItem/iconListItem";
 import ScrollTargetPopup from "components/popup/scrollTargetPopup/scrollTargetPopup";
 import { getLocalizedText } from "libs/languageHelper";
 import { clearAllPositions } from "libs/positionHandler";
+import { fetchProfile } from "libs/firestore";
 const cn = cb.bind(styles);
 
 export interface ProfileProps {}
@@ -23,14 +23,19 @@ export interface ProfileProps {}
 const Profile: NextPage = (props: ProfileProps) => {
     const {} = props;
     const language = useRecoilValue(languageState);
-    const profile = profileJson as ProfileDTO;
-    const textProfiles: textProfileType[] = profile.text;
-    const listProfiles: listProfileType[] = profile.list;
+    const [textProfiles, setTextProfiles] = useState<textProfileType[]>([]);
+    const [listProfiles, setListProfiles] = useState<listProfileType[]>([]);
     const [shuffleTrigger, setShuffleTrigger] = useState<number>(0);
 
-    // 페이지 마운트 시 위치 초기화 (깨끗한 상태에서 시작)
+    // 페이지 마운트 시 위치 초기화 및 Firestore 데이터 로드
     useEffect(() => {
         clearAllPositions();
+        fetchProfile()
+            .then((profile: ProfileDTO) => {
+                setTextProfiles(profile.text);
+                setListProfiles(profile.list);
+            })
+            .catch((err) => console.error("[Firestore] profile fetch 실패:", err));
     }, []);
 
     return (
